@@ -1,3 +1,9 @@
+import { Button } from "./styles";
+
 export const App = () => {
-  return null;
+  return (
+    <>
+      <Button>Test</Button>
+    </>
+  );
 };

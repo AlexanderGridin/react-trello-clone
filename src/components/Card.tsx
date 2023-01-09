@@ -1,9 +1,10 @@
 import { CardContainer } from "styles";
 
 interface CardProps {
-  text: string;
+  id: string;
+  content: string;
 }
 
-export const Card = ({ text }: CardProps): JSX.Element => (
-  <CardContainer>{text}</CardContainer>
+export const Card = ({ content }: CardProps): JSX.Element => (
+  <CardContainer>{content}</CardContainer>
 );

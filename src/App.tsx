@@ -1,8 +1,21 @@
 import { Column } from "components/Column";
+import { useAppState } from "hooks/useAppState";
+import { TasksList } from "shared/models/TasksList.model";
 import { AppContainer } from "styles";
 
-export const App = () => (
-  <AppContainer>
-    <Column title="TODO:" />
-  </AppContainer>
-);
+export const App = () => {
+  const { tasksLists, getTasksByListId } = useAppState();
+
+  return (
+    <AppContainer>
+      {tasksLists.map((list: TasksList) => (
+        <Column
+          key={list.id}
+          id={list.id}
+          title={list.title}
+          tasks={getTasksByListId(list.id)}
+        />
+      ))}
+    </AppContainer>
+  );
+};

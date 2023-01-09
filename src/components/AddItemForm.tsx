@@ -1,6 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
-import { useInputFocus } from "hooks/use-input-focus";
-import { KeyboardKey } from "shared/enums/keyboard-key.enum";
+import { useInputFocus } from "hooks/useInputFocus";
+import { KeyboardKey } from "shared/enums/KeyboardKey.enum";
 import { AddButton, AddItemFormContainer, AddItemInput } from "styles";
 
 interface AddItemFormProps {

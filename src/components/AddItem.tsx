@@ -12,7 +12,7 @@ interface AddItemProps {
 
 export const AddItem = ({
   buttonText,
-  dark,
+  dark = false,
   onAdd,
 }: AddItemProps): JSX.Element => {
   // also can be written as const [isShowForm, setIsShowForm] = useState<boolean>(false);
@@ -22,14 +22,15 @@ export const AddItem = ({
     onAdd(text);
     setIsShowForm(false);
   };
-  const onClick = (): void => setIsShowForm(true);
+  const showForm = (): void => setIsShowForm(true);
+  const hideForm = (): void => setIsShowForm(false);
 
   if (isShowForm) {
-    return <AddItemForm onAdd={addItem}></AddItemForm>;
+    return <AddItemForm onAdd={addItem} onCancel={hideForm}></AddItemForm>;
   }
 
   return (
-    <AddItemButton dark={dark} onClick={onClick}>
+    <AddItemButton dark={dark} onClick={showForm}>
       {buttonText}
     </AddItemButton>
   );

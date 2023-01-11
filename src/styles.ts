@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const AppContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  background-color: #3179ba;
+  background-color: #292e39;
   height: 100%;
   padding: 20px;
   width: 100%;
+  overflow-x: auto;
 `;
 
 export const ColumnContainer = styled.div`
@@ -16,11 +17,20 @@ export const ColumnContainer = styled.div`
   border-radius: 3px;
   padding: 8px;
   flex-grow: 0;
+  flex-shrink: 0;
   background-color: #ebecf0;
 `;
 
+// Extending styles in styled components
+export const ColumnContainerTransparent = styled(ColumnContainer)`
+  background: none;
+  padding: 0;
+  margin-right: 0;
+`;
+
 export const ColumnTitle = styled.div`
-  padding: 6px 16px 12px;
+  padding: 6px 16px;
+  padding-left: 0;
   font-weight: bold;
 `;
 
@@ -68,19 +78,6 @@ export const AddItemFormContainer = styled.div`
   width: 100%;
 `;
 
-export const AddButton = styled.button`
-  background-color: #5aac44;
-  border-radius: 3px;
-  border: none;
-  box-shadow: none;
-  color: #fff;
-  padding: 6px 12px;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
 export const AddItemInput = styled.input`
   border: none;
   border-radius: 3px;
@@ -88,4 +85,37 @@ export const AddItemInput = styled.input`
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   width: 100%;
+`;
+
+export const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+// BUTTONS
+export const BaseButton = styled.button`
+  border-radius: 3px;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  padding: 6px 12px;
+  margin-right: 7px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const SuccessButton = styled(BaseButton)`
+  background-color: #a3be8c;
+ }
+`;
+
+export const ErrorButton = styled(BaseButton)`
+  background-color: #bf616a;
+`;
+
+export const WarningButton = styled(BaseButton)`
+  background-color: #ebcb8b;
 `;

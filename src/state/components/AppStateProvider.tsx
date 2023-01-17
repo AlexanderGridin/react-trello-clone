@@ -1,8 +1,8 @@
 import { ReactNode, useReducer } from "react";
 import { INITIAL_STATE } from "state/initialState";
-import { TasksList } from "shared/models/TasksList.model";
 import { AppStateContext } from "state/components/AppStateContext";
 import { appReducer } from "state/appReducer";
+import { TasksListModel } from "components/TasksList/models/TasksListModel";
 
 interface AppStateProviderProps {
   children?: ReactNode;
@@ -15,7 +15,7 @@ export const AppStateProvider = ({
 
   const { tasksLists } = state;
   const getTasksByListId = (id: string) =>
-    tasksLists.find((list: TasksList) => list.id === id)?.tasks ?? [];
+    tasksLists.find((list: TasksListModel) => list.id === id)?.tasks ?? [];
 
   return (
     <AppStateContext.Provider

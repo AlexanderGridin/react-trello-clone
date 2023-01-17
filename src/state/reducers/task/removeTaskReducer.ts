@@ -1,7 +1,7 @@
-import { Task } from "shared/models/Task.model";
-import { TasksList } from "shared/models/TasksList.model";
+import { TasksListModel } from "components/TasksList/models/TasksListModel";
+import { Task } from "shared/models/Task";
 import { RemoveTaskAction } from "state/actions/task/removeTask";
-import { AppState } from "state/models/AppState.model";
+import { AppState } from "state/models/AppState";
 
 export const removeTaskReducer = (
   state: AppState,
@@ -10,7 +10,7 @@ export const removeTaskReducer = (
   const listId = action.payload.listId;
   const taskId = action.payload.taskId;
 
-  const tasksLists = state.tasksLists.map((list: TasksList) => {
+  const tasksLists = state.tasksLists.map((list: TasksListModel) => {
     if (list.id !== listId) {
       return list;
     }

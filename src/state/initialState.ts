@@ -1,5 +1,5 @@
 import { generateId } from "shared/utils/generateId";
-import { AppState } from "state/models/AppState.model";
+import { AppState } from "./models/AppState";
 
 export const INITIAL_STATE: AppState = {
   tasksLists: [

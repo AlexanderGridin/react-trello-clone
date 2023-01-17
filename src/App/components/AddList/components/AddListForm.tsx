@@ -1,15 +1,10 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
-import { useInputFocus } from "hooks/useInputFocus";
+import { useInputFocus } from "shared/hooks/useInputFocus";
 import { KeyboardKey } from "shared/enums/KeyboardKey.enum";
-import {
-  SuccessButton,
-  AddItemFormContainer,
-  AddItemInput,
-  ErrorButton,
-  FlexContainer,
-} from "styles";
+import { FormContainer, TextInput } from "styles";
+import { AddListFormActions } from "App/components/AddList/components/AddListFormActions";
 
-interface AddItemFormProps {
+interface AddListFormProps {
   onAdd: (text: string) => void;
   onCancel: () => void;
 }
@@ -17,7 +12,7 @@ interface AddItemFormProps {
 type ChangeEventType = ChangeEvent<HTMLInputElement>;
 type KeyboardEventType = KeyboardEvent<HTMLInputElement>;
 
-export const AddItemForm = ({ onAdd, onCancel }: AddItemFormProps) => {
+export const AddListForm = ({ onAdd, onCancel }: AddListFormProps) => {
   const [text, setText] = useState("");
 
   const onInputChange = (e: ChangeEventType): void => setText(e.target.value);
@@ -28,22 +23,19 @@ export const AddItemForm = ({ onAdd, onCancel }: AddItemFormProps) => {
 
     onAdd(text);
   };
-  const addItem = (): void => onAdd(text);
+  const add = (): void => onAdd(text);
   const cancel = (): void => onCancel();
 
   return (
-    <AddItemFormContainer>
-      <AddItemInput
+    <FormContainer>
+      <TextInput
         ref={useInputFocus()}
         value={text}
         onChange={onInputChange}
         onKeyUp={onInputKeyUp}
       />
 
-      <FlexContainer>
-        <SuccessButton onClick={addItem}>Add</SuccessButton>
-        <ErrorButton onClick={cancel}>Cancel</ErrorButton>
-      </FlexContainer>
-    </AddItemFormContainer>
+      <AddListFormActions onAdd={add} onCancel={cancel} />
+    </FormContainer>
   );
 };

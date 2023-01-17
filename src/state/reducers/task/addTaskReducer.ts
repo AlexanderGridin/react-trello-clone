@@ -1,13 +1,13 @@
-import { TasksList } from "shared/models/TasksList.model";
+import { TasksListModel } from "components/TasksList/models/TasksListModel";
 import { generateId } from "shared/utils/generateId";
 import { AddTaskAction } from "state/actions/task/addTask";
-import { AppState } from "state/models/AppState.model";
+import { AppState } from "state/models/AppState";
 
 export const addTaskReducer = (
   state: AppState,
   action: AddTaskAction
 ): AppState => {
-  const tasksLists = state.tasksLists.map((list: TasksList) => {
+  const tasksLists = state.tasksLists.map((list: TasksListModel) => {
     if (list.id !== action.payload.listId) {
       return list;
     }

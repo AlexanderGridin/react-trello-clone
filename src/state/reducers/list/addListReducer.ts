@@ -1,6 +1,6 @@
 import { generateId } from "shared/utils/generateId";
 import { AddListAction } from "state/actions/list/addList";
-import { AppState } from "state/models/AppState.model";
+import { AppState } from "state/models/AppState";
 
 export const addListReducer = (
   state: AppState,

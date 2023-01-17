@@ -1,10 +1,10 @@
-import { AppState } from "state/models/AppState.model";
-import { AppAction } from "state/models/AppAction.model";
 import { ActionType } from "state/enums/ActionType.enum";
 import { addTaskReducer } from "state/reducers/task/addTaskReducer";
 import { addListReducer } from "state/reducers/list/addListReducer";
 import { removeListReducer } from "./reducers/list/removeListReducer";
 import { removeTaskReducer } from "./reducers/task/removeTaskReducer";
+import { AppState } from "./models/AppState";
+import { AppAction } from "./models/AppAction";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {

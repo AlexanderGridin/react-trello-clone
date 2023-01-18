@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 
 import "index.css";
 
-import { App } from "components/App";
-import { AppStateProvider } from "state/components/AppStateProvider";
+import { App } from "App/App";
+import { AppStateProvider } from "App/state/components/AppStateProvider";
 
 import reportWebVitals from "reportWebVitals";
 

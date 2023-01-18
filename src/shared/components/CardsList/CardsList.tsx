@@ -2,9 +2,9 @@ import { ReactNode } from "react";
 import { Card } from "shared/components/Card/Card";
 import { CardsListHeader } from "shared/components/CardsList/components/CardsListHeader";
 import { CardsListItem } from "./models/CardsListItem";
-import { ListContainer } from "shared/components/List/ListContainer";
+import { ListContainer } from "shared/components/List/components/ListContainer";
 import { List } from "shared/components/List/List";
-import { ListItem } from "shared/components/List/ListItem";
+import { ListItem } from "shared/components/List/components/ListItem";
 
 interface CardsListProps {
   id: string;

@@ -1,7 +1,7 @@
-import { MaterialIcon } from "shared/components/MaterialIcon";
-import { Icon } from "shared/enums/Icon";
+import { FlexContainer } from "shared/components/FlexContainer";
+import { Icon } from "shared/components/Icon/Icon";
+import { MaterialIcon } from "shared/enums/MaterialIcon";
 import styled from "styled-components";
-import { FlexContainer } from "styles";
 import { ListTitle } from "./CardsListTitle";
 import { RemoveListButton } from "./RemoveListButton";
 
@@ -25,7 +25,7 @@ export const CardsListHeader = ({
       <ListTitle> {title}</ListTitle>
 
       <RemoveListButton onClick={remove}>
-        <MaterialIcon icon={Icon.Delete} />
+        <Icon icon={MaterialIcon.Delete} />
       </RemoveListButton>
     </CardsListHeaderContainer>
   );

@@ -1,9 +1,9 @@
-import { useAppState } from "state/hooks/useAppState";
-import { AddList } from "App/components/AddList/AddList";
-import { TasksList } from "App/components/TasksList/TasksList";
-import { addList } from "state/actions/list/addList";
+import { useAppState } from "App/state/hooks/useAppState";
+import { addList } from "App/state/actions/list/addList";
 import { BoardContainer } from "./components/BoardContainer";
-import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
+import { TasksListModel } from "./components/TasksList/models/TasksListModel";
+import { TasksList } from "./components/TasksList/TasksList";
+import { AddList } from "./components/AddList/AddList";
 
 export const Board = (): JSX.Element => {
   const { tasksLists, dispatch } = useAppState();

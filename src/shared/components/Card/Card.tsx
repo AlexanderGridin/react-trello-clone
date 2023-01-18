@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-import { Icon } from "shared/enums/Icon";
-import { MaterialIcon } from "shared/components/MaterialIcon";
 import { CardContent } from "./components/CardContent";
 import { RemoveCardButton } from "./components/RemoveCardButton";
 import { CardContainer } from "./components/CardContainer";
+import { Icon } from "shared/components/Icon/Icon";
+import { MaterialIcon } from "shared/enums/MaterialIcon";
 
 interface CardProps {
   children?: ReactNode;
@@ -18,7 +18,7 @@ export const Card = ({ children, onRemove }: CardProps): JSX.Element => {
       <CardContent>{children}</CardContent>
 
       <RemoveCardButton onClick={remove}>
-        <MaterialIcon icon={Icon.Delete} />
+        <Icon icon={MaterialIcon.Delete} />
       </RemoveCardButton>
     </CardContainer>
   );

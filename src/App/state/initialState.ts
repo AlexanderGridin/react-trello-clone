@@ -19,4 +19,5 @@ export const INITIAL_STATE: AppState = {
       tasks: [{ id: generateId(), text: "Begin to use static typing" }],
     },
   ],
+  draggedItem: null,
 };

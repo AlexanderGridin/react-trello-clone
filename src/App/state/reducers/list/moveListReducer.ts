@@ -17,23 +17,20 @@ export const moveListReducer = (
     (list) => list.id === listHovered.id
   );
 
-  let tasksLists = [...state.tasksLists];
-
-  if (listToMoveIndex < listHoveredIndex) {
-    tasksLists = moveItemAfterArrayItem<TasksListModel>(
-      tasksLists,
-      listToMove,
-      listHovered,
-      "id"
-    );
-  } else {
-    tasksLists = moveItemBeforeArrayItem<TasksListModel>(
-      tasksLists,
-      listToMove,
-      listHovered,
-      "id"
-    );
-  }
+  const tasksLists =
+    listToMoveIndex < listHoveredIndex
+      ? moveItemAfterArrayItem<TasksListModel>(
+          [...state.tasksLists],
+          listToMove,
+          listHovered,
+          "id"
+        )
+      : moveItemBeforeArrayItem<TasksListModel>(
+          [...state.tasksLists],
+          listToMove,
+          listHovered,
+          "id"
+        );
 
   return {
     ...state,

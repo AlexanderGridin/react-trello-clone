@@ -4,11 +4,7 @@ import { AppState } from "../models/AppState";
 export const setDraggedItemReducer = (
   state: AppState,
   action: SetDraggedItemAction
-): AppState => {
-  const draggedItem = action.payload.item;
-
-  return {
-    ...state,
-    draggedItem,
-  };
-};
+): AppState => ({
+  ...state,
+  draggedItem: action.payload.item,
+});

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ListContainer = styled.div`
   width: 300px;
   min-height: 40px;
-  margin-right: 20px;
   border-radius: 3px;
   padding: 8px;
   flex-grow: 0;

@@ -1,10 +1,10 @@
 import { generateId } from "shared/utils/generateId";
-import { AddListAction } from "App/state/actions/list/addList";
 import { AppState } from "App/state/models/AppState";
+import { AddTasksListAction } from "../actions/addTasksList";
 
-export const addListReducer = (
+export const addTasksListReducer = (
   state: AppState,
-  action: AddListAction
+  action: AddTasksListAction
 ): AppState => {
   return {
     ...state,

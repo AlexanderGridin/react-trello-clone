@@ -1,13 +1,13 @@
 import { useAppState } from "App/state/hooks/useAppState";
-import { addList } from "App/state/actions/list/addList";
 import { BoardContainer } from "./components/BoardContainer";
 import { TasksListModel } from "./components/TasksList/models/TasksListModel";
 import { TasksList } from "./components/TasksList/TasksList";
 import { AddList } from "./components/AddList/AddList";
+import { useBoardActions } from "./hooks/useBoardActions";
 
 export const Board = (): JSX.Element => {
-  const { tasksLists, dispatch } = useAppState();
-  const addNewList = (title: string) => dispatch(addList(title));
+  const { tasksLists } = useAppState();
+  const { addTasksList } = useBoardActions();
 
   return (
     <BoardContainer>
@@ -15,7 +15,7 @@ export const Board = (): JSX.Element => {
         <TasksList key={list.id} list={list} />
       ))}
 
-      <AddList onAdd={addNewList}>+ Add new list</AddList>
+      <AddList onAdd={addTasksList}>+ Add new list</AddList>
     </BoardContainer>
   );
 };

@@ -1,9 +1,9 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { useInputFocus } from "shared/hooks/useInputFocus";
 import { KeyboardKey } from "shared/enums/KeyboardKey.enum";
-import { AddTaskFormActions } from "./AddTaskFormActions";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { TextInput } from "shared/components/Form/TextInput";
+import { AddTaskFormFooter } from "./AddTaskFormFooter";
 
 interface AddTaskFormProps {
   onAdd: (text: string) => void;
@@ -32,11 +32,12 @@ export const AddTaskForm = ({ onAdd, onCancel }: AddTaskFormProps) => {
       <TextInput
         ref={useInputFocus()}
         value={text}
+        placeholder="Enter task content"
         onChange={onInputChange}
         onKeyUp={onInputKeyUp}
       />
 
-      <AddTaskFormActions onAdd={add} onCancel={cancel} />
+      <AddTaskFormFooter onAdd={add} onCancel={cancel} />
     </FormContainer>
   );
 };

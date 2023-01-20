@@ -1,10 +1,10 @@
 import { TasksListModel } from "App/components/Board/components/TasksList/models/TasksListModel";
-import { RemoveListAction } from "App/state/actions/list/removeList";
 import { AppState } from "App/state/models/AppState";
+import { RemoveTasksListAction } from "../actions/removeTasksList";
 
-export const removeListReducer = (
+export const removeTasksListReducer = (
   state: AppState,
-  action: RemoveListAction
+  action: RemoveTasksListAction
 ): AppState => {
   const tasksLists = state.tasksLists.filter(
     (list: TasksListModel) => list.id !== action.payload.id

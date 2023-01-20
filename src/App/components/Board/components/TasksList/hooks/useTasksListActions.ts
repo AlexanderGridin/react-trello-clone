@@ -1,16 +1,14 @@
-import { useAppState } from "App/state/hooks/useAppState";
-import { removeList } from "App/state/actions/list/removeList";
-import { addTask } from "App/state/actions/task/addTask";
-import { removeTask } from "App/state/actions/task/removeTask";
+import { useTaskDispatchers } from "App/state/shared/Task/hooks/useTaskDispatchers";
 import { TasksListModel } from "../models/TasksListModel";
+import { useTasksListDispatchers } from "../state/hooks/useTasksListDispatchers";
 
 export const useTasksListActions = (list: TasksListModel) => {
-  const { dispatch } = useAppState();
+  const { dispatchRemoveTasksList } = useTasksListDispatchers();
+  const { dispatchAddTask, dispatchRemoveTask } = useTaskDispatchers();
 
-  const remove = () => dispatch(removeList(list.id));
-  const removeSelectedTask = (listId: string, taskId: string) =>
-    dispatch(removeTask(listId, taskId));
-  const addNewTask = (content: string) => dispatch(addTask(content, list.id));
+  const remove = () => dispatchRemoveTasksList(list.id);
+  const removeTask = (taskId: string) => dispatchRemoveTask(list.id, taskId);
+  const addTask = (content: string) => dispatchAddTask(content, list.id);
 
-  return { remove, removeSelectedTask, addNewTask };
+  return { remove, removeTask, addTask };
 };

@@ -1,12 +1,12 @@
 import { TasksListModel } from "App/components/Board/components/TasksList/models/TasksListModel";
-import { MoveListAction } from "App/state/actions/list/moveList";
 import { AppState } from "App/state/models/AppState";
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem";
 import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem";
+import { MoveTasksListAction } from "../actions/moveTasksList";
 
-export const moveListReducer = (
+export const moveTasksListReducer = (
   state: AppState,
-  action: MoveListAction
+  action: MoveTasksListAction
 ): AppState => {
   const lists = [...state.tasksLists];
   const listToMove = action.payload.listToMove;

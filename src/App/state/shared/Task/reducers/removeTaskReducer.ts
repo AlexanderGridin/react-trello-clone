@@ -1,7 +1,7 @@
 import { TasksListModel } from "App/components/Board/components/TasksList/models/TasksListModel";
 import { Task } from "App/models/Task";
-import { RemoveTaskAction } from "App/state/actions/task/removeTask";
 import { AppState } from "App/state/models/AppState";
+import { RemoveTaskAction } from "../actions/removeTask";
 
 export const removeTaskReducer = (
   state: AppState,

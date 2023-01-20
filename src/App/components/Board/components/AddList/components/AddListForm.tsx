@@ -32,6 +32,7 @@ export const AddListForm = ({ onAdd, onCancel }: AddListFormProps) => {
       <TextInput
         ref={useInputFocus()}
         value={text}
+        placeholder="Enter list title"
         onChange={onInputChange}
         onKeyUp={onInputKeyUp}
       />

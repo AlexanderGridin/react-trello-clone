@@ -2,25 +2,25 @@ import { TasksListModel } from "App/components/Board/components/TasksList/models
 import { ActionType } from "App/state/enums/ActionType.enum";
 import { createAction } from "App/state/utils/createAction";
 
-interface MoveListActionPayload {
+interface MoveTasksListActionPayload {
   listToMove: TasksListModel;
   listToMoveAfter: TasksListModel;
 }
 
-export const moveList = (
+export const moveTasksList = (
   listToMove: TasksListModel,
   listToMoveAfter: TasksListModel
 ) => {
   const { MoveList } = ActionType;
-  const payload: MoveListActionPayload = {
+  const payload: MoveTasksListActionPayload = {
     listToMove,
     listToMoveAfter,
   };
 
-  return createAction<typeof MoveList, MoveListActionPayload>(
+  return createAction<typeof MoveList, MoveTasksListActionPayload>(
     MoveList,
     payload
   );
 };
 
-export type MoveListAction = ReturnType<typeof moveList>;
+export type MoveTasksListAction = ReturnType<typeof moveTasksList>;

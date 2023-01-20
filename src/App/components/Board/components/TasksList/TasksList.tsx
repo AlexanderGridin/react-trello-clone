@@ -3,15 +3,15 @@ import { useTasksListActions } from "./hooks/useTasksListActions";
 import { TasksListModel } from "./models/TasksListModel";
 import { AddTask } from "./components/AddTask/AddTask";
 import { useTasksListDragAndDrop } from "./hooks/useTasksListDragAndDrop";
-import { TasksListContainer } from "./components/AddTask/TasksListContainer";
 import { mapToCardsList } from "./mappers/mapToCardsLits";
+import { TasksListContainer } from "./components/TasksListContainer";
 
 interface TasksListProps {
   list: TasksListModel;
 }
 
 export const TasksList = ({ list }: TasksListProps): JSX.Element => {
-  const { remove, removeSelectedTask, addNewTask } = useTasksListActions(list);
+  const { remove, removeTask, addTask } = useTasksListActions(list);
   const { dragAndDropRef, isDragging } = useTasksListDragAndDrop(list);
   const className = isDragging ? "dragging" : "";
 
@@ -22,9 +22,9 @@ export const TasksList = ({ list }: TasksListProps): JSX.Element => {
         list={mapToCardsList(list)}
         className={className}
         onRemove={remove}
-        onRemoveCard={removeSelectedTask}
+        onRemoveCard={removeTask}
       >
-        <AddTask onAdd={addNewTask}>+ Add new task</AddTask>
+        <AddTask onAdd={addTask}>+ Add new task</AddTask>
       </CardsList>
     </TasksListContainer>
   );

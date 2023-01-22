@@ -19,10 +19,14 @@ body {
   margin: 0;
 }
 
-.dragging {
-  opacity: 0.3;
-}
-
 .mr-0 {
   margin-right: 0 !important;
+}
+
+.dragging {
+  opacity: 0;
+}
+
+.drag-preview {
+  transform: rotate(5deg);
 }

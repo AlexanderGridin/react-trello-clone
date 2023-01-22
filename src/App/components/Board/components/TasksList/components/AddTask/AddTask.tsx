@@ -1,25 +1,22 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { AddTaskButton } from "./components/AddTaskButton";
-import { AddTaskForm } from "./components/AddTaskForm";
+import { AddTaskForm } from "./components/AddTaskForm/AddTaskForm";
+import { useAddTaskActions } from "./hooks/useAddTaskActions";
+import { useAddTaskState } from "./hooks/useAddTaskState";
 
-interface AddTaskProps {
+export interface AddTaskProps {
   children?: ReactNode;
   onAdd: (content: string) => void;
 }
 
-export const AddTask = ({ children, onAdd }: AddTaskProps): JSX.Element => {
-  const [isShowForm, setIsShowForm] = useState(false);
-
-  const add = (content: string) => {
-    onAdd(content);
-    setIsShowForm(false);
-  };
-  const cancel = () => setIsShowForm(false);
-  const showForm = () => setIsShowForm(true);
+export const AddTask = (props: AddTaskProps): JSX.Element => {
+  const { children } = props;
+  const state = useAddTaskState();
+  const { add, cancel, showForm } = useAddTaskActions(props, state);
 
   return (
     <>
-      {isShowForm ? (
+      {state.isShowForm.value ? (
         <AddTaskForm onAdd={add} onCancel={cancel} />
       ) : (
         <AddTaskButton onClick={showForm}>{children}</AddTaskButton>

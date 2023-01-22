@@ -12,8 +12,8 @@ interface CardsListProps {
   className?: string;
   children?: ReactNode;
 
-  onRemove: (id: string) => void;
-  onRemoveCard: (listId: string, cardId: string) => void;
+  onRemove: (listId: string) => void;
+  onRemoveCard: (cardId: string) => void;
 }
 
 type Ref = ForwardedRef<HTMLDivElement>;
@@ -22,20 +22,21 @@ export const CardsList = forwardRef((props: CardsListProps, ref: Ref) => {
   const { list, className, children, onRemove, onRemoveCard } = props;
 
   const remove = () => onRemove(list.id);
-  const removeCard = (item: CardsListItem) => () =>
-    onRemoveCard(list.id, item.id);
+  const removeCard = (card: CardsListItem) => () => onRemoveCard(card.id);
 
   return (
     <ListContainer ref={ref} className={className}>
       <CardsListHeader title={list.title} onRemove={remove} />
 
-      <List>
-        {list.items.map((item: CardsListItem) => (
-          <ListItem key={item.id}>
-            <Card onRemove={removeCard(item)}>{item.content}</Card>
-          </ListItem>
-        ))}
-      </List>
+      {list.items.length > 0 && (
+        <List>
+          {list.items.map((item: CardsListItem) => (
+            <ListItem key={item.id}>
+              <Card onRemove={removeCard(item)}>{item.content}</Card>
+            </ListItem>
+          ))}
+        </List>
+      )}
 
       {children}
     </ListContainer>

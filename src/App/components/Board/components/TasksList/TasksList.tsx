@@ -3,7 +3,6 @@ import { useTasksListActions } from "./hooks/useTasksListActions";
 import { TasksListModel } from "./models/TasksListModel";
 import { AddTask } from "./components/AddTask/AddTask";
 import { useTasksListDragAndDrop } from "./hooks/useTasksListDragAndDrop";
-import { TasksListContainer } from "./components/AddTask/TasksListContainer";
 import { mapToCardsList } from "./mappers/mapToCardsLits";
 
 interface TasksListProps {
@@ -11,21 +10,19 @@ interface TasksListProps {
 }
 
 export const TasksList = ({ list }: TasksListProps): JSX.Element => {
-  const { remove, removeSelectedTask, addNewTask } = useTasksListActions(list);
+  const { remove, removeTask, addTask } = useTasksListActions(list);
   const { dragAndDropRef, isDragging } = useTasksListDragAndDrop(list);
   const className = isDragging ? "dragging" : "";
 
   return (
-    <TasksListContainer>
-      <CardsList
-        ref={dragAndDropRef}
-        list={mapToCardsList(list)}
-        className={className}
-        onRemove={remove}
-        onRemoveCard={removeSelectedTask}
-      >
-        <AddTask onAdd={addNewTask}>+ Add new task</AddTask>
-      </CardsList>
-    </TasksListContainer>
+    <CardsList
+      ref={dragAndDropRef}
+      list={mapToCardsList(list)}
+      className={className}
+      onRemove={remove}
+      onRemoveCard={removeTask}
+    >
+      <AddTask onAdd={addTask}>+ Add new task</AddTask>
+    </CardsList>
   );
 };

@@ -1,14 +1,13 @@
-import { useAppState } from "App/state/hooks/useAppState";
 import { TasksListModel } from "../models/TasksListModel";
 import { useItemDrag } from "App/hooks/useItemDrag";
 import { useRef } from "react";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { moveList } from "App/state/actions/list/moveList";
 import { AppDraggedItem } from "App/models/AppDraggedItem";
 import { useItemDrop } from "App/hooks/useItemDrop";
+import { useTasksListDispatchers } from "../state/hooks/useTasksListDispatchers";
 
 export const useTasksListDragAndDrop = (list: TasksListModel) => {
-  const { dispatch } = useAppState();
+  const { dispatchMoveTasksList } = useTasksListDispatchers();
   const draggedList: AppDraggedItem = {
     id: list.id,
     type: DraggedItemType.TasksList,
@@ -20,7 +19,7 @@ export const useTasksListDragAndDrop = (list: TasksListModel) => {
     ...draggedList,
     onDrop: (item) => {
       if (item.type === DraggedItemType.TasksList) {
-        dispatch(moveList(item.data, list));
+        dispatchMoveTasksList(item.data, list);
       }
     },
   });

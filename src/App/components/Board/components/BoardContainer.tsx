@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
-export const BoardContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
+interface BoardContainerProps {
+  isContainsHeader?: boolean;
+}
+
+export const BoardContainer = styled.section<BoardContainerProps>`
   background-color: #292e39;
   height: 100%;
-  padding: 20px;
   width: 100%;
-  overflow-x: auto;
+  padding-top: ${({ isContainsHeader }: BoardContainerProps) =>
+    isContainsHeader ? "50px" : "20px"};
+  position: relative;
 `;

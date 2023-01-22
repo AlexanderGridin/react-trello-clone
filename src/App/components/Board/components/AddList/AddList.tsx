@@ -1,30 +1,26 @@
-import { ReactNode, useState } from "react";
-import { AddListForm } from "./components/AddListForm";
+import { ReactNode } from "react";
 import { AddListButton } from "./components/AddListButton";
-import { ListContainerTransparent } from "shared/components/List/components/ListContainer";
+import { AddListForm } from "./components/AddListForm/AddListForm";
+import { useAddListActions } from "./hooks/useAddListActions";
+import { useAddListState } from "./hooks/useAddListState";
 
-interface AddListProps {
+export interface AddListProps {
   children?: ReactNode;
   onAdd: (title: string) => void;
 }
 
-export const AddList = ({ children, onAdd }: AddListProps): JSX.Element => {
-  const [isShowForm, setIsShowForm] = useState(false);
-
-  const add = (title: string) => {
-    onAdd(title);
-    setIsShowForm(false);
-  };
-  const cancel = () => setIsShowForm(false);
-  const showForm = () => setIsShowForm(true);
+export const AddList = (props: AddListProps): JSX.Element => {
+  const { children } = props;
+  const state = useAddListState();
+  const { add, cancel, showForm } = useAddListActions(props, state);
 
   return (
-    <ListContainerTransparent>
-      {isShowForm ? (
+    <>
+      {state.isShowForm.value ? (
         <AddListForm onAdd={add} onCancel={cancel} />
       ) : (
         <AddListButton onClick={showForm}>{children}</AddListButton>
       )}
-    </ListContainerTransparent>
+    </>
   );
 };

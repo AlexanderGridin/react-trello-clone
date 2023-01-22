@@ -1,20 +1,19 @@
 import { useDrag } from "react-dnd";
 import { AppDraggedItem } from "App/models/AppDraggedItem";
-import { setDraggedItem } from "App/state/actions/setDraggedItem";
-import { useAppState } from "App/state/hooks/useAppState";
+import { useDraggedItemDispatchers } from "App/state/shared/DraggedItem/hooks/useDraggedItemDispatchers";
 
 export const useItemDrag = (item: AppDraggedItem) => {
-  const { dispatch } = useAppState();
+  const { dispatchSetDraggedItem } = useDraggedItemDispatchers();
   const [{ isDragging }, drag] = useDrag({
     type: item.type,
     item: () => {
-      dispatch(setDraggedItem(item));
+      dispatchSetDraggedItem(item);
       return item;
     },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
-    end: () => dispatch(setDraggedItem(null)),
+    end: () => dispatchSetDraggedItem(null),
   });
 
   return { drag, isDragging };

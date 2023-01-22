@@ -3,7 +3,7 @@ import { DragLayer } from "drag-and-drop/components/DragLayer";
 import { DragPreviewWrapper } from "drag-and-drop/components/DragPreviewWrapper";
 import { useDragLayer } from "react-dnd";
 import { BoardCell } from "../BoardCell";
-import { renderDraggedItem } from "./utils/renderDraggedItem";
+import { renderBoardDraggedItem } from "./utils/renderBoardDraggedItem";
 
 export const BoardDragLayer = () => {
   const { draggedItem } = useAppState();
@@ -18,7 +18,7 @@ export const BoardDragLayer = () => {
   return (
     <DragLayer>
       <DragPreviewWrapper position={offset}>
-        <BoardCell>{renderDraggedItem(draggedItem)}</BoardCell>
+        <BoardCell>{renderBoardDraggedItem(draggedItem)}</BoardCell>
       </DragPreviewWrapper>
     </DragLayer>
   );

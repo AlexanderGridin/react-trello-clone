@@ -1,12 +1,14 @@
-import { FlexContainer } from "shared/components/FlexContainer";
 import { Icon } from "shared/components/Icon/Icon";
 import { MaterialIcon } from "shared/enums/MaterialIcon";
 import styled from "styled-components";
-import { ListTitle } from "./CardsListTitle";
+import { CardsListTitle } from "./CardsListTitle";
 import { RemoveListButton } from "./RemoveListButton";
 
-export const CardsListHeaderContainer = styled(FlexContainer)`
+export const CardsListHeaderContainer = styled.header`
   margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 interface CardsListHeaderProps {
@@ -22,7 +24,7 @@ export const CardsListHeader = ({
 
   return (
     <CardsListHeaderContainer>
-      <ListTitle> {title}</ListTitle>
+      <CardsListTitle> {title}</CardsListTitle>
 
       <RemoveListButton onClick={remove}>
         <Icon icon={MaterialIcon.Delete} />

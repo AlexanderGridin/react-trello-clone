@@ -22,3 +22,7 @@ body {
 .dragging {
   opacity: 0.3;
 }
+
+.mr-0 {
+  margin-right: 0 !important;
+}

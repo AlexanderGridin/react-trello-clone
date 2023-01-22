@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TextInput = styled.input`
+export const Input = styled.input`
   border: none;
   border-radius: 3px;
   box-shadow: #091e4240 0px 1px 0px 0px;

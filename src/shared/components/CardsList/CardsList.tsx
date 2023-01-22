@@ -28,13 +28,15 @@ export const CardsList = forwardRef((props: CardsListProps, ref: Ref) => {
     <ListContainer ref={ref} className={className}>
       <CardsListHeader title={list.title} onRemove={remove} />
 
-      <List>
-        {list.items.map((item: CardsListItem) => (
-          <ListItem key={item.id}>
-            <Card onRemove={removeCard(item)}>{item.content}</Card>
-          </ListItem>
-        ))}
-      </List>
+      {list.items.length > 0 && (
+        <List>
+          {list.items.map((item: CardsListItem) => (
+            <ListItem key={item.id}>
+              <Card onRemove={removeCard(item)}>{item.content}</Card>
+            </ListItem>
+          ))}
+        </List>
+      )}
 
       {children}
     </ListContainer>

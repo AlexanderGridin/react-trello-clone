@@ -8,7 +8,7 @@ export const useItemDrop = (item: Item) => {
   const { draggedItem } = useAppState();
   const [, drop] = useDrop({
     accept: item.type,
-    drop: () => {
+    hover: () => {
       const isDrop = draggedItem && draggedItem.id !== item.id;
 
       if (!isDrop) {

@@ -7,6 +7,7 @@ import { useBoardActions } from "./hooks/useBoardActions";
 import { BoardCell } from "./components/BoardCell";
 import { BoardHeader } from "./components/BoardHeader";
 import { BoardContent } from "./components/BoardContent";
+import { BoardDragLayer } from "./components/BoardDragLayer/BoardDragLayer";
 
 interface BoardProps {
   title?: string;
@@ -23,6 +24,8 @@ export const Board = ({ title }: BoardProps): JSX.Element => {
       {isShowHeader && <BoardHeader title={title} />}
 
       <BoardContent>
+        <BoardDragLayer />
+
         {tasksLists.map((list: TasksListModel) => (
           <BoardCell key={list.id}>
             <TasksList list={list} />

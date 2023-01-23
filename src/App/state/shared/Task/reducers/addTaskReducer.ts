@@ -16,7 +16,7 @@ export const addTaskReducer = (
       ...list,
       tasks: [
         ...list.tasks,
-        { id: generateId(), text: action.payload.content },
+        { id: generateId(), listId: list.id, text: action.payload.content },
       ],
     };
   });

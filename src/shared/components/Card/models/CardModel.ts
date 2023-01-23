@@ -1,4 +1,4 @@
-export interface CardsListItem {
+export interface CardModel {
   id: string;
   content: string;
 }

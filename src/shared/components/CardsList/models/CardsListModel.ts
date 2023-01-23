@@ -1,7 +1,7 @@
-import { CardsListItem } from "./CardsListItem";
+import { CardModel } from "shared/components/Card/models/CardModel";
 
 export interface CardsListModel {
   id: string;
   title: string;
-  items: Array<CardsListItem>;
+  cards: Array<CardModel>;
 }

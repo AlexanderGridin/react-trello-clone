@@ -1,20 +1,23 @@
-import { ReactNode } from "react";
+import { ForwardedRef, forwardRef, PropsWithChildren } from "react";
 import { CardContent } from "./components/CardContent";
 import { RemoveCardButton } from "./components/RemoveCardButton";
 import { CardContainer } from "./components/CardContainer";
 import { Icon } from "shared/components/Icon/Icon";
 import { MaterialIcon } from "shared/enums/MaterialIcon";
+import { useCardActions } from "./hooks/useCardActions";
 
-interface CardProps {
-  children?: ReactNode;
+export interface CardProps extends PropsWithChildren {
   onRemove: () => void;
 }
 
-export const Card = ({ children, onRemove }: CardProps): JSX.Element => {
-  const remove = () => onRemove();
+type Ref = ForwardedRef<HTMLDivElement>;
+
+export const Card = forwardRef((props: CardProps, ref: Ref) => {
+  const { children } = props;
+  const { remove } = useCardActions(props);
 
   return (
-    <CardContainer>
+    <CardContainer ref={ref}>
       <CardContent>{children}</CardContent>
 
       <RemoveCardButton onClick={remove}>
@@ -22,4 +25,4 @@ export const Card = ({ children, onRemove }: CardProps): JSX.Element => {
       </RemoveCardButton>
     </CardContainer>
   );
-};
+});

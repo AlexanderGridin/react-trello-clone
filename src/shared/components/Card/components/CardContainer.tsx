@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.div`
+interface CardContainerProps {
+  backgroundColor?: string;
+}
+
+export const CardContainer = styled.div<CardContainerProps>`
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  max-width: 300px;
+  padding: 7px 12px;
   border-radius: 3px;
-  background-color: #fff;
+  background-color: ${({ backgroundColor }) => backgroundColor || "#FFF"};
   box-shadow: #091e4240 0px 1px 0px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
 `;

@@ -1,4 +1,4 @@
-import { useTasksListDispatchers } from "../components/TasksList/state/hooks/useTasksListDispatchers";
+import { useTasksListDispatchers } from "App/components/TasksList/state/hooks/useTasksListDispatchers";
 
 export const useBoardActions = () => {
   const { dispatchAddTasksList } = useTasksListDispatchers();

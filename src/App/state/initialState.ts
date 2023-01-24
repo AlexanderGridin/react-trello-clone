@@ -1,4 +1,4 @@
-import { TasksListModel } from "App/components/Board/components/TasksList/models/TasksListModel";
+import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { generateId } from "shared/utils/generateId";
 import { AppState } from "./models/AppState";
 

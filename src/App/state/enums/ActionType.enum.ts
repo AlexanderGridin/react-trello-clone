@@ -4,5 +4,6 @@ export enum ActionType {
   MoveList = "MOVE_LIST",
   AddTask = "ADD_TASK",
   RemoveTask = "REMOVE_TASK",
+  MoveTask = "MOVE_TASK",
   SetDraggedItem = "SET_DRAGGED_ITEM",
 }

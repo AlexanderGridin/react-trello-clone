@@ -1,13 +1,13 @@
 import { useAppState } from "App/state/hooks/useAppState";
 import { BoardContainer } from "./components/BoardContainer";
-import { TasksListModel } from "./components/TasksList/models/TasksListModel";
-import { TasksList } from "./components/TasksList/TasksList";
 import { AddList } from "./components/AddList/AddList";
 import { useBoardActions } from "./hooks/useBoardActions";
 import { BoardCell } from "./components/BoardCell";
 import { BoardHeader } from "./components/BoardHeader";
 import { BoardContent } from "./components/BoardContent";
 import { BoardDragLayer } from "./components/BoardDragLayer/BoardDragLayer";
+import { TasksList } from "../TasksList/TasksList";
+import { TasksListModel } from "../TasksList/models/TasksListModel";
 
 interface BoardProps {
   title?: string;

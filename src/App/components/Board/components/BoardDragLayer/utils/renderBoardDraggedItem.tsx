@@ -1,22 +1,19 @@
-import { DndCard } from "App/components/DndCard/DndCard";
+import { Task } from "App/components/Task/Task";
+import { TasksListDragPreview } from "App/components/TasksList/TasksListDragPreview";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { AppDraggedItem } from "App/models/AppDraggedItem";
-import { TasksList } from "../../TasksList/TasksList";
+import { Card } from "shared/components/Card/Card";
 
 export const renderBoardDraggedItem = (item: AppDraggedItem) => {
   switch (item.type) {
     case DraggedItemType.TasksList:
-      return <TasksList list={item.data} isDragPreview></TasksList>;
+      return <TasksListDragPreview list={item.data} />;
 
-    case DraggedItemType.Card:
+    case DraggedItemType.Task:
       return (
-        <DndCard
-          id={item.data.id}
-          onRemove={item.data.onRemove}
-          onDrop={item.data.onDrop}
-        >
-          {item.data.children}
-        </DndCard>
+        <Card className="drag-preview">
+          <Task content={item.data.text} onRemove={() => {}}></Task>
+        </Card>
       );
   }
 };

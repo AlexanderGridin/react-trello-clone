@@ -1,25 +1,37 @@
-import { ReactNode } from "react";
+import { ForwardedRef, forwardRef, PropsWithChildren, ReactNode } from "react";
 import { CardContent } from "./components/CardContent";
-import { RemoveCardButton } from "./components/RemoveCardButton";
 import { CardContainer } from "./components/CardContainer";
-import { Icon } from "shared/components/Icon/Icon";
-import { MaterialIcon } from "shared/enums/MaterialIcon";
+import styled from "styled-components";
 
-interface CardProps {
-  children?: ReactNode;
-  onRemove: () => void;
+export interface CardProps extends PropsWithChildren {
+  header?: ReactNode;
+  footer?: ReactNode;
+  backgroundColor?: string;
+  className?: string;
 }
 
-export const Card = ({ children, onRemove }: CardProps): JSX.Element => {
-  const remove = () => onRemove();
+type Ref = ForwardedRef<HTMLDivElement>;
+
+const CardHeader = styled.div`
+  margin-bottom: 7px;
+`;
+
+const CardFooter = styled.div`
+  margin-top: 7px;
+`;
+
+export const Card = forwardRef((props: CardProps, ref: Ref) => {
+  const { header, footer, backgroundColor, className = "", children } = props;
 
   return (
-    <CardContainer>
-      <CardContent>{children}</CardContent>
-
-      <RemoveCardButton onClick={remove}>
-        <Icon icon={MaterialIcon.Delete} />
-      </RemoveCardButton>
+    <CardContainer
+      ref={ref}
+      backgroundColor={backgroundColor}
+      className={className}
+    >
+      {header && <CardHeader>{header}</CardHeader>}
+      {children && <CardContent>{children}</CardContent>}
+      {footer && <CardFooter>{footer}</CardFooter>}
     </CardContainer>
   );
-};
+});

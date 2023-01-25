@@ -3,18 +3,20 @@ import { useDrag } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { AppDraggedItem } from "App/models/AppDraggedItem";
 import { useDraggedItemDispatchers } from "App/state/shared/DraggedItem/hooks/useDraggedItemDispatchers";
+import { useAppState } from "App/state/hooks/useAppState";
 
 export const useItemDrag = (item: AppDraggedItem) => {
+  const { draggedItem } = useAppState();
+  const isDragging = draggedItem?.id === item.id;
+
   const { dispatchSetDraggedItem } = useDraggedItemDispatchers();
-  const [{ isDragging }, drag, preview] = useDrag({
+
+  const [, drag, preview] = useDrag({
     type: item.type,
     item: () => {
       dispatchSetDraggedItem(item);
       return item;
     },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
     end: () => dispatchSetDraggedItem(null),
   });
 

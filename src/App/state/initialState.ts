@@ -1,21 +1,24 @@
+import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { generateId } from "shared/utils/generateId";
 import { AppState } from "./models/AppState";
 
-const TAKS_LIST = [
+const TAKS_LIST: Array<TasksListModel> = [
   {
-    id: generateId(),
+    id: "1",
     title: "To Do",
-    tasks: [{ id: generateId(), text: "Generate app scaffold" }],
+    tasks: [{ id: generateId(), listId: "1", text: "Generate app scaffold" }],
   },
   {
-    id: generateId(),
+    id: "2",
     title: "In Progress",
-    tasks: [{ id: generateId(), text: "Learn Typescript" }],
+    tasks: [{ id: generateId(), listId: "2", text: "Learn Typescript" }],
   },
   {
-    id: generateId(),
+    id: "3",
     title: "Done",
-    tasks: [{ id: generateId(), text: "Begin to use static typing" }],
+    tasks: [
+      { id: generateId(), listId: "3", text: "Begin to use static typing" },
+    ],
   },
 ];
 

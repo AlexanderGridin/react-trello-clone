@@ -7,8 +7,9 @@ export const pushTaskInTasksListReducer = (
   action: PushTaskInTasksListAction
 ): AppState => {
   const { list, task } = action.payload;
+
   const listTasks = [...list.tasks];
-  list.tasks.push({
+  listTasks.push({
     ...task,
     listId: list.id,
   });

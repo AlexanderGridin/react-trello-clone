@@ -1,18 +1,16 @@
 import { useItemDrag } from "App/hooks/useItemDrag";
 import { useRef } from "react";
-import { AppDraggedItem } from "App/models/AppDraggedItem";
 import { useItemDrop } from "App/hooks/useItemDrop";
 import { DndCardProps } from "../DndCard";
 
 export const useDndCardDragAndDrop = (props: DndCardProps) => {
-  const draggedCard: AppDraggedItem = {
-    ...props.entity,
-  };
+  const { draggedItem, onDrop } = props;
 
-  const { drag, isDragging } = useItemDrag({ ...draggedCard });
+  const { drag, isDragging } = useItemDrag({ ...draggedItem });
+
   const { drop } = useItemDrop({
-    ...draggedCard,
-    onDrop: props.onDrop,
+    ...draggedItem,
+    onDrop,
   });
 
   const dragAndDropRef = useRef<HTMLDivElement>(null);

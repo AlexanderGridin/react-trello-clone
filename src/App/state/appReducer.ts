@@ -8,6 +8,7 @@ import { moveTasksListReducer } from "App/components/TasksList/state/reducers/mo
 import { addTaskReducer } from "App/components/Task/state/reducers/addTaskReducer";
 import { removeTaskReducer } from "App/components/Task/state/reducers/removeTaskReducer";
 import { moveTaskReducer } from "App/components/Task/state/reducers/moveTaskReducer";
+import { pushTaskInTasksListReducer } from "App/components/TasksList/state/reducers/pushTaskInTasksListReducer";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -19,6 +20,9 @@ export const appReducer = (state: AppState, action: AppAction): AppState => {
 
     case ActionType.MoveList:
       return moveTasksListReducer(state, action);
+
+    case ActionType.PushTaskInTasksList:
+      return pushTaskInTasksListReducer(state, action);
 
     case ActionType.AddTask:
       return addTaskReducer(state, action);

@@ -7,8 +7,10 @@ import { useAppState } from "App/state/hooks/useAppState";
 
 export const useItemDrag = (item: AppDraggedItem) => {
   const { draggedItem } = useAppState();
-  const isDragging = () => draggedItem?.id === item.id;
+  const isDragging = draggedItem?.id === item.id;
+
   const { dispatchSetDraggedItem } = useDraggedItemDispatchers();
+
   const [, drag, preview] = useDrag({
     type: item.type,
     item: () => {

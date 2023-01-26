@@ -1,4 +1,5 @@
 import { AppState } from "App/state/models/AppState";
+import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem";
 import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem";
 import { TasksListModel } from "../../models/TasksListModel";
@@ -17,20 +18,17 @@ export const moveTasksListReducer = (
     (list) => list.id === listToReplace.id
   );
 
+  const movingConfig: ArrayUtilConfigWithArrayItem<TasksListModel> = {
+    array: state.tasksLists,
+    item: listToMove,
+    arrayItem: listToReplace,
+    uniqueKey: "id",
+  };
+
   const tasksLists =
     listToMoveIndex < listToReplaceIndex
-      ? moveItemAfterArrayItem<TasksListModel>({
-          array: state.tasksLists,
-          item: listToMove,
-          arrayItem: listToReplace,
-          uniqueKey: "id",
-        })
-      : moveItemBeforeArrayItem<TasksListModel>({
-          array: state.tasksLists,
-          item: listToMove,
-          arrayItem: listToReplace,
-          uniqueKey: "id",
-        });
+      ? moveItemAfterArrayItem<TasksListModel>(movingConfig)
+      : moveItemBeforeArrayItem<TasksListModel>(movingConfig);
 
   return {
     ...state,

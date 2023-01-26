@@ -17,5 +17,5 @@ export const useDndCardDragAndDrop = (props: DndCardProps) => {
   const dragAndDropRef = useRef<HTMLDivElement>(null);
   drag(drop(dragAndDropRef));
 
-  return { dragAndDropRef, isDragging, draggingClassName };
+  return { dragAndDropRef, draggingClassName };
 };

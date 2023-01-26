@@ -3,7 +3,6 @@ import { Card } from "shared/components/Card/Card";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
 import { AddTask } from "./components/AddTask/AddTask";
 import { useTasksListActions } from "./hooks/useTasksListActions";
-import { PlainUL } from "shared/components/PlainUL";
 import { TaskModel } from "../Task/models/TaskModel";
 import { Task } from "../Task/Task";
 
@@ -17,7 +16,7 @@ export const TasksListDragPreview = ({ list }: TasksListProps) => {
       backgroundColor="#ebecf0"
       className="drag-preview"
     >
-      <PlainUL>
+      <ul className="plain-list">
         {list.tasks.map((task: TaskModel) => (
           <li key={task.id} className="mb">
             <Card>
@@ -25,7 +24,7 @@ export const TasksListDragPreview = ({ list }: TasksListProps) => {
             </Card>
           </li>
         ))}
-      </PlainUL>
+      </ul>
     </Card>
   );
 };

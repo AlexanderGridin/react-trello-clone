@@ -10,8 +10,7 @@ export const useTaskDispatchers = () => {
   const dispatchAddTask = (content: string, listId: string) =>
     dispatch(addTask(content, listId));
 
-  const dispatchRemoveTask = (listId: string, taskId: string) =>
-    dispatch(removeTask(listId, taskId));
+  const dispatchRemoveTask = (task: TaskModel) => dispatch(removeTask(task));
 
   const dispatchMoveTask = (taskToMove: TaskModel, taskToReplace: TaskModel) =>
     dispatch(moveTask(taskToMove, taskToReplace));

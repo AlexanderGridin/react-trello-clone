@@ -1,17 +1,7 @@
-import styled from "styled-components";
 import { RemoveButton } from "shared/components/Buttons/RemoveButton";
 import { TaskModel } from "./models/TaskModel";
-
-const TaskContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const TaskContent = styled.div`
-  flex-grow: 1;
-  padding-right: 7px;
-`;
+import { TaskContainer } from "./components/TaskContainer";
+import { TaskContent } from "./components/TaskContent";
 
 interface TaskProps {
   task: TaskModel;

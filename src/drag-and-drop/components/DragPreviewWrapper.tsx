@@ -1,9 +1,8 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { XYCoord } from "react-dnd";
 
-interface DragPreviewWrapperProps {
+interface DragPreviewWrapperProps extends PropsWithChildren {
   position: XYCoord;
-  children?: ReactNode;
 }
 
 export const DragPreviewWrapper = ({

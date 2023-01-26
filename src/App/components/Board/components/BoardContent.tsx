@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 const BoardContentContainer = styled.div`
@@ -9,9 +9,7 @@ const BoardContentContainer = styled.div`
   height: 100%;
 `;
 
-interface BoardContentProps {
-  children?: ReactNode;
-}
+interface BoardContentProps extends PropsWithChildren {}
 
 export const BoardContent = ({ children }: BoardContentProps) => {
   return (

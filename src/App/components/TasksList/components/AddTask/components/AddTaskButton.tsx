@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import styled from "styled-components";
 import { FullWidthButton } from "shared/components/Buttons/FullWidthButton";
 import { ButtonType } from "shared/enums/ButtonType";
@@ -14,8 +14,7 @@ export const ButtonContainer = styled(FullWidthButton)`
   }
 `;
 
-interface AddTaskButtonProps {
-  children?: ReactNode;
+interface AddTaskButtonProps extends PropsWithChildren {
   onClick: () => void;
 }
 

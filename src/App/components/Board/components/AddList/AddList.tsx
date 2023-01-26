@@ -1,11 +1,10 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { AddListButton } from "./components/AddListButton";
 import { AddListForm } from "./components/AddListForm/AddListForm";
 import { useAddListActions } from "./hooks/useAddListActions";
 import { useAddListState } from "./hooks/useAddListState";
 
-export interface AddListProps {
-  children?: ReactNode;
+export interface AddListProps extends PropsWithChildren {
   onAdd: (title: string) => void;
 }
 

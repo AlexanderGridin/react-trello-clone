@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { RemoveButton } from "shared/components/Buttons/RemoveButton";
+import { TaskModel } from "./models/TaskModel";
 
 const TaskContainer = styled.div`
   display: flex;
@@ -13,16 +14,16 @@ const TaskContent = styled.div`
 `;
 
 interface TaskProps {
-  content: string;
+  task: TaskModel;
   onRemove: () => void;
 }
 
-export const Task = ({ content, onRemove }: TaskProps) => {
+export const Task = ({ task, onRemove }: TaskProps) => {
   const remove = () => onRemove();
 
   return (
     <TaskContainer>
-      <TaskContent>{content}</TaskContent>
+      <TaskContent>{task.content}</TaskContent>
       <RemoveButton className="mr-0" onClick={remove} />
     </TaskContainer>
   );

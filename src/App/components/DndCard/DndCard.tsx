@@ -8,20 +8,6 @@ export interface DndCardProps extends CardProps {
 }
 
 export const DndCard = (props: DndCardProps) => {
-  const { header, footer, backgroundColor, children } = props;
-  const { dragAndDropRef, isDragging } = useDndCardDragAndDrop(props);
-
-  const className = isDragging ? "dragging" : "";
-
-  return (
-    <Card
-      ref={dragAndDropRef}
-      header={header}
-      footer={footer}
-      backgroundColor={backgroundColor}
-      className={className}
-    >
-      {children}
-    </Card>
-  );
+  const { dragAndDropRef, draggingClassName } = useDndCardDragAndDrop(props);
+  return <Card ref={dragAndDropRef} className={draggingClassName} {...props} />;
 };

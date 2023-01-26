@@ -1,14 +1,15 @@
 import { createAction } from "App/state/utils/createAction";
 import { ActionType } from "App/state/enums/ActionType.enum";
+import { TasksListModel } from "../../models/TasksListModel";
 
 interface AddTasksListActionPayload {
-  title: string;
+  list: TasksListModel;
 }
 
-export const addTasksList = (title: string) => {
+export const addTasksList = (list: TasksListModel) => {
   const { AddList } = ActionType;
   const payload: AddTasksListActionPayload = {
-    title,
+    list,
   };
 
   return createAction<typeof AddList, AddTasksListActionPayload>(

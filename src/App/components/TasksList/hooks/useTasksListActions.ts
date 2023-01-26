@@ -18,7 +18,7 @@ export const useTasksListActions = (list: TasksListModel) => {
 
   const { dispatchSetDraggedItem } = useDraggedItemDispatchers();
 
-  const remove = () => dispatchRemoveTasksList(list.id);
+  const remove = () => dispatchRemoveTasksList(list);
 
   const removeTask = (task: TaskModel) => () => dispatchRemoveTask(task);
 

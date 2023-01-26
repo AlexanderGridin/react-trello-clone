@@ -11,7 +11,7 @@ export const TasksListDragPreview = ({ list }: TasksListProps) => {
 
   return (
     <Card
-      header={<TasksListHeader onRemove={remove} title={list.title} />}
+      header={<TasksListHeader onRemove={remove} list={list} />}
       footer={<AddTask onAdd={addTask}>+ Add new task</AddTask>}
       backgroundColor="#ebecf0"
       className="drag-preview"

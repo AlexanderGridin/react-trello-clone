@@ -18,7 +18,7 @@ export const TasksList = ({ list }: TasksListProps) => {
 
   return (
     <DndCard
-      header={<TasksListHeader onRemove={remove} title={list.title} />}
+      header={<TasksListHeader onRemove={remove} list={list} />}
       footer={<AddTask onAdd={addTask}>+ Add new task</AddTask>}
       backgroundColor="#ebecf0"
       draggedItem={mapTasksListToDraggedItem(list)}

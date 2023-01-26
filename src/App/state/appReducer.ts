@@ -1,4 +1,3 @@
-import { ActionType } from "App/state/enums/ActionType.enum";
 import { AppState } from "./models/AppState";
 import { AppAction } from "./models/AppAction";
 import { setDraggedItemReducer } from "./shared/DraggedItem/reducers/setDraggedItemReducer";
@@ -9,31 +8,32 @@ import { addTaskReducer } from "App/components/Task/state/reducers/addTaskReduce
 import { removeTaskReducer } from "App/components/Task/state/reducers/removeTaskReducer";
 import { moveTaskReducer } from "App/components/Task/state/reducers/moveTaskReducer";
 import { pushTaskInTasksListReducer } from "App/components/TasksList/state/reducers/pushTaskInTasksListReducer";
+import { AppActionType } from "./enums/AppActionType.enum";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
-    case ActionType.AddList:
+    case AppActionType.AddList:
       return addTasksListReducer(state, action);
 
-    case ActionType.RemoveList:
+    case AppActionType.RemoveList:
       return removeTasksListReducer(state, action);
 
-    case ActionType.MoveList:
+    case AppActionType.MoveList:
       return moveTasksListReducer(state, action);
 
-    case ActionType.PushTaskInTasksList:
+    case AppActionType.PushTaskInTasksList:
       return pushTaskInTasksListReducer(state, action);
 
-    case ActionType.AddTask:
+    case AppActionType.AddTask:
       return addTaskReducer(state, action);
 
-    case ActionType.RemoveTask:
+    case AppActionType.RemoveTask:
       return removeTaskReducer(state, action);
 
-    case ActionType.MoveTask:
+    case AppActionType.MoveTask:
       return moveTaskReducer(state, action);
 
-    case ActionType.SetDraggedItem:
+    case AppActionType.SetDraggedItem:
       return setDraggedItemReducer(state, action);
 
     default:

@@ -1,13 +1,13 @@
 import { AppDraggedItem } from "App/models/AppDraggedItem";
-import { ActionType } from "App/state/enums/ActionType.enum";
-import { createAction } from "App/state/utils/createAction";
+import { AppActionType } from "App/state/enums/AppActionType.enum";
+import { createAction } from "shared/state/utils/createAction";
 
 interface SetDraggedItemPayload {
   item: AppDraggedItem | null;
 }
 
 export const setDraggedItem = (item: AppDraggedItem | null) => {
-  const { SetDraggedItem } = ActionType;
+  const { SetDraggedItem } = AppActionType;
   const payload: SetDraggedItemPayload = {
     item,
   };

@@ -1,5 +1,5 @@
-import { ActionType } from "App/state/enums/ActionType.enum";
-import { createAction } from "App/state/utils/createAction";
+import { AppActionType } from "App/state/enums/AppActionType.enum";
+import { createAction } from "shared/state/utils/createAction";
 import { TaskModel } from "../../models/TaskModel";
 
 interface MoveTaskActionPayload {
@@ -8,7 +8,7 @@ interface MoveTaskActionPayload {
 }
 
 export const moveTask = (taskToMove: TaskModel, taskToReplace: TaskModel) => {
-  const { MoveTask } = ActionType;
+  const { MoveTask } = AppActionType;
   const payload: MoveTaskActionPayload = {
     taskToMove,
     taskToReplace,

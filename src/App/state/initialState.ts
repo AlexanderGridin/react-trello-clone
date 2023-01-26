@@ -1,6 +1,14 @@
+import { BoardModel } from "App/components/Board/models/BoardModel";
 import { TaskModel } from "App/components/Task/models/TaskModel";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { AppState } from "./models/AppState";
+
+const BOARDS: BoardModel[] = [
+  {
+    id: "1",
+    title: "Test board",
+  },
+];
 
 const TAKS_LIST: TasksListModel[] = [
   {
@@ -23,6 +31,7 @@ const TAKS_LIST: TasksListModel[] = [
 ];
 
 export const INITIAL_STATE: AppState = {
+  boards: BOARDS,
   tasksLists: TAKS_LIST,
   draggedItem: null,
 };

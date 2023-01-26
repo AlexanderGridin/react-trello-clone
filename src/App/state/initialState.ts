@@ -2,7 +2,7 @@ import { TaskModel } from "App/components/Task/models/TaskModel";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { AppState } from "./models/AppState";
 
-const TAKS_LIST: Array<TasksListModel> = [
+const TAKS_LIST: TasksListModel[] = [
   {
     id: "1",
     title: "To Do",

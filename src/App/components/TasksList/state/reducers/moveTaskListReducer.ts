@@ -19,18 +19,18 @@ export const moveTasksListReducer = (
 
   const tasksLists =
     listToMoveIndex < listToReplaceIndex
-      ? moveItemAfterArrayItem<TasksListModel>(
-          [...state.tasksLists],
-          listToMove,
-          listToReplace,
-          "id"
-        )
-      : moveItemBeforeArrayItem<TasksListModel>(
-          [...state.tasksLists],
-          listToMove,
-          listToReplace,
-          "id"
-        );
+      ? moveItemAfterArrayItem<TasksListModel>({
+          array: state.tasksLists,
+          item: listToMove,
+          arrayItem: listToReplace,
+          uniqueKey: "id",
+        })
+      : moveItemBeforeArrayItem<TasksListModel>({
+          array: state.tasksLists,
+          item: listToMove,
+          arrayItem: listToReplace,
+          uniqueKey: "id",
+        });
 
   return {
     ...state,

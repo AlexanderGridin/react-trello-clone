@@ -22,32 +22,36 @@ export const moveTaskReducer = (
       );
 
       if (taskToMoveIndex < 0 || taskToMoveIndex > taskToReplaceIndex) {
+        const tasks: TaskModel[] = moveItemBeforeArrayItem<TaskModel>({
+          array: list.tasks,
+          item: {
+            ...taskToMove,
+            listId: list.id,
+          },
+          arrayItem: taskToReplace,
+          uniqueKey: "id",
+        });
+
         return {
           ...list,
-          tasks: moveItemBeforeArrayItem<TaskModel>(
-            list.tasks,
-            {
-              ...taskToMove,
-              listId: list.id,
-            },
-            taskToReplace,
-            "id"
-          ),
+          tasks,
         };
       }
 
       if (taskToMoveIndex < taskToReplaceIndex) {
+        const tasks: TaskModel[] = moveItemAfterArrayItem<TaskModel>({
+          array: list.tasks,
+          item: {
+            ...taskToMove,
+            listId: list.id,
+          },
+          arrayItem: taskToReplace,
+          uniqueKey: "id",
+        });
+
         return {
           ...list,
-          tasks: moveItemAfterArrayItem<TaskModel>(
-            list.tasks,
-            {
-              ...taskToMove,
-              listId: list.id,
-            },
-            taskToReplace,
-            "id"
-          ),
+          tasks,
         };
       }
     }
@@ -55,7 +59,11 @@ export const moveTaskReducer = (
     if (list.id === taskToMove.listId) {
       return {
         ...list,
-        tasks: removeItemFromArray<TaskModel>(list.tasks, taskToMove, "id"),
+        tasks: removeItemFromArray<TaskModel>({
+          array: list.tasks,
+          item: taskToMove,
+          uniqueKey: "id",
+        }),
       };
     }
 

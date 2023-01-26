@@ -3,14 +3,14 @@ import { generateId } from "shared/utils/generateId";
 
 interface TasksListModelConfig {
   title?: string;
-  tasks?: Array<TaskModel>;
+  tasks?: TaskModel[];
 }
 
 export class TasksListModel {
   public readonly id: string = generateId();
 
   public title: string;
-  public tasks: Array<TaskModel>;
+  public tasks: TaskModel[];
 
   constructor({ title = "", tasks = [] }: TasksListModelConfig) {
     this.title = title;

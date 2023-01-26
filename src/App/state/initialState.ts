@@ -1,23 +1,23 @@
+import { TaskModel } from "App/components/Task/models/TaskModel";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
-import { generateId } from "shared/utils/generateId";
 import { AppState } from "./models/AppState";
 
 const TAKS_LIST: Array<TasksListModel> = [
   {
     id: "1",
     title: "To Do",
-    tasks: [{ id: generateId(), listId: "1", text: "Generate app scaffold" }],
+    tasks: [new TaskModel({ listId: "1", content: "Generate app scaffold" })],
   },
   {
     id: "2",
     title: "In Progress",
-    tasks: [{ id: generateId(), listId: "2", text: "Learn Typescript" }],
+    tasks: [new TaskModel({ listId: "2", content: "Learn Typescript" })],
   },
   {
     id: "3",
     title: "Done",
     tasks: [
-      { id: generateId(), listId: "3", text: "Begin to use static typing" },
+      new TaskModel({ listId: "3", content: "Begin to use static typing" }),
     ],
   },
 ];

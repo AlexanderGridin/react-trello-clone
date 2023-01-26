@@ -32,7 +32,7 @@ export const TasksList = ({ list }: TasksListProps) => {
               draggedItem={mapTaskToDraggedItem(task)}
               onDrop={dropOnTask(task)}
             >
-              <Task content={task.text} onRemove={removeTask(task)}></Task>
+              <Task content={task.content} onRemove={removeTask(task)} />
             </DndCard>
           </li>
         ))}

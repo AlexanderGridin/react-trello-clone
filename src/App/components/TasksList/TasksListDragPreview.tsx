@@ -21,7 +21,7 @@ export const TasksListDragPreview = ({ list }: TasksListProps) => {
         {list.tasks.map((task: TaskModel) => (
           <li key={task.id} className="mb">
             <Card>
-              <Task content={task.text} onRemove={removeTask(task)}></Task>
+              <Task content={task.content} onRemove={removeTask(task)}></Task>
             </Card>
           </li>
         ))}

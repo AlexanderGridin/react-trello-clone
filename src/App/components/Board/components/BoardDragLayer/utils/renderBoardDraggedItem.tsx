@@ -12,7 +12,7 @@ export const renderBoardDraggedItem = (item: AppDraggedItem) => {
     case DraggedItemType.Task:
       return (
         <Card className="drag-preview">
-          <Task content={item.data.text} onRemove={() => {}}></Task>
+          <Task content={item.data.content} onRemove={() => {}}></Task>
         </Card>
       );
   }

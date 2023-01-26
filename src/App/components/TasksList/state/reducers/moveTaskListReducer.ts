@@ -10,25 +10,25 @@ export const moveTasksListReducer = (
 ): AppState => {
   const lists = [...state.tasksLists];
   const listToMove = action.payload.listToMove;
-  const listHovered = action.payload.listToMoveAfter;
+  const listToReplace = action.payload.listToReplace;
 
   const listToMoveIndex = lists.findIndex((list) => list.id === listToMove.id);
-  const listHoveredIndex = lists.findIndex(
-    (list) => list.id === listHovered.id
+  const listToReplaceIndex = lists.findIndex(
+    (list) => list.id === listToReplace.id
   );
 
   const tasksLists =
-    listToMoveIndex < listHoveredIndex
+    listToMoveIndex < listToReplaceIndex
       ? moveItemAfterArrayItem<TasksListModel>(
           [...state.tasksLists],
           listToMove,
-          listHovered,
+          listToReplace,
           "id"
         )
       : moveItemBeforeArrayItem<TasksListModel>(
           [...state.tasksLists],
           listToMove,
-          listHovered,
+          listToReplace,
           "id"
         );
 

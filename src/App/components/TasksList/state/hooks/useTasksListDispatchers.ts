@@ -16,8 +16,8 @@ export const useTasksListDispatchers = () => {
 
   const dispatchMoveTasksList = (
     listToMove: TasksListModel,
-    listToOffset: TasksListModel
-  ) => dispatch(moveTasksList(listToMove, listToOffset));
+    listToReplace: TasksListModel
+  ) => dispatch(moveTasksList(listToMove, listToReplace));
 
   const dispatchPushTaskInTasksList = (list: TasksListModel, task: TaskModel) =>
     dispatch(pushTaskInTasksList(list, task));

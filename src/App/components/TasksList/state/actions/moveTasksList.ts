@@ -4,17 +4,17 @@ import { TasksListModel } from "../../models/TasksListModel";
 
 interface MoveTasksListActionPayload {
   listToMove: TasksListModel;
-  listToMoveAfter: TasksListModel;
+  listToReplace: TasksListModel;
 }
 
 export const moveTasksList = (
   listToMove: TasksListModel,
-  listToMoveAfter: TasksListModel
+  listToReplace: TasksListModel
 ) => {
   const { MoveList } = ActionType;
   const payload: MoveTasksListActionPayload = {
     listToMove,
-    listToMoveAfter,
+    listToReplace,
   };
 
   return createAction<typeof MoveList, MoveTasksListActionPayload>(

@@ -1,9 +1,11 @@
-export const addItemAfterArrayItem = <T>(
-  array: Array<T>,
-  item: T,
-  arrayItem: T,
-  uniqueKey: keyof T
-): Array<T> => {
+import { ArrayUtilConfigWithArrayItem } from "./models/ArrayUtilConfigWithArrayItem";
+
+export const addItemAfterArrayItem = <T>({
+  array,
+  item,
+  arrayItem,
+  uniqueKey,
+}: ArrayUtilConfigWithArrayItem<T>): T[] => {
   const arrayItemIndex =
     array?.findIndex(
       (itemFromArray) => itemFromArray[uniqueKey] === arrayItem[uniqueKey]

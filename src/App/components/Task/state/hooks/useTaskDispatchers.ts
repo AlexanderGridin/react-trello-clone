@@ -7,11 +7,9 @@ import { removeTask } from "../actions/removeTask";
 export const useTaskDispatchers = () => {
   const { dispatch } = useAppState();
 
-  const dispatchAddTask = (content: string, listId: string) =>
-    dispatch(addTask(content, listId));
+  const dispatchAddTask = (task: TaskModel) => dispatch(addTask(task));
 
-  const dispatchRemoveTask = (listId: string, taskId: string) =>
-    dispatch(removeTask(listId, taskId));
+  const dispatchRemoveTask = (task: TaskModel) => dispatch(removeTask(task));
 
   const dispatchMoveTask = (taskToMove: TaskModel, taskToReplace: TaskModel) =>
     dispatch(moveTask(taskToMove, taskToReplace));

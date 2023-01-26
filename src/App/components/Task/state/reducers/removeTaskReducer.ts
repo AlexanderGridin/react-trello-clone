@@ -7,17 +7,18 @@ export const removeTaskReducer = (
   state: AppState,
   action: RemoveTaskAction
 ): AppState => {
-  const listId = action.payload.listId;
-  const taskId = action.payload.taskId;
+  const taskToRemove: TaskModel = action.payload.task;
 
   const tasksLists = state.tasksLists.map((list: TasksListModel) => {
-    if (list.id !== listId) {
+    if (list.id !== taskToRemove.listId) {
       return list;
     }
 
     return {
       ...list,
-      tasks: list.tasks.filter((task: TaskModel) => task.id !== taskId),
+      tasks: list.tasks.filter(
+        (task: TaskModel) => task.id !== taskToRemove.id
+      ),
     };
   });
 

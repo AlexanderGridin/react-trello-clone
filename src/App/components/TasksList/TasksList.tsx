@@ -1,4 +1,3 @@
-import { PlainUL } from "shared/components/PlainUL";
 import { DndCard } from "../DndCard/DndCard";
 import { mapTaskToDraggedItem } from "../Task/mappers/mapTaskToDraggedItem";
 import { TaskModel } from "../Task/models/TaskModel";
@@ -19,24 +18,24 @@ export const TasksList = ({ list }: TasksListProps) => {
 
   return (
     <DndCard
-      header={<TasksListHeader onRemove={remove} title={list.title} />}
+      header={<TasksListHeader onRemove={remove} list={list} />}
       footer={<AddTask onAdd={addTask}>+ Add new task</AddTask>}
       backgroundColor="#ebecf0"
       draggedItem={mapTasksListToDraggedItem(list)}
       onDrop={dropOnList}
     >
-      <PlainUL>
+      <ul className="plain-list">
         {list.tasks.map((task: TaskModel) => (
           <li key={task.id} className="mb">
             <DndCard
               draggedItem={mapTaskToDraggedItem(task)}
               onDrop={dropOnTask(task)}
             >
-              <Task content={task.text} onRemove={removeTask(task)}></Task>
+              <Task task={task} onRemove={removeTask(task)} />
             </DndCard>
           </li>
         ))}
-      </PlainUL>
+      </ul>
     </DndCard>
   );
 };

@@ -1,4 +1,4 @@
-export enum ActionType {
+export enum AppActionType {
   AddList = "ADD_LIST",
   RemoveList = "REMOVE_LIST",
   MoveList = "MOVE_LIST",

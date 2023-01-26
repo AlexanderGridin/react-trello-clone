@@ -1,28 +1,19 @@
-import styled from "styled-components";
 import { RemoveButton } from "shared/components/Buttons/RemoveButton";
-
-const TaskContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const TaskContent = styled.div`
-  flex-grow: 1;
-  padding-right: 7px;
-`;
+import { TaskModel } from "./models/TaskModel";
+import { TaskContainer } from "./components/TaskContainer";
+import { TaskContent } from "./components/TaskContent";
 
 interface TaskProps {
-  content: string;
+  task: TaskModel;
   onRemove: () => void;
 }
 
-export const Task = ({ content, onRemove }: TaskProps) => {
+export const Task = ({ task, onRemove }: TaskProps) => {
   const remove = () => onRemove();
 
   return (
     <TaskContainer>
-      <TaskContent>{content}</TaskContent>
+      <TaskContent>{task.content}</TaskContent>
       <RemoveButton className="mr-0" onClick={remove} />
     </TaskContainer>
   );

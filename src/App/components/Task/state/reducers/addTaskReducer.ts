@@ -1,25 +1,22 @@
-import { generateId } from "shared/utils/generateId";
 import { AppState } from "App/state/models/AppState";
 import { AddTaskAction } from "../actions/addTask";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
+import { TaskModel } from "../../models/TaskModel";
 
 export const addTaskReducer = (
   state: AppState,
   action: AddTaskAction
 ): AppState => {
-  const tasksLists = state.tasksLists.map((list: TasksListModel) => {
-    if (list.id !== action.payload.listId) {
-      return list;
-    }
+  const taskToAdd: TaskModel = { ...action.payload.task };
 
-    return {
-      ...list,
-      tasks: [
-        ...list.tasks,
-        { id: generateId(), listId: list.id, text: action.payload.content },
-      ],
-    };
-  });
+  const tasksLists = state.tasksLists.map((list: TasksListModel) =>
+    list.id !== taskToAdd.listId
+      ? list
+      : {
+          ...list,
+          tasks: [...list.tasks, taskToAdd],
+        }
+  );
 
   return { ...state, tasksLists };
 };

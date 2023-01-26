@@ -1,11 +1,9 @@
-import { ReactNode, useReducer } from "react";
+import { PropsWithChildren, useReducer } from "react";
 import { INITIAL_STATE } from "App/state/initialState";
 import { AppStateContext } from "App/state/components/AppStateContext";
 import { appReducer } from "App/state/appReducer";
 
-interface AppStateProviderProps {
-  children?: ReactNode;
-}
+interface AppStateProviderProps extends PropsWithChildren {}
 
 export const AppStateProvider = ({
   children,

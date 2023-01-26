@@ -4,7 +4,7 @@ import { AppDraggedItem } from "App/models/AppDraggedItem";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 
 export interface AppStateContextProps {
-  tasksLists: Array<TasksListModel>;
+  tasksLists: TasksListModel[];
   dispatch: Dispatch<AppAction>;
   draggedItem: AppDraggedItem | null;
 }

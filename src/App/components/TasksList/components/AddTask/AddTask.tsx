@@ -1,11 +1,10 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { AddTaskButton } from "./components/AddTaskButton";
 import { AddTaskForm } from "./components/AddTaskForm/AddTaskForm";
 import { useAddTaskActions } from "./hooks/useAddTaskActions";
 import { useAddTaskState } from "./hooks/useAddTaskState";
 
-export interface AddTaskProps {
-  children?: ReactNode;
+export interface AddTaskProps extends PropsWithChildren {
   onAdd: (content: string) => void;
 }
 

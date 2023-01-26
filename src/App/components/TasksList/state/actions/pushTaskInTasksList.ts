@@ -1,6 +1,6 @@
 import { TaskModel } from "App/components/Task/models/TaskModel";
-import { ActionType } from "App/state/enums/ActionType.enum";
-import { createAction } from "App/state/utils/createAction";
+import { AppActionType } from "App/state/enums/AppActionType.enum";
+import { createAction } from "shared/state/utils/createAction";
 import { TasksListModel } from "../../models/TasksListModel";
 
 interface PushTaskInTasksListPayload {
@@ -9,7 +9,7 @@ interface PushTaskInTasksListPayload {
 }
 
 export const pushTaskInTasksList = (list: TasksListModel, task: TaskModel) => {
-  const { PushTaskInTasksList } = ActionType;
+  const { PushTaskInTasksList } = AppActionType;
   const payload: PushTaskInTasksListPayload = {
     list,
     task,

@@ -18,12 +18,17 @@ export const useTasksListActions = (list: TasksListModel) => {
 
   const { dispatchSetDraggedItem } = useDraggedItemDispatchers();
 
-  const remove = () => dispatchRemoveTasksList(list.id);
+  const remove = () => dispatchRemoveTasksList(list);
 
-  const removeTask = (task: TaskModel) => () =>
-    dispatchRemoveTask(list.id, task.id);
+  const removeTask = (task: TaskModel) => () => dispatchRemoveTask(task);
 
-  const addTask = (content: string) => dispatchAddTask(content, list.id);
+  const addTask = (content: string) =>
+    dispatchAddTask(
+      new TaskModel({
+        listId: list.id,
+        content,
+      })
+    );
 
   const dropOnList = (draggedItem: AppDraggedItem) => {
     if (draggedItem.type === DraggedItemType.TasksList) {
@@ -35,7 +40,7 @@ export const useTasksListActions = (list: TasksListModel) => {
       return;
     }
 
-    dispatchRemoveTask(draggedItem.data.listId, draggedItem.data.id);
+    dispatchRemoveTask(draggedItem.data);
     dispatchPushTaskInTasksList(list, draggedItem.data);
     dispatchSetDraggedItem({
       ...draggedItem,
@@ -51,16 +56,18 @@ export const useTasksListActions = (list: TasksListModel) => {
       return;
     }
 
-    dispatchMoveTask(draggedItem.data, task);
+    const draggedTask: TaskModel = draggedItem.data;
 
-    if (draggedItem.data.listId === task.listId) {
+    dispatchMoveTask(draggedTask, task);
+
+    if (draggedTask.listId === task.listId) {
       return;
     }
 
     dispatchSetDraggedItem({
       ...draggedItem,
       data: {
-        ...draggedItem.data,
+        ...draggedTask,
         listId: task.listId,
       },
     });

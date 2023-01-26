@@ -1,4 +1,5 @@
 import { AppState } from "App/state/models/AppState";
+import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem";
 import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem";
 import { TasksListModel } from "../../models/TasksListModel";
@@ -10,27 +11,24 @@ export const moveTasksListReducer = (
 ): AppState => {
   const lists = [...state.tasksLists];
   const listToMove = action.payload.listToMove;
-  const listHovered = action.payload.listToMoveAfter;
+  const listToReplace = action.payload.listToReplace;
 
   const listToMoveIndex = lists.findIndex((list) => list.id === listToMove.id);
-  const listHoveredIndex = lists.findIndex(
-    (list) => list.id === listHovered.id
+  const listToReplaceIndex = lists.findIndex(
+    (list) => list.id === listToReplace.id
   );
 
+  const movingConfig: ArrayUtilConfigWithArrayItem<TasksListModel> = {
+    array: state.tasksLists,
+    item: listToMove,
+    arrayItem: listToReplace,
+    uniqueKey: "id",
+  };
+
   const tasksLists =
-    listToMoveIndex < listHoveredIndex
-      ? moveItemAfterArrayItem<TasksListModel>(
-          [...state.tasksLists],
-          listToMove,
-          listHovered,
-          "id"
-        )
-      : moveItemBeforeArrayItem<TasksListModel>(
-          [...state.tasksLists],
-          listToMove,
-          listHovered,
-          "id"
-        );
+    listToMoveIndex < listToReplaceIndex
+      ? moveItemAfterArrayItem<TasksListModel>(movingConfig)
+      : moveItemBeforeArrayItem<TasksListModel>(movingConfig);
 
   return {
     ...state,

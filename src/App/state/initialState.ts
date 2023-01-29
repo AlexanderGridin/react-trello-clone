@@ -6,7 +6,15 @@ import { AppState } from "./models/AppState";
 const BOARDS: BoardModel[] = [
   {
     id: "1",
-    title: "Test board",
+    title: "Test board 1",
+  },
+  {
+    id: "2",
+    title: "Test board 2",
+  },
+  {
+    id: "3",
+    title: "Test board 3",
   },
 ];
 
@@ -26,6 +34,25 @@ const TAKS_LIST: TasksListModel[] = [
     title: "Done",
     tasks: [
       new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
     ],
   },
 ];

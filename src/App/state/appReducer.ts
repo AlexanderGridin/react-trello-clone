@@ -9,9 +9,13 @@ import { removeTaskReducer } from "App/components/Task/state/reducers/removeTask
 import { moveTaskReducer } from "App/components/Task/state/reducers/moveTaskReducer";
 import { pushTaskInTasksListReducer } from "App/components/TasksList/state/reducers/pushTaskInTasksListReducer";
 import { AppActionType } from "./enums/AppActionType.enum";
+import { moveBoardReducer } from "App/components/Board/state/reducers/moveBoardReducer";
+import { addBoardReducer } from "App/components/Board/state/reducers/addBoardReducer";
+import { removeBoardReducer } from "App/components/Board/state/reducers/removeBoardReducer";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
+    // TasksList
     case AppActionType.AddList:
       return addTasksListReducer(state, action);
 
@@ -24,6 +28,7 @@ export const appReducer = (state: AppState, action: AppAction): AppState => {
     case AppActionType.PushTaskInTasksList:
       return pushTaskInTasksListReducer(state, action);
 
+    // Task
     case AppActionType.AddTask:
       return addTaskReducer(state, action);
 
@@ -33,8 +38,19 @@ export const appReducer = (state: AppState, action: AppAction): AppState => {
     case AppActionType.MoveTask:
       return moveTaskReducer(state, action);
 
+    // DraggedItem
     case AppActionType.SetDraggedItem:
       return setDraggedItemReducer(state, action);
+
+    // Board
+    case AppActionType.AddBoard:
+      return addBoardReducer(state, action);
+
+    case AppActionType.RemoveBoard:
+      return removeBoardReducer(state, action);
+
+    case AppActionType.MoveBoard:
+      return moveBoardReducer(state, action);
 
     default:
       return { ...state };

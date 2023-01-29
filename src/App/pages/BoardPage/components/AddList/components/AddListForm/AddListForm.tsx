@@ -5,6 +5,7 @@ import { InputType } from "shared/enums/InputType";
 import { AddListFormFooter } from "./components/AddListFormFooter";
 import { useAddListFormState } from "./hooks/useAddListFormState";
 import { useAddListFormActions } from "./hooks/useAddListFormActions";
+import { Card } from "shared/components/Card/Card";
 
 export interface AddListFormProps {
   onAdd: (title: string) => void;
@@ -19,17 +20,19 @@ export const AddListForm = (props: AddListFormProps) => {
   );
 
   return (
-    <FormContainer onSubmit={submit}>
-      <Input
-        name="title"
-        type={InputType.Text}
-        ref={useInputFocus()}
-        value={state.title.value}
-        placeholder="Enter list title"
-        onChange={changeTitle}
-      />
+    <Card backgroundColor="#ebecf0">
+      <FormContainer onSubmit={submit}>
+        <Input
+          name="title"
+          type={InputType.Text}
+          ref={useInputFocus()}
+          value={state.title.value}
+          placeholder="Enter list title"
+          onChange={changeTitle}
+        />
 
-      <AddListFormFooter onAdd={add} onCancel={cancel} />
-    </FormContainer>
+        <AddListFormFooter onAdd={add} onCancel={cancel} />
+      </FormContainer>
+    </Card>
   );
 };

@@ -10,10 +10,6 @@ const BoardTitle = styled.h1`
 `;
 
 const BoardHeaderContainer = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   padding: 10px 20px;
 `;
 

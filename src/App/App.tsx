@@ -1,13 +1,13 @@
-// import { Board } from "App/components/Board/Board";
 import { DragAndDropProvider } from "drag-and-drop/components/DragAndDropProvider";
-import { BoardsList } from "./components/BoardsList/BoardsList";
+import { BoardPage } from "./pages/BoardPage/BoardPage";
+// import { BoardsPage } from "./pages/BoardsPage/BoardsPage";
 import { AppStateProvider } from "./state/components/AppStateProvider";
 
 export const App = (): JSX.Element => (
   <DragAndDropProvider>
     <AppStateProvider>
-      <BoardsList></BoardsList>
-      {/* <Board title="Test Board" /> */}
+      <BoardPage title="Test Board" />
+      {/* <BoardsPage /> */}
     </AppStateProvider>
   </DragAndDropProvider>
 );

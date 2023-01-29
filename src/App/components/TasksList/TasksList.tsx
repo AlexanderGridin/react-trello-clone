@@ -16,26 +16,33 @@ export const TasksList = ({ list }: TasksListProps) => {
   const { remove, addTask, removeTask, dropOnList, dropOnTask } =
     useTasksListActions(list);
 
+  const header = <TasksListHeader onRemove={remove} list={list} />;
+
+  const content = list.tasks.length ? (
+    <ul className="plain-list">
+      {list.tasks.map((task: TaskModel) => (
+        <li key={task.id} className="mb">
+          <DndCard
+            draggedItem={mapTaskToDraggedItem(task)}
+            onDrop={dropOnTask(task)}
+          >
+            <Task task={task} onRemove={removeTask(task)} />
+          </DndCard>
+        </li>
+      ))}
+    </ul>
+  ) : null;
+
+  const footer = <AddTask onAdd={addTask}>+ Add new task</AddTask>;
+
   return (
     <DndCard
-      header={<TasksListHeader onRemove={remove} list={list} />}
-      footer={<AddTask onAdd={addTask}>+ Add new task</AddTask>}
+      slotHeader={header}
+      slotContent={content}
+      slotFooter={footer}
       backgroundColor="#ebecf0"
       draggedItem={mapTasksListToDraggedItem(list)}
       onDrop={dropOnList}
-    >
-      <ul className="plain-list">
-        {list.tasks.map((task: TaskModel) => (
-          <li key={task.id} className="mb">
-            <DndCard
-              draggedItem={mapTaskToDraggedItem(task)}
-              onDrop={dropOnTask(task)}
-            >
-              <Task task={task} onRemove={removeTask(task)} />
-            </DndCard>
-          </li>
-        ))}
-      </ul>
-    </DndCard>
+    />
   );
 };

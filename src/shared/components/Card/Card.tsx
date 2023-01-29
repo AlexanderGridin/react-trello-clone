@@ -4,34 +4,47 @@ import { CardContainer } from "./components/CardContainer";
 import styled from "styled-components";
 
 export interface CardProps extends PropsWithChildren {
-  header?: ReactNode;
-  footer?: ReactNode;
+  slotHeader?: ReactNode;
+  slotContent?: ReactNode;
+  slotFooter?: ReactNode;
   backgroundColor?: string;
   className?: string;
+  minHeight?: number;
 }
 
 type Ref = ForwardedRef<HTMLDivElement>;
 
-const CardHeader = styled.div`
-  margin-bottom: 7px;
-`;
+const CardHeader = styled.div``;
 
-const CardFooter = styled.div`
-  margin-top: 7px;
-`;
+const CardFooter = styled.div``;
 
 export const Card = forwardRef((props: CardProps, ref: Ref) => {
-  const { header, footer, backgroundColor, className = "", children } = props;
+  const {
+    slotHeader,
+    slotContent,
+    slotFooter,
+    backgroundColor,
+    className = "",
+    minHeight = 0,
+    children,
+  } = props;
 
   return (
     <CardContainer
       ref={ref}
       backgroundColor={backgroundColor}
       className={className}
+      minHeight={minHeight}
     >
-      {header && <CardHeader>{header}</CardHeader>}
-      {children && <CardContent>{children}</CardContent>}
-      {footer && <CardFooter>{footer}</CardFooter>}
+      {!children && (
+        <>
+          {slotHeader && <CardHeader>{slotHeader}</CardHeader>}
+          {slotContent && <CardContent>{slotContent}</CardContent>}
+          {slotFooter && <CardFooter>{slotFooter}</CardFooter>}
+        </>
+      )}
+
+      {children}
     </CardContainer>
   );
 });

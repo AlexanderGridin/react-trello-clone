@@ -1,3 +1,6 @@
+import { AddBoardAction } from "App/components/Board/state/actions/addBoard";
+import { MoveBoardAction } from "App/components/Board/state/actions/moveBoard";
+import { RemoveBoardAction } from "App/components/Board/state/actions/removeBoard";
 import { AddTaskAction } from "App/components/Task/state/actions/addTask";
 import { MoveTaskAction } from "App/components/Task/state/actions/moveTask";
 import { RemoveTaskAction } from "App/components/Task/state/actions/removeTask";
@@ -8,11 +11,18 @@ import { RemoveTasksListAction } from "App/components/TasksList/state/actions/re
 import { SetDraggedItemAction } from "../shared/DraggedItem/actions/setDraggedItem";
 
 export type AppAction =
+  // TasksList
   | AddTasksListAction
   | RemoveTasksListAction
   | MoveTasksListAction
   | PushTaskInTasksListAction
+  //Task
   | AddTaskAction
   | RemoveTaskAction
   | MoveTaskAction
-  | SetDraggedItemAction;
+  //DraggedItem
+  | SetDraggedItemAction
+  // Board
+  | AddBoardAction
+  | RemoveBoardAction
+  | MoveBoardAction;

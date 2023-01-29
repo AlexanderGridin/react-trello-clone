@@ -1,6 +1,22 @@
+import { BoardModel } from "App/components/Board/models/BoardModel";
 import { TaskModel } from "App/components/Task/models/TaskModel";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { AppState } from "./models/AppState";
+
+const BOARDS: BoardModel[] = [
+  {
+    id: "1",
+    title: "Test board 1",
+  },
+  {
+    id: "2",
+    title: "Test board 2",
+  },
+  {
+    id: "3",
+    title: "Test board 3",
+  },
+];
 
 const TAKS_LIST: TasksListModel[] = [
   {
@@ -18,11 +34,31 @@ const TAKS_LIST: TasksListModel[] = [
     title: "Done",
     tasks: [
       new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
+      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
     ],
   },
 ];
 
 export const INITIAL_STATE: AppState = {
+  boards: BOARDS,
   tasksLists: TAKS_LIST,
   draggedItem: null,
 };

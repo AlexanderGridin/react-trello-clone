@@ -9,10 +9,9 @@ export const AppStateProvider = ({
   children,
 }: AppStateProviderProps): JSX.Element => {
   const [state, dispatch] = useReducer(appReducer, INITIAL_STATE);
-  const { tasksLists, draggedItem } = state;
 
   return (
-    <AppStateContext.Provider value={{ tasksLists, draggedItem, dispatch }}>
+    <AppStateContext.Provider value={{ ...state, dispatch }}>
       {children}
     </AppStateContext.Provider>
   );

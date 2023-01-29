@@ -5,7 +5,6 @@ const BoardContentContainer = styled.div`
   display: flex;
   align-items: flex-start;
   overflow-x: auto;
-  padding: 5px 20px 0;
   height: 100%;
 `;
 

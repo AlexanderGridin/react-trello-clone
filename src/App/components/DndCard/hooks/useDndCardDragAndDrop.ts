@@ -7,7 +7,7 @@ export const useDndCardDragAndDrop = (props: DndCardProps) => {
   const { draggedItem, onDrop } = props;
 
   const { drag, isDragging } = useItemDrag({ ...draggedItem });
-  const draggingClassName = isDragging ? "dragging" : "";
+  const draggingClassName = isDragging ? "dragging" : "draggable";
 
   const { drop } = useItemDrop({
     ...draggedItem,

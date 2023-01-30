@@ -5,15 +5,15 @@ import { TaskModel } from "App/components/Task/models/TaskModel";
 import { Task } from "App/components/Task/Task";
 import { Card } from "shared/components/Card/Card";
 
-interface TasksListItemProps {
+interface TasksListTaskProps {
   task: TaskModel;
   isDragPreview?: boolean;
 }
 
-export const TasksListItem = ({
+export const TasksListTask = ({
   task,
   isDragPreview = false,
-}: TasksListItemProps) => {
+}: TasksListTaskProps) => {
   const { removeTask, dropOnTask } = useTaskActions(task);
 
   if (isDragPreview) {

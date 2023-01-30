@@ -1,4 +1,4 @@
-import { RemoveButton } from "shared/components/Buttons/RemoveButton";
+import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
 import { TasksListModel } from "../../models/TasksListModel";
 import { TasksListHeaderContainer } from "./components/TasksListHeaderContainer";
 import { TasksListTitle } from "./components/TasksListTitle";

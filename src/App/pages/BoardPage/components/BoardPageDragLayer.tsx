@@ -1,10 +1,10 @@
 import { useAppDragLayer } from "App/hooks/useAppDragLayer";
 import { DragLayer } from "drag-and-drop/components/DragLayer";
 import { DragPreviewWrapper } from "drag-and-drop/components/DragPreviewWrapper";
-import { BoardCell } from "../BoardCell";
-import { renderBoardDraggedItem } from "./utils/renderBoardDraggedItem";
+import { BoardPageCell } from "./BoardPageCell";
+import { BoardPageDraggedItem } from "./BoardPageDraggedItem";
 
-export const BoardDragLayer = () => {
+export const BoardPageDragLayer = () => {
   const { draggedItem, offset } = useAppDragLayer();
 
   if (!draggedItem || !offset) {
@@ -14,7 +14,9 @@ export const BoardDragLayer = () => {
   return (
     <DragLayer>
       <DragPreviewWrapper position={offset}>
-        <BoardCell>{renderBoardDraggedItem(draggedItem)}</BoardCell>
+        <BoardPageCell>
+          <BoardPageDraggedItem item={draggedItem} />
+        </BoardPageCell>
       </DragPreviewWrapper>
     </DragLayer>
   );

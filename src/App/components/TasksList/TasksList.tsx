@@ -1,46 +1,44 @@
+import { Card } from "shared/components/Card/Card";
 import { DndCard } from "../DndCard/DndCard";
-import { mapTaskToDraggedItem } from "../Task/mappers/mapTaskToDraggedItem";
-import { TaskModel } from "../Task/models/TaskModel";
-import { Task } from "../Task/Task";
 import { AddTask } from "./components/AddTask/AddTask";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
+import { TasksListItems } from "./components/TasksListItems/TasksListItems";
 import { useTasksListActions } from "./hooks/useTasksListActions";
 import { mapTasksListToDraggedItem } from "./mappers/mapTasksListToDraggedItem";
 import { TasksListModel } from "./models/TasksListModel";
 
 export interface TasksListProps {
   list: TasksListModel;
+  isDragPreview?: boolean;
 }
 
-export const TasksList = ({ list }: TasksListProps) => {
-  const { remove, addTask, removeTask, dropOnList, dropOnTask } =
-    useTasksListActions(list);
+export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
+  const { remove, addTask, dropOnList } = useTasksListActions(list);
+
+  const BACKGROUD_COLOR = "#ebecf0";
 
   const header = <TasksListHeader onRemove={remove} list={list} />;
-
-  const content = list.tasks.length ? (
-    <ul className="plain-list">
-      {list.tasks.map((task: TaskModel) => (
-        <li key={task.id} className="mb">
-          <DndCard
-            draggedItem={mapTaskToDraggedItem(task)}
-            onDrop={dropOnTask(task)}
-          >
-            <Task task={task} onRemove={removeTask(task)} />
-          </DndCard>
-        </li>
-      ))}
-    </ul>
-  ) : null;
-
+  const content = <TasksListItems tasks={list.tasks} />;
   const footer = <AddTask onAdd={addTask}>+ Add new task</AddTask>;
+
+  if (isDragPreview) {
+    return (
+      <Card
+        slotHeader={header}
+        slotContent={content}
+        slotFooter={footer}
+        backgroundColor={BACKGROUD_COLOR}
+        className="drag-preview"
+      />
+    );
+  }
 
   return (
     <DndCard
       slotHeader={header}
       slotContent={content}
       slotFooter={footer}
-      backgroundColor="#ebecf0"
+      backgroundColor={BACKGROUD_COLOR}
       draggedItem={mapTasksListToDraggedItem(list)}
       onDrop={dropOnList}
     />

@@ -1,29 +1,14 @@
 import { PropsWithChildren } from "react";
-import styled from "styled-components";
-import { FullWidthButton } from "shared/components/Buttons/FullWidthButton";
+import { AddButton } from "App/components/AddButton/AddButton";
 import { ButtonType } from "shared/enums/ButtonType";
+import { PropsWithClick } from "shared/models/PropsWithClick";
 
-export const ButtonContainer = styled(FullWidthButton)`
-  padding: 12px 10px;
-  background-color: #ffffff3d;
-  margin-right: 0;
+interface AddListButtonProps extends PropsWithChildren, PropsWithClick {}
 
-  &:hover {
-    background-color: #ffffff52;
-  }
-`;
-
-interface AddListButtonProps extends PropsWithChildren {
-  onClick: () => void;
-}
-
-export const AddListButton = ({
-  children,
-  onClick,
-}: AddListButtonProps): JSX.Element => {
+export const AddListButton = ({ children, onClick }: AddListButtonProps) => {
   return (
-    <ButtonContainer type={ButtonType.Button} onClick={onClick}>
+    <AddButton type={ButtonType.Button} isFullWidth onClick={onClick}>
       {children}
-    </ButtonContainer>
+    </AddButton>
   );
 };

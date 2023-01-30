@@ -1,7 +1,6 @@
-import { ErrorButton } from "shared/components/Buttons/ErrorButton";
-import { SuccessButton } from "shared/components/Buttons/SuccessButton";
+import { Button } from "shared/components/Button/Button";
+import { ButtonStyle } from "shared/components/Button/enums/ButtonStyle";
 import { FlexContainer } from "shared/components/FlexContainer";
-import { ButtonType } from "shared/enums/ButtonType";
 
 interface AddListFormFooterProps {
   onAdd: () => void;
@@ -14,12 +13,13 @@ export const AddListFormFooter = ({
 }: AddListFormFooterProps): JSX.Element => {
   return (
     <FlexContainer>
-      <SuccessButton type={ButtonType.Button} onClick={onAdd}>
+      <Button buttonStyle={ButtonStyle.Success} onClick={onAdd}>
         Add
-      </SuccessButton>
-      <ErrorButton type={ButtonType.Button} onClick={onCancel}>
+      </Button>
+
+      <Button buttonStyle={ButtonStyle.Danger} onClick={onCancel}>
         Cancel
-      </ErrorButton>
+      </Button>
     </FlexContainer>
   );
 };

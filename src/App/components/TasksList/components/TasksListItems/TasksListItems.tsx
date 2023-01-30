@@ -1,15 +1,15 @@
 import { TaskModel } from "App/components/Task/models/TaskModel";
-import { TasksListTask } from "./components/TasksListTask";
+import { TasksListItem } from "./components/TasksListItem";
 
-interface TasksListTasksProps {
+interface TasksListItemsProps {
   tasks: TaskModel[];
   isDragPreview?: boolean;
 }
 
-export const TasksListTasks = ({
+export const TasksListItems = ({
   tasks,
   isDragPreview = false,
-}: TasksListTasksProps) => {
+}: TasksListItemsProps) => {
   if (!tasks.length) {
     return null;
   }
@@ -17,7 +17,7 @@ export const TasksListTasks = ({
   return (
     <ul className="plain-list">
       {tasks.map((task: TaskModel) => (
-        <TasksListTask
+        <TasksListItem
           task={task}
           key={task.id}
           isDragPreview={isDragPreview}

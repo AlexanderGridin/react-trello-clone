@@ -18,11 +18,9 @@ export const TasksListItem = ({
 
   if (isDragPreview) {
     return (
-      <li className="mb">
-        <Card>
-          <Task task={task} onRemove={() => {}}></Task>
-        </Card>
-      </li>
+      <Card className="drag-preview">
+        <Task task={task} onRemove={() => {}}></Task>
+      </Card>
     );
   }
 

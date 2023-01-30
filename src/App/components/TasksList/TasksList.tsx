@@ -18,15 +18,14 @@ export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
   const BACKGROUD_COLOR = "#ebecf0";
 
   const header = <TasksListHeader onRemove={remove} list={list} />;
+  const content = <TasksListItems tasks={list.tasks} />;
   const footer = <AddTask onAdd={addTask}>+ Add new task</AddTask>;
 
   if (isDragPreview) {
     return (
       <Card
         slotHeader={header}
-        slotContent={
-          <TasksListItems tasks={list.tasks} isDragPreview={isDragPreview} />
-        }
+        slotContent={content}
         slotFooter={footer}
         backgroundColor={BACKGROUD_COLOR}
         className="drag-preview"
@@ -37,7 +36,7 @@ export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
   return (
     <DndCard
       slotHeader={header}
-      slotContent={<TasksListItems tasks={list.tasks} />}
+      slotContent={content}
       slotFooter={footer}
       backgroundColor={BACKGROUD_COLOR}
       draggedItem={mapTasksListToDraggedItem(list)}

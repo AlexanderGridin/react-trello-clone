@@ -6,8 +6,8 @@ import { AppStateProvider } from "./state/components/AppStateProvider";
 export const App = (): JSX.Element => (
   <DragAndDropProvider>
     <AppStateProvider>
-      {/* <BoardPage title="Test Board" /> */}
-      <BoardsPage />
+      <BoardPage title="Test Board" />
+      {/* <BoardsPage /> */}
     </AppStateProvider>
   </DragAndDropProvider>
 );

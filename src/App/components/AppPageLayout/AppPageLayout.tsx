@@ -5,6 +5,10 @@ const AppPageLayoutContainer = styled.section`
   background-color: #292e39;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
 `;
 

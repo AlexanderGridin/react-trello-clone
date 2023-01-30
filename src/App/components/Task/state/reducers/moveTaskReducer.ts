@@ -1,3 +1,4 @@
+import { BoardModel } from "App/components/Board/models/BoardModel";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { AppState } from "App/state/models/AppState";
 import { MoveTaskAction } from "../actions/moveTask";
@@ -10,24 +11,34 @@ export const moveTaskReducer = (
 ): AppState => {
   const { taskToMove, taskToReplace } = action.payload;
 
-  const tasksLists = state.tasksLists.map((list: TasksListModel) => {
-    if (list.id === taskToReplace.listId) {
-      return replaceTaskInList({
-        list,
-        task: taskToMove,
-        taskToReplace,
-      });
-    }
+  return {
+    ...state,
+    boards: state.boards.map((board: BoardModel) => {
+      if (board.id !== taskToMove.boardId) {
+        return { ...board };
+      }
 
-    if (list.id === taskToMove.listId) {
-      return removeTaskFromList({
-        list,
-        task: taskToMove,
-      });
-    }
+      return {
+        ...board,
+        tasksLists: board.tasksLists.map((list: TasksListModel) => {
+          if (list.id === taskToReplace.listId) {
+            return replaceTaskInList({
+              list,
+              task: taskToMove,
+              taskToReplace,
+            });
+          }
 
-    return list;
-  });
+          if (list.id === taskToMove.listId) {
+            return removeTaskFromList({
+              list,
+              task: taskToMove,
+            });
+          }
 
-  return { ...state, tasksLists };
+          return { ...list };
+        }),
+      };
+    }),
+  };
 };

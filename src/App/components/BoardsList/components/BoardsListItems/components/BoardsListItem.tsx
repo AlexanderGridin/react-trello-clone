@@ -15,7 +15,7 @@ export const BoardsListItem = ({
   board,
   isDragPreview = false,
 }: BoardsListItemProps) => {
-  const { remove, dropOnBoard } = useBoardActions(board);
+  const { remove, dropOnBoard, navigateToBoard } = useBoardActions(board);
   const MIN_HEIGHT = 150;
 
   if (isDragPreview) {
@@ -34,6 +34,7 @@ export const BoardsListItem = ({
         minHeight={MIN_HEIGHT}
         draggedItem={mapBoardToDraggedItem(board)}
         onDrop={dropOnBoard}
+        onDoubleClick={navigateToBoard}
       >
         <Board board={board} onRemove={remove} />
       </DndCard>

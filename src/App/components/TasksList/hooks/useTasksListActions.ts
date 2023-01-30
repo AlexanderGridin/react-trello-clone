@@ -20,7 +20,9 @@ export const useTasksListActions = (list: TasksListModel) => {
   const remove = () => dispatchRemoveTasksList(list);
 
   const addTask = (content: string) =>
-    dispatchAddTask(new TaskModel({ listId: list.id, content }));
+    dispatchAddTask(
+      new TaskModel({ listId: list.id, boardId: list.boardId, content })
+    );
 
   const dropOnList = (draggedItem: AppDraggedItem) => {
     if (draggedItem.type === DraggedItemType.TasksList) {

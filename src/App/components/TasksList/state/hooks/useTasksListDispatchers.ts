@@ -9,8 +9,8 @@ import { removeTasksList } from "../actions/removeTasksList";
 export const useTasksListDispatchers = () => {
   const { dispatch } = useAppState();
 
-  const dispatchAddTasksList = (title: string) =>
-    dispatch(addTasksList(new TasksListModel({ title })));
+  const dispatchAddTasksList = (title: string, boardId: string) =>
+    dispatch(addTasksList(new TasksListModel({ title, boardId })));
 
   const dispatchRemoveTasksList = (list: TasksListModel) =>
     dispatch(removeTasksList(list));

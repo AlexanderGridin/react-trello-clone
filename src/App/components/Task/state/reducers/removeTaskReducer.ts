@@ -1,3 +1,4 @@
+import { BoardModel } from "App/components/Board/models/BoardModel";
 import { TaskModel } from "App/components/Task/models/TaskModel";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { AppState } from "App/state/models/AppState";
@@ -9,18 +10,28 @@ export const removeTaskReducer = (
 ): AppState => {
   const taskToRemove: TaskModel = action.payload.task;
 
-  const tasksLists = state.tasksLists.map((list: TasksListModel) => {
-    if (list.id !== taskToRemove.listId) {
-      return list;
-    }
+  return {
+    ...state,
+    boards: state.boards.map((board: BoardModel) => {
+      if (board.id !== taskToRemove.boardId) {
+        return { ...board };
+      }
 
-    return {
-      ...list,
-      tasks: list.tasks.filter(
-        (task: TaskModel) => task.id !== taskToRemove.id
-      ),
-    };
-  });
+      return {
+        ...board,
+        tasksLists: board.tasksLists.map((list: TasksListModel) => {
+          if (list.id !== taskToRemove.listId) {
+            return { ...list };
+          }
 
-  return { ...state, tasksLists };
+          return {
+            ...list,
+            tasks: list.tasks.filter(
+              ({ id }: TaskModel) => id !== taskToRemove.id
+            ),
+          };
+        }),
+      };
+    }),
+  };
 };

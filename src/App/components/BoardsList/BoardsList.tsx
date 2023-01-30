@@ -1,41 +1,27 @@
 import { BoardModel } from "../Board/models/BoardModel";
-import { DndCard } from "../DndCard/DndCard";
-import { mapBoardToDraggedItem } from "./mappers/mapBoardToDraggedItem";
 import { BoardsListDragLayer } from "./components/BoardsListDragLayer";
-import { Board } from "../Board/Board";
 import { BoardsListContainer } from "./components/BoardsListContainer";
 import { BoardsListCell } from "./components/BoardsListCell";
-import { useBoardsListActions } from "./hooks/useBoardsListActions";
 import { AddBoard } from "./components/AddBoard/AddBoard";
+import { useBoardsListActions } from "./hooks/useBoardsListActions";
+import { BoardsListItems } from "./components/BoardsListItems/BoardsListItems";
 
 interface BoardsListProps {
   boards: BoardModel[];
 }
 
 export const BoardsList = ({ boards }: BoardsListProps) => {
-  const { add, remove, dropOnBoard } = useBoardsListActions();
-  const minHeight = 150;
+  const { addBoard } = useBoardsListActions();
 
   return (
     <>
       <BoardsListDragLayer />
 
       <BoardsListContainer>
-        {boards.length > 0 &&
-          boards.map((board: BoardModel) => (
-            <BoardsListCell key={board.id}>
-              <DndCard
-                minHeight={minHeight}
-                draggedItem={mapBoardToDraggedItem(board)}
-                onDrop={dropOnBoard(board)}
-              >
-                <Board board={board} onRemove={remove(board)} />
-              </DndCard>
-            </BoardsListCell>
-          ))}
+        <BoardsListItems boards={boards} />
 
         <BoardsListCell>
-          <AddBoard onAdd={add}>+ Add board</AddBoard>
+          <AddBoard onAdd={addBoard}>+ Add board</AddBoard>
         </BoardsListCell>
       </BoardsListContainer>
     </>

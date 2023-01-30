@@ -1,4 +1,4 @@
-import { RemoveButton } from "shared/components/Buttons/RemoveButton";
+import { RemoveButton } from "../RemoveButton/RemoveButton";
 import { BoardContainer } from "./components/BoardContainer";
 import { BoardTitle } from "./components/BoardTitle";
 import { BoardModel } from "./models/BoardModel";
@@ -14,7 +14,7 @@ export const Board = ({ board, onRemove }: BoardProps) => {
   return (
     <BoardContainer>
       <BoardTitle>{board.title}</BoardTitle>
-      <RemoveButton onClick={remove} />
+      <RemoveButton className="mr-0" onClick={remove} />
     </BoardContainer>
   );
 };

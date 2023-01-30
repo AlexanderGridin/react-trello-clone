@@ -1,35 +1,24 @@
 import { PropsWithChildren } from "react";
 import styled from "styled-components";
-import { FullWidthButton } from "shared/components/Buttons/FullWidthButton";
 import { ButtonType } from "shared/enums/ButtonType";
+import { AddButton } from "App/components/AddButton/AddButton";
+import { PropsWithClick } from "shared/models/PropsWithClick";
 
-export const ButtonContainer = styled(FullWidthButton)`
-  padding: 7px 12px;
+export const Container = styled(AddButton)`
   min-height: 150px;
-  background-color: #ffffff3d;
   color: #fff;
-  margin-right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
-
-  &:hover {
-    background-color: #ffffff52;
-  }
 `;
 
-interface AddBoardButtonProps extends PropsWithChildren {
-  onClick: () => void;
-}
+interface AddBoardButtonProps extends PropsWithChildren, PropsWithClick {}
 
-export const AddBoardButton = ({
-  children,
-  onClick,
-}: AddBoardButtonProps): JSX.Element => {
+export const AddBoardButton = ({ children, onClick }: AddBoardButtonProps) => {
   return (
-    <ButtonContainer type={ButtonType.Button} onClick={onClick}>
+    <Container type={ButtonType.Button} isFullWidth onClick={onClick}>
       {children}
-    </ButtonContainer>
+    </Container>
   );
 };

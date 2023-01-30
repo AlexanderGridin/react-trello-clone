@@ -1,30 +1,19 @@
 import { PropsWithChildren } from "react";
-import styled from "styled-components";
-import { FullWidthButton } from "shared/components/Buttons/FullWidthButton";
 import { ButtonType } from "shared/enums/ButtonType";
+import { AddButton } from "App/components/AddButton/AddButton";
+import { PropsWithClick } from "shared/models/PropsWithClick";
 
-export const ButtonContainer = styled(FullWidthButton)`
-  padding: 12px 10px;
-  background-color: #ffffff3d;
-  color: #000;
-  margin-right: 0;
+interface AddTaskButtonProps extends PropsWithChildren, PropsWithClick {}
 
-  &:hover {
-    background-color: #ffffff52;
-  }
-`;
-
-interface AddTaskButtonProps extends PropsWithChildren {
-  onClick: () => void;
-}
-
-export const AddTaskButton = ({
-  children,
-  onClick,
-}: AddTaskButtonProps): JSX.Element => {
+export const AddTaskButton = ({ children, onClick }: AddTaskButtonProps) => {
   return (
-    <ButtonContainer type={ButtonType.Button} onClick={onClick}>
+    <AddButton
+      type={ButtonType.Button}
+      isFullWidth
+      isTextDark
+      onClick={onClick}
+    >
       {children}
-    </ButtonContainer>
+    </AddButton>
   );
 };

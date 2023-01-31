@@ -4,13 +4,18 @@ import { IconContainer } from "./components/IconContainer";
 interface IconProps {
   icon: MaterialIcon;
   dark?: boolean;
+  className?: string;
 }
 
-export const Icon = ({ icon, dark = false }: IconProps): JSX.Element => {
-  const className = "material-symbols-outlined";
+export const Icon = ({
+  icon,
+  dark = false,
+  className = "",
+}: IconProps): JSX.Element => {
+  const cssClasses = `material-symbols-outlined ${className}`;
 
   return (
-    <IconContainer className={className} dark={dark}>
+    <IconContainer className={cssClasses} dark={dark}>
       {icon}
     </IconContainer>
   );

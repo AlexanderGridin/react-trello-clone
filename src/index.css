@@ -23,6 +23,10 @@ body {
   margin-right: 0 !important;
 }
 
+.mr {
+  margin-right: 7px !important;
+}
+
 .mb {
   margin-bottom: 7px;
 }

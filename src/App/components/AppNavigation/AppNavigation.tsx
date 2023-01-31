@@ -1,4 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { FlexContainer } from "shared/components/FlexContainer";
+import { Icon } from "shared/components/Icon/Icon";
+import { MaterialIcon } from "shared/enums/MaterialIcon";
 import style from "./AppNavigation.module.css";
 
 export const AppNavigation = () => {
@@ -12,7 +15,10 @@ export const AppNavigation = () => {
               isActive ? `${style.LinkActive} ${style.Link}` : style.Link
             }
           >
-            Home
+            <FlexContainer>
+              <Icon className="mr" icon={MaterialIcon.Home} />
+              <span> Home</span>
+            </FlexContainer>
           </NavLink>
         </li>
       </ul>

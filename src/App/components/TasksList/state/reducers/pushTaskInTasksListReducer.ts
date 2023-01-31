@@ -1,3 +1,4 @@
+import { BoardModel } from "App/components/Board/models/BoardModel";
 import { AppState } from "App/state/models/AppState";
 import { TasksListModel } from "../../models/TasksListModel";
 import { PushTaskInTasksListAction } from "../actions/pushTaskInTasksList";
@@ -8,25 +9,26 @@ export const pushTaskInTasksListReducer = (
 ): AppState => {
   const { list, task } = action.payload;
 
-  const listTasks = [...list.tasks];
-  listTasks.push({
-    ...task,
-    listId: list.id,
-  });
-
-  const tasksLists = state.tasksLists.map((tasksList: TasksListModel) => {
-    if (tasksList.id === list.id) {
-      return {
-        ...tasksList,
-        tasks: listTasks,
-      };
-    }
-
-    return tasksList;
-  });
-
   return {
     ...state,
-    tasksLists,
+    boards: state.boards.map((board: BoardModel) => {
+      if (board.id !== list.boardId) {
+        return { ...board };
+      }
+
+      return {
+        ...board,
+        tasksLists: board.tasksLists.map((tasksList: TasksListModel) => {
+          if (tasksList.id !== list.id) {
+            return { ...tasksList };
+          }
+
+          return {
+            ...tasksList,
+            tasks: [{ ...task, listId: tasksList.id }],
+          };
+        }),
+      };
+    }),
   };
 };

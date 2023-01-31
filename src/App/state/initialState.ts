@@ -1,64 +1,36 @@
 import { BoardModel } from "App/components/Board/models/BoardModel";
 import { TaskModel } from "App/components/Task/models/TaskModel";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
+import { generateId } from "shared/utils/generateId";
 import { AppState } from "./models/AppState";
 
-const BOARDS: BoardModel[] = [
-  {
-    id: "1",
-    title: "Test board 1",
-  },
-  {
-    id: "2",
-    title: "Test board 2",
-  },
-  {
-    id: "3",
-    title: "Test board 3",
-  },
-];
+const boardIds: string[] = ["1", "2", "3"];
+const listIds: string[] = [generateId(), generateId(), generateId()];
 
-const TAKS_LIST: TasksListModel[] = [
-  {
-    id: "1",
-    title: "To Do",
-    tasks: [new TaskModel({ listId: "1", content: "Generate app scaffold" })],
-  },
-  {
-    id: "2",
-    title: "In Progress",
-    tasks: [new TaskModel({ listId: "2", content: "Learn Typescript" })],
-  },
-  {
-    id: "3",
-    title: "Done",
-    tasks: [
-      new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-      // new TaskModel({ listId: "3", content: "Begin to use static typing" }),
-    ],
-  },
-];
+const BOARDS: BoardModel[] = boardIds.map(
+  (boardId, index) =>
+    new BoardModel({
+      id: boardId,
+      title: `Test board ${index + 1}`,
+      tasksLists: listIds.map(
+        (listId, index) =>
+          new TasksListModel({
+            id: listId,
+            boardId: boardId,
+            title: `Test tasks list ${index + 1}`,
+            tasks: [
+              new TaskModel({
+                listId,
+                boardId,
+                content: `Test task ${index + 1}`,
+              }),
+            ],
+          })
+      ),
+    })
+);
 
 export const INITIAL_STATE: AppState = {
   boards: BOARDS,
-  tasksLists: TAKS_LIST,
   draggedItem: null,
 };

@@ -1,7 +1,6 @@
 import { ForwardedRef, forwardRef, PropsWithChildren, ReactNode } from "react";
 import { CardContent } from "./components/CardContent";
 import { CardContainer } from "./components/CardContainer";
-import styled from "styled-components";
 
 export interface CardProps extends PropsWithChildren {
   slotHeader?: ReactNode;
@@ -10,13 +9,10 @@ export interface CardProps extends PropsWithChildren {
   backgroundColor?: string;
   className?: string;
   minHeight?: number;
+  onDoubleClick?: () => void;
 }
 
 type Ref = ForwardedRef<HTMLDivElement>;
-
-const CardHeader = styled.div``;
-
-const CardFooter = styled.div``;
 
 export const Card = forwardRef((props: CardProps, ref: Ref) => {
   const {
@@ -27,6 +23,7 @@ export const Card = forwardRef((props: CardProps, ref: Ref) => {
     className = "",
     minHeight = 0,
     children,
+    onDoubleClick,
   } = props;
 
   return (
@@ -35,12 +32,13 @@ export const Card = forwardRef((props: CardProps, ref: Ref) => {
       backgroundColor={backgroundColor}
       className={className}
       minHeight={minHeight}
+      onDoubleClick={onDoubleClick}
     >
       {!children && (
         <>
-          {slotHeader && <CardHeader>{slotHeader}</CardHeader>}
+          {slotHeader && <div>{slotHeader}</div>}
           {slotContent && <CardContent>{slotContent}</CardContent>}
-          {slotFooter && <CardFooter>{slotFooter}</CardFooter>}
+          {slotFooter && <div>{slotFooter}</div>}
         </>
       )}
 

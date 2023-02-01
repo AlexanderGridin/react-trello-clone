@@ -1,5 +1,5 @@
-import { useBoardDispatchers } from "App/components/Board/state/hooks/useBoardDispatchers";
 import { BoardModel } from "App/entities/Board/BoardModel";
+import { useBoardDispatchers } from "App/widgets/Board/state/hooks/useBoardDispatchers";
 
 export const useBoardsListFeatures = () => {
   const { dispatchAddBoard } = useBoardDispatchers();

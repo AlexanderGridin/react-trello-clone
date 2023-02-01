@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
-import { BoardsList } from "App/components/BoardsList/BoardsList";
 import { useAppState } from "App/state/hooks/useAppState";
+import { BoardsList } from "App/widgets/BoardsList/BoardsList";
 
 const BoardsPageTitle = styled.h2`
   margin: 0;

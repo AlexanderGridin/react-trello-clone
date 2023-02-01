@@ -1,7 +1,7 @@
 import { TaskContainer } from "./components/TaskContainer";
 import { TaskContent } from "./components/TaskContent";
-import { RemoveButton } from "../RemoveButton/RemoveButton";
 import { TaskModel } from "App/entities/Task/TaskModel";
+import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
 
 interface TaskProps {
   task: TaskModel;

@@ -1,5 +1,5 @@
-import { useTasksListDispatchers } from "App/components/TasksList/state/hooks/useTasksListDispatchers";
 import { BoardModel } from "App/entities/Board/BoardModel";
+import { useTasksListDispatchers } from "App/widgets/TasksList/state/hooks/useTasksListDispatchers";
 
 export const useBoardPageActions = (board: BoardModel) => {
   const { dispatchAddTasksList } = useTasksListDispatchers();

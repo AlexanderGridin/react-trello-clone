@@ -1,10 +1,10 @@
-import { Board } from "App/components/Board/Board";
 import { DndCard } from "App/components/DndCard/DndCard";
 import { BoardsListCell } from "../../BoardsListCell";
 import { Card } from "shared/components/Card/Card";
 import { BoardModel } from "App/entities/Board/BoardModel";
 import { mapBoardToDraggedItem } from "App/entities/Board/mappers/mapBoardToDraggedItem";
-import { useBoardFeatures } from "App/components/Board/hooks/useBoardFeatures";
+import { useBoardFeatures } from "App/widgets/Board/hooks/useBoardFeatures";
+import { Board } from "App/widgets/Board/Board";
 
 interface BoardsListItemProps {
   board: BoardModel;

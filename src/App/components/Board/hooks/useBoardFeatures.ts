@@ -4,7 +4,7 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { BoardModel } from "App/entities/Board/BoardModel";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 
-export const useBoardActions = (board: BoardModel) => {
+export const useBoardFeatures = (board: BoardModel) => {
   const navigate = useNavigate();
   const { dispatchRemoveBoard, dispatchMoveBoard } = useBoardDispatchers();
 

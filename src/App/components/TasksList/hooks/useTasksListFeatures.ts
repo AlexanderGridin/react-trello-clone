@@ -6,7 +6,7 @@ import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { TaskModel } from "App/entities/Task/TaskModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 
-export const useTasksListActions = (list: TasksListModel) => {
+export const useTasksListFeatures = (list: TasksListModel) => {
   const {
     dispatchRemoveTasksList,
     dispatchMoveTasksList,

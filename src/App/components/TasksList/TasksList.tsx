@@ -5,7 +5,7 @@ import { DndCard } from "../DndCard/DndCard";
 import { AddTask } from "./components/AddTask/AddTask";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
 import { TasksListItems } from "./components/TasksListItems/TasksListItems";
-import { useTasksListActions } from "./hooks/useTasksListActions";
+import { useTasksListFeatures } from "./hooks/useTasksListFeatures";
 
 export interface TasksListProps {
   list: TasksListModel;
@@ -13,7 +13,7 @@ export interface TasksListProps {
 }
 
 export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
-  const { remove, addTask, dropOnList } = useTasksListActions(list);
+  const { remove, addTask, dropOnList } = useTasksListFeatures(list);
 
   const BACKGROUD_COLOR = "#ebecf0";
 

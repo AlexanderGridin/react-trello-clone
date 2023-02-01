@@ -2,6 +2,7 @@ import { AppState } from "App/state/models/AppState";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { PinTasksListAction } from "../actions/pinTasksList";
+import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
 
 export const pinTasksListReducer = (
   state: AppState,
@@ -18,9 +19,11 @@ export const pinTasksListReducer = (
 
       return {
         ...board,
-        tasksLists: board.tasksLists.filter(
-          (list: TasksListModel) => list.id !== listToPin.id
-        ),
+        tasksLists: removeItemFromArray({
+          array: board.tasksLists,
+          item: listToPin,
+          uniqueKey: "id",
+        }),
         pinnedTasksLists: [...board.pinnedTasksLists, listToPin],
       };
     }),

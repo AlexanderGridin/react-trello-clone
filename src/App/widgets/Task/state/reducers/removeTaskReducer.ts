@@ -1,14 +1,15 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppState } from "App/state/models/AppState";
+import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
 import { RemoveTaskAction } from "../actions/removeTask";
 
 export const removeTaskReducer = (
   state: AppState,
   action: RemoveTaskAction
 ): AppState => {
-  const taskToRemove: TaskModel = action.payload.task;
+  const taskToRemove: TaskViewModel = action.payload.task;
 
   return {
     ...state,
@@ -27,9 +28,11 @@ export const removeTaskReducer = (
             }
           : {
               ...list,
-              tasks: list.tasks.filter(
-                (task: TaskModel) => task.id !== taskToRemove.id
-              ),
+              tasks: removeItemFromArray({
+                array: list.tasks,
+                item: taskToRemove,
+                uniqueKey: "id",
+              }),
             }
       );
 

@@ -1,8 +1,8 @@
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListItem } from "./components/TasksListItem";
 
 interface TasksListItemsProps {
-  tasks: TaskModel[];
+  tasks: TaskViewModel[];
 }
 
 export const TasksListItems = ({ tasks }: TasksListItemsProps) => {
@@ -12,7 +12,7 @@ export const TasksListItems = ({ tasks }: TasksListItemsProps) => {
 
   return (
     <ul className="plain-list">
-      {tasks.map((task: TaskModel) => (
+      {tasks.map((task: TaskViewModel) => (
         <TasksListItem task={task} key={task.id} />
       ))}
     </ul>

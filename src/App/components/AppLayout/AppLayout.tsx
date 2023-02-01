@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import { AppNavigation } from "./AppNavigation/AppNavigation";
+import { AppNavigation } from "App/components/AppNavigation/AppNavigation";
 
 const AppLayoutContainer = styled.div`
   height: 100%;

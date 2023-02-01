@@ -2,7 +2,7 @@ import { useTasksListDispatchers } from "../state/hooks/useTasksListDispatchers"
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { useDraggedItemDispatchers } from "App/state/shared/DraggedItem/hooks/useDraggedItemDispatchers";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { useTaskDispatchers } from "App/widgets/Task/state/hooks/useTaskDispatchers";
 
@@ -28,7 +28,7 @@ export const useTasksListFeatures = (list: TasksListModel) => {
 
   const addTask = (content: string) =>
     dispatchAddTask(
-      new TaskModel({ listId: list.id, boardId: list.boardId, content })
+      new TaskViewModel({ listId: list.id, boardId: list.boardId, content })
     );
 
   const dropOnList = (draggedItem: AppDraggedItem) => {

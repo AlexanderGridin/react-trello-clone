@@ -1,7 +1,7 @@
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 
 export interface AppState {
-  boards: BoardModel[];
+  boards: BoardViewModel[];
   draggedItem: AppDraggedItem | null;
 }

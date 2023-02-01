@@ -1,4 +1,4 @@
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TaskModel } from "App/entities/Task/TaskModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppState } from "App/state/models/AppState";
@@ -12,7 +12,7 @@ export const removeTaskReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardModel) => {
+    boards: state.boards.map((board: BoardViewModel) => {
       if (board.id !== taskToRemove.boardId) {
         return { ...board };
       }

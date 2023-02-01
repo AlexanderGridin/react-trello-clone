@@ -1,6 +1,6 @@
 import { AppState } from "App/state/models/AppState";
 import { AddTaskAction } from "../actions/addTask";
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TaskModel } from "App/entities/Task/TaskModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 
@@ -12,7 +12,7 @@ export const addTaskReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardModel) => {
+    boards: state.boards.map((board: BoardViewModel) => {
       if (board.id !== taskToAdd.boardId) {
         return { ...board };
       }

@@ -1,13 +1,13 @@
 import { generateId } from "shared/utils/generateId";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 
-export interface BoardModelConfig {
+export interface BoardDtoConfig {
   id?: string;
   title?: string;
   tasksLists?: TasksListModel[];
 }
 
-export class BoardModel {
+export class BoardDto {
   public readonly id: string;
 
   public title: string;
@@ -17,7 +17,7 @@ export class BoardModel {
     title = "",
     id = generateId(),
     tasksLists = [],
-  }: BoardModelConfig) {
+  }: BoardDtoConfig) {
     this.title = title;
     this.id = id;
     this.tasksLists = tasksLists;

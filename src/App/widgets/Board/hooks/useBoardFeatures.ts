@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { useBoardDispatchers } from "../state/hooks/useBoardDispatchers";
 
-export const useBoardFeatures = (board: BoardModel) => {
+export const useBoardFeatures = (board: BoardViewModel) => {
   const navigate = useNavigate();
   const { dispatchRemoveBoard, dispatchMoveBoard } = useBoardDispatchers();
 

@@ -7,7 +7,7 @@ import { BoardPageHeader } from "./components/BoardPageHeader";
 import { BoardPageCell } from "./components/BoardPageCell";
 import { BoardPageContent } from "./components/BoardPageContent";
 import { BoardPageTasksLists } from "./components/BoardPageTasksLists";
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { useBoardPageFeatures } from "./hooks/useBoardPageFeatures";
 
 export const BoardPage = () => {
@@ -15,7 +15,8 @@ export const BoardPage = () => {
   const { boards } = useAppState();
 
   const board =
-    boards.find((board: BoardModel) => board.id === id) || new BoardModel({});
+    boards.find((board: BoardViewModel) => board.id === id) ||
+    new BoardViewModel({});
 
   const { addTasksList } = useBoardPageFeatures(board);
 

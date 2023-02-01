@@ -1,4 +1,4 @@
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppState } from "App/state/models/AppState";
 import { PushTaskInTasksListAction } from "../actions/pushTaskInTasksList";
@@ -11,7 +11,7 @@ export const pushTaskInTasksListReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardModel) => {
+    boards: state.boards.map((board: BoardViewModel) => {
       if (board.id !== list.boardId) {
         return { ...board };
       }

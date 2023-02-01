@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 
 const BoardPageTitle = styled.h1`
   text-align: center;
@@ -15,7 +15,7 @@ const BoardPageHeaderContainer = styled.header`
 `;
 
 interface BoardPageHeaderProps {
-  board: BoardModel;
+  board: BoardViewModel;
 }
 
 export const BoardPageHeader = ({ board }: BoardPageHeaderProps) => {

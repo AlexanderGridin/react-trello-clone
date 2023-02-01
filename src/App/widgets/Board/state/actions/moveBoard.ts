@@ -1,15 +1,15 @@
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { createAction } from "shared/state/utils/createAction";
 
 interface MoveBoardActionPayload {
-  boardToMove: BoardModel;
-  boardToReplace: BoardModel;
+  boardToMove: BoardViewModel;
+  boardToReplace: BoardViewModel;
 }
 
 export const moveBoard = (
-  boardToMove: BoardModel,
-  boardToReplace: BoardModel
+  boardToMove: BoardViewModel,
+  boardToReplace: BoardViewModel
 ) => {
   const { MoveBoard } = AppActionType;
   const payload: MoveBoardActionPayload = {

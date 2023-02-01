@@ -1,4 +1,4 @@
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppState } from "App/state/models/AppState";
 import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem";
@@ -14,13 +14,13 @@ export const moveBoardReducer = (
   const boardToReplace = action.payload.boardToReplace;
 
   const boardToMoveIndex = boards.findIndex(
-    ({ id }: BoardModel) => id === boardToMove.id
+    ({ id }: BoardViewModel) => id === boardToMove.id
   );
   const boardToReplaceIndex = boards.findIndex(
-    ({ id }: BoardModel) => id === boardToReplace.id
+    ({ id }: BoardViewModel) => id === boardToReplace.id
   );
 
-  const movingConfig: ArrayUtilConfigWithArrayItem<BoardModel> = {
+  const movingConfig: ArrayUtilConfigWithArrayItem<BoardViewModel> = {
     array: boards,
     item: boardToMove,
     arrayItem: boardToReplace,

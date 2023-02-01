@@ -1,8 +1,8 @@
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { BoardsListItem } from "./components/BoardsListItem";
 
 interface BoardsListItemsProps {
-  boards: BoardModel[];
+  boards: BoardViewModel[];
 }
 
 export const BoardsListItems = ({ boards }: BoardsListItemsProps) => {
@@ -12,7 +12,7 @@ export const BoardsListItems = ({ boards }: BoardsListItemsProps) => {
 
   return (
     <>
-      {boards.map((board: BoardModel) => (
+      {boards.map((board: BoardViewModel) => (
         <BoardsListItem board={board} key={board.id} />
       ))}
     </>

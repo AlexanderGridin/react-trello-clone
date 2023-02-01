@@ -1,5 +1,5 @@
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppState } from "App/state/models/AppState";
+import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
 import { RemoveBoardAction } from "../actions/removeBoard";
 
 export const removeBoardReducer = (
@@ -10,8 +10,10 @@ export const removeBoardReducer = (
 
   return {
     ...state,
-    boards: state.boards.filter(
-      ({ id }: BoardViewModel) => id !== boardToRemove.id
-    ),
+    boards: removeItemFromArray({
+      array: state.boards,
+      item: boardToRemove,
+      uniqueKey: "id",
+    }),
   };
 };

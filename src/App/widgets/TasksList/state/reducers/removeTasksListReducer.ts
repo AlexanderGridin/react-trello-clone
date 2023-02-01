@@ -1,6 +1,7 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppState } from "App/state/models/AppState";
+import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
 import { RemoveTasksListAction } from "../actions/removeTasksList";
 
 export const removeTasksListReducer = (
@@ -16,16 +17,22 @@ export const removeTasksListReducer = (
         return { ...board };
       }
 
-      const totalPinned = board.pinnedTasksLists.length;
-      const lists = [...board.pinnedTasksLists, ...board.tasksLists];
-      const updatedLists = lists.filter(
-        (list: TasksListModel) => list.id !== listToRemove.id
-      );
-
       return {
         ...board,
-        pinnedTasksLists: updatedLists.slice(0, totalPinned),
-        tasksLists: updatedLists.slice(totalPinned),
+        pinnedTasksLists: listToRemove.isPinned
+          ? removeItemFromArray({
+              array: board.pinnedTasksLists,
+              item: listToRemove,
+              uniqueKey: "id",
+            })
+          : [...board.pinnedTasksLists],
+        tasksLists: listToRemove.isPinned
+          ? [...board.tasksLists]
+          : removeItemFromArray({
+              array: board.tasksLists,
+              item: listToRemove,
+              uniqueKey: "id",
+            }),
       };
     }),
   };

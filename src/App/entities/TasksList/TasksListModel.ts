@@ -14,6 +14,7 @@ export class TasksListModel {
   public title: string;
   public boardId: string;
   public tasks: TaskModel[];
+  public isPinned = false;
 
   constructor({
     id = generateId(),

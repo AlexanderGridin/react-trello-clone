@@ -1,4 +1,4 @@
-import { AppDraggedItem } from "App/models/AppDraggedItem";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { createAction } from "shared/state/utils/createAction";
 

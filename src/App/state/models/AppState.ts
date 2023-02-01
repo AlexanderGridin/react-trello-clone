@@ -1,5 +1,5 @@
-import { BoardModel } from "App/components/Board/models/BoardModel";
-import { AppDraggedItem } from "App/models/AppDraggedItem";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
+import { BoardModel } from "App/entities/Board/BoardModel";
 
 export interface AppState {
   boards: BoardModel[];

@@ -1,6 +1,6 @@
-import { BoardModel } from "App/components/Board/models/BoardModel";
-import { TaskModel } from "App/components/Task/models/TaskModel";
-import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
+import { BoardModel } from "App/entities/Board/BoardModel";
+import { TaskModel } from "App/entities/Task/TaskModel";
+import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { generateId } from "shared/utils/generateId";
 import { AppState } from "./models/AppState";
 

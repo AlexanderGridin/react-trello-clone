@@ -1,5 +1,5 @@
-import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
-import { TasksList } from "App/components/TasksList/TasksList";
+import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksList } from "App/widgets/TasksList/TasksList";
 import { BoardPageCell } from "./BoardPageCell";
 
 interface BoardPageTasksListsProps {

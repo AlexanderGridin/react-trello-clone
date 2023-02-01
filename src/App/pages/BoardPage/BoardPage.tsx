@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useAppState } from "App/state/hooks/useAppState";
 import { AddList } from "./components/AddList/AddList";
-import { useBoardPageActions } from "./hooks/useBoardPageActions";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { BoardPageDragLayer } from "./components/BoardPageDragLayer";
 import { BoardPageHeader } from "./components/BoardPageHeader";
 import { BoardPageCell } from "./components/BoardPageCell";
 import { BoardPageContent } from "./components/BoardPageContent";
 import { BoardPageTasksLists } from "./components/BoardPageTasksLists";
-import { BoardModel } from "App/components/Board/models/BoardModel";
+import { BoardModel } from "App/entities/Board/BoardModel";
+import { useBoardPageFeatures } from "./hooks/useBoardPageFeatures";
 
 export const BoardPage = () => {
   const { id } = useParams();
@@ -17,7 +17,7 @@ export const BoardPage = () => {
   const board =
     boards.find((board: BoardModel) => board.id === id) || new BoardModel({});
 
-  const { addTasksList } = useBoardPageActions(board);
+  const { addTasksList } = useBoardPageFeatures(board);
 
   if (!board) {
     return null;

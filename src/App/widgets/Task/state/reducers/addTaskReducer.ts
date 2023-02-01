@@ -17,18 +17,24 @@ export const addTaskReducer = (
         return { ...board };
       }
 
+      const totalPinned = board.pinnedTasksLists.length;
+      const lists = [...board.pinnedTasksLists, ...board.tasksLists];
+
+      const updatedLists = lists.map((list: TasksListModel) =>
+        list.id !== taskToAdd.listId
+          ? {
+              ...list,
+            }
+          : {
+              ...list,
+              tasks: [...list.tasks, taskToAdd],
+            }
+      );
+
       return {
         ...board,
-        tasksLists: board.tasksLists.map((list: TasksListModel) => {
-          if (list.id !== taskToAdd.listId) {
-            return { ...list };
-          }
-
-          return {
-            ...list,
-            tasks: [...list.tasks, taskToAdd],
-          };
-        }),
+        pinnedTasksLists: updatedLists.slice(0, totalPinned),
+        tasksLists: updatedLists.slice(totalPinned),
       };
     }),
   };

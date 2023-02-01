@@ -16,18 +16,24 @@ export const pushTaskInTasksListReducer = (
         return { ...board };
       }
 
+      const totalPinned = board.pinnedTasksLists.length;
+      const lists = [...board.pinnedTasksLists, ...board.tasksLists];
+
+      const updatedLists = lists.map((tasksList: TasksListModel) =>
+        tasksList.id !== list.id
+          ? {
+              ...tasksList,
+            }
+          : {
+              ...tasksList,
+              tasks: [{ ...task, listId: tasksList.id }],
+            }
+      );
+
       return {
         ...board,
-        tasksLists: board.tasksLists.map((tasksList: TasksListModel) => {
-          if (tasksList.id !== list.id) {
-            return { ...tasksList };
-          }
-
-          return {
-            ...tasksList,
-            tasks: [{ ...task, listId: tasksList.id }],
-          };
-        }),
+        pinnedTasksLists: updatedLists.slice(0, totalPinned),
+        tasksLists: updatedLists.slice(totalPinned),
       };
     }),
   };

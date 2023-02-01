@@ -16,11 +16,16 @@ export const removeTasksListReducer = (
         return { ...board };
       }
 
+      const totalPinned = board.pinnedTasksLists.length;
+      const lists = [...board.pinnedTasksLists, ...board.tasksLists];
+      const updatedLists = lists.filter(
+        (list: TasksListModel) => list.id !== listToRemove.id
+      );
+
       return {
         ...board,
-        tasksLists: board.tasksLists.filter(
-          ({ id }: TasksListModel) => id !== listToRemove.id
-        ),
+        pinnedTasksLists: updatedLists.slice(0, totalPinned),
+        tasksLists: updatedLists.slice(totalPinned),
       };
     }),
   };

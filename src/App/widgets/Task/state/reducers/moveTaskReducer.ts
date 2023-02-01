@@ -18,26 +18,32 @@ export const moveTaskReducer = (
         return { ...board };
       }
 
+      const totalPinned = board.pinnedTasksLists.length;
+      const lists = [...board.pinnedTasksLists, ...board.tasksLists];
+
+      const updatedLists = lists.map((list: TasksListModel) => {
+        if (list.id === taskToReplace.listId) {
+          return replaceTaskInList({
+            list,
+            task: taskToMove,
+            taskToReplace,
+          });
+        }
+
+        if (list.id === taskToMove.listId) {
+          return removeTaskFromList({
+            list,
+            task: taskToMove,
+          });
+        }
+
+        return { ...list };
+      });
+
       return {
         ...board,
-        tasksLists: board.tasksLists.map((list: TasksListModel) => {
-          if (list.id === taskToReplace.listId) {
-            return replaceTaskInList({
-              list,
-              task: taskToMove,
-              taskToReplace,
-            });
-          }
-
-          if (list.id === taskToMove.listId) {
-            return removeTaskFromList({
-              list,
-              task: taskToMove,
-            });
-          }
-
-          return { ...list };
-        }),
+        pinnedTasksLists: updatedLists.slice(0, totalPinned),
+        tasksLists: updatedLists.slice(totalPinned),
       };
     }),
   };

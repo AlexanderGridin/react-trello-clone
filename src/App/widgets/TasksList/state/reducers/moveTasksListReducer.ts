@@ -1,10 +1,7 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppState } from "App/state/models/AppState";
-import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
-import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem";
-import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem";
 import { MoveTasksListAction } from "../actions/moveTasksList";
+import { moveTasksLists } from "./utils/moveTasksLists";
 
 export const moveTasksListReducer = (
   state: AppState,
@@ -20,28 +17,20 @@ export const moveTasksListReducer = (
         return { ...board };
       }
 
-      const listToMoveIndex = board.tasksLists.findIndex(
-        ({ id }: TasksListModel) => id === listToMove.id
-      );
-      const listToReplaceIndex = board.tasksLists.findIndex(
-        ({ id }: TasksListModel) => id === listToReplace.id
-      );
-
-      const movingConfig: ArrayUtilConfigWithArrayItem<TasksListModel> = {
-        array: board.tasksLists,
-        item: listToMove,
-        arrayItem: listToReplace,
-        uniqueKey: "id",
-      };
-
-      const tasksLists =
-        listToMoveIndex < listToReplaceIndex
-          ? moveItemAfterArrayItem<TasksListModel>(movingConfig)
-          : moveItemBeforeArrayItem<TasksListModel>(movingConfig);
+      if (listToMove.isPinned) {
+        return {
+          ...board,
+          pinnedTasksLists: moveTasksLists(
+            board.pinnedTasksLists,
+            listToMove,
+            listToReplace
+          ),
+        };
+      }
 
       return {
         ...board,
-        tasksLists,
+        tasksLists: moveTasksLists(board.tasksLists, listToMove, listToReplace),
       };
     }),
   };

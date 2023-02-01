@@ -11,6 +11,8 @@ export const useTasksListFeatures = (list: TasksListModel) => {
     dispatchRemoveTasksList,
     dispatchMoveTasksList,
     dispatchPushTaskInTasksList,
+    dispatchPinTasksList,
+    dispatchUnpinTasksList,
   } = useTasksListDispatchers();
 
   const { dispatchAddTask, dispatchRemoveTask } = useTaskDispatchers();
@@ -19,13 +21,21 @@ export const useTasksListFeatures = (list: TasksListModel) => {
 
   const remove = () => dispatchRemoveTasksList(list);
 
+  const togglePin = () =>
+    list.isPinned
+      ? dispatchUnpinTasksList({ ...list, isPinned: false })
+      : dispatchPinTasksList({ ...list, isPinned: true });
+
   const addTask = (content: string) =>
     dispatchAddTask(
       new TaskModel({ listId: list.id, boardId: list.boardId, content })
     );
 
   const dropOnList = (draggedItem: AppDraggedItem) => {
-    if (draggedItem.type === DraggedItemType.TasksList) {
+    if (
+      draggedItem.type === DraggedItemType.TasksList &&
+      draggedItem.data.isPinned === list.isPinned
+    ) {
       dispatchMoveTasksList(draggedItem.data, list);
       return;
     }
@@ -45,5 +55,5 @@ export const useTasksListFeatures = (list: TasksListModel) => {
     });
   };
 
-  return { remove, addTask, dropOnList };
+  return { remove, togglePin, addTask, dropOnList };
 };

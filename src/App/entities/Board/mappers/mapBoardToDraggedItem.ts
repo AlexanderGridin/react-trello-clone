@@ -1,4 +1,4 @@
-import { BoardModel } from "App/components/Board/models/BoardModel";
+import { BoardModel } from "App/entities/Board/BoardModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { AppDraggedItem } from "App/models/AppDraggedItem";
 

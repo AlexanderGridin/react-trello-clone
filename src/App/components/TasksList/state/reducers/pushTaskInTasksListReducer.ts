@@ -1,4 +1,4 @@
-import { BoardModel } from "App/components/Board/models/BoardModel";
+import { BoardModel } from "App/entities/Board/BoardModel";
 import { AppState } from "App/state/models/AppState";
 import { TasksListModel } from "../../models/TasksListModel";
 import { PushTaskInTasksListAction } from "../actions/pushTaskInTasksList";

@@ -1,5 +1,5 @@
+import { BoardModel } from "App/entities/Board/BoardModel";
 import { AppState } from "App/state/models/AppState";
-import { BoardModel } from "../../models/BoardModel";
 import { RemoveBoardAction } from "../actions/removeBoard";
 
 export const removeBoardReducer = (

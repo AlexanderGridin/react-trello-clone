@@ -1,7 +1,7 @@
+import { BoardModel } from "App/entities/Board/BoardModel";
 import { RemoveButton } from "../RemoveButton/RemoveButton";
 import { BoardContainer } from "./components/BoardContainer";
 import { BoardTitle } from "./components/BoardTitle";
-import { BoardModel } from "./models/BoardModel";
 
 export interface BoardProps {
   board: BoardModel;

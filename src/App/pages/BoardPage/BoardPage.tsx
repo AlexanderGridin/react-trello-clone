@@ -8,7 +8,7 @@ import { BoardPageHeader } from "./components/BoardPageHeader";
 import { BoardPageCell } from "./components/BoardPageCell";
 import { BoardPageContent } from "./components/BoardPageContent";
 import { BoardPageTasksLists } from "./components/BoardPageTasksLists";
-import { BoardModel } from "App/components/Board/models/BoardModel";
+import { BoardModel } from "App/entities/Board/BoardModel";
 
 export const BoardPage = () => {
   const { id } = useParams();

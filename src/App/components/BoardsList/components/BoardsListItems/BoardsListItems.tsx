@@ -1,4 +1,4 @@
-import { BoardModel } from "App/components/Board/models/BoardModel";
+import { BoardModel } from "App/entities/Board/BoardModel";
 import { BoardsListItem } from "./components/BoardsListItem";
 
 interface BoardsListItemsProps {

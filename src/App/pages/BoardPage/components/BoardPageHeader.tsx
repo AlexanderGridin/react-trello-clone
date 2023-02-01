@@ -1,5 +1,5 @@
-import { BoardModel } from "App/components/Board/models/BoardModel";
 import styled from "styled-components";
+import { BoardModel } from "App/entities/Board/BoardModel";
 
 const BoardPageTitle = styled.h1`
   text-align: center;

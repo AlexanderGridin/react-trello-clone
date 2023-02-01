@@ -1,5 +1,5 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppState } from "App/state/models/AppState";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
@@ -9,7 +9,7 @@ export const removeTaskReducer = (
   state: AppState,
   action: RemoveTaskAction
 ): AppState => {
-  const taskToRemove: TaskModel = action.payload.task;
+  const taskToRemove: TaskViewModel = action.payload.task;
 
   return {
     ...state,

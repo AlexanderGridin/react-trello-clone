@@ -1,4 +1,4 @@
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { useAppState } from "App/state/hooks/useAppState";
 import { addTasksList } from "../actions/addTasksList";
@@ -22,8 +22,10 @@ export const useTasksListDispatchers = () => {
     listToReplace: TasksListModel
   ) => dispatch(moveTasksList(listToMove, listToReplace));
 
-  const dispatchPushTaskInTasksList = (list: TasksListModel, task: TaskModel) =>
-    dispatch(pushTaskInTasksList(list, task));
+  const dispatchPushTaskInTasksList = (
+    list: TasksListModel,
+    task: TaskViewModel
+  ) => dispatch(pushTaskInTasksList(list, task));
 
   const dispatchPinTasksList = (list: TasksListModel) =>
     dispatch(pinTasksList(list));

@@ -1,5 +1,5 @@
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { TasksListItem } from "App/widgets/TasksList/components/TasksListItems/components/TasksListItem";
@@ -16,7 +16,7 @@ export const BoardPageDraggedItem = ({ item }: BoardPageDraggedItemProps) => {
       return <TasksList list={list} isDragPreview />;
 
     case DraggedItemType.Task:
-      const task: TaskModel = item.data;
+      const task: TaskViewModel = item.data;
       return <TasksListItem task={task} isDragPreview />;
 
     default:

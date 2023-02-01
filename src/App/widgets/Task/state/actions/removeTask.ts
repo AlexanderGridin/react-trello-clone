@@ -1,12 +1,12 @@
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { createAction } from "shared/state/utils/createAction";
 
 interface RemoveTaskActionPayload {
-  task: TaskModel;
+  task: TaskViewModel;
 }
 
-export const removeTask = (task: TaskModel) => {
+export const removeTask = (task: TaskViewModel) => {
   const { RemoveTask } = AppActionType;
   const payload: RemoveTaskActionPayload = {
     task,

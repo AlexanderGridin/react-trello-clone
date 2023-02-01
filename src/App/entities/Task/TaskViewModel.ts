@@ -1,19 +1,23 @@
 import { generateId } from "shared/utils/generateId";
 
-interface TaskModelConfig {
+interface TaskViewModelConfig {
   boardId?: string;
   listId?: string;
   content?: string;
 }
 
-export class TaskModel {
+export class TaskViewModel {
   public readonly id: string = generateId();
 
   public listId: string;
   public boardId: string;
   public content: string;
 
-  constructor({ listId = "", boardId = "", content = "" }: TaskModelConfig) {
+  constructor({
+    listId = "",
+    boardId = "",
+    content = "",
+  }: TaskViewModelConfig) {
     this.listId = listId;
     this.boardId = boardId;
     this.content = content;

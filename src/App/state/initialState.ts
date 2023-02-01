@@ -1,6 +1,6 @@
 import { BoardDto } from "App/entities/Board/BoardDto";
 import { mapBoardDtosToViewModels } from "App/entities/Board/mappers/mapBoardDtoToViewModel";
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { generateId } from "shared/utils/generateId";
 import { AppState } from "./models/AppState";
@@ -20,7 +20,7 @@ const boards: BoardDto[] = boardIds.map(
             boardId: boardId,
             title: `Test tasks list ${index + 1}`,
             tasks: [
-              new TaskModel({
+              new TaskViewModel({
                 listId,
                 boardId,
                 content: `Test task ${index + 1}`,

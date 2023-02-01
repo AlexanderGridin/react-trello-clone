@@ -1,14 +1,14 @@
 import { AppState } from "App/state/models/AppState";
 import { AddTaskAction } from "../actions/addTask";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 
 export const addTaskReducer = (
   state: AppState,
   action: AddTaskAction
 ): AppState => {
-  const taskToAdd: TaskModel = { ...action.payload.task };
+  const taskToAdd: TaskViewModel = { ...action.payload.task };
 
   return {
     ...state,

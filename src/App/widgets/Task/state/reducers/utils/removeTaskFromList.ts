@@ -1,15 +1,15 @@
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
 
 interface Config {
   list: TasksListModel;
-  task: TaskModel;
+  task: TaskViewModel;
 }
 
 export const removeTaskFromList = ({ list, task }: Config): TasksListModel => ({
   ...list,
-  tasks: removeItemFromArray<TaskModel>({
+  tasks: removeItemFromArray<TaskViewModel>({
     array: list.tasks,
     item: task,
     uniqueKey: "id",

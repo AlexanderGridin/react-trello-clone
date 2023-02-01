@@ -1,12 +1,12 @@
 import { DndCard } from "App/components/DndCard/DndCard";
 import { mapTaskToDraggedItem } from "App/entities/Task/mappers/mapTaskToDraggedItem";
-import { TaskModel } from "App/entities/Task/TaskModel";
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { useTaskFeatures } from "App/widgets/Task/hooks/useTaskFeatures";
 import { Task } from "App/widgets/Task/Task";
 import { Card } from "shared/components/Card/Card";
 
 interface TasksListItemProps {
-  task: TaskModel;
+  task: TaskViewModel;
   isDragPreview?: boolean;
 }
 

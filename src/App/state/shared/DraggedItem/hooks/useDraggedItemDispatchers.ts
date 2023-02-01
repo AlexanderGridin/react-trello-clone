@@ -1,4 +1,4 @@
-import { AppDraggedItem } from "App/models/AppDraggedItem";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { useAppState } from "App/state/hooks/useAppState";
 import { setDraggedItem } from "../actions/setDraggedItem";
 

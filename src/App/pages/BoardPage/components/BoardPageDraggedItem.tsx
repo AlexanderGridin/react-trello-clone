@@ -2,8 +2,8 @@ import { TaskModel } from "App/components/Task/models/TaskModel";
 import { TasksListItem } from "App/components/TasksList/components/TasksListItems/components/TasksListItem";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { TasksList } from "App/components/TasksList/TasksList";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { AppDraggedItem } from "App/models/AppDraggedItem";
 
 interface BoardPageDraggedItemProps {
   item: AppDraggedItem;

@@ -1,10 +1,10 @@
 import { TasksListModel } from "../models/TasksListModel";
 import { useTasksListDispatchers } from "../state/hooks/useTasksListDispatchers";
-import { AppDraggedItem } from "App/models/AppDraggedItem";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { useTaskDispatchers } from "App/components/Task/state/hooks/useTaskDispatchers";
 import { useDraggedItemDispatchers } from "App/state/shared/DraggedItem/hooks/useDraggedItemDispatchers";
 import { TaskModel } from "App/components/Task/models/TaskModel";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 
 export const useTasksListActions = (list: TasksListModel) => {
   const {

@@ -1,4 +1,4 @@
-import { AppDraggedItem } from "App/models/AppDraggedItem";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { Card, CardProps } from "shared/components/Card/Card";
 import { useDndCardDragAndDrop } from "./hooks/useDndCardDragAndDrop";
 

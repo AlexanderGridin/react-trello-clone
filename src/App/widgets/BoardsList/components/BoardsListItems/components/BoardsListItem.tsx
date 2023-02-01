@@ -17,11 +17,16 @@ export const BoardsListItem = ({
 }: BoardsListItemProps) => {
   const { remove, dropOnBoard, navigateToBoard } = useBoardFeatures(board);
   const MIN_HEIGHT = 150;
+  const BACKGROUD_COLOR = "#D8DEE9";
 
   if (isDragPreview) {
     return (
       <BoardsListCell>
-        <Card className="drag-preview" minHeight={150}>
+        <Card
+          className="drag-preview"
+          minHeight={150}
+          backgroundColor={BACKGROUD_COLOR}
+        >
           <Board board={board} onRemove={remove} />
         </Card>
       </BoardsListCell>
@@ -33,6 +38,7 @@ export const BoardsListItem = ({
       <DndCard
         minHeight={MIN_HEIGHT}
         draggedItem={mapBoardToDraggedItem(board)}
+        backgroundColor={BACKGROUD_COLOR}
         onDrop={dropOnBoard}
         onDoubleClick={navigateToBoard}
       >

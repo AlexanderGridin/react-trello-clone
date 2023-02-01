@@ -1,5 +1,5 @@
 import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
-import { TasksListModel } from "../../models/TasksListModel";
+import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { TasksListHeaderContainer } from "./components/TasksListHeaderContainer";
 import { TasksListTitle } from "./components/TasksListTitle";
 

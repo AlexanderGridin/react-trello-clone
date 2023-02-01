@@ -1,6 +1,6 @@
 import { BoardModel } from "App/entities/Board/BoardModel";
+import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppState } from "App/state/models/AppState";
-import { TasksListModel } from "../../models/TasksListModel";
 import { PushTaskInTasksListAction } from "../actions/pushTaskInTasksList";
 
 export const pushTaskInTasksListReducer = (

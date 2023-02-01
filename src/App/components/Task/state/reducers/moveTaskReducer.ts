@@ -1,5 +1,5 @@
-import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { BoardModel } from "App/entities/Board/BoardModel";
+import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppState } from "App/state/models/AppState";
 import { MoveTaskAction } from "../actions/moveTask";
 import { removeTaskFromList } from "./utils/removeTaskFromList";

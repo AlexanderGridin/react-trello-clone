@@ -1,5 +1,5 @@
-import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { TaskModel } from "App/entities/Task/TaskModel";
+import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
 
 interface Config {

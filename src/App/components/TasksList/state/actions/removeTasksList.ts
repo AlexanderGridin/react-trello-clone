@@ -1,6 +1,6 @@
+import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { createAction } from "shared/state/utils/createAction";
-import { TasksListModel } from "../../models/TasksListModel";
 
 interface RemoveTasksListActionPayload {
   list: TasksListModel;

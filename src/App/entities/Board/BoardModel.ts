@@ -1,5 +1,5 @@
-import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
 import { generateId } from "shared/utils/generateId";
+import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 
 export interface BoardModelConfig {
   id?: string;

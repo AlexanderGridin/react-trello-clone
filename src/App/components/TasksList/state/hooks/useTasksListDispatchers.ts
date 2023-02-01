@@ -1,6 +1,6 @@
 import { TaskModel } from "App/entities/Task/TaskModel";
+import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { useAppState } from "App/state/hooks/useAppState";
-import { TasksListModel } from "../../models/TasksListModel";
 import { addTasksList } from "../actions/addTasksList";
 import { moveTasksList } from "../actions/moveTasksList";
 import { pushTaskInTasksList } from "../actions/pushTaskInTasksList";

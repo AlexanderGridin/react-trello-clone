@@ -1,5 +1,5 @@
-import { TaskModel } from "App/components/Task/models/TaskModel";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
+import { TaskModel } from "App/entities/Task/TaskModel";
 import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem";
 import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem";

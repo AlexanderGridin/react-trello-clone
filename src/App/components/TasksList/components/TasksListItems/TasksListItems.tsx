@@ -1,4 +1,4 @@
-import { TaskModel } from "App/components/Task/models/TaskModel";
+import { TaskModel } from "App/entities/Task/TaskModel";
 import { TasksListItem } from "./components/TasksListItem";
 
 interface TasksListItemsProps {

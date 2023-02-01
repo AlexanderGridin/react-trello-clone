@@ -1,4 +1,4 @@
-import { TaskModel } from "App/components/Task/models/TaskModel";
+import { TaskModel } from "App/entities/Task/TaskModel";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { createAction } from "shared/state/utils/createAction";
 import { TasksListModel } from "../../models/TasksListModel";

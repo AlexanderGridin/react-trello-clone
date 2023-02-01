@@ -1,4 +1,4 @@
-import { TaskModel } from "App/components/Task/models/TaskModel";
+import { TaskModel } from "App/entities/Task/TaskModel";
 import { useAppState } from "App/state/hooks/useAppState";
 import { TasksListModel } from "../../models/TasksListModel";
 import { addTasksList } from "../actions/addTasksList";

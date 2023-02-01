@@ -1,8 +1,8 @@
 import { AppState } from "App/state/models/AppState";
 import { AddTaskAction } from "../actions/addTask";
 import { TasksListModel } from "App/components/TasksList/models/TasksListModel";
-import { TaskModel } from "../../models/TaskModel";
 import { BoardModel } from "App/entities/Board/BoardModel";
+import { TaskModel } from "App/entities/Task/TaskModel";
 
 export const addTaskReducer = (
   state: AppState,

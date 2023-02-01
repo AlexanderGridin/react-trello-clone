@@ -1,5 +1,5 @@
+import { TaskModel } from "App/entities/Task/TaskModel";
 import { useAppState } from "App/state/hooks/useAppState";
-import { TaskModel } from "../../models/TaskModel";
 import { addTask } from "../actions/addTask";
 import { moveTask } from "../actions/moveTask";
 import { removeTask } from "../actions/removeTask";

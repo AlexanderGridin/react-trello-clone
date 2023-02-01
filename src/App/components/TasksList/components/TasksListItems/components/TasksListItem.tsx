@@ -1,8 +1,8 @@
 import { DndCard } from "App/components/DndCard/DndCard";
 import { useTaskActions } from "App/components/Task/hooks/useTaskActions";
-import { mapTaskToDraggedItem } from "App/components/Task/mappers/mapTaskToDraggedItem";
-import { TaskModel } from "App/components/Task/models/TaskModel";
 import { Task } from "App/components/Task/Task";
+import { mapTaskToDraggedItem } from "App/entities/Task/mappers/mapTaskToDraggedItem";
+import { TaskModel } from "App/entities/Task/TaskModel";
 import { Card } from "shared/components/Card/Card";
 
 interface TasksListItemProps {

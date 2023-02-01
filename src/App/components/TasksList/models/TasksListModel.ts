@@ -1,5 +1,5 @@
-import { TaskModel } from "App/components/Task/models/TaskModel";
 import { generateId } from "shared/utils/generateId";
+import { TaskModel } from "App/entities/Task/TaskModel";
 
 interface TasksListModelConfig {
   id?: string;

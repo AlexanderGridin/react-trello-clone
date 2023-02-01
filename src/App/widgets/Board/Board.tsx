@@ -1,10 +1,10 @@
 import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { BoardContainer } from "./components/BoardContainer";
 import { BoardTitle } from "./components/BoardTitle";
 
 export interface BoardProps {
-  board: BoardModel;
+  board: BoardViewModel;
   onRemove: () => void;
 }
 

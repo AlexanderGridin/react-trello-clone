@@ -1,10 +1,10 @@
 import { createContext, Dispatch } from "react";
 import { AppAction } from "App/state/models/AppAction";
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 
 export interface AppStateContextProps {
-  boards: BoardModel[];
+  boards: BoardViewModel[];
   dispatch: Dispatch<AppAction>;
   draggedItem: AppDraggedItem | null;
 }

@@ -12,6 +12,8 @@ import { moveBoardReducer } from "App/widgets/Board/state/reducers/moveBoardRedu
 import { addBoardReducer } from "App/widgets/Board/state/reducers/addBoardReducer";
 import { removeBoardReducer } from "App/widgets/Board/state/reducers/removeBoardReducer";
 import { moveTasksListReducer } from "App/widgets/TasksList/state/reducers/moveTasksListReducer";
+import { pinTasksListReducer } from "App/widgets/TasksList/state/reducers/pinTasksListReducer";
+import { unpinTasksListReducer } from "App/widgets/TasksList/state/reducers/unpinTasksListReducer";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -27,6 +29,12 @@ export const appReducer = (state: AppState, action: AppAction): AppState => {
 
     case AppActionType.PushTaskInTasksList:
       return pushTaskInTasksListReducer(state, action);
+
+    case AppActionType.PinList:
+      return pinTasksListReducer(state, action);
+
+    case AppActionType.UnpinList:
+      return unpinTasksListReducer(state, action);
 
     // Task
     case AppActionType.AddTask:

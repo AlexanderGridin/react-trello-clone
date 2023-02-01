@@ -1,4 +1,5 @@
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardDto } from "App/entities/Board/BoardDto";
+import { mapBoardDtosToViewModels } from "App/entities/Board/mappers/mapBoardDtoToViewModel";
 import { TaskModel } from "App/entities/Task/TaskModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { generateId } from "shared/utils/generateId";
@@ -7,9 +8,9 @@ import { AppState } from "./models/AppState";
 const boardIds: string[] = ["1", "2", "3"];
 const listIds: string[] = [generateId(), generateId(), generateId()];
 
-const BOARDS: BoardModel[] = boardIds.map(
+const boards: BoardDto[] = boardIds.map(
   (boardId, index) =>
-    new BoardModel({
+    new BoardDto({
       id: boardId,
       title: `Test board ${index + 1}`,
       tasksLists: listIds.map(
@@ -31,6 +32,6 @@ const BOARDS: BoardModel[] = boardIds.map(
 );
 
 export const INITIAL_STATE: AppState = {
-  boards: BOARDS,
+  boards: mapBoardDtosToViewModels(boards),
   draggedItem: null,
 };

@@ -36,6 +36,10 @@ body {
 }
 
 .dragging {
+  opacity: 0.5;
+}
+
+.dragging * {
   opacity: 0;
 }
 

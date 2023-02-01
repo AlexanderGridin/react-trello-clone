@@ -6,8 +6,10 @@ import { MoveTaskAction } from "App/widgets/Task/state/actions/moveTask";
 import { RemoveTaskAction } from "App/widgets/Task/state/actions/removeTask";
 import { AddTasksListAction } from "App/widgets/TasksList/state/actions/addTasksList";
 import { MoveTasksListAction } from "App/widgets/TasksList/state/actions/moveTasksList";
+import { PinTasksListAction } from "App/widgets/TasksList/state/actions/pinTasksList";
 import { PushTaskInTasksListAction } from "App/widgets/TasksList/state/actions/pushTaskInTasksList";
 import { RemoveTasksListAction } from "App/widgets/TasksList/state/actions/removeTasksList";
+import { UnpinTasksListAction } from "App/widgets/TasksList/state/actions/unpinTasksList";
 import { SetDraggedItemAction } from "../shared/DraggedItem/actions/setDraggedItem";
 
 export type AppAction =
@@ -16,6 +18,8 @@ export type AppAction =
   | RemoveTasksListAction
   | MoveTasksListAction
   | PushTaskInTasksListAction
+  | PinTasksListAction
+  | UnpinTasksListAction
   //Task
   | AddTaskAction
   | RemoveTaskAction

@@ -1,4 +1,4 @@
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { AppState } from "App/state/models/AppState";
 import { MoveTaskAction } from "../actions/moveTask";
@@ -13,31 +13,37 @@ export const moveTaskReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardModel) => {
+    boards: state.boards.map((board: BoardViewModel) => {
       if (board.id !== taskToMove.boardId) {
         return { ...board };
       }
 
+      const totalPinned = board.pinnedTasksLists.length;
+      const lists = [...board.pinnedTasksLists, ...board.tasksLists];
+
+      const updatedLists = lists.map((list: TasksListModel) => {
+        if (list.id === taskToReplace.listId) {
+          return replaceTaskInList({
+            list,
+            task: taskToMove,
+            taskToReplace,
+          });
+        }
+
+        if (list.id === taskToMove.listId) {
+          return removeTaskFromList({
+            list,
+            task: taskToMove,
+          });
+        }
+
+        return { ...list };
+      });
+
       return {
         ...board,
-        tasksLists: board.tasksLists.map((list: TasksListModel) => {
-          if (list.id === taskToReplace.listId) {
-            return replaceTaskInList({
-              list,
-              task: taskToMove,
-              taskToReplace,
-            });
-          }
-
-          if (list.id === taskToMove.listId) {
-            return removeTaskFromList({
-              list,
-              task: taskToMove,
-            });
-          }
-
-          return { ...list };
-        }),
+        pinnedTasksLists: updatedLists.slice(0, totalPinned),
+        tasksLists: updatedLists.slice(totalPinned),
       };
     }),
   };

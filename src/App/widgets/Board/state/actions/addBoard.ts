@@ -1,12 +1,12 @@
-import { BoardModel } from "App/entities/Board/BoardModel";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { createAction } from "shared/state/utils/createAction";
 
 interface AddBoardActionPayload {
-  board: BoardModel;
+  board: BoardViewModel;
 }
 
-export const addBoard = (board: BoardModel) => {
+export const addBoard = (board: BoardViewModel) => {
   const { AddBoard } = AppActionType;
   const payload: AddBoardActionPayload = {
     board,

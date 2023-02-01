@@ -29,7 +29,9 @@ export const BoardPage = () => {
       <BoardPageContent>
         <BoardPageDragLayer />
 
-        <BoardPageTasksLists lists={board.tasksLists} />
+        <BoardPageTasksLists
+          lists={[...board.pinnedTasksLists, ...board.tasksLists]}
+        />
 
         <BoardPageCell className="mr-0">
           <AddList onAdd={addTasksList}>+ Add new list</AddList>

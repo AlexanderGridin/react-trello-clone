@@ -1,6 +1,5 @@
 import { AppState } from "./models/AppState";
 import { AppAction } from "./models/AppAction";
-import { setDraggedItemReducer } from "./shared/DraggedItem/reducers/setDraggedItemReducer";
 import { AppActionType } from "./enums/AppActionType.enum";
 import { addBoardReducer } from "App/entities/Board/state/reducers/addBoardReducer";
 import { removeBoardReducer } from "App/entities/Board/state/reducers/removeBoardReducer";
@@ -14,6 +13,7 @@ import { moveTasksListReducer } from "App/entities/TasksList/state/reducers/move
 import { pushTaskInTasksListReducer } from "App/entities/TasksList/state/reducers/pushTaskInTasksListReducer";
 import { pinTasksListReducer } from "App/entities/TasksList/state/reducers/pinTasksListReducer";
 import { unpinTasksListReducer } from "App/entities/TasksList/state/reducers/unpinTasksListReducer";
+import { setAppDraggedItemReducer } from "App/entities/AppDraggedItem/state/reducers/setAppDraggedItemReducer";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -47,8 +47,8 @@ export const appReducer = (state: AppState, action: AppAction): AppState => {
       return moveTaskReducer(state, action);
 
     // DraggedItem
-    case AppActionType.SetDraggedItem:
-      return setDraggedItemReducer(state, action);
+    case AppActionType.SetAppDraggedItem:
+      return setAppDraggedItemReducer(state, action);
 
     // Board
     case AppActionType.AddBoard:

@@ -1,3 +1,4 @@
+import { SetAppDraggedItemAction } from "App/entities/AppDraggedItem/state/actions/setAppDraggedItem";
 import { AddBoardAction } from "App/entities/Board/state/actions/addBoard";
 import { MoveBoardAction } from "App/entities/Board/state/actions/moveBoard";
 import { RemoveBoardAction } from "App/entities/Board/state/actions/removeBoard";
@@ -10,7 +11,6 @@ import { PinTasksListAction } from "App/entities/TasksList/state/actions/pinTask
 import { PushTaskInTasksListAction } from "App/entities/TasksList/state/actions/pushTaskInTasksList";
 import { RemoveTasksListAction } from "App/entities/TasksList/state/actions/removeTasksList";
 import { UnpinTasksListAction } from "App/entities/TasksList/state/actions/unpinTasksList";
-import { SetDraggedItemAction } from "App/state/shared/DraggedItem/actions/setDraggedItem";
 
 export type AppAction =
   // TasksList
@@ -25,7 +25,7 @@ export type AppAction =
   | RemoveTaskAction
   | MoveTaskAction
   //DraggedItem
-  | SetDraggedItemAction
+  | SetAppDraggedItemAction
   // Board
   | AddBoardAction
   | RemoveBoardAction

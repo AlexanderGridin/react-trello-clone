@@ -1,23 +1,23 @@
 import { useEffect } from "react";
 import { useDrag } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
-import { useDraggedItemDispatchers } from "App/state/shared/DraggedItem/hooks/useDraggedItemDispatchers";
 import { useAppState } from "App/state/hooks/useAppState";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
+import { useAppDraggedItemDispatchers } from "App/entities/AppDraggedItem/state/hooks/useAppDraggedItemDispatchers";
 
 export const useItemDrag = (item: AppDraggedItem) => {
   const { draggedItem } = useAppState();
   const isDragging = draggedItem?.id === item.id;
 
-  const { dispatchSetDraggedItem } = useDraggedItemDispatchers();
+  const { dispatchSetAppDraggedItem } = useAppDraggedItemDispatchers();
 
   const [, drag, preview] = useDrag({
     type: item.type,
     item: () => {
-      dispatchSetDraggedItem(item);
+      dispatchSetAppDraggedItem(item);
       return item;
     },
-    end: () => dispatchSetDraggedItem(null),
+    end: () => dispatchSetAppDraggedItem(null),
   });
 
   useEffect(() => {

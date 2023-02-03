@@ -1,8 +1,8 @@
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
+import { useTaskDispatchers } from "App/entities/Task/state/hooks/useTaskDispatchers";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { useDraggedItemDispatchers } from "App/state/shared/DraggedItem/hooks/useDraggedItemDispatchers";
-import { useTaskDispatchers } from "../state/hooks/useTaskDispatchers";
 
 export const useTaskFeatures = (task: TaskViewModel) => {
   const { dispatchRemoveTask, dispatchMoveTask } = useTaskDispatchers();

@@ -4,7 +4,7 @@ import { useDraggedItemDispatchers } from "App/state/shared/DraggedItem/hooks/us
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
-import { useTaskDispatchers } from "App/widgets/Task/state/hooks/useTaskDispatchers";
+import { useTaskDispatchers } from "App/entities/Task/state/hooks/useTaskDispatchers";
 
 export const useTasksListFeatures = (list: TasksListModel) => {
   const {

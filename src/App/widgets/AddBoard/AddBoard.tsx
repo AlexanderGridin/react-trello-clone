@@ -11,12 +11,12 @@ export interface AddBoardProps {
 
 export const AddBoard = (props: AddBoardProps) => {
   const state = useAddBoardState();
-  const { add, cancel, showForm } = useAddBoardFeatures(props, state);
+  const { addBoard, cancel, showForm } = useAddBoardFeatures(props, state);
 
   if (state.isShowForm.value) {
     return (
       <Card minHeight={150} backgroundColor="#D8DEE9">
-        <AddItemForm onAdd={add} onCancel={cancel} />
+        <AddItemForm onSubmit={addBoard} onCancel={cancel} />
       </Card>
     );
   }

@@ -5,10 +5,11 @@ import { useInputFocus } from "shared/hooks/useInputFocus";
 import { AddItemFormFooter } from "./components/AddItemFormFooter";
 import { useAddItemFormFeatures } from "./hooks/useAddItemFormFeatures";
 import { useAddItemFormState } from "./hooks/useAddItemFormState";
+import { AddItemFormValue } from "./models/AddItemFormValue";
 
 export interface AddItemFormProps {
   placeholder?: string;
-  onAdd: (text: string) => void;
+  onSubmit: (value: AddItemFormValue) => void;
   onCancel: () => void;
 }
 

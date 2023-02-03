@@ -1,3 +1,4 @@
+import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AddBoardProps } from "../AddBoard";
 import { AddBoardState } from "./useAddBoardState";
@@ -8,12 +9,12 @@ export const useAddBoardFeatures = (
 ) => {
   const { onAdd } = props;
 
-  const add = (text: string) => {
-    onAdd(new BoardViewModel({ title: text }));
+  const addBoard = (formValue: AddItemFormValue) => {
+    onAdd(new BoardViewModel({ title: formValue.text }));
     state.isShowForm.set(false);
   };
   const cancel = () => state.isShowForm.set(false);
   const showForm = () => state.isShowForm.set(true);
 
-  return { add, cancel, showForm };
+  return { addBoard, cancel, showForm };
 };

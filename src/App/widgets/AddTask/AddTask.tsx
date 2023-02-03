@@ -11,12 +11,12 @@ export interface AddTaskProps {
 
 export const AddTask = (props: AddTaskProps) => {
   const state = useAddTaskState();
-  const { add, cancel, showForm } = useAddTaskFeatures(props, state);
+  const { addTask, cancel, showForm } = useAddTaskFeatures(props, state);
 
   if (state.isShowForm.value) {
     return (
       <Card>
-        <AddItemForm onAdd={add} onCancel={cancel} />
+        <AddItemForm onSubmit={addTask} onCancel={cancel} />
       </Card>
     );
   }

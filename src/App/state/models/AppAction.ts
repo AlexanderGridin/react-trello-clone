@@ -1,7 +1,10 @@
 import { SetAppDraggedItemAction } from "App/entities/AppDraggedItem/state/actions/setAppDraggedItem";
 import { AddBoardAction } from "App/entities/Board/state/actions/addBoard";
 import { MoveBoardAction } from "App/entities/Board/state/actions/moveBoard";
+import { PushBoardInFavoritesAction } from "App/entities/Board/state/actions/pushBoardInFavorites";
 import { RemoveBoardAction } from "App/entities/Board/state/actions/removeBoard";
+import { RemoveBoardFromFavoritesAction } from "App/entities/Board/state/actions/removeBoardFromFavorites";
+import { UpdateBoardAction } from "App/entities/Board/state/actions/updateBoard";
 import { AddTaskAction } from "App/entities/Task/state/actions/addTask";
 import { MoveTaskAction } from "App/entities/Task/state/actions/moveTask";
 import { RemoveTaskAction } from "App/entities/Task/state/actions/removeTask";
@@ -28,5 +31,8 @@ export type AppAction =
   | SetAppDraggedItemAction
   // Board
   | AddBoardAction
+  | UpdateBoardAction
   | RemoveBoardAction
+  | PushBoardInFavoritesAction
+  | RemoveBoardFromFavoritesAction
   | MoveBoardAction;

@@ -6,6 +6,7 @@ export const mapBoardDtosToViewModels = (
 ): BoardViewModel[] => {
   return source.map(
     (boardDto: BoardDto): BoardViewModel => ({
+      ...new BoardViewModel({}),
       id: boardDto.id,
       title: boardDto.title,
       tasksLists: boardDto.tasksLists,

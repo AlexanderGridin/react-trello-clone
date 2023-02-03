@@ -3,4 +3,5 @@ export const enum MaterialIcon {
   Delete = "delete",
   Edit = "edit",
   Pin = "push_pin",
+  Star = "star",
 }

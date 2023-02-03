@@ -13,11 +13,13 @@ const AppPageLayoutContainer = styled.section`
   height: 100%;
 `;
 
-const AppPageLayoutHeader = styled.header``;
+const AppPageLayoutHeader = styled.header`
+  padding: 20px;
+`;
 
 const AppPageLayoutContent = styled.div`
   flex-grow: 1;
-  padding: 7px 20px;
+  padding: 0 20px;
   position: relative;
 `;
 

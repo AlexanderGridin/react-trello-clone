@@ -13,6 +13,7 @@ export class BoardViewModel {
   public title: string;
   public tasksLists: TasksListViewModel[];
   public pinnedTasksLists: TasksListViewModel[] = [];
+  public isFavorite = false;
 
   constructor({
     title = "",

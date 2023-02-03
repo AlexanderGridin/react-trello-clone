@@ -8,9 +8,13 @@ import { AddBoard } from "../AddBoard/AddBoard";
 
 interface BoardsListProps {
   boards: BoardViewModel[];
+  isShowAddBoard?: boolean;
 }
 
-export const BoardsList = ({ boards }: BoardsListProps) => {
+export const BoardsList = ({
+  boards,
+  isShowAddBoard = true,
+}: BoardsListProps) => {
   const { addBoard } = useBoardsListFeatures();
 
   return (
@@ -20,9 +24,11 @@ export const BoardsList = ({ boards }: BoardsListProps) => {
       <BoardsListContainer>
         <BoardsListItems boards={boards} />
 
-        <BoardsListCell>
-          <AddBoard onAdd={addBoard} />
-        </BoardsListCell>
+        {isShowAddBoard && (
+          <BoardsListCell className="mr-0">
+            <AddBoard onAdd={addBoard} />
+          </BoardsListCell>
+        )}
       </BoardsListContainer>
     </>
   );

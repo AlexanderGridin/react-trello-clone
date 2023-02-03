@@ -19,12 +19,8 @@ export const TasksListHeader = ({
 
   return (
     <TasksListHeaderContainer>
-      <PinButton
-        isPinned={list.isPinned}
-        className={style.PinButton}
-        onClick={onPin}
-      />
-      <TasksListTitle>{list.title}</TasksListTitle>
+      <PinButton isPinned={list.isPinned} onClick={onPin} />
+      <TasksListTitle className={style.Title}>{list.title}</TasksListTitle>
       <RemoveButton className={style.RemoveButton} onClick={remove} />
     </TasksListHeaderContainer>
   );

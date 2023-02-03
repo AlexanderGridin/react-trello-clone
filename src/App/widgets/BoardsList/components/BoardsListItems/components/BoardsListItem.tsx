@@ -11,23 +11,25 @@ interface BoardsListItemProps {
   isDragPreview?: boolean;
 }
 
+const MIN_HEIGHT = 150;
+const BACKGROUD_COLOR = "#D8DEE9";
+
 export const BoardsListItem = ({
   board,
   isDragPreview = false,
 }: BoardsListItemProps) => {
-  const { remove, dropOnBoard, navigateToBoard } = useBoardFeatures(board);
-  const MIN_HEIGHT = 150;
-  const BACKGROUD_COLOR = "#D8DEE9";
+  const { remove, dropOnBoard, navigateToBoard, toggleFavorite } =
+    useBoardFeatures(board);
 
   if (isDragPreview) {
     return (
       <BoardsListCell>
         <Card
           className="drag-preview"
-          minHeight={150}
+          minHeight={MIN_HEIGHT}
           backgroundColor={BACKGROUD_COLOR}
         >
-          <Board board={board} onRemove={remove} />
+          <Board board={board} onFavorite={toggleFavorite} onRemove={remove} />
         </Card>
       </BoardsListCell>
     );
@@ -42,7 +44,7 @@ export const BoardsListItem = ({
         onDrop={dropOnBoard}
         onDoubleClick={navigateToBoard}
       >
-        <Board board={board} onRemove={remove} />
+        <Board board={board} onFavorite={toggleFavorite} onRemove={remove} />
       </DndCard>
     </BoardsListCell>
   );

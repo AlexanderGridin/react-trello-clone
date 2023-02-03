@@ -1,15 +1,15 @@
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { createAction } from "shared/state/utils/createAction";
 
 interface MoveTasksListActionPayload {
-  listToMove: TasksListModel;
-  listToReplace: TasksListModel;
+  listToMove: TasksListViewModel;
+  listToReplace: TasksListViewModel;
 }
 
 export const moveTasksList = (
-  listToMove: TasksListModel,
-  listToReplace: TasksListModel
+  listToMove: TasksListViewModel,
+  listToReplace: TasksListViewModel
 ) => {
   const { MoveList } = AppActionType;
   const payload: MoveTasksListActionPayload = {

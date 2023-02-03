@@ -2,7 +2,7 @@ import { AppState } from "App/state/models/AppState";
 import { AddTaskAction } from "../actions/addTask";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 
 export const addTaskReducer = (
   state: AppState,
@@ -20,7 +20,7 @@ export const addTaskReducer = (
       const totalPinned = board.pinnedTasksLists.length;
       const lists = [...board.pinnedTasksLists, ...board.tasksLists];
 
-      const updatedLists = lists.map((list: TasksListModel) =>
+      const updatedLists = lists.map((list: TasksListViewModel) =>
         list.id !== taskToAdd.listId
           ? {
               ...list,

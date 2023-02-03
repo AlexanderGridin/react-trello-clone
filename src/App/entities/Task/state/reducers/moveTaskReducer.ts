@@ -1,5 +1,5 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AppState } from "App/state/models/AppState";
 import { MoveTaskAction } from "../actions/moveTask";
 import { removeTaskFromList } from "./utils/removeTaskFromList";
@@ -21,7 +21,7 @@ export const moveTaskReducer = (
       const totalPinned = board.pinnedTasksLists.length;
       const lists = [...board.pinnedTasksLists, ...board.tasksLists];
 
-      const updatedLists = lists.map((list: TasksListModel) => {
+      const updatedLists = lists.map((list: TasksListViewModel) => {
         if (list.id === taskToReplace.listId) {
           return replaceTaskInList({
             list,

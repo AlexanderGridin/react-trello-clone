@@ -1,11 +1,11 @@
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem";
 import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem";
 
 interface Config {
-  list: TasksListModel;
+  list: TasksListViewModel;
   task: TaskViewModel;
   taskToReplace: TaskViewModel;
 }
@@ -14,7 +14,7 @@ export const replaceTaskInList = ({
   list,
   task,
   taskToReplace,
-}: Config): TasksListModel => {
+}: Config): TasksListViewModel => {
   const taskIndex = list.tasks.findIndex(
     ({ id }: TaskViewModel) => id === task.id
   );

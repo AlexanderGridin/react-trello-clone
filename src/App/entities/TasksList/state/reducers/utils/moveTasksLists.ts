@@ -1,21 +1,21 @@
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem";
 import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem";
 
 export const moveTasksLists = (
-  lists: TasksListModel[],
-  listToMove: TasksListModel,
-  listToReplace: TasksListModel
+  lists: TasksListViewModel[],
+  listToMove: TasksListViewModel,
+  listToReplace: TasksListViewModel
 ) => {
   const listToMoveIndex = lists.findIndex(
-    ({ id }: TasksListModel) => id === listToMove.id
+    ({ id }: TasksListViewModel) => id === listToMove.id
   );
   const listToReplaceIndex = lists.findIndex(
-    ({ id }: TasksListModel) => id === listToReplace.id
+    ({ id }: TasksListViewModel) => id === listToReplace.id
   );
 
-  const movingConfig: ArrayUtilConfigWithArrayItem<TasksListModel> = {
+  const movingConfig: ArrayUtilConfigWithArrayItem<TasksListViewModel> = {
     array: lists,
     item: listToMove,
     arrayItem: listToReplace,
@@ -23,6 +23,6 @@ export const moveTasksLists = (
   };
 
   return listToMoveIndex < listToReplaceIndex
-    ? moveItemAfterArrayItem<TasksListModel>(movingConfig)
-    : moveItemBeforeArrayItem<TasksListModel>(movingConfig);
+    ? moveItemAfterArrayItem<TasksListViewModel>(movingConfig)
+    : moveItemBeforeArrayItem<TasksListViewModel>(movingConfig);
 };

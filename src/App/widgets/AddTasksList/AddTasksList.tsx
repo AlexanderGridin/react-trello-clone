@@ -1,12 +1,12 @@
 import { AddItemForm } from "App/components/AddItemForm/AddItemForm";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { Card } from "shared/components/Card/Card";
 import { AddListButton } from "./components/AddListButton";
 import { useAddTasksListFeatures } from "./hooks/useAddTasksListFeatures";
 import { useAddTasksListState } from "./hooks/useAddTasksListState";
 
 export interface AddTasksListProps {
-  onAdd: (list: TasksListModel) => void;
+  onAdd: (list: TasksListViewModel) => void;
 }
 
 export const AddTasksList = (props: AddTasksListProps) => {

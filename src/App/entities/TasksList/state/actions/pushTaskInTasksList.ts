@@ -2,15 +2,15 @@ import { createAction } from "shared/state/utils/createAction";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
 
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 
 interface PushTaskInTasksListPayload {
-  list: TasksListModel;
+  list: TasksListViewModel;
   task: TaskViewModel;
 }
 
 export const pushTaskInTasksList = (
-  list: TasksListModel,
+  list: TasksListViewModel,
   task: TaskViewModel
 ) => {
   const { PushTaskInTasksList } = AppActionType;

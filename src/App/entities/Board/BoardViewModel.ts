@@ -1,18 +1,18 @@
 import { generateId } from "shared/utils/generateId";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 
 export interface BoardViewModelConfig {
   id?: string;
   title?: string;
-  tasksLists?: TasksListModel[];
+  tasksLists?: TasksListViewModel[];
 }
 
 export class BoardViewModel {
   public readonly id: string;
 
   public title: string;
-  public tasksLists: TasksListModel[];
-  public pinnedTasksLists: TasksListModel[] = [];
+  public tasksLists: TasksListViewModel[];
+  public pinnedTasksLists: TasksListViewModel[] = [];
 
   constructor({
     title = "",

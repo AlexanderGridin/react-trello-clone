@@ -1,6 +1,6 @@
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { TasksListItem } from "App/widgets/TasksList/components/TasksListItems/components/TasksListItem";
 import { TasksList } from "App/widgets/TasksList/TasksList";
@@ -12,7 +12,7 @@ interface BoardPageDraggedItemProps {
 export const BoardPageDraggedItem = ({ item }: BoardPageDraggedItemProps) => {
   switch (item.type) {
     case DraggedItemType.TasksList:
-      const list: TasksListModel = item.data;
+      const list: TasksListViewModel = item.data;
       return <TasksList list={list} isDragPreview />;
 
     case DraggedItemType.Task:

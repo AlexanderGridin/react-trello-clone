@@ -1,6 +1,6 @@
 import { AppState } from "App/state/models/AppState";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { PinTasksListAction } from "../actions/pinTasksList";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
 
@@ -8,7 +8,7 @@ export const pinTasksListReducer = (
   state: AppState,
   action: PinTasksListAction
 ): AppState => {
-  const listToPin: TasksListModel = { ...action.payload.list };
+  const listToPin: TasksListViewModel = { ...action.payload.list };
 
   return {
     ...state,

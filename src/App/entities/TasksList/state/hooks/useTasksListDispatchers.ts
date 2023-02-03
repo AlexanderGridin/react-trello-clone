@@ -1,5 +1,5 @@
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { useAppState } from "App/state/hooks/useAppState";
 import { addTasksList } from "../actions/addTasksList";
 import { moveTasksList } from "../actions/moveTasksList";
@@ -11,26 +11,26 @@ import { unpinTasksList } from "../actions/unpinTasksList";
 export const useTasksListDispatchers = () => {
   const { dispatch } = useAppState();
 
-  const dispatchAddTasksList = (list: TasksListModel) =>
+  const dispatchAddTasksList = (list: TasksListViewModel) =>
     dispatch(addTasksList(list));
 
-  const dispatchRemoveTasksList = (list: TasksListModel) =>
+  const dispatchRemoveTasksList = (list: TasksListViewModel) =>
     dispatch(removeTasksList(list));
 
   const dispatchMoveTasksList = (
-    listToMove: TasksListModel,
-    listToReplace: TasksListModel
+    listToMove: TasksListViewModel,
+    listToReplace: TasksListViewModel
   ) => dispatch(moveTasksList(listToMove, listToReplace));
 
   const dispatchPushTaskInTasksList = (
-    list: TasksListModel,
+    list: TasksListViewModel,
     task: TaskViewModel
   ) => dispatch(pushTaskInTasksList(list, task));
 
-  const dispatchPinTasksList = (list: TasksListModel) =>
+  const dispatchPinTasksList = (list: TasksListViewModel) =>
     dispatch(pinTasksList(list));
 
-  const dispatchUnpinTasksList = (list: TasksListModel) =>
+  const dispatchUnpinTasksList = (list: TasksListViewModel) =>
     dispatch(unpinTasksList(list));
 
   return {

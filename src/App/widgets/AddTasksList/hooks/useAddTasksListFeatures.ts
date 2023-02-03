@@ -1,5 +1,5 @@
 import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AddTasksListProps } from "../AddTasksList";
 import { AddTasksListState } from "./useAddTasksListState";
 
@@ -10,7 +10,7 @@ export const useAddTasksListFeatures = (
   const { onAdd } = props;
 
   const addList = (formValue: AddItemFormValue) => {
-    onAdd(new TasksListModel({ title: formValue.text }));
+    onAdd(new TasksListViewModel({ title: formValue.text }));
     state.isShowForm.set(false);
   };
   const cancel = () => state.isShowForm.set(false);

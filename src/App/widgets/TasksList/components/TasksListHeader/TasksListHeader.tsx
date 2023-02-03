@@ -1,12 +1,12 @@
 import { PinButton } from "App/components/PinButton/PinButton";
 import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { TasksListHeaderContainer } from "./components/TasksListHeaderContainer";
 import { TasksListTitle } from "./components/TasksListTitle";
 import style from "./TasksListHeader.module.css";
 
 interface TasksListHeaderProps {
-  list: TasksListModel;
+  list: TasksListViewModel;
   onRemove: () => void;
   onPin: () => void;
 }

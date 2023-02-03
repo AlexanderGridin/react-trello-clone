@@ -1,14 +1,14 @@
 import { generateId } from "shared/utils/generateId";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 
-interface TasksListModelConfig {
+interface TasksListViewModelConfig {
   id?: string;
   title?: string;
   boardId?: string;
   tasks?: TaskViewModel[];
 }
 
-export class TasksListModel {
+export class TasksListViewModel {
   public readonly id: string;
 
   public title: string;
@@ -21,7 +21,7 @@ export class TasksListModel {
     title = "",
     boardId = "",
     tasks = [],
-  }: TasksListModelConfig) {
+  }: TasksListViewModelConfig) {
     this.id = id;
     this.title = title;
     this.boardId = boardId;

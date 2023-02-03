@@ -1,5 +1,5 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AppState } from "App/state/models/AppState";
 import { PushTaskInTasksListAction } from "../actions/pushTaskInTasksList";
 
@@ -19,7 +19,7 @@ export const pushTaskInTasksListReducer = (
       const totalPinned = board.pinnedTasksLists.length;
       const lists = [...board.pinnedTasksLists, ...board.tasksLists];
 
-      const updatedLists = lists.map((tasksList: TasksListModel) =>
+      const updatedLists = lists.map((tasksList: TasksListViewModel) =>
         tasksList.id !== list.id
           ? {
               ...tasksList,

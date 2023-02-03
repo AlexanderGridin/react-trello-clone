@@ -1,17 +1,17 @@
 import { generateId } from "shared/utils/generateId";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 
 export interface BoardDtoConfig {
   id?: string;
   title?: string;
-  tasksLists?: TasksListModel[];
+  tasksLists?: TasksListViewModel[];
 }
 
 export class BoardDto {
   public readonly id: string;
 
   public title: string;
-  public tasksLists: TasksListModel[];
+  public tasksLists: TasksListViewModel[];
 
   constructor({
     title = "",

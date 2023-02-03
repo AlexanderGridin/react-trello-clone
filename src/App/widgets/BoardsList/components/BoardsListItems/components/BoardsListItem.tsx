@@ -11,21 +11,22 @@ interface BoardsListItemProps {
   isDragPreview?: boolean;
 }
 
+const MIN_HEIGHT = 150;
+const BACKGROUD_COLOR = "#D8DEE9";
+
 export const BoardsListItem = ({
   board,
   isDragPreview = false,
 }: BoardsListItemProps) => {
   const { remove, dropOnBoard, navigateToBoard, toggleFavorite } =
     useBoardFeatures(board);
-  const MIN_HEIGHT = 150;
-  const BACKGROUD_COLOR = "#D8DEE9";
 
   if (isDragPreview) {
     return (
       <BoardsListCell>
         <Card
           className="drag-preview"
-          minHeight={150}
+          minHeight={MIN_HEIGHT}
           backgroundColor={BACKGROUD_COLOR}
         >
           <Board board={board} onFavorite={toggleFavorite} onRemove={remove} />

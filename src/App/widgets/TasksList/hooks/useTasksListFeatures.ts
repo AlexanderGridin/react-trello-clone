@@ -26,10 +26,8 @@ export const useTasksListFeatures = (list: TasksListModel) => {
       ? dispatchUnpinTasksList({ ...list, isPinned: false })
       : dispatchPinTasksList({ ...list, isPinned: true });
 
-  const addTask = (content: string) =>
-    dispatchAddTask(
-      new TaskViewModel({ listId: list.id, boardId: list.boardId, content })
-    );
+  const addTask = (task: TaskViewModel) =>
+    dispatchAddTask({ ...task, listId: list.id, boardId: list.boardId });
 
   const dropOnList = (draggedItem: AppDraggedItem) => {
     if (

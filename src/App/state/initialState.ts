@@ -33,5 +33,7 @@ const boards: BoardDto[] = boardIds.map(
 
 export const INITIAL_STATE: AppState = {
   boards: mapBoardDtosToViewModels(boards),
+  favoriteBoards: [],
+  boardsCache: {},
   draggedItem: null,
 };

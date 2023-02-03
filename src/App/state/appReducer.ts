@@ -1,19 +1,19 @@
 import { AppState } from "./models/AppState";
 import { AppAction } from "./models/AppAction";
 import { setDraggedItemReducer } from "./shared/DraggedItem/reducers/setDraggedItemReducer";
-import { addTasksListReducer } from "App/widgets/TasksList/state/reducers/addTasksListReducer";
-import { removeTasksListReducer } from "App/widgets/TasksList/state/reducers/removeTasksListReducer";
-import { pushTaskInTasksListReducer } from "App/widgets/TasksList/state/reducers/pushTaskInTasksListReducer";
 import { AppActionType } from "./enums/AppActionType.enum";
-import { moveTasksListReducer } from "App/widgets/TasksList/state/reducers/moveTasksListReducer";
-import { pinTasksListReducer } from "App/widgets/TasksList/state/reducers/pinTasksListReducer";
-import { unpinTasksListReducer } from "App/widgets/TasksList/state/reducers/unpinTasksListReducer";
 import { addBoardReducer } from "App/entities/Board/state/reducers/addBoardReducer";
 import { removeBoardReducer } from "App/entities/Board/state/reducers/removeBoardReducer";
 import { moveBoardReducer } from "App/entities/Board/state/reducers/moveBoardReducer";
 import { addTaskReducer } from "App/entities/Task/state/reducers/addTaskReducer";
 import { removeTaskReducer } from "App/entities/Task/state/reducers/removeTaskReducer";
 import { moveTaskReducer } from "App/entities/Task/state/reducers/moveTaskReducer";
+import { addTasksListReducer } from "App/entities/TasksList/state/reducers/addTasksListReducer";
+import { removeTasksListReducer } from "App/entities/TasksList/state/reducers/removeTasksListReducer";
+import { moveTasksListReducer } from "App/entities/TasksList/state/reducers/moveTasksListReducer";
+import { pushTaskInTasksListReducer } from "App/entities/TasksList/state/reducers/pushTaskInTasksListReducer";
+import { pinTasksListReducer } from "App/entities/TasksList/state/reducers/pinTasksListReducer";
+import { unpinTasksListReducer } from "App/entities/TasksList/state/reducers/unpinTasksListReducer";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {

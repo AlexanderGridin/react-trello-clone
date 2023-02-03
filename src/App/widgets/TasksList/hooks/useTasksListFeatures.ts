@@ -1,10 +1,10 @@
-import { useTasksListDispatchers } from "../state/hooks/useTasksListDispatchers";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { useDraggedItemDispatchers } from "App/state/shared/DraggedItem/hooks/useDraggedItemDispatchers";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListModel } from "App/entities/TasksList/TasksListModel";
 import { useTaskDispatchers } from "App/entities/Task/state/hooks/useTaskDispatchers";
+import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useTasksListDispatchers";
 
 export const useTasksListFeatures = (list: TasksListModel) => {
   const {

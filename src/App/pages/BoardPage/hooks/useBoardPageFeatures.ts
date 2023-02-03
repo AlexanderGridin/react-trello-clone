@@ -1,5 +1,5 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { useTasksListDispatchers } from "App/widgets/TasksList/state/hooks/useTasksListDispatchers";
+import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useTasksListDispatchers";
 
 export const useBoardPageFeatures = (board: BoardViewModel) => {
   const { dispatchAddTasksList } = useTasksListDispatchers();

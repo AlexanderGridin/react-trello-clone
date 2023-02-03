@@ -1,11 +1,15 @@
+import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { AddTaskProps } from "../AddTask";
 import { AddTaskState } from "./useAddTaskState";
 
-export const useAddTaskActions = (props: AddTaskProps, state: AddTaskState) => {
+export const useAddTaskFeatures = (
+  props: AddTaskProps,
+  state: AddTaskState
+) => {
   const { onAdd } = props;
 
-  const add = (content: string) => {
-    onAdd(content);
+  const add = (text: string) => {
+    onAdd(new TaskViewModel({ content: text }));
     state.isShowForm.set(false);
   };
   const cancel = () => state.isShowForm.set(false);

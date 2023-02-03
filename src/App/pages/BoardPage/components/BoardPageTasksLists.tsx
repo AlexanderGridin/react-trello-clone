@@ -1,9 +1,9 @@
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { TasksList } from "App/widgets/TasksList/TasksList";
 import { BoardPageCell } from "./BoardPageCell";
 
 interface BoardPageTasksListsProps {
-  lists: TasksListModel[];
+  lists: TasksListViewModel[];
 }
 
 export const BoardPageTasksLists = ({ lists }: BoardPageTasksListsProps) => {
@@ -13,7 +13,7 @@ export const BoardPageTasksLists = ({ lists }: BoardPageTasksListsProps) => {
 
   return (
     <>
-      {lists.map((list: TasksListModel) => (
+      {lists.map((list: TasksListViewModel) => (
         <BoardPageCell key={list.id}>
           <TasksList list={list} />
         </BoardPageCell>

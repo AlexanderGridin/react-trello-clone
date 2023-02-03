@@ -10,7 +10,7 @@ export enum AppActionType {
   RemoveTask = "REMOVE_TASK",
   MoveTask = "MOVE_TASK",
 
-  SetDraggedItem = "SET_DRAGGED_ITEM",
+  SetAppDraggedItem = "SET_APP_DRAGGED_ITEM",
 
   AddBoard = "ADD_BOARD",
   RemoveBoard = "REMOVE_BOARD",

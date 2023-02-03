@@ -1,14 +1,14 @@
 import { DndCard } from "App/components/DndCard/DndCard";
 import { mapTasksListToDraggedItem } from "App/entities/TasksList/mappers/mapTasksListToDraggedItem";
-import { TasksListModel } from "App/entities/TasksList/TasksListModel";
+import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { Card } from "shared/components/Card/Card";
-import { AddTask } from "./components/AddTask/AddTask";
+import { AddTask } from "../AddTask/AddTask";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
 import { TasksListItems } from "./components/TasksListItems/TasksListItems";
 import { useTasksListFeatures } from "./hooks/useTasksListFeatures";
 
 export interface TasksListProps {
-  list: TasksListModel;
+  list: TasksListViewModel;
   isDragPreview?: boolean;
 }
 
@@ -21,7 +21,7 @@ export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
     <TasksListHeader list={list} onRemove={remove} onPin={togglePin} />
   );
   const content = <TasksListItems tasks={list.tasks} />;
-  const footer = <AddTask onAdd={addTask}>+ Add new task</AddTask>;
+  const footer = <AddTask onAdd={addTask} />;
 
   if (isDragPreview) {
     return (

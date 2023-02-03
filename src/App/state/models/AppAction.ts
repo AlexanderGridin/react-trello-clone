@@ -1,16 +1,16 @@
-import { AddBoardAction } from "App/widgets/Board/state/actions/addBoard";
-import { MoveBoardAction } from "App/widgets/Board/state/actions/moveBoard";
-import { RemoveBoardAction } from "App/widgets/Board/state/actions/removeBoard";
-import { AddTaskAction } from "App/widgets/Task/state/actions/addTask";
-import { MoveTaskAction } from "App/widgets/Task/state/actions/moveTask";
-import { RemoveTaskAction } from "App/widgets/Task/state/actions/removeTask";
-import { AddTasksListAction } from "App/widgets/TasksList/state/actions/addTasksList";
-import { MoveTasksListAction } from "App/widgets/TasksList/state/actions/moveTasksList";
-import { PinTasksListAction } from "App/widgets/TasksList/state/actions/pinTasksList";
-import { PushTaskInTasksListAction } from "App/widgets/TasksList/state/actions/pushTaskInTasksList";
-import { RemoveTasksListAction } from "App/widgets/TasksList/state/actions/removeTasksList";
-import { UnpinTasksListAction } from "App/widgets/TasksList/state/actions/unpinTasksList";
-import { SetDraggedItemAction } from "../shared/DraggedItem/actions/setDraggedItem";
+import { SetAppDraggedItemAction } from "App/entities/AppDraggedItem/state/actions/setAppDraggedItem";
+import { AddBoardAction } from "App/entities/Board/state/actions/addBoard";
+import { MoveBoardAction } from "App/entities/Board/state/actions/moveBoard";
+import { RemoveBoardAction } from "App/entities/Board/state/actions/removeBoard";
+import { AddTaskAction } from "App/entities/Task/state/actions/addTask";
+import { MoveTaskAction } from "App/entities/Task/state/actions/moveTask";
+import { RemoveTaskAction } from "App/entities/Task/state/actions/removeTask";
+import { AddTasksListAction } from "App/entities/TasksList/state/actions/addTasksList";
+import { MoveTasksListAction } from "App/entities/TasksList/state/actions/moveTasksList";
+import { PinTasksListAction } from "App/entities/TasksList/state/actions/pinTasksList";
+import { PushTaskInTasksListAction } from "App/entities/TasksList/state/actions/pushTaskInTasksList";
+import { RemoveTasksListAction } from "App/entities/TasksList/state/actions/removeTasksList";
+import { UnpinTasksListAction } from "App/entities/TasksList/state/actions/unpinTasksList";
 
 export type AppAction =
   // TasksList
@@ -25,7 +25,7 @@ export type AppAction =
   | RemoveTaskAction
   | MoveTaskAction
   //DraggedItem
-  | SetDraggedItemAction
+  | SetAppDraggedItemAction
   // Board
   | AddBoardAction
   | RemoveBoardAction

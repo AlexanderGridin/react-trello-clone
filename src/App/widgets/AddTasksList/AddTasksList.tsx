@@ -15,7 +15,7 @@ export const AddTasksList = (props: AddTasksListProps) => {
 
   if (state.isShowForm.value) {
     return (
-      <Card>
+      <Card backgroundColor="#D8DEE9">
         <AddItemForm onAdd={add} onCancel={cancel} />
       </Card>
     );

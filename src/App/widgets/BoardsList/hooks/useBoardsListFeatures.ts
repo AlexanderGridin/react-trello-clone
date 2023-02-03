@@ -4,8 +4,7 @@ import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDisp
 export const useBoardsListFeatures = () => {
   const { dispatchAddBoard } = useBoardDispatchers();
 
-  const addBoard = (title: string) =>
-    dispatchAddBoard(new BoardViewModel({ title }));
+  const addBoard = (board: BoardViewModel) => dispatchAddBoard(board);
 
   return { addBoard };
 };

@@ -1,3 +1,4 @@
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AddBoardProps } from "../AddBoard";
 import { AddBoardState } from "./useAddBoardState";
 
@@ -7,8 +8,8 @@ export const useAddBoardFeatures = (
 ) => {
   const { onAdd } = props;
 
-  const add = (content: string) => {
-    onAdd(content);
+  const add = (text: string) => {
+    onAdd(new BoardViewModel({ title: text }));
     state.isShowForm.set(false);
   };
   const cancel = () => state.isShowForm.set(false);

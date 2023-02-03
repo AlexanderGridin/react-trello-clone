@@ -1,11 +1,12 @@
 import { AddItemForm } from "App/components/AddItemForm/AddItemForm";
+import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { Card } from "shared/components/Card/Card";
 import { AddBoardButton } from "./components/AddBoardButton";
 import { useAddBoardFeatures } from "./hooks/useAddBoardFeatures";
 import { useAddBoardState } from "./hooks/useAddBoardState";
 
 export interface AddBoardProps {
-  onAdd: (content: string) => void;
+  onAdd: (board: BoardViewModel) => void;
 }
 
 export const AddBoard = (props: AddBoardProps) => {

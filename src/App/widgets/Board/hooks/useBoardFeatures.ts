@@ -47,7 +47,7 @@ export const useBoardFeatures = (board: BoardViewModel) => {
     dispatchPushBoardInFavorites(updatedBoard);
   };
 
-  const navigateToBoard = () => navigate(`boards/${board.id}`);
+  const navigateToBoard = () => navigate(`/boards/${board.id}`);
 
   return { remove, dropOnBoard, navigateToBoard, toggleFavorite };
 };

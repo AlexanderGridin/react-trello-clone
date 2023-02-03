@@ -1,6 +1,6 @@
-import { AddBoardAction } from "App/widgets/Board/state/actions/addBoard";
-import { MoveBoardAction } from "App/widgets/Board/state/actions/moveBoard";
-import { RemoveBoardAction } from "App/widgets/Board/state/actions/removeBoard";
+import { AddBoardAction } from "App/entities/Board/state/actions/addBoard";
+import { MoveBoardAction } from "App/entities/Board/state/actions/moveBoard";
+import { RemoveBoardAction } from "App/entities/Board/state/actions/removeBoard";
 import { AddTaskAction } from "App/widgets/Task/state/actions/addTask";
 import { MoveTaskAction } from "App/widgets/Task/state/actions/moveTask";
 import { RemoveTaskAction } from "App/widgets/Task/state/actions/removeTask";

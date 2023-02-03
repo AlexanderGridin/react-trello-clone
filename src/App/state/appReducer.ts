@@ -8,12 +8,12 @@ import { removeTaskReducer } from "App/widgets/Task/state/reducers/removeTaskRed
 import { moveTaskReducer } from "App/widgets/Task/state/reducers/moveTaskReducer";
 import { pushTaskInTasksListReducer } from "App/widgets/TasksList/state/reducers/pushTaskInTasksListReducer";
 import { AppActionType } from "./enums/AppActionType.enum";
-import { moveBoardReducer } from "App/widgets/Board/state/reducers/moveBoardReducer";
-import { addBoardReducer } from "App/widgets/Board/state/reducers/addBoardReducer";
-import { removeBoardReducer } from "App/widgets/Board/state/reducers/removeBoardReducer";
 import { moveTasksListReducer } from "App/widgets/TasksList/state/reducers/moveTasksListReducer";
 import { pinTasksListReducer } from "App/widgets/TasksList/state/reducers/pinTasksListReducer";
 import { unpinTasksListReducer } from "App/widgets/TasksList/state/reducers/unpinTasksListReducer";
+import { addBoardReducer } from "App/entities/Board/state/reducers/addBoardReducer";
+import { removeBoardReducer } from "App/entities/Board/state/reducers/removeBoardReducer";
+import { moveBoardReducer } from "App/entities/Board/state/reducers/moveBoardReducer";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {

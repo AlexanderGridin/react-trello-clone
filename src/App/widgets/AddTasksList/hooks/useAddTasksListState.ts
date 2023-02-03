@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { ComponentStateProp } from "shared/models/ComponentStateProp";
 
-export interface AddListState {
+export interface AddTasksListState {
   isShowForm: ComponentStateProp<boolean>;
 }
 
-export const useAddListState = (): AddListState => {
+export const useAddTasksListState = (): AddTasksListState => {
   const [isShowForm, setIsShowForm] = useState(false);
 
   return {

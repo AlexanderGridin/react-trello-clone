@@ -11,8 +11,8 @@ import { unpinTasksList } from "../actions/unpinTasksList";
 export const useTasksListDispatchers = () => {
   const { dispatch } = useAppState();
 
-  const dispatchAddTasksList = (title: string, boardId: string) =>
-    dispatch(addTasksList(new TasksListModel({ title, boardId })));
+  const dispatchAddTasksList = (list: TasksListModel) =>
+    dispatch(addTasksList(list));
 
   const dispatchRemoveTasksList = (list: TasksListModel) =>
     dispatch(removeTasksList(list));

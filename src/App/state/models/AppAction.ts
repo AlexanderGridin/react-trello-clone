@@ -2,6 +2,7 @@ import { SetAppDraggedItemAction } from "App/entities/AppDraggedItem/state/actio
 import { AddBoardAction } from "App/entities/Board/state/actions/addBoard";
 import { MoveBoardAction } from "App/entities/Board/state/actions/moveBoard";
 import { RemoveBoardAction } from "App/entities/Board/state/actions/removeBoard";
+import { UpdateBoardAction } from "App/entities/Board/state/actions/updateBoard";
 import { AddTaskAction } from "App/entities/Task/state/actions/addTask";
 import { MoveTaskAction } from "App/entities/Task/state/actions/moveTask";
 import { RemoveTaskAction } from "App/entities/Task/state/actions/removeTask";
@@ -28,5 +29,6 @@ export type AppAction =
   | SetAppDraggedItemAction
   // Board
   | AddBoardAction
+  | UpdateBoardAction
   | RemoveBoardAction
   | MoveBoardAction;

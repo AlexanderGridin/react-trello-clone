@@ -1,21 +1,13 @@
-import styled from "styled-components";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { useAppState } from "App/state/hooks/useAppState";
 import { BoardsList } from "App/widgets/BoardsList/BoardsList";
-
-const BoardsPageTitle = styled.h2`
-  margin: 0;
-  padding: 12px;
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
-`;
+import { AppPageTitle } from "App/components/AppPageTitle/AppPageTitle";
 
 export const BoardsPage = () => {
   const { boards } = useAppState();
 
   return (
-    <AppPageLayout slotHeader={<BoardsPageTitle>Boards</BoardsPageTitle>}>
+    <AppPageLayout slotHeader={<AppPageTitle>Boards</AppPageTitle>}>
       <BoardsList boards={boards} />
     </AppPageLayout>
   );

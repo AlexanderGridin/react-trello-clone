@@ -1,7 +1,7 @@
 import { AddBoardProps } from "../AddBoard";
 import { AddBoardState } from "./useAddBoardState";
 
-export const useAddBoardActions = (
+export const useAddBoardFeatures = (
   props: AddBoardProps,
   state: AddBoardState
 ) => {

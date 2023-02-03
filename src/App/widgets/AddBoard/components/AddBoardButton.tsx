@@ -1,10 +1,10 @@
 import { PropsWithChildren } from "react";
 import styled from "styled-components";
 import { ButtonType } from "shared/enums/ButtonType";
-import { AddButton } from "App/components/AddButton/AddButton";
 import { PropsWithClick } from "shared/models/PropsWithClick";
+import { AddButtonContainer } from "App/components/AddButtonContainer/AddButtonContainer";
 
-export const Container = styled(AddButton)`
+const Container = styled(AddButtonContainer)`
   min-height: 150px;
   color: #fff;
   display: flex;

@@ -6,7 +6,8 @@ import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDisp
 
 export const useBoardFeatures = (board: BoardViewModel) => {
   const navigate = useNavigate();
-  const { dispatchRemoveBoard, dispatchMoveBoard } = useBoardDispatchers();
+  const { dispatchRemoveBoard, dispatchMoveBoard, dispatchUpdateBoard } =
+    useBoardDispatchers();
 
   const remove = () => dispatchRemoveBoard(board);
 
@@ -19,7 +20,23 @@ export const useBoardFeatures = (board: BoardViewModel) => {
     dispatchMoveBoard(draggedBoard, board);
   };
 
+  const toggleFavorite = () => {
+    if (board.isFavorite) {
+      dispatchUpdateBoard({
+        ...board,
+        isFavorite: false,
+      });
+
+      return;
+    }
+
+    dispatchUpdateBoard({
+      ...board,
+      isFavorite: true,
+    });
+  };
+
   const navigateToBoard = () => navigate(`boards/${board.id}`);
 
-  return { remove, dropOnBoard, navigateToBoard };
+  return { remove, dropOnBoard, navigateToBoard, toggleFavorite };
 };

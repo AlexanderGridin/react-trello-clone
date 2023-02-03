@@ -15,7 +15,8 @@ export const BoardsListItem = ({
   board,
   isDragPreview = false,
 }: BoardsListItemProps) => {
-  const { remove, dropOnBoard, navigateToBoard } = useBoardFeatures(board);
+  const { remove, dropOnBoard, navigateToBoard, toggleFavorite } =
+    useBoardFeatures(board);
   const MIN_HEIGHT = 150;
   const BACKGROUD_COLOR = "#D8DEE9";
 
@@ -27,7 +28,7 @@ export const BoardsListItem = ({
           minHeight={150}
           backgroundColor={BACKGROUD_COLOR}
         >
-          <Board board={board} onRemove={remove} />
+          <Board board={board} onFavorite={toggleFavorite} onRemove={remove} />
         </Card>
       </BoardsListCell>
     );
@@ -42,7 +43,7 @@ export const BoardsListItem = ({
         onDrop={dropOnBoard}
         onDoubleClick={navigateToBoard}
       >
-        <Board board={board} onRemove={remove} />
+        <Board board={board} onFavorite={toggleFavorite} onRemove={remove} />
       </DndCard>
     </BoardsListCell>
   );

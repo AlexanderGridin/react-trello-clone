@@ -3,6 +3,7 @@ import { useAppState } from "App/state/hooks/useAppState";
 import { addBoard } from "../actions/addBoard";
 import { moveBoard } from "../actions/moveBoard";
 import { removeBoard } from "../actions/removeBoard";
+import { updateBoard } from "../actions/updateBoard";
 
 export const useBoardDispatchers = () => {
   const { dispatch } = useAppState();
@@ -17,5 +18,13 @@ export const useBoardDispatchers = () => {
     boardToReplace: BoardViewModel
   ) => dispatch(moveBoard(boardToMove, boardToReplace));
 
-  return { dispatchAddBoard, dispatchRemoveBoard, dispatchMoveBoard };
+  const dispatchUpdateBoard = (board: BoardViewModel) =>
+    dispatch(updateBoard(board));
+
+  return {
+    dispatchAddBoard,
+    dispatchRemoveBoard,
+    dispatchMoveBoard,
+    dispatchUpdateBoard,
+  };
 };

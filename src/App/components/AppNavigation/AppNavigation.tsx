@@ -4,15 +4,15 @@ import { Icon } from "shared/components/Icon/Icon";
 import { MaterialIcon } from "shared/enums/MaterialIcon";
 import style from "./AppNavigation.module.css";
 
-const setClassName = ({ isActive }: { isActive: boolean }) =>
-  isActive ? `${style.LinkActive} ${style.Link}` : style.Link;
+const getLinkClassName = ({ isActive }: { isActive: boolean }) =>
+  isActive ? `${style.link} ${style.active}` : style.link;
 
 export const AppNavigation = () => {
   return (
     <nav>
-      <ul className={`plain-list ${style.List}`}>
-        <li className={style.ListItem}>
-          <NavLink to="/" className={setClassName}>
+      <ul className="plain-list">
+        <li>
+          <NavLink to="/" className={getLinkClassName}>
             <FlexContainer>
               <Icon className="mr" icon={MaterialIcon.Home} />
               <span> Boards</span>
@@ -21,10 +21,10 @@ export const AppNavigation = () => {
         </li>
 
         <li className={style.ListItem}>
-          <NavLink to="/boards/favorite" className={setClassName}>
+          <NavLink to="/boards/favorite" className={getLinkClassName}>
             <FlexContainer>
               <Icon className="mr" icon={MaterialIcon.Star} />
-              <span> Favorite</span>
+              <span> Favorite boards</span>
             </FlexContainer>
           </NavLink>
         </li>

@@ -14,6 +14,7 @@ export interface AddItemFormProps {
 }
 
 export const AddItemForm = (props: AddItemFormProps) => {
+  // TODO: try useReducer
   const state = useAddItemFormState();
   const { changeText, submit, add, cancel } = useAddItemFormFeatures(
     props,

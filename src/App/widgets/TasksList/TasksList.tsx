@@ -13,13 +13,10 @@ export interface TasksListProps {
 }
 
 export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
-  const { remove, togglePin, addTask, dropOnList } = useTasksListFeatures(list);
-
   const BACKGROUD_COLOR = "#D8DEE9";
+  const { addTask, dropOnList } = useTasksListFeatures(list);
 
-  const header = (
-    <TasksListHeader list={list} onRemove={remove} onPin={togglePin} />
-  );
+  const header = <TasksListHeader list={list} />;
   const content = <TasksListItems tasks={list.tasks} />;
   const footer = <AddTask onAdd={addTask} />;
 

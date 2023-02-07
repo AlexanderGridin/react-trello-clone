@@ -14,13 +14,13 @@ export const TasksListItem = ({
   task,
   isDragPreview = false,
 }: TasksListItemProps) => {
-  const { removeTask, dropOnTask } = useTaskFeatures(task);
   const BACKGROUD_COLOR = "#ECEFF4";
+  const { dropOnTask } = useTaskFeatures(task);
 
   if (isDragPreview) {
     return (
       <Card className="drag-preview" backgroundColor={BACKGROUD_COLOR}>
-        <Task task={task} onRemove={() => {}}></Task>
+        <Task task={task}></Task>
       </Card>
     );
   }
@@ -32,7 +32,7 @@ export const TasksListItem = ({
         backgroundColor={BACKGROUD_COLOR}
         onDrop={dropOnTask}
       >
-        <Task task={task} onRemove={removeTask} />
+        <Task task={task} />
       </DndCard>
     </li>
   );

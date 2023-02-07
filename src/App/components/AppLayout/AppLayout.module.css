@@ -1,0 +1,14 @@
+.container {
+  height: 100%;
+  display: flex;
+}
+
+.sidebar {
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.main {
+  width: 100%;
+  position: relative;
+}

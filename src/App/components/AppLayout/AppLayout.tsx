@@ -1,34 +1,17 @@
 import { Outlet } from "react-router-dom";
-import styled from "styled-components";
-import { AppNavigation } from "App/components/AppNavigation/AppNavigation";
-
-const AppLayoutContainer = styled.div`
-  height: 100%;
-  display: flex;
-`;
-
-const AppLayoutAside = styled.aside`
-  width: 320px;
-  flex-shrink: 0;
-  background-color: #3b4252;
-  padding: 20px;
-`;
-
-const AppLayoutMain = styled.main`
-  width: 100%;
-  position: relative;
-`;
+import { Sidebar } from "App/widgets/Sidebar/Sidebar";
+import style from "./AppLayout.module.css";
 
 export const AppLayout = () => {
   return (
-    <AppLayoutContainer>
-      <AppLayoutAside>
-        <AppNavigation />
-      </AppLayoutAside>
+    <div className={style.container}>
+      <aside className={style.sidebar}>
+        <Sidebar />
+      </aside>
 
-      <AppLayoutMain>
+      <main className={style.main}>
         <Outlet />
-      </AppLayoutMain>
-    </AppLayoutContainer>
+      </main>
+    </div>
   );
 };

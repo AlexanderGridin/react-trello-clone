@@ -1,12 +1,4 @@
-.List {
-  background-color: #2e3440;
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  border: 1px solid #5e81ac;
-}
-
-.Link {
+.link {
   color: #fff;
   display: block;
   padding: 12px;
@@ -15,10 +7,7 @@
   font-size: 18px;
 }
 
-.Link:hover {
-  background-color: #5e81ac;
-}
-
-.LinkActive {
+.link:hover,
+.link.active {
   background-color: #5e81ac;
 }

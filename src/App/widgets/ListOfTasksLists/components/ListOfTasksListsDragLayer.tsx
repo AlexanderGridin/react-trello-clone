@@ -1,10 +1,10 @@
 import { useAppDragLayer } from "App/hooks/useAppDragLayer";
 import { DragLayer } from "drag-and-drop/components/DragLayer";
 import { DragPreviewWrapper } from "drag-and-drop/components/DragPreviewWrapper";
-import { BoardPageCell } from "./BoardPageCell";
-import { BoardPageDraggedItem } from "./BoardPageDraggedItem";
+import { ListOfTasksListsDraggedItem } from "./ListOfTasksListsDraggedItem";
+import style from "../ListOfTasksLists.module.css";
 
-export const BoardPageDragLayer = () => {
+export const ListOfTasksListsDragLayer = () => {
   const { draggedItem, offset } = useAppDragLayer();
 
   if (!draggedItem || !offset) {
@@ -14,9 +14,9 @@ export const BoardPageDragLayer = () => {
   return (
     <DragLayer>
       <DragPreviewWrapper position={offset}>
-        <BoardPageCell>
-          <BoardPageDraggedItem item={draggedItem} />
-        </BoardPageCell>
+        <div className={style.cell}>
+          <ListOfTasksListsDraggedItem item={draggedItem} />
+        </div>
       </DragPreviewWrapper>
     </DragLayer>
   );

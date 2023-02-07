@@ -9,16 +9,21 @@ import { useTasksListFeatures } from "./hooks/useTasksListFeatures";
 
 export interface TasksListProps {
   list: TasksListViewModel;
+  isShowAddTask?: boolean;
   isDragPreview?: boolean;
 }
 
-export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
+export const TasksList = ({
+  list,
+  isShowAddTask = false,
+  isDragPreview = false,
+}: TasksListProps) => {
   const BACKGROUD_COLOR = "#D8DEE9";
   const { addTask, dropOnList } = useTasksListFeatures(list);
 
   const header = <TasksListHeader list={list} />;
   const content = <TasksListItems tasks={list.tasks} />;
-  const footer = <AddTask onAdd={addTask} />;
+  const footer = isShowAddTask ? <AddTask onAdd={addTask} /> : null;
 
   if (isDragPreview) {
     return (

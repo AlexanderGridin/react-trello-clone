@@ -1,14 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useAppState } from "App/state/hooks/useAppState";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
-import { BoardPageDragLayer } from "./components/BoardPageDragLayer";
-import { BoardPageCell } from "./components/BoardPageCell";
-import { BoardPageContent } from "./components/BoardPageContent";
-import { BoardPageTasksLists } from "./components/BoardPageTasksLists";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { useBoardPageFeatures } from "./hooks/useBoardPageFeatures";
-import { AddTasksList } from "App/widgets/AddTasksList/AddTasksList";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
+import { ListOfTasksLists } from "App/widgets/ListOfTasksLists/ListOfTasksLists";
 
 export const BoardPage = () => {
   const { id } = useParams();
@@ -18,8 +13,6 @@ export const BoardPage = () => {
     boards.find((board: BoardViewModel) => board.id === id) ||
     new BoardViewModel({});
 
-  const { addTasksList } = useBoardPageFeatures(board);
-
   if (!board) {
     return null;
   }
@@ -28,15 +21,7 @@ export const BoardPage = () => {
 
   return (
     <AppPageLayout slotHeader={<PageTitle>{board.title}</PageTitle>}>
-      <BoardPageContent>
-        <BoardPageDragLayer />
-
-        <BoardPageTasksLists lists={lists} />
-
-        <BoardPageCell className="mr-0">
-          <AddTasksList onAdd={addTasksList} />
-        </BoardPageCell>
-      </BoardPageContent>
+      <ListOfTasksLists boardId={board.id} lists={lists} isShowAddTasksList />
     </AppPageLayout>
   );
 };

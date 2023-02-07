@@ -13,10 +13,12 @@ export const useAddItemFormFeatures = (
 
   const changeText = (e: ChangeEventType): void =>
     state.text.set(e.target.value);
+
   const submit = (e: FormEventType): void => {
     e.preventDefault();
     onSubmit({ text: state.text.value });
   };
+
   const add = (): void => onSubmit({ text: state.text.value });
   const cancel = (): void => onCancel();
 

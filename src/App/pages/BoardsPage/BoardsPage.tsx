@@ -1,13 +1,13 @@
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
+import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
 import { BoardsList } from "App/widgets/BoardsList/BoardsList";
-import { AppPageTitle } from "App/components/AppPageTitle/AppPageTitle";
 
 export const BoardsPage = () => {
   const { boards } = useAppState();
 
   return (
-    <AppPageLayout slotHeader={<AppPageTitle>Boards</AppPageTitle>}>
+    <AppPageLayout slotHeader={<PageTitle>Boards</PageTitle>}>
       <BoardsList boards={boards} />
     </AppPageLayout>
   );

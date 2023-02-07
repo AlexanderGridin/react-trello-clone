@@ -2,9 +2,8 @@ import { DndCard } from "App/components/DndCard/DndCard";
 import { mapTasksListToDraggedItem } from "App/entities/TasksList/mappers/mapTasksListToDraggedItem";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { Card } from "shared/components/Card/Card";
-import { AddTask } from "../AddTask/AddTask";
+import { ListOfTasks } from "../ListOfTasks/ListOfTasks";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
-import { TasksListItems } from "./components/TasksListItems/TasksListItems";
 import { useTasksListFeatures } from "./hooks/useTasksListFeatures";
 
 export interface TasksListProps {
@@ -13,22 +12,24 @@ export interface TasksListProps {
 }
 
 export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
-  const { remove, togglePin, addTask, dropOnList } = useTasksListFeatures(list);
-
   const BACKGROUD_COLOR = "#D8DEE9";
+  const { dropOnList } = useTasksListFeatures(list);
 
-  const header = (
-    <TasksListHeader list={list} onRemove={remove} onPin={togglePin} />
+  const header = <TasksListHeader list={list} />;
+  const content = (
+    <ListOfTasks
+      boardId={list.boardId}
+      listId={list.id}
+      tasks={list.tasks}
+      isShowAddTask
+    />
   );
-  const content = <TasksListItems tasks={list.tasks} />;
-  const footer = <AddTask onAdd={addTask} />;
 
   if (isDragPreview) {
     return (
       <Card
         slotHeader={header}
         slotContent={content}
-        slotFooter={footer}
         backgroundColor={BACKGROUD_COLOR}
         className="drag-preview"
       />
@@ -39,7 +40,6 @@ export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
     <DndCard
       slotHeader={header}
       slotContent={content}
-      slotFooter={footer}
       backgroundColor={BACKGROUD_COLOR}
       draggedItem={mapTasksListToDraggedItem(list)}
       onDrop={dropOnList}

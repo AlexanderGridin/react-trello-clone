@@ -1,6 +1,5 @@
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { useTaskDispatchers } from "App/entities/Task/state/hooks/useTaskDispatchers";
 import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useTasksListDispatchers";
@@ -15,8 +14,7 @@ export const useTasksListFeatures = (list: TasksListViewModel) => {
     dispatchUnpinTasksList,
   } = useTasksListDispatchers();
 
-  const { dispatchAddTask, dispatchRemoveTask } = useTaskDispatchers();
-
+  const { dispatchRemoveTask } = useTaskDispatchers();
   const { dispatchSetAppDraggedItem } = useAppDraggedItemDispatchers();
 
   const remove = () => dispatchRemoveTasksList(list);
@@ -25,9 +23,6 @@ export const useTasksListFeatures = (list: TasksListViewModel) => {
     list.isPinned
       ? dispatchUnpinTasksList({ ...list, isPinned: false })
       : dispatchPinTasksList({ ...list, isPinned: true });
-
-  const addTask = (task: TaskViewModel) =>
-    dispatchAddTask({ ...task, listId: list.id, boardId: list.boardId });
 
   const dropOnList = (draggedItem: AppDraggedItem) => {
     if (
@@ -53,5 +48,5 @@ export const useTasksListFeatures = (list: TasksListViewModel) => {
     });
   };
 
-  return { remove, togglePin, addTask, dropOnList };
+  return { remove, togglePin, dropOnList };
 };

@@ -5,35 +5,37 @@ import { useTaskFeatures } from "App/widgets/Task/hooks/useTaskFeatures";
 import { Task } from "App/widgets/Task/Task";
 import { Card } from "shared/components/Card/Card";
 
-interface TasksListItemProps {
+interface ListOfTasksListItemProps {
   task: TaskViewModel;
   isDragPreview?: boolean;
 }
 
-export const TasksListItem = ({
+export const ListOfTasksListItem = ({
   task,
   isDragPreview = false,
-}: TasksListItemProps) => {
-  const { removeTask, dropOnTask } = useTaskFeatures(task);
+}: ListOfTasksListItemProps) => {
   const BACKGROUD_COLOR = "#ECEFF4";
+  const { dropOnTask } = useTaskFeatures(task);
+
+  if (!task) {
+    return null;
+  }
 
   if (isDragPreview) {
     return (
       <Card className="drag-preview" backgroundColor={BACKGROUD_COLOR}>
-        <Task task={task} onRemove={() => {}}></Task>
+        <Task task={task}></Task>
       </Card>
     );
   }
 
   return (
-    <li key={task.id} className="mb">
-      <DndCard
-        draggedItem={mapTaskToDraggedItem(task)}
-        backgroundColor={BACKGROUD_COLOR}
-        onDrop={dropOnTask}
-      >
-        <Task task={task} onRemove={removeTask} />
-      </DndCard>
-    </li>
+    <DndCard
+      draggedItem={mapTaskToDraggedItem(task)}
+      backgroundColor={BACKGROUD_COLOR}
+      onDrop={dropOnTask}
+    >
+      <Task task={task} />
+    </DndCard>
   );
 };

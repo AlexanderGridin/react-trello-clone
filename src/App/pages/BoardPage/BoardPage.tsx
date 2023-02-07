@@ -8,7 +8,7 @@ import { BoardPageTasksLists } from "./components/BoardPageTasksLists";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { useBoardPageFeatures } from "./hooks/useBoardPageFeatures";
 import { AddTasksList } from "App/widgets/AddTasksList/AddTasksList";
-import { AppPageTitle } from "App/components/AppPageTitle/AppPageTitle";
+import { PageTitle } from "App/components/PageTitle/PageTitle";
 
 export const BoardPage = () => {
   const { id } = useParams();
@@ -27,7 +27,7 @@ export const BoardPage = () => {
   const lists = [...board.pinnedTasksLists, ...board.tasksLists];
 
   return (
-    <AppPageLayout slotHeader={<AppPageTitle>{board.title}</AppPageTitle>}>
+    <AppPageLayout slotHeader={<PageTitle>{board.title}</PageTitle>}>
       <BoardPageContent>
         <BoardPageDragLayer />
 

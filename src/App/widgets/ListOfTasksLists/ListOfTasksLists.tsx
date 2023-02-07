@@ -1,7 +1,7 @@
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AddTasksList } from "../AddTasksList/AddTasksList";
+import { DragLayer } from "../DragLayer/DragLayer";
 import { TasksList } from "../TasksList/TasksList";
-import { ListOfTasksListsDragLayer } from "./components/ListOfTasksListsDragLayer";
 import { useListOfTasksListsFeatures } from "./hooks/useListOfTasksListsFeatures";
 import style from "./ListOfTasksLists.module.css";
 
@@ -24,11 +24,11 @@ export const ListOfTasksLists = ({
 
   return (
     <div className={style.container}>
-      <ListOfTasksListsDragLayer />
+      <DragLayer />
 
       {lists.map((list: TasksListViewModel) => (
         <div className={style.cell} key={list.id}>
-          <TasksList list={list} isShowAddTask />
+          <TasksList list={list} />
         </div>
       ))}
 

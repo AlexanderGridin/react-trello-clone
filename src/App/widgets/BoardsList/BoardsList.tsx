@@ -1,10 +1,9 @@
-import { BoardsListDragLayer } from "./components/BoardsListDragLayer";
-import { BoardsListContainer } from "./components/BoardsListContainer";
-import { BoardsListCell } from "./components/BoardsListCell";
-import { BoardsListItems } from "./components/BoardsListItems/BoardsListItems";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { useBoardsListFeatures } from "./hooks/useBoardsListFeatures";
 import { AddBoard } from "../AddBoard/AddBoard";
+import style from "./BoardsList.module.css";
+import { BoardsListItems } from "./components/BoardsListItems";
+import { DragLayer } from "../DragLayer/DragLayer";
 
 interface BoardsListProps {
   boards: BoardViewModel[];
@@ -18,18 +17,16 @@ export const BoardsList = ({
   const { addBoard } = useBoardsListFeatures();
 
   return (
-    <>
-      <BoardsListDragLayer />
+    <div className={style.container}>
+      <DragLayer />
 
-      <BoardsListContainer>
-        <BoardsListItems boards={boards} />
+      <BoardsListItems boards={boards} />
 
-        {isShowAddBoard && (
-          <BoardsListCell className="mr-0">
-            <AddBoard onAdd={addBoard} />
-          </BoardsListCell>
-        )}
-      </BoardsListContainer>
-    </>
+      {isShowAddBoard && (
+        <div className={style.cell}>
+          <AddBoard onAdd={addBoard} />
+        </div>
+      )}
+    </div>
   );
 };

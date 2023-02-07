@@ -1,5 +1,5 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { BoardsListItem } from "./components/BoardsListItem";
+import { BoardsListItem } from "./BoardsListItem";
 
 interface BoardsListItemsProps {
   boards: BoardViewModel[];

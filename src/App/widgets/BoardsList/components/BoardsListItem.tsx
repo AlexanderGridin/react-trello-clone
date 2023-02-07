@@ -1,10 +1,10 @@
 import { DndCard } from "App/components/DndCard/DndCard";
-import { BoardsListCell } from "../../BoardsListCell";
 import { Card } from "shared/components/Card/Card";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { mapBoardToDraggedItem } from "App/entities/Board/mappers/mapBoardToDraggedItem";
 import { useBoardFeatures } from "App/widgets/Board/hooks/useBoardFeatures";
 import { Board } from "App/widgets/Board/Board";
+import style from "../BoardsList.module.css";
 
 interface BoardsListItemProps {
   board: BoardViewModel;
@@ -22,7 +22,7 @@ export const BoardsListItem = ({
 
   if (isDragPreview) {
     return (
-      <BoardsListCell>
+      <div className={style.cell}>
         <Card
           className="drag-preview"
           minHeight={MIN_HEIGHT}
@@ -30,12 +30,12 @@ export const BoardsListItem = ({
         >
           <Board board={board} />
         </Card>
-      </BoardsListCell>
+      </div>
     );
   }
 
   return (
-    <BoardsListCell key={board.id}>
+    <div className={style.cell} key={board.id}>
       <DndCard
         minHeight={MIN_HEIGHT}
         draggedItem={mapBoardToDraggedItem(board)}
@@ -45,6 +45,6 @@ export const BoardsListItem = ({
       >
         <Board board={board} />
       </DndCard>
-    </BoardsListCell>
+    </div>
   );
 };

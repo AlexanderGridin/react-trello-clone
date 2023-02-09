@@ -1,8 +1,8 @@
+import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useTasksListDispatchers";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AddTasksList } from "../AddTasksList/AddTasksList";
 import { DragLayer } from "../DragLayer/DragLayer";
 import { TasksList } from "../TasksList/TasksList";
-import { useListOfTasksListsFeatures } from "./hooks/useListOfTasksListsFeatures";
 import style from "./ListOfTasksLists.module.css";
 
 interface ListOfTasksListsProps {
@@ -16,7 +16,10 @@ export const ListOfTasksLists = ({
   lists,
   isShowAddTasksList = false,
 }: ListOfTasksListsProps) => {
-  const { addTasksList } = useListOfTasksListsFeatures(boardId);
+  const { dispatchAddTasksList } = useTasksListDispatchers();
+
+  const addTasksList = (list: TasksListViewModel) =>
+    dispatchAddTasksList({ ...list, boardId });
 
   if (!lists.length) {
     return null;

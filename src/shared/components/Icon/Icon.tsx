@@ -1,5 +1,5 @@
-import { MaterialIcon } from "shared/enums/MaterialIcon";
 import { IconContainer } from "./components/IconContainer";
+import { MaterialIcon } from "./enums/MaterialIcon";
 
 interface IconProps {
   icon: MaterialIcon;

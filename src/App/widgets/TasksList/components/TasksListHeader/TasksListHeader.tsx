@@ -1,14 +1,24 @@
 import { PinButton } from "App/components/PinButton/PinButton";
 import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
+import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useTasksListDispatchers";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
-import { useTasksListFeatures } from "../../hooks/useTasksListFeatures";
 import style from "./TasksListHeader.module.css";
 
 interface TasksListHeaderProps {
   list: TasksListViewModel;
 }
 export const TasksListHeader = ({ list }: TasksListHeaderProps) => {
-  const { remove, togglePin } = useTasksListFeatures(list);
+  const {
+    dispatchRemoveTasksList,
+    dispatchPinTasksList,
+    dispatchUnpinTasksList,
+  } = useTasksListDispatchers();
+
+  const remove = () => dispatchRemoveTasksList(list);
+  const togglePin = () =>
+    list.isPinned
+      ? dispatchUnpinTasksList({ ...list, isPinned: false })
+      : dispatchPinTasksList({ ...list, isPinned: true });
 
   return (
     <div className={style.container}>

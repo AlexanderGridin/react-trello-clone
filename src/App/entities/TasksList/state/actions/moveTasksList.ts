@@ -1,6 +1,6 @@
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
-import { createAction } from "shared/state/utils/createAction";
+import { createAction } from "App/state/utils/createAction";
 
 interface MoveTasksListActionPayload {
   listToMove: TasksListViewModel;

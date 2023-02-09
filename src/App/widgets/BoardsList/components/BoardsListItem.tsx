@@ -2,9 +2,12 @@ import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { mapBoardToDraggedItem } from "App/entities/Board/mappers/mapBoardToDraggedItem";
-import { useBoardFeatures } from "App/widgets/Board/hooks/useBoardFeatures";
 import { Board } from "App/widgets/Board/Board";
 import style from "../BoardsList.module.css";
+import { useNavigate } from "react-router-dom";
+import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
+import { DraggedItemType } from "App/enums/DraggedItemType";
 
 interface BoardsListItemProps {
   board: BoardViewModel;
@@ -18,7 +21,19 @@ export const BoardsListItem = ({
   board,
   isDragPreview = false,
 }: BoardsListItemProps) => {
-  const { dropOnBoard, navigateToBoard } = useBoardFeatures(board);
+  const navigate = useNavigate();
+  const { dispatchMoveBoard } = useBoardDispatchers();
+
+  const dropOnBoard = (draggedItem: AppDraggedItem) => {
+    if (draggedItem.type !== DraggedItemType.Board) {
+      return;
+    }
+
+    const draggedBoard = draggedItem.data;
+    dispatchMoveBoard(draggedBoard, board);
+  };
+
+  const navigateToBoard = () => navigate(`/boards/${board.id}`);
 
   if (isDragPreview) {
     return (

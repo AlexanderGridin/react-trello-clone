@@ -1,7 +1,7 @@
+import { useTaskDispatchers } from "App/entities/Task/state/hooks/useTaskDispatchers";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { AddTask } from "../AddTask/AddTask";
 import { ListOfTasksListItem } from "./components/ListOfTasksListItem";
-import { useListOfTasksFeatures } from "./hooks/useListOfTasksFeatures";
 
 interface ListOfTasksProps {
   boardId: string;
@@ -16,7 +16,10 @@ export const ListOfTasks = ({
   tasks,
   isShowAddTask = false,
 }: ListOfTasksProps) => {
-  const { addTask } = useListOfTasksFeatures(boardId, listId);
+  const { dispatchAddTask } = useTaskDispatchers();
+
+  const addTask = (task: TaskViewModel) =>
+    dispatchAddTask({ ...task, listId, boardId });
 
   return (
     <>

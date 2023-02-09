@@ -1,6 +1,6 @@
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
-import { createAction } from "shared/state/utils/createAction";
+import { createAction } from "App/state/utils/createAction";
 
 interface SetAppDraggedItemPayload {
   item: AppDraggedItem | null;

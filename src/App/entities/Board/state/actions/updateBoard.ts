@@ -1,6 +1,6 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
-import { createAction } from "shared/state/utils/createAction";
+import { createAction } from "App/state/utils/createAction";
 
 interface UpdateBoardActionPayload {
   board: BoardViewModel;

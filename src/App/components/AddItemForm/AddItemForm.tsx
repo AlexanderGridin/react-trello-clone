@@ -1,11 +1,13 @@
+import { ChangeEvent, FormEvent, useReducer } from "react";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { Input } from "shared/components/Form/Input";
 import { InputType } from "shared/enums/InputType";
 import { useInputFocus } from "shared/hooks/useInputFocus";
 import { AddItemFormFooter } from "./components/AddItemFormFooter";
-import { useAddItemFormFeatures } from "./hooks/useAddItemFormFeatures";
-import { useAddItemFormState } from "./hooks/useAddItemFormState";
 import { AddItemFormValue } from "./models/AddItemFormValue";
+
+type ChangeEventType = ChangeEvent<HTMLInputElement>;
+type FormEventType = FormEvent<HTMLFormElement>;
 
 export interface AddItemFormProps {
   placeholder?: string;
@@ -13,13 +15,29 @@ export interface AddItemFormProps {
   onCancel: () => void;
 }
 
-export const AddItemForm = (props: AddItemFormProps) => {
-  // TODO: try useReducer
-  const state = useAddItemFormState();
-  const { changeText, submit, add, cancel } = useAddItemFormFeatures(
-    props,
-    state
+export const AddItemForm = ({
+  placeholder = "",
+  onSubmit,
+  onCancel,
+}: AddItemFormProps) => {
+  const initialFormValue: AddItemFormValue = { text: "" };
+
+  const [formValue, dispatch] = useReducer(
+    (prevValue: AddItemFormValue, payload: Partial<AddItemFormValue>) => ({
+      ...prevValue,
+      ...payload,
+    }),
+    initialFormValue
   );
+
+  const changeText = (e: ChangeEventType) => dispatch({ text: e.target.value });
+  const cancel = () => onCancel();
+  const add = () => onSubmit({ text: formValue.text });
+
+  const submit = (e: FormEventType) => {
+    e.preventDefault();
+    add();
+  };
 
   return (
     <FormContainer onSubmit={submit}>
@@ -27,8 +45,8 @@ export const AddItemForm = (props: AddItemFormProps) => {
         name="text"
         type={InputType.Text}
         ref={useInputFocus()}
-        value={state.text.value}
-        placeholder={props.placeholder || ""}
+        value={formValue.text}
+        placeholder={placeholder}
         onChange={changeText}
       />
 

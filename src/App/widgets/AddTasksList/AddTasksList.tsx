@@ -1,22 +1,29 @@
 import { AddItemForm } from "App/components/AddItemForm/AddItemForm";
+import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddListButton } from "./components/AddListButton";
-import { useAddTasksListFeatures } from "./hooks/useAddTasksListFeatures";
-import { useAddTasksListState } from "./hooks/useAddTasksListState";
 
 export interface AddTasksListProps {
   onAdd: (list: TasksListViewModel) => void;
 }
 
-export const AddTasksList = (props: AddTasksListProps) => {
-  const state = useAddTasksListState();
-  const { addList, cancel, showForm } = useAddTasksListFeatures(props, state);
+export const AddTasksList = ({ onAdd }: AddTasksListProps) => {
+  const [isShowForm, setIsShowForm] = useState(false);
 
-  if (state.isShowForm.value) {
+  const showForm = () => setIsShowForm(true);
+  const hideForm = () => setIsShowForm(false);
+
+  const addList = (formValue: AddItemFormValue) => {
+    onAdd(new TasksListViewModel({ title: formValue.text }));
+    hideForm();
+  };
+
+  if (isShowForm) {
     return (
       <Card backgroundColor="#D8DEE9">
-        <AddItemForm onSubmit={addList} onCancel={cancel} />
+        <AddItemForm onSubmit={addList} onCancel={hideForm} />
       </Card>
     );
   }

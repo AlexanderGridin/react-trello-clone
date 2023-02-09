@@ -1,5 +1,5 @@
-import { MaterialIcon } from "shared/enums/MaterialIcon";
 import { Button, ButtonProps } from "../Button/Button";
+import { MaterialIcon } from "../Icon/enums/MaterialIcon";
 import { Icon } from "../Icon/Icon";
 import style from "./IconButton.module.css";
 

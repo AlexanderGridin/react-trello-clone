@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useReducer } from "react";
+import { InputType } from "shared/components/Form/enums/InputType";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { Input } from "shared/components/Form/Input";
-import { InputType } from "shared/enums/InputType";
 import { useInputFocus } from "shared/hooks/useInputFocus";
 import { AddItemFormFooter } from "./components/AddItemFormFooter";
 import { AddItemFormValue } from "./models/AddItemFormValue";

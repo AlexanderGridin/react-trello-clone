@@ -1,8 +1,8 @@
-import { createAction } from "shared/state/utils/createAction";
 import { AppActionType } from "App/state/enums/AppActionType.enum";
 
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { createAction } from "App/state/utils/createAction";
 
 interface PushTaskInTasksListPayload {
   list: TasksListViewModel;

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { FlexContainer } from "shared/components/FlexContainer";
+import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { Icon } from "shared/components/Icon/Icon";
-import { MaterialIcon } from "shared/enums/MaterialIcon";
 import style from "./AppNavigation.module.css";
 
 const getLinkClassName = ({ isActive }: { isActive: boolean }) =>

@@ -1,10 +1,10 @@
 import { PropsWithChildren } from "react";
-import { ButtonType } from "shared/enums/ButtonType";
 import { PropsWithClick } from "shared/models/PropsWithClick";
 import {
   ButtonContainer,
   ButtonContainerProps,
 } from "./components/ButtonContainer";
+import { ButtonType } from "./enums/ButtonType";
 
 export interface ButtonProps
   extends ButtonContainerProps,

@@ -1,4 +1,4 @@
-import { addItemBeforeArrayItem } from "./addItemBeforeArrayItem";
+import { addItemBeforeArrayItem } from "./addItemBeforeArrayItem/addItemBeforeArrayItem";
 import { ArrayUtilConfigWithArrayItem } from "./models/ArrayUtilConfigWithArrayItem";
 import { removeItemFromArray } from "./removeItemFromArray/removeItemFromArray";
 

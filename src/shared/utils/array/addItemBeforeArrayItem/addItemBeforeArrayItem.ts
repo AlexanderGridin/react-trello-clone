@@ -1,4 +1,4 @@
-import { ArrayUtilConfigWithArrayItem } from "./models/ArrayUtilConfigWithArrayItem";
+import { ArrayUtilConfigWithArrayItem } from "../models/ArrayUtilConfigWithArrayItem";
 
 export const addItemBeforeArrayItem = <T>({
   array,

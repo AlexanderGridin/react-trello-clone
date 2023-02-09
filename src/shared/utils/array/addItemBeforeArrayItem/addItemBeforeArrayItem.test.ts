@@ -43,7 +43,7 @@ test("add item before array item", () => {
     addItemBeforeArrayItem({
       array: source,
       item: itemToAdd,
-      arrayItem: source[2],
+      arrayItem: source[source.length - 1],
       uniqueKey: "id",
     })
   ).toStrictEqual(insertedBeforeLastItem);

@@ -43,7 +43,7 @@ test("add item after array item", () => {
     addItemAfterArrayItem({
       array: source,
       item: itemToAdd,
-      arrayItem: source[2],
+      arrayItem: source[source.length - 1],
       uniqueKey: "id",
     })
   ).toStrictEqual(insertedAfterLastItem);

@@ -1,7 +1,7 @@
 import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AppState } from "App/state/models/AppState";
-import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
+import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
 import { RemoveTasksListAction } from "../actions/removeTasksList";
 
 export const removeTasksListReducer = (

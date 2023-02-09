@@ -1,4 +1,4 @@
-import { ArrayUtilConfig } from "./models/ArrayUtilConfig";
+import { ArrayUtilConfig } from "../models/ArrayUtilConfig";
 
 export const removeItemFromArray = <T>({
   array,

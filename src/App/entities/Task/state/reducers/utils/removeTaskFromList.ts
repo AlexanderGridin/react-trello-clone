@@ -1,6 +1,6 @@
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
-import { removeItemFromArray } from "shared/utils/array/removeItemFromArray";
+import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
 
 interface Config {
   list: TasksListViewModel;

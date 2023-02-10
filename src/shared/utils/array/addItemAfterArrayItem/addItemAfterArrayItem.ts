@@ -1,4 +1,4 @@
-import { ArrayUtilConfigWithArrayItem } from "./models/ArrayUtilConfigWithArrayItem";
+import { ArrayUtilConfigWithArrayItem } from "../models/ArrayUtilConfigWithArrayItem";
 
 export const addItemAfterArrayItem = <T>({
   array,
@@ -8,7 +8,7 @@ export const addItemAfterArrayItem = <T>({
 }: ArrayUtilConfigWithArrayItem<T>): T[] => {
   const arrayItemIndex =
     array?.findIndex(
-      (itemFromArray) => itemFromArray[uniqueKey] === arrayItem[uniqueKey]
+      (itemFromArray) => itemFromArray[uniqueKey] === arrayItem?.[uniqueKey]
     ) ?? -1;
 
   if (arrayItemIndex < 0) {

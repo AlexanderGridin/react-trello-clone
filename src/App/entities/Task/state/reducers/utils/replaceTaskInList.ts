@@ -1,8 +1,8 @@
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
-import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem";
-import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem";
+import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem/moveItemAfterArrayItem";
+import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem/moveItemBeforeArrayItem";
 
 interface Config {
   list: TasksListViewModel;

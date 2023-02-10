@@ -1,50 +1,65 @@
 import { addItemBeforeArrayItem } from "./addItemBeforeArrayItem";
+import { createTestDataFromArray } from "../testing-utils/createTestDataFromArray";
 
-test("add item before array item", () => {
-  const source = [1, 2, 3].map((n: number) => ({
-    id: n.toString(),
-  }));
+const source = createTestDataFromArray([1, 2, 3]);
+const itemToAdd = {
+  id: "4",
+};
 
-  const itemToAdd = {
-    id: "4",
-  };
+describe("Add item before array item", () => {
+  test("when array item don't exist", () => {
+    const result = createTestDataFromArray([1, 2, 3, 4]);
+    const arrayItem = source[10];
 
-  const insertedBeforeFirstItem = [4, 1, 2, 3].map((n: number) => ({
-    id: n.toString(),
-  }));
+    expect(
+      addItemBeforeArrayItem({
+        array: source,
+        item: itemToAdd,
+        arrayItem,
+        uniqueKey: "id",
+      })
+    ).toStrictEqual(result);
+  });
 
-  expect(
-    addItemBeforeArrayItem({
-      array: source,
-      item: itemToAdd,
-      arrayItem: source[0],
-      uniqueKey: "id",
-    })
-  ).toStrictEqual(insertedBeforeFirstItem);
+  test("when array item is the first item", () => {
+    const result = createTestDataFromArray([4, 1, 2, 3]);
+    const arrayItem = source[0];
 
-  const insertedBeforeMiddleItem = [1, 4, 2, 3].map((n: number) => ({
-    id: n.toString(),
-  }));
+    expect(
+      addItemBeforeArrayItem({
+        array: source,
+        item: itemToAdd,
+        arrayItem,
+        uniqueKey: "id",
+      })
+    ).toStrictEqual(result);
+  });
 
-  expect(
-    addItemBeforeArrayItem({
-      array: source,
-      item: itemToAdd,
-      arrayItem: source[1],
-      uniqueKey: "id",
-    })
-  ).toStrictEqual(insertedBeforeMiddleItem);
+  test("when array item is not the first or last item", () => {
+    const result = createTestDataFromArray([1, 4, 2, 3]);
+    const arrayItem = source[1];
 
-  const insertedBeforeLastItem = [1, 2, 4, 3].map((n: number) => ({
-    id: n.toString(),
-  }));
+    expect(
+      addItemBeforeArrayItem({
+        array: source,
+        item: itemToAdd,
+        arrayItem,
+        uniqueKey: "id",
+      })
+    ).toStrictEqual(result);
+  });
 
-  expect(
-    addItemBeforeArrayItem({
-      array: source,
-      item: itemToAdd,
-      arrayItem: source[source.length - 1],
-      uniqueKey: "id",
-    })
-  ).toStrictEqual(insertedBeforeLastItem);
+  test("when array item is the last item", () => {
+    const result = createTestDataFromArray([1, 2, 4, 3]);
+    const arrayItem = source[source.length - 1];
+
+    expect(
+      addItemBeforeArrayItem({
+        array: source,
+        item: itemToAdd,
+        arrayItem,
+        uniqueKey: "id",
+      })
+    ).toStrictEqual(result);
+  });
 });

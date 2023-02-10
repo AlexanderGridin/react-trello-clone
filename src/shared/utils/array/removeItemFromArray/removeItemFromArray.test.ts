@@ -19,6 +19,7 @@ describe("Remove item from array", () => {
 
   test("which contains only item to remove", () => {
     const source = createTestDataFromArray([2]);
+    const result = createTestDataFromArray([]);
 
     expect(
       removeItemFromArray({
@@ -26,7 +27,7 @@ describe("Remove item from array", () => {
         item: itemToRemove,
         uniqueKey: "id",
       })
-    ).toEqual([]);
+    ).toEqual(result);
   });
 
   test("which don'n contain item to remove", () => {

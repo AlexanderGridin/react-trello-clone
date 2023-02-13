@@ -4,10 +4,10 @@ import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
 import { BoardsList } from "App/widgets/BoardsList/BoardsList";
 import { getBoards, getFavoriteBoards } from "api/Boards/Boards.api";
-import { mapBoardsSimpleDtoToViewModel } from "App/entities/Board/BoardSimpleDto";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { Toggler } from "App/components/Toggler/Toggler";
 import style from "./BoardsPage.module.css";
+import { mapBoardDtoToViewModel } from "App/entities/Board/Board";
 
 export const BoardsPage = () => {
   const { boards } = useAppState();
@@ -21,7 +21,7 @@ export const BoardsPage = () => {
       ? await getFavoriteBoards()
       : await getBoards();
 
-    dispatchSetBoards(boardsDtos.map(mapBoardsSimpleDtoToViewModel));
+    dispatchSetBoards(boardsDtos.map(mapBoardDtoToViewModel));
   };
 
   useEffect(() => {

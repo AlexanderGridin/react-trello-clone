@@ -1,8 +1,8 @@
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppState } from "App/state/models/AppState";
 import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem/moveItemAfterArrayItem";
 import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem/moveItemBeforeArrayItem";
+import { BoardViewModel } from "../../Board";
 import { MoveBoardAction } from "../actions/moveBoard";
 
 export const moveBoardReducer = (

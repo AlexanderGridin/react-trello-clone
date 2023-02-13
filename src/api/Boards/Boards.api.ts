@@ -1,12 +1,12 @@
-import { BoardSimpleDto } from "App/entities/Board/BoardSimpleDto";
 import { http } from "api/http";
+import { BoardDto } from "App/entities/Board/Board";
 import { AxiosError } from "axios";
 
-export const getBoards = async (): Promise<BoardSimpleDto[]> => {
+export const getBoards = async (): Promise<BoardDto[]> => {
   const apiUrl = "/boards";
 
   try {
-    const boards = await http.get<BoardSimpleDto[]>(apiUrl);
+    const boards = await http.get<BoardDto[]>(apiUrl);
     return boards.data;
   } catch (e) {
     const error = e as AxiosError;
@@ -15,11 +15,11 @@ export const getBoards = async (): Promise<BoardSimpleDto[]> => {
   }
 };
 
-export const getFavoriteBoards = async (): Promise<BoardSimpleDto[]> => {
+export const getFavoriteBoards = async (): Promise<BoardDto[]> => {
   const apiUrl = "/boards/favorite";
 
   try {
-    const boards = await http.get<BoardSimpleDto[]>(apiUrl);
+    const boards = await http.get<BoardDto[]>(apiUrl);
     return boards.data;
   } catch (e) {
     const error = e as AxiosError;

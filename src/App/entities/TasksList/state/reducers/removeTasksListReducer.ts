@@ -1,4 +1,3 @@
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AppState } from "App/state/models/AppState";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
@@ -9,32 +8,29 @@ export const removeTasksListReducer = (
   action: RemoveTasksListAction
 ): AppState => {
   const listToRemove: TasksListViewModel = action.payload.list;
+  const board = state.boardsCache[listToRemove.boardId];
 
   return {
     ...state,
-    boards:
-      state.boards?.map((board: BoardViewModel) => {
-        if (board.id !== listToRemove.boardId) {
-          return { ...board };
-        }
-
-        return {
-          ...board,
-          pinnedTasksLists: listToRemove.isPinned
-            ? removeItemFromArray({
-                array: board.pinnedTasksLists,
-                item: listToRemove,
-                uniqueKey: "id",
-              })
-            : [...board.pinnedTasksLists],
-          tasksLists: listToRemove.isPinned
-            ? [...board.tasksLists]
-            : removeItemFromArray({
-                array: board.tasksLists,
-                item: listToRemove,
-                uniqueKey: "id",
-              }),
-        };
-      }) ?? [],
+    boardsCache: {
+      ...state.boardsCache,
+      [board.id]: {
+        ...board,
+        pinnedTasksLists: listToRemove.isPinned
+          ? removeItemFromArray({
+              array: board.pinnedTasksLists,
+              item: listToRemove,
+              uniqueKey: "id",
+            })
+          : [...board.pinnedTasksLists],
+        tasksLists: listToRemove.isPinned
+          ? [...board.tasksLists]
+          : removeItemFromArray({
+              array: board.tasksLists,
+              item: listToRemove,
+              uniqueKey: "id",
+            }),
+      },
+    },
   };
 };

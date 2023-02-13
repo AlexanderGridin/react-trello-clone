@@ -1,6 +1,6 @@
 import { FavoriteButton } from "App/components/FavoriteButton/FavoriteButton";
 import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
+import { BoardViewModel } from "App/entities/Board/Board";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { BoardContainer } from "./components/BoardContainer";
 import { BoardTitle } from "./components/BoardTitle";

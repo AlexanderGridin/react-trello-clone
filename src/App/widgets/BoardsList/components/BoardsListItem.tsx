@@ -1,13 +1,15 @@
 import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
-import { mapBoardToDraggedItem } from "App/entities/Board/mappers/mapBoardToDraggedItem";
 import { Board } from "App/widgets/Board/Board";
 import style from "../BoardsList.module.css";
 import { useNavigate } from "react-router-dom";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { DraggedItemType } from "App/enums/DraggedItemType";
+import {
+  BoardViewModel,
+  mapBoardToDraggedItem,
+} from "App/entities/Board/Board";
 
 interface BoardsListItemProps {
   board: BoardViewModel;

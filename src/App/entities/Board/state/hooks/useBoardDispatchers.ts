@@ -1,5 +1,5 @@
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { useAppState } from "App/state/hooks/useAppState";
+import { BoardViewModel } from "../../Board";
 import { addBoard } from "../actions/addBoard";
 import { moveBoard } from "../actions/moveBoard";
 import { removeBoard } from "../actions/removeBoard";

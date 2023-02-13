@@ -1,17 +1,14 @@
 import { useParams } from "react-router-dom";
-import { useAppState } from "App/state/hooks/useAppState";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { ListOfTasksLists } from "App/widgets/ListOfTasksLists/ListOfTasksLists";
+import { BoardWithTasksListsViewModel } from "App/entities/Board/BoardWithTasksLists";
 
 export const BoardPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id } = useParams();
-  const { boards } = useAppState();
 
-  const board =
-    boards?.find((board: BoardViewModel) => board.id === id) ||
-    new BoardViewModel({});
+  const board = new BoardWithTasksListsViewModel({ title: "Test" });
 
   if (!board) {
     return null;

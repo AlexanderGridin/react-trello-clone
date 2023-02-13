@@ -1,8 +1,9 @@
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
+import { BoardViewModel } from "App/entities/Board/Board";
+import { BoardWithTasksListsViewModel } from "App/entities/Board/BoardWithTasksLists";
 
 export interface AppState {
   boards: BoardViewModel[] | null;
-  boardsCache: Record<string, BoardViewModel>;
+  boardsCache: Record<string, BoardWithTasksListsViewModel>;
   draggedItem: AppDraggedItem | null;
 }

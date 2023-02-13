@@ -1,4 +1,4 @@
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
+import { BoardViewModel } from "App/entities/Board/Board";
 import { BoardsListItem } from "./BoardsListItem";
 
 interface BoardsListItemsProps {

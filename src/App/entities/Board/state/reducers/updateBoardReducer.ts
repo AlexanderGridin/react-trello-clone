@@ -1,5 +1,5 @@
 import { AppState } from "App/state/models/AppState";
-import { BoardViewModel } from "../../BoardViewModel";
+import { BoardViewModel } from "../../Board";
 import { UpdateBoardAction } from "../actions/updateBoard";
 
 export const updateBoardReducer = (

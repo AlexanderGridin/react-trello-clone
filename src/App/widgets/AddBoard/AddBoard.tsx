@@ -1,6 +1,6 @@
 import { AddItemForm } from "App/components/AddItemForm/AddItemForm";
 import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
+import { BoardViewModel } from "App/entities/Board/Board";
 import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddBoardButton } from "./components/AddBoardButton";

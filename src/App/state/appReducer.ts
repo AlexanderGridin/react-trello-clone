@@ -16,6 +16,8 @@ import { unpinTasksListReducer } from "App/entities/TasksList/state/reducers/unp
 import { setAppDraggedItemReducer } from "App/entities/AppDraggedItem/state/reducers/setAppDraggedItemReducer";
 import { updateBoardReducer } from "App/entities/Board/state/reducers/updateBoardReducer";
 import { setBoardsReducer } from "App/entities/Board/state/reducers/setBoardsReducer";
+import { cacheBoardReducer } from "App/entities/Board/state/reducers/cacheBoardReducer";
+import { setIsShowFavoritesReducer } from "App/entities/Board/state/reducers/setIsShowFavoritesReducer";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
@@ -67,6 +69,12 @@ export const appReducer = (state: AppState, action: AppAction): AppState => {
 
     case AppActionType.SetBoards:
       return setBoardsReducer(state, action);
+
+    case AppActionType.CacheBoard:
+      return cacheBoardReducer(state, action);
+
+    case AppActionType.SetIsShowFavorites:
+      return setIsShowFavoritesReducer(state, action);
 
     default:
       return { ...state };

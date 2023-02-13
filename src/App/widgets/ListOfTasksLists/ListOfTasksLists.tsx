@@ -22,7 +22,11 @@ export const ListOfTasksLists = ({
     dispatchAddTasksList({ ...list, boardId });
 
   if (!lists.length) {
-    return null;
+    return (
+      <div className={style.cell}>
+        <AddTasksList onAdd={addTasksList} />
+      </div>
+    );
   }
 
   return (

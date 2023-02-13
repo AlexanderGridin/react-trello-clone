@@ -3,7 +3,8 @@ import { TasksListViewModel } from "../TasksList/TasksListViewModel";
 export interface BoardWithTasksListsDto {
   _id: string;
   title: string;
-  tasksLists: TasksListViewModel[];
+  tasksLists?: TasksListViewModel[];
+  isFavorite: boolean;
 }
 
 export class BoardWithTasksListsViewModel {
@@ -11,6 +12,7 @@ export class BoardWithTasksListsViewModel {
   public title: string;
   public tasksLists: TasksListViewModel[] = [];
   public pinnedTasksLists: TasksListViewModel[] = [];
+  public isFavorite = false;
 
   constructor({ title = "" }: { title?: string }) {
     this.title = title;
@@ -23,5 +25,6 @@ export const mapBoardWithTasksListsDtoToViewModel = (
   ...new BoardWithTasksListsViewModel({}),
   id: source._id,
   title: source.title,
-  tasksLists: [...source.tasksLists],
+  tasksLists: [],
+  isFavorite: source.isFavorite,
 });

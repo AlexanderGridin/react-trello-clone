@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <BoardsPage /> },
       {
-        path: "boards/:id",
+        path: "board/:id",
         element: <BoardPage />,
       },
     ],

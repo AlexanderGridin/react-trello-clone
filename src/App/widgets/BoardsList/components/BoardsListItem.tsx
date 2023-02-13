@@ -35,7 +35,7 @@ export const BoardsListItem = ({
     dispatchMoveBoard(draggedBoard, board);
   };
 
-  const navigateToBoard = () => navigate(`/boards/${board.id}`);
+  const navigateToBoard = () => navigate(`/board/${board.id}`);
 
   if (isDragPreview) {
     return (

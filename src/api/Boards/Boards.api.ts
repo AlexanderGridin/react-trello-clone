@@ -1,5 +1,6 @@
 import { http } from "api/http";
 import { BoardDto } from "App/entities/Board/Board";
+import { BoardWithTasksListsDto } from "App/entities/Board/BoardWithTasksLists";
 import { AxiosError } from "axios";
 
 export const getBoards = async (): Promise<BoardDto[]> => {
@@ -25,5 +26,18 @@ export const getFavoriteBoards = async (): Promise<BoardDto[]> => {
     const error = e as AxiosError;
     console.log(error.message);
     return [];
+  }
+};
+
+export const getBoard = async (id: string): Promise<BoardWithTasksListsDto> => {
+  const apiUrl = "/board/{boardId}".replace("{boardId}", id);
+
+  try {
+    const board = await http.get<BoardWithTasksListsDto>(apiUrl);
+    return board.data;
+  } catch (e) {
+    const error = e as AxiosError;
+    console.log(error.message);
+    return {} as BoardWithTasksListsDto;
   }
 };

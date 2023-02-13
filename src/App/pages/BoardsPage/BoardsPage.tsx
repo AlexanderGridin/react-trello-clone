@@ -10,9 +10,9 @@ import style from "./BoardsPage.module.css";
 import { mapBoardDtoToViewModel } from "App/entities/Board/Board";
 
 export const BoardsPage = () => {
-  const { boards } = useAppState();
-  const { dispatchSetBoards } = useBoardDispatchers();
-  const [isShowFavorites, setIsShowFavorites] = useState(false);
+  const { boards, isShowFavorites } = useAppState();
+  const { dispatchSetBoards, dispatchSetIsShowFavorites } =
+    useBoardDispatchers();
 
   const loadBoards = async (isShowFavorites = false) => {
     dispatchSetBoards(null);
@@ -25,16 +25,16 @@ export const BoardsPage = () => {
   };
 
   useEffect(() => {
-    loadBoards(isShowFavorites);
+    if (boards?.length) {
+      return;
+    }
 
-    return () => {
-      dispatchSetBoards(null);
-    };
+    loadBoards(isShowFavorites);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleFavorite = (isShowFavorites: boolean) => {
-    setIsShowFavorites(isShowFavorites);
+    dispatchSetIsShowFavorites(isShowFavorites);
     loadBoards(isShowFavorites);
   };
 

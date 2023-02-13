@@ -4,6 +4,7 @@ import { BoardWithTasksListsViewModel } from "App/entities/Board/BoardWithTasksL
 
 export interface AppState {
   boards: BoardViewModel[] | null;
+  isShowFavorites: boolean;
   boardsCache: Record<string, BoardWithTasksListsViewModel>;
   draggedItem: AppDraggedItem | null;
 }

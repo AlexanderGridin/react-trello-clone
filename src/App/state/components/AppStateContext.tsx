@@ -4,8 +4,7 @@ import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 
 export interface AppStateContextProps {
-  boards: BoardViewModel[];
-  favoriteBoards: BoardViewModel[];
+  boards: BoardViewModel[] | null;
   boardsCache: Record<string, BoardViewModel>;
   dispatch: Dispatch<AppAction>;
   draggedItem: AppDraggedItem | null;

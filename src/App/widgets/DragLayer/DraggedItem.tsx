@@ -4,9 +4,9 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { ListOfTasksListItem } from "App/widgets/ListOfTasks/components/ListOfTasksListItem";
 import { TasksList } from "App/widgets/TasksList/TasksList";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { BoardsListItem } from "App/widgets/BoardsList/components/BoardsListItem";
 import listOfTasksListsStyle from "App/widgets/ListOfTasksLists/ListOfTasksLists.module.css";
+import { BoardViewModel } from "App/entities/Board/Board";
 
 interface DraggedItemProps {
   item: AppDraggedItem;

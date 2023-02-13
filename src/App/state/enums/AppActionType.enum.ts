@@ -12,10 +12,11 @@ export enum AppActionType {
 
   SetAppDraggedItem = "SET_APP_DRAGGED_ITEM",
 
+  CacheBoard = "CACHE_BOARD",
   AddBoard = "ADD_BOARD",
   UpdateBoard = "UPDATE_BOARD",
   RemoveBoard = "REMOVE_BOARD",
   MoveBoard = "MOVE_BOARD",
-  PushBoardInFavorites = "PUSH_BOARD_IN_FAVORITES",
-  RemoveBoardFromFavorites = "REMOVE_BOARD_FROM_FAVORITES",
+  SetBoards = "SET_BOARDS",
+  SetIsShowFavorites = "SET_IS_SHOW_FAVORITES",
 }

@@ -1,10 +1,12 @@
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { useAppState } from "App/state/hooks/useAppState";
+import { BoardViewModel } from "../../Board";
+import { BoardWithTasksListsViewModel } from "../../BoardWithTasksLists";
 import { addBoard } from "../actions/addBoard";
+import { cacheBoard } from "../actions/cacheBoard";
 import { moveBoard } from "../actions/moveBoard";
-import { pushBoardInFavorites } from "../actions/pushBoardInFavorites";
 import { removeBoard } from "../actions/removeBoard";
-import { removeBoardFromFavorites } from "../actions/removeBoardFromFavorites";
+import { setBoards } from "../actions/setBoards";
+import { setIsShowFavorites } from "../actions/setIsShowFavorites";
 import { updateBoard } from "../actions/updateBoard";
 
 export const useBoardDispatchers = () => {
@@ -23,18 +25,22 @@ export const useBoardDispatchers = () => {
   const dispatchUpdateBoard = (board: BoardViewModel) =>
     dispatch(updateBoard(board));
 
-  const dispatchPushBoardInFavorites = (board: BoardViewModel) =>
-    dispatch(pushBoardInFavorites(board));
+  const dispatchSetBoards = (boards: BoardViewModel[] | null) =>
+    dispatch(setBoards(boards));
 
-  const dispatchRemoveBoardFromFavorites = (board: BoardViewModel) =>
-    dispatch(removeBoardFromFavorites(board));
+  const dispatchCacheBoard = (board: BoardWithTasksListsViewModel) =>
+    dispatch(cacheBoard(board));
+
+  const dispatchSetIsShowFavorites = (isShowFavorites: boolean) =>
+    dispatch(setIsShowFavorites(isShowFavorites));
 
   return {
     dispatchAddBoard,
     dispatchRemoveBoard,
     dispatchMoveBoard,
     dispatchUpdateBoard,
-    dispatchPushBoardInFavorites,
-    dispatchRemoveBoardFromFavorites,
+    dispatchSetBoards,
+    dispatchCacheBoard,
+    dispatchSetIsShowFavorites,
   };
 };

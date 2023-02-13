@@ -16,10 +16,11 @@ export const AppPageLayout = ({
     <>
       <section className={style.container}>
         {slotHeader && <header className={style.header}>{slotHeader}</header>}
-        {children && <div className={style.content}>{children}</div>}
+        <div className={style.content}>
+          {children}
+          {isLoading && <Spinner />}
+        </div>
       </section>
-
-      {isLoading && <Spinner />}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { FavoriteButton } from "App/components/FavoriteButton/FavoriteButton";
 import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
+import { BoardViewModel } from "App/entities/Board/Board";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { BoardContainer } from "./components/BoardContainer";
 import { BoardTitle } from "./components/BoardTitle";
@@ -10,34 +10,21 @@ export interface BoardProps {
 }
 
 export const Board = ({ board }: BoardProps) => {
-  const {
-    dispatchRemoveBoard,
-    dispatchUpdateBoard,
-    dispatchPushBoardInFavorites,
-    dispatchRemoveBoardFromFavorites,
-  } = useBoardDispatchers();
+  const { dispatchRemoveBoard, dispatchUpdateBoard } = useBoardDispatchers();
 
   const remove = () => dispatchRemoveBoard(board);
   const toggleFavorite = () => {
-    if (board.isFavorite) {
-      const updatedBoard = {
-        ...board,
-        isFavorite: false,
-      };
-
-      dispatchUpdateBoard(updatedBoard);
-      dispatchRemoveBoardFromFavorites(updatedBoard);
-
-      return;
-    }
-
-    const updatedBoard = {
-      ...board,
-      isFavorite: true,
-    };
+    const updatedBoard = board.isFavorite
+      ? {
+          ...board,
+          isFavorite: false,
+        }
+      : {
+          ...board,
+          isFavorite: true,
+        };
 
     dispatchUpdateBoard(updatedBoard);
-    dispatchPushBoardInFavorites(updatedBoard);
   };
 
   return (

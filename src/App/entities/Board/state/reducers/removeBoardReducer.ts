@@ -8,26 +8,10 @@ export const removeBoardReducer = (
 ): AppState => {
   const boardToRemove = action.payload.board;
 
-  if (!boardToRemove.isFavorite) {
-    return {
-      ...state,
-      boards: removeItemFromArray({
-        array: state.boards,
-        item: boardToRemove,
-        uniqueKey: "id",
-      }),
-    };
-  }
-
   return {
     ...state,
     boards: removeItemFromArray({
-      array: state.boards,
-      item: boardToRemove,
-      uniqueKey: "id",
-    }),
-    favoriteBoards: removeItemFromArray({
-      array: state.favoriteBoards,
+      array: state.boards ?? [],
       item: boardToRemove,
       uniqueKey: "id",
     }),

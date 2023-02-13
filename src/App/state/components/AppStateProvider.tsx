@@ -5,9 +5,7 @@ import { appReducer } from "App/state/appReducer";
 
 interface AppStateProviderProps extends PropsWithChildren {}
 
-export const AppStateProvider = ({
-  children,
-}: AppStateProviderProps): JSX.Element => {
+export const AppStateProvider = ({ children }: AppStateProviderProps) => {
   const [state, dispatch] = useReducer(appReducer, INITIAL_STATE);
 
   return (

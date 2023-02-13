@@ -19,15 +19,6 @@ export const AppNavigation = () => {
             </FlexContainer>
           </NavLink>
         </li>
-
-        <li className={style.ListItem}>
-          <NavLink to="/boards/favorite" className={getLinkClassName}>
-            <FlexContainer>
-              <Icon className="mr" icon={MaterialIcon.Star} />
-              <span> Favorite boards</span>
-            </FlexContainer>
-          </NavLink>
-        </li>
       </ul>
     </nav>
   );

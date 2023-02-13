@@ -1,6 +1,5 @@
 import { AppState } from "App/state/models/AppState";
 import { AddTasksListAction } from "../actions/addTasksList";
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 
 export const addTasksListReducer = (
@@ -8,18 +7,16 @@ export const addTasksListReducer = (
   action: AddTasksListAction
 ): AppState => {
   const listToAdd: TasksListViewModel = { ...action.payload.list };
+  const board = state.boardsCache[listToAdd.boardId];
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardViewModel) => {
-      if (board.id !== listToAdd.boardId) {
-        return { ...board };
-      }
-
-      return {
+    boardsCache: {
+      ...state.boardsCache,
+      [board.id]: {
         ...board,
         tasksLists: [...board.tasksLists, listToAdd],
-      };
-    }),
+      },
+    },
   };
 };

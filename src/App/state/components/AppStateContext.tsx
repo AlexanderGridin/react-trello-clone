@@ -1,12 +1,13 @@
 import { createContext, Dispatch } from "react";
 import { AppAction } from "App/state/models/AppAction";
-import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
+import { BoardViewModel } from "App/entities/Board/Board";
+import { BoardWithTasksListsViewModel } from "App/entities/Board/BoardWithTasksLists";
 
 export interface AppStateContextProps {
-  boards: BoardViewModel[];
-  favoriteBoards: BoardViewModel[];
-  boardsCache: Record<string, BoardViewModel>;
+  boards: BoardViewModel[] | null;
+  boardsCache: Record<string, BoardWithTasksListsViewModel>;
+  isShowFavorites: boolean;
   dispatch: Dispatch<AppAction>;
   draggedItem: AppDraggedItem | null;
 }

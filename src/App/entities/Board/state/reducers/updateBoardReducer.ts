@@ -1,5 +1,5 @@
 import { AppState } from "App/state/models/AppState";
-import { BoardViewModel } from "../../BoardViewModel";
+import { BoardViewModel } from "../../Board";
 import { UpdateBoardAction } from "../actions/updateBoard";
 
 export const updateBoardReducer = (
@@ -10,14 +10,15 @@ export const updateBoardReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardViewModel) => {
-      if (board.id !== boardToUpdate.id) {
-        return { ...board };
-      }
+    boards:
+      state.boards?.map((board: BoardViewModel) => {
+        if (board.id !== boardToUpdate.id) {
+          return { ...board };
+        }
 
-      return {
-        ...boardToUpdate,
-      };
-    }),
+        return {
+          ...boardToUpdate,
+        };
+      }) ?? [],
   };
 };

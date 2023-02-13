@@ -11,15 +11,16 @@ export const addTasksListReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardViewModel) => {
-      if (board.id !== listToAdd.boardId) {
-        return { ...board };
-      }
+    boards:
+      state.boards?.map((board: BoardViewModel) => {
+        if (board.id !== listToAdd.boardId) {
+          return { ...board };
+        }
 
-      return {
-        ...board,
-        tasksLists: [...board.tasksLists, listToAdd],
-      };
-    }),
+        return {
+          ...board,
+          tasksLists: [...board.tasksLists, listToAdd],
+        };
+      }) ?? [],
   };
 };

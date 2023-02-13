@@ -13,38 +13,39 @@ export const moveTaskReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardViewModel) => {
-      if (board.id !== taskToMove.boardId) {
-        return { ...board };
-      }
-
-      const totalPinned = board.pinnedTasksLists.length;
-      const lists = [...board.pinnedTasksLists, ...board.tasksLists];
-
-      const updatedLists = lists.map((list: TasksListViewModel) => {
-        if (list.id === taskToReplace.listId) {
-          return replaceTaskInList({
-            list,
-            task: taskToMove,
-            taskToReplace,
-          });
+    boards:
+      state.boards?.map((board: BoardViewModel) => {
+        if (board.id !== taskToMove.boardId) {
+          return { ...board };
         }
 
-        if (list.id === taskToMove.listId) {
-          return removeTaskFromList({
-            list,
-            task: taskToMove,
-          });
-        }
+        const totalPinned = board.pinnedTasksLists.length;
+        const lists = [...board.pinnedTasksLists, ...board.tasksLists];
 
-        return { ...list };
-      });
+        const updatedLists = lists.map((list: TasksListViewModel) => {
+          if (list.id === taskToReplace.listId) {
+            return replaceTaskInList({
+              list,
+              task: taskToMove,
+              taskToReplace,
+            });
+          }
 
-      return {
-        ...board,
-        pinnedTasksLists: updatedLists.slice(0, totalPinned),
-        tasksLists: updatedLists.slice(totalPinned),
-      };
-    }),
+          if (list.id === taskToMove.listId) {
+            return removeTaskFromList({
+              list,
+              task: taskToMove,
+            });
+          }
+
+          return { ...list };
+        });
+
+        return {
+          ...board,
+          pinnedTasksLists: updatedLists.slice(0, totalPinned),
+          tasksLists: updatedLists.slice(totalPinned),
+        };
+      }) ?? [],
   };
 };

@@ -14,6 +14,7 @@ export class BoardViewModel {
   public tasksLists: TasksListViewModel[];
   public pinnedTasksLists: TasksListViewModel[] = [];
   public isFavorite = false;
+  public rank: number | null = null;
 
   constructor({
     title = "",

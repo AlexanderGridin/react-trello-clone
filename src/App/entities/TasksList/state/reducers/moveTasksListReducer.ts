@@ -12,26 +12,31 @@ export const moveTasksListReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardViewModel) => {
-      if (board.id !== listToMove.boardId) {
-        return { ...board };
-      }
+    boards:
+      state.boards?.map((board: BoardViewModel) => {
+        if (board.id !== listToMove.boardId) {
+          return { ...board };
+        }
 
-      if (listToMove.isPinned) {
+        if (listToMove.isPinned) {
+          return {
+            ...board,
+            pinnedTasksLists: moveTasksLists(
+              board.pinnedTasksLists,
+              listToMove,
+              listToReplace
+            ),
+          };
+        }
+
         return {
           ...board,
-          pinnedTasksLists: moveTasksLists(
-            board.pinnedTasksLists,
+          tasksLists: moveTasksLists(
+            board.tasksLists,
             listToMove,
             listToReplace
           ),
         };
-      }
-
-      return {
-        ...board,
-        tasksLists: moveTasksLists(board.tasksLists, listToMove, listToReplace),
-      };
-    }),
+      }) ?? [],
   };
 };

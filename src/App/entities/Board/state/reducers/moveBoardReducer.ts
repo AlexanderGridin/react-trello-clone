@@ -9,7 +9,7 @@ export const moveBoardReducer = (
   state: AppState,
   action: MoveBoardAction
 ): AppState => {
-  const boards = [...state.boards];
+  const boards = state.boards ? [...state.boards] : [];
   const boardToMove = action.payload.boardToMove;
   const boardToReplace = action.payload.boardToReplace;
 

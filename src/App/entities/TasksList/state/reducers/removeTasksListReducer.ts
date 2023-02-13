@@ -12,28 +12,29 @@ export const removeTasksListReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardViewModel) => {
-      if (board.id !== listToRemove.boardId) {
-        return { ...board };
-      }
+    boards:
+      state.boards?.map((board: BoardViewModel) => {
+        if (board.id !== listToRemove.boardId) {
+          return { ...board };
+        }
 
-      return {
-        ...board,
-        pinnedTasksLists: listToRemove.isPinned
-          ? removeItemFromArray({
-              array: board.pinnedTasksLists,
-              item: listToRemove,
-              uniqueKey: "id",
-            })
-          : [...board.pinnedTasksLists],
-        tasksLists: listToRemove.isPinned
-          ? [...board.tasksLists]
-          : removeItemFromArray({
-              array: board.tasksLists,
-              item: listToRemove,
-              uniqueKey: "id",
-            }),
-      };
-    }),
+        return {
+          ...board,
+          pinnedTasksLists: listToRemove.isPinned
+            ? removeItemFromArray({
+                array: board.pinnedTasksLists,
+                item: listToRemove,
+                uniqueKey: "id",
+              })
+            : [...board.pinnedTasksLists],
+          tasksLists: listToRemove.isPinned
+            ? [...board.tasksLists]
+            : removeItemFromArray({
+                array: board.tasksLists,
+                item: listToRemove,
+                uniqueKey: "id",
+              }),
+        };
+      }) ?? [],
   };
 };

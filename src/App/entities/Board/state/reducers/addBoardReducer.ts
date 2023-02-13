@@ -9,6 +9,6 @@ export const addBoardReducer = (
 
   return {
     ...state,
-    boards: [...state.boards, board],
+    boards: state.boards ? [...state.boards, board] : [board],
   };
 };

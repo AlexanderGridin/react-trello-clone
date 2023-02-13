@@ -2,9 +2,8 @@ import { BoardViewModel } from "App/entities/Board/BoardViewModel";
 import { useAppState } from "App/state/hooks/useAppState";
 import { addBoard } from "../actions/addBoard";
 import { moveBoard } from "../actions/moveBoard";
-import { pushBoardInFavorites } from "../actions/pushBoardInFavorites";
 import { removeBoard } from "../actions/removeBoard";
-import { removeBoardFromFavorites } from "../actions/removeBoardFromFavorites";
+import { setBoards } from "../actions/setBoards";
 import { updateBoard } from "../actions/updateBoard";
 
 export const useBoardDispatchers = () => {
@@ -23,18 +22,14 @@ export const useBoardDispatchers = () => {
   const dispatchUpdateBoard = (board: BoardViewModel) =>
     dispatch(updateBoard(board));
 
-  const dispatchPushBoardInFavorites = (board: BoardViewModel) =>
-    dispatch(pushBoardInFavorites(board));
-
-  const dispatchRemoveBoardFromFavorites = (board: BoardViewModel) =>
-    dispatch(removeBoardFromFavorites(board));
+  const dispatchSetBoards = (boards: BoardViewModel[] | null) =>
+    dispatch(setBoards(boards));
 
   return {
     dispatchAddBoard,
     dispatchRemoveBoard,
     dispatchMoveBoard,
     dispatchUpdateBoard,
-    dispatchPushBoardInFavorites,
-    dispatchRemoveBoardFromFavorites,
+    dispatchSetBoards,
   };
 };

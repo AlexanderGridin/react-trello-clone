@@ -10,14 +10,15 @@ export const updateBoardReducer = (
 
   return {
     ...state,
-    boards: state.boards.map((board: BoardViewModel) => {
-      if (board.id !== boardToUpdate.id) {
-        return { ...board };
-      }
+    boards:
+      state.boards?.map((board: BoardViewModel) => {
+        if (board.id !== boardToUpdate.id) {
+          return { ...board };
+        }
 
-      return {
-        ...boardToUpdate,
-      };
-    }),
+        return {
+          ...boardToUpdate,
+        };
+      }) ?? [],
   };
 };

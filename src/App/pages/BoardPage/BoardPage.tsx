@@ -10,7 +10,7 @@ export const BoardPage = () => {
   const { boards } = useAppState();
 
   const board =
-    boards.find((board: BoardViewModel) => board.id === id) ||
+    boards?.find((board: BoardViewModel) => board.id === id) ||
     new BoardViewModel({});
 
   if (!board) {

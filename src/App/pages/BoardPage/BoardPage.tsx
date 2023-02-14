@@ -4,12 +4,12 @@ import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { ListOfTasksLists } from "App/widgets/ListOfTasksLists/ListOfTasksLists";
 import { useAppState } from "App/state/hooks/useAppState";
 import { useEffect } from "react";
-import { getBoard } from "api/Boards/Boards.api";
 import {
   BoardWithTasksListsDto,
   mapBoardWithTasksListsDtoToViewModel,
 } from "App/entities/Board/BoardWithTasksLists";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
+import { getBoard } from "App/api/Boards/Boards.api";
 
 export const BoardPage = () => {
   const { id } = useParams();

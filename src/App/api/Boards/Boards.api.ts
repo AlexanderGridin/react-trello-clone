@@ -1,7 +1,7 @@
-import { http } from "api/http";
 import { BoardDto } from "App/entities/Board/Board";
 import { BoardWithTasksListsDto } from "App/entities/Board/BoardWithTasksLists";
 import { AxiosError } from "axios";
+import { http } from "../http";
 
 export const getBoards = async (): Promise<BoardDto[]> => {
   const apiUrl = "/boards";

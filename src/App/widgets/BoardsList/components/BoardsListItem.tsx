@@ -10,6 +10,8 @@ import {
   BoardViewModel,
   mapBoardToDraggedItem,
 } from "App/entities/Board/Board";
+import { removeBoard as removeBoardFromApi } from "App/api/Boards/Boards.api";
+import { useState } from "react";
 
 interface BoardsListItemProps {
   board: BoardViewModel;
@@ -24,7 +26,24 @@ export const BoardsListItem = ({
   isDragPreview = false,
 }: BoardsListItemProps) => {
   const navigate = useNavigate();
-  const { dispatchMoveBoard } = useBoardDispatchers();
+  const [isLoading, setIsLoading] = useState(false);
+  const { dispatchMoveBoard, dispatchRemoveBoard, dispatchUpdateBoard } =
+    useBoardDispatchers();
+
+  const removeBoard = async (board: BoardViewModel) => {
+    setIsLoading(true);
+
+    const boardDto = await removeBoardFromApi(board.id);
+
+    if (boardDto) {
+      dispatchRemoveBoard(board);
+      setIsLoading(false);
+    }
+  };
+
+  const updateBoard = (board: BoardViewModel) => {
+    dispatchUpdateBoard(board);
+  };
 
   const dropOnBoard = (draggedItem: AppDraggedItem) => {
     if (draggedItem.type !== DraggedItemType.Board) {
@@ -37,15 +56,20 @@ export const BoardsListItem = ({
 
   const navigateToBoard = () => navigate(`/board/${board.id}`);
 
-  if (isDragPreview) {
+  if (isDragPreview || isLoading) {
     return (
       <div className={style.cell}>
         <Card
-          className="drag-preview"
+          isLoading={isLoading}
+          className={isDragPreview ? "drag-preview" : ""}
           minHeight={MIN_HEIGHT}
           backgroundColor={BACKGROUD_COLOR}
         >
-          <Board board={board} />
+          <Board
+            board={board}
+            onRemove={removeBoard}
+            onFavorite={updateBoard}
+          />
         </Card>
       </div>
     );
@@ -60,7 +84,7 @@ export const BoardsListItem = ({
         onDrop={dropOnBoard}
         onDoubleClick={navigateToBoard}
       >
-        <Board board={board} />
+        <Board board={board} onRemove={removeBoard} onFavorite={updateBoard} />
       </DndCard>
     </div>
   );

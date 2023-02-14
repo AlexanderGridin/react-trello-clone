@@ -18,6 +18,17 @@ export const addBoard = async (body: {
   }
 };
 
+export const removeBoard = async (id: string): Promise<BoardDto | null> => {
+  const apiUrl = routes.removeBoard.replace("{$boardId}", id);
+
+  try {
+    const board = await http.delete(apiUrl);
+    return board.data;
+  } catch (e) {
+    return null;
+  }
+};
+
 export const getAllBoards = async (): Promise<BoardDto[]> => {
   const apiUrl = routes.getAllBoards;
 

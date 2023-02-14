@@ -21,6 +21,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   transition: background 0.4s ease-in;
   background-color: ${({ buttonStyle = ButtonStyle.Regular }) =>
     getButtonBackgroundByStyle(buttonStyle)};
+  font-size: 16px;
 
   &:hover {
     cursor: pointer;

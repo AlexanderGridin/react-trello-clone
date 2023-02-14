@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
 import { Board } from "App/widgets/Board/Board";
@@ -8,10 +9,13 @@ import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import {
   BoardViewModel,
+  mapBoardDtoToViewModel,
   mapBoardToDraggedItem,
 } from "App/entities/Board/Board";
-import { removeBoard as removeBoardFromApi } from "App/api/Boards/Boards.api";
-import { useState } from "react";
+import {
+  removeBoard as removeBoardFromApi,
+  updateBoard as updateBoardOnApi,
+} from "App/api/Boards/Boards.api";
 
 interface BoardsListItemProps {
   board: BoardViewModel;
@@ -41,8 +45,18 @@ export const BoardsListItem = ({
     }
   };
 
-  const updateBoard = (board: BoardViewModel) => {
-    dispatchUpdateBoard(board);
+  const updateBoard = async (board: BoardViewModel) => {
+    setIsLoading(true);
+
+    const boardDto = await updateBoardOnApi(board.id, {
+      isFavorite: board.isFavorite,
+    });
+
+    if (boardDto) {
+      dispatchUpdateBoard(mapBoardDtoToViewModel(boardDto));
+    }
+
+    setIsLoading(false);
   };
 
   const dropOnBoard = (draggedItem: AppDraggedItem) => {

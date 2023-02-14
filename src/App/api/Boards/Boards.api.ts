@@ -4,6 +4,20 @@ import { AxiosError } from "axios";
 import { http } from "../http";
 import { boardsRoutes as routes } from "./boardsRoutes";
 
+export const updateBoard = async (
+  id: string,
+  body: { title?: string; isFavorite?: boolean }
+): Promise<BoardDto | null> => {
+  const apiUrl = routes.updateBoard.replace("{$boardId}", id);
+
+  try {
+    const board = await http.put<BoardDto>(apiUrl, body);
+    return board.data;
+  } catch (e) {
+    return null;
+  }
+};
+
 export const addBoard = async (body: {
   title: string;
   rank: number;

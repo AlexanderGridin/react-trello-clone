@@ -1,11 +1,11 @@
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { TasksListCard } from "App/widgets/TasksListCard/TasksListCard";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { BoardViewModel } from "App/entities/Board/Board";
-import { BoardCard } from "../BoardCard/BoardCard";
-import { TaskCard } from "../TaskCard/TaskCard";
+import { TasksListCard } from "../cards/TasksListCard/TasksListCard";
+import { TaskCard } from "../cards/TaskCard/TaskCard";
+import { BoardCard } from "../cards/BoardCard/BoardCard";
 
 interface DraggedItemProps {
   item: AppDraggedItem;

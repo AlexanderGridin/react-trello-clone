@@ -7,7 +7,6 @@ import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useT
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
-import { ListOfTasks } from "../ListOfTasks/ListOfTasks";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
 
 import {
@@ -17,6 +16,7 @@ import {
 
 import { useState } from "react";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
+import { ListOfTasks } from "App/widgets/ListOfTasks/ListOfTasks";
 
 export interface TasksListCardProps {
   list: TasksListViewModel;

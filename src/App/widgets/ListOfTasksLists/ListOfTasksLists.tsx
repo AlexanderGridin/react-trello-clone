@@ -1,8 +1,8 @@
 import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useTasksListDispatchers";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AddTasksList } from "../AddTasksList/AddTasksList";
+import { TasksListCard } from "../cards/TasksListCard/TasksListCard";
 import { DragLayer } from "../DragLayer/DragLayer";
-import { TasksListCard } from "../TasksListCard/TasksListCard";
 import style from "./ListOfTasksLists.module.css";
 
 interface ListOfTasksListsProps {

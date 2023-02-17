@@ -3,7 +3,7 @@ import style from "./BoardsList.module.css";
 import { DragLayer } from "../DragLayer/DragLayer";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { BoardViewModel } from "App/entities/Board/Board";
-import { BoardCard } from "../BoardCard/BoardCard";
+import { BoardCard } from "../cards/BoardCard/BoardCard";
 
 interface BoardsListProps {
   boards: BoardViewModel[];

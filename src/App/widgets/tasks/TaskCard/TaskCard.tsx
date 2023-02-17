@@ -1,6 +1,5 @@
 import { DndCard } from "App/components/DndCard/DndCard";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { useAppDraggedItemDispatchers } from "App/entities/AppDraggedItem/state/hooks/useAppDraggedItemDispatchers";
 import { mapTaskToDraggedItem } from "App/entities/Task/mappers/mapTaskToDraggedItem";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
@@ -10,6 +9,7 @@ import { useState } from "react";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
 import { Task } from "../Task/Task";
 import { useTaskDispatcher } from "App/entities/Task/state";
+import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 
 interface TaskCardProps {
   task: TaskViewModel;
@@ -21,7 +21,7 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
   const BACKGROUD_COLOR = "#ECEFF4";
 
   const dispatcher = useTaskDispatcher();
-  const { dispatchSetAppDraggedItem } = useAppDraggedItemDispatchers();
+  const appDraggedItemDispatcher = useAppDraggedItemDispatcher();
 
   const removeTask = async () => {
     setIsLoading(true);
@@ -47,7 +47,7 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
       return;
     }
 
-    dispatchSetAppDraggedItem({
+    appDraggedItemDispatcher.setAppDraggedItem({
       ...draggedItem,
       data: {
         ...draggedTask,

@@ -1,6 +1,5 @@
 import { DndCard } from "App/components/DndCard/DndCard";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { useAppDraggedItemDispatchers } from "App/entities/AppDraggedItem/state/hooks/useAppDraggedItemDispatchers";
 import { mapTasksListToDraggedItem } from "App/entities/TasksList/mappers/mapTasksListToDraggedItem";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
@@ -17,6 +16,7 @@ import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTa
 import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
 import { useTaskDispatcher } from "App/entities/Task/state";
 import { useTasksListDispatcher } from "App/entities/TasksList/state";
+import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 
 export interface TasksListCardProps {
   list: TasksListViewModel;
@@ -32,7 +32,7 @@ export const TasksListCard = ({
 
   const dispatcher = useTasksListDispatcher();
   const taskDispatcher = useTaskDispatcher();
-  const { dispatchSetAppDraggedItem } = useAppDraggedItemDispatchers();
+  const appDraggedItemDispatcher = useAppDraggedItemDispatcher();
 
   const remove = async () => {
     setIsLoading(true);
@@ -77,7 +77,7 @@ export const TasksListCard = ({
 
     taskDispatcher.removeTask(draggedItem.data);
     dispatcher.pushTaskInTasksList(list, draggedItem.data);
-    dispatchSetAppDraggedItem({
+    appDraggedItemDispatcher.setAppDraggedItem({
       ...draggedItem,
       data: {
         ...draggedItem.data,

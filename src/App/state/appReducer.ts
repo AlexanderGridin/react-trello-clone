@@ -1,9 +1,6 @@
 import { AppState } from "./models/AppState";
 import { AppAction } from "./models/AppAction";
 import { AppActionType } from "./enums/AppActionType.enum";
-import { addTaskReducer } from "App/entities/Task/state/reducers/addTaskReducer";
-import { removeTaskReducer } from "App/entities/Task/state/reducers/removeTaskReducer";
-import { moveTaskReducer } from "App/entities/Task/state/reducers/moveTaskReducer";
 import { addTasksListReducer } from "App/entities/TasksList/state/reducers/addTasksListReducer";
 import { removeTasksListReducer } from "App/entities/TasksList/state/reducers/removeTasksListReducer";
 import { moveTasksListReducer } from "App/entities/TasksList/state/reducers/moveTasksListReducer";
@@ -12,12 +9,17 @@ import { pinTasksListReducer } from "App/entities/TasksList/state/reducers/pinTa
 import { unpinTasksListReducer } from "App/entities/TasksList/state/reducers/unpinTasksListReducer";
 import { setAppDraggedItemReducer } from "App/entities/AppDraggedItem/state/reducers/setAppDraggedItemReducer";
 import { boardReducer } from "App/entities/Board/state";
+import { taskReducer } from "App/entities/Task/state";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
   switch ((action as any).module) {
     case "Board":
       return boardReducer(state, action);
+
+    case "Task":
+      return taskReducer(state, action);
   }
+
   switch (action.type) {
     // TasksList
     case AppActionType.AddList:
@@ -37,16 +39,6 @@ export const appReducer = (state: AppState, action: AppAction): AppState => {
 
     case AppActionType.UnpinList:
       return unpinTasksListReducer(state, action);
-
-    // Task
-    case AppActionType.AddTask:
-      return addTaskReducer(state, action);
-
-    case AppActionType.RemoveTask:
-      return removeTaskReducer(state, action);
-
-    case AppActionType.MoveTask:
-      return moveTaskReducer(state, action);
 
     // DraggedItem
     case AppActionType.SetAppDraggedItem:

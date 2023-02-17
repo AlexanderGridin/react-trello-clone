@@ -1,4 +1,4 @@
-import { useTaskDispatchers } from "App/entities/Task/state/hooks/useTaskDispatchers";
+import { useTaskDispatcher } from "App/entities/Task/state";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { AddTask } from "../AddTask/AddTask";
 import { TaskCard } from "../TaskCard/TaskCard";
@@ -16,10 +16,10 @@ export const TasksCardsList = ({
   tasks,
   isShowAddTask = false,
 }: TasksCardsListProps) => {
-  const { dispatchAddTask } = useTaskDispatchers();
+  const dispatcher = useTaskDispatcher();
 
   const addTask = (task: TaskViewModel) =>
-    dispatchAddTask({ ...task, listId, boardId });
+    dispatcher.addTask({ ...task, listId, boardId });
 
   return (
     <>

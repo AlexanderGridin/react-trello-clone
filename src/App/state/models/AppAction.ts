@@ -1,8 +1,6 @@
 import { SetAppDraggedItemAction } from "App/entities/AppDraggedItem/state/actions/setAppDraggedItem";
 import { BoardModuleAction } from "App/entities/Board/state";
-import { AddTaskAction } from "App/entities/Task/state/actions/addTask";
-import { MoveTaskAction } from "App/entities/Task/state/actions/moveTask";
-import { RemoveTaskAction } from "App/entities/Task/state/actions/removeTask";
+import { TaskModuleAction } from "App/entities/Task/state";
 import { AddTasksListAction } from "App/entities/TasksList/state/actions/addTasksList";
 import { MoveTasksListAction } from "App/entities/TasksList/state/actions/moveTasksList";
 import { PinTasksListAction } from "App/entities/TasksList/state/actions/pinTasksList";
@@ -12,6 +10,7 @@ import { UnpinTasksListAction } from "App/entities/TasksList/state/actions/unpin
 
 export type AppAction =
   | BoardModuleAction
+  | TaskModuleAction
   // TasksList
   | AddTasksListAction
   | RemoveTasksListAction
@@ -19,9 +18,5 @@ export type AppAction =
   | PushTaskInTasksListAction
   | PinTasksListAction
   | UnpinTasksListAction
-  //Task
-  | AddTaskAction
-  | RemoveTaskAction
-  | MoveTaskAction
   //DraggedItem
   | SetAppDraggedItemAction;

@@ -1,7 +1,6 @@
 import { DndCard } from "App/components/DndCard/DndCard";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { useAppDraggedItemDispatchers } from "App/entities/AppDraggedItem/state/hooks/useAppDraggedItemDispatchers";
-import { useTaskDispatchers } from "App/entities/Task/state/hooks/useTaskDispatchers";
 import { mapTasksListToDraggedItem } from "App/entities/TasksList/mappers/mapTasksListToDraggedItem";
 import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useTasksListDispatchers";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
@@ -17,6 +16,7 @@ import {
 import { useState } from "react";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
 import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
+import { useTaskDispatcher } from "App/entities/Task/state";
 
 export interface TasksListCardProps {
   list: TasksListViewModel;
@@ -37,7 +37,7 @@ export const TasksListCard = ({
     dispatchPinTasksList,
     dispatchUnpinTasksList,
   } = useTasksListDispatchers();
-  const { dispatchRemoveTask } = useTaskDispatchers();
+  const taskDispatcher = useTaskDispatcher();
   const { dispatchSetAppDraggedItem } = useAppDraggedItemDispatchers();
 
   const remove = async () => {
@@ -82,7 +82,7 @@ export const TasksListCard = ({
       return;
     }
 
-    dispatchRemoveTask(draggedItem.data);
+    taskDispatcher.removeTask(draggedItem.data);
     dispatchPushTaskInTasksList(list, draggedItem.data);
     dispatchSetAppDraggedItem({
       ...draggedItem,

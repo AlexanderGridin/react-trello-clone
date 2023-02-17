@@ -4,9 +4,9 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { ListOfTasksListItem } from "App/widgets/ListOfTasks/components/ListOfTasksListItem";
 import { TasksList } from "App/widgets/TasksList/TasksList";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { BoardsListItem } from "App/widgets/BoardsList/components/BoardsListItem";
 import listOfTasksListsStyle from "App/widgets/ListOfTasksLists/ListOfTasksLists.module.css";
 import { BoardViewModel } from "App/entities/Board/Board";
+import { BoardCard } from "../BoardCard/BoardCard";
 
 interface DraggedItemProps {
   item: AppDraggedItem;
@@ -32,7 +32,11 @@ export const DraggedItem = ({ item }: DraggedItemProps) => {
 
     case DraggedItemType.Board:
       const board: BoardViewModel = item.data;
-      return <BoardsListItem board={board} isDragPreview />;
+      return (
+        <div className="cell">
+          <BoardCard board={board} isDragPreview />
+        </div>
+      );
 
     default:
       return null;

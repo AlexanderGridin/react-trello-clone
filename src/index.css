@@ -56,3 +56,9 @@ body {
 .ta-left {
   text-align: left !important;
 }
+
+.cell {
+  max-width: 300px;
+  width: 100%;
+  flex-shrink: 0;
+}

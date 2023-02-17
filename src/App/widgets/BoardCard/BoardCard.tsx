@@ -2,7 +2,6 @@ import { useState } from "react";
 import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
 import { Board } from "App/widgets/Board/Board";
-import style from "../BoardsList.module.css";
 import { useNavigate } from "react-router-dom";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
@@ -19,7 +18,7 @@ import {
   updateBoard as updateBoardOnApi,
 } from "App/api/Board";
 
-interface BoardsListItemProps {
+interface BoardCardProps {
   board: BoardViewModel;
   isDragPreview?: boolean;
 }
@@ -27,10 +26,7 @@ interface BoardsListItemProps {
 const MIN_HEIGHT = 150;
 const BACKGROUD_COLOR = "#D8DEE9";
 
-export const BoardsListItem = ({
-  board,
-  isDragPreview = false,
-}: BoardsListItemProps) => {
+export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { dispatchMoveBoard, dispatchRemoveBoard, dispatchUpdateBoard } =
@@ -75,34 +71,26 @@ export const BoardsListItem = ({
 
   if (isDragPreview || isLoading) {
     return (
-      <div className={style.cell}>
-        <Card
-          isLoading={isLoading}
-          className={isDragPreview ? "drag-preview" : ""}
-          minHeight={MIN_HEIGHT}
-          backgroundColor={BACKGROUD_COLOR}
-        >
-          <Board
-            board={board}
-            onRemove={removeBoard}
-            onFavorite={updateBoard}
-          />
-        </Card>
-      </div>
+      <Card
+        isLoading={isLoading}
+        className={`${isDragPreview ? "drag-preview" : ""}`}
+        minHeight={MIN_HEIGHT}
+        backgroundColor={BACKGROUD_COLOR}
+      >
+        <Board board={board} onRemove={removeBoard} onFavorite={updateBoard} />
+      </Card>
     );
   }
 
   return (
-    <div className={style.cell} key={board.id}>
-      <DndCard
-        minHeight={MIN_HEIGHT}
-        draggedItem={mapBoardToDraggedItem(board)}
-        backgroundColor={BACKGROUD_COLOR}
-        onDrop={dropOnBoard}
-        onDoubleClick={navigateToBoard}
-      >
-        <Board board={board} onRemove={removeBoard} onFavorite={updateBoard} />
-      </DndCard>
-    </div>
+    <DndCard
+      minHeight={MIN_HEIGHT}
+      draggedItem={mapBoardToDraggedItem(board)}
+      backgroundColor={BACKGROUD_COLOR}
+      onDrop={dropOnBoard}
+      onDoubleClick={navigateToBoard}
+    >
+      <Board board={board} onRemove={removeBoard} onFavorite={updateBoard} />
+    </DndCard>
   );
 };

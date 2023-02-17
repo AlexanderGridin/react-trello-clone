@@ -6,10 +6,7 @@
 }
 
 .cell {
-  max-width: 300px;
-  width: 100%;
   margin-bottom: 20px;
-  flex-shrink: 0;
 }
 
 .cell:not(:last-child) {

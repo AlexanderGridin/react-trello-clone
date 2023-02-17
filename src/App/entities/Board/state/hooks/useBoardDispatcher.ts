@@ -1,39 +1,46 @@
 import { useAppState } from "App/state/hooks/useAppState";
+import { BoardAction } from "..";
 import { BoardViewModel } from "../../Board";
 import { BoardWithTasksListsViewModel } from "../../BoardWithTasksLists";
-import { createAddBoardAction } from "../actions/createAddBoardAction";
-import { createCacheBoardAction } from "../actions/createCacheBoardAction";
-import { createMoveBoardAction } from "../actions/createMoveBoardAction";
-import { createRemoveBoardAction } from "../actions/createRemoveBoardAction";
-import { createSetBoardsAction } from "../actions/createSetBoardsAction";
-import { createSetIsShowFavoritesAction } from "../actions/createSetIsShowFavoritesAction";
-import { createUpdateBoardAction } from "../actions/createUpdateBoardAction";
+import { createAddBoardAction } from "../action-creators/createAddBoardAction";
+import { createCacheBoardAction } from "../action-creators/createCacheBoardAction";
+import { createMoveBoardAction } from "../action-creators/createMoveBoardAction";
+import { createRemoveBoardAction } from "../action-creators/createRemoveBoardAction";
+import { createSetBoardsAction } from "../action-creators/createSetBoardsAction";
+import { createSetIsShowFavoritesAction } from "../action-creators/createSetIsShowFavoritesAction";
+import { createUpdateBoardAction } from "../action-creators/createUpdateBoardAction";
 
 export const useBoardDispatcher = () => {
   const { dispatch } = useAppState();
 
+  const dispatchForModule = (action: BoardAction) =>
+    dispatch({
+      module: "Board",
+      ...action,
+    });
+
   const addBoard = (board: BoardViewModel) =>
-    dispatch(createAddBoardAction(board));
+    dispatchForModule(createAddBoardAction(board));
 
   const removeBoard = (board: BoardViewModel) =>
-    dispatch(createRemoveBoardAction(board));
+    dispatchForModule(createRemoveBoardAction(board));
 
   const moveBoard = (
     boardToMove: BoardViewModel,
     boardToReplace: BoardViewModel
-  ) => dispatch(createMoveBoardAction(boardToMove, boardToReplace));
+  ) => dispatchForModule(createMoveBoardAction(boardToMove, boardToReplace));
 
   const updateBoard = (board: BoardViewModel) =>
-    dispatch(createUpdateBoardAction(board));
+    dispatchForModule(createUpdateBoardAction(board));
 
   const setBoards = (boards: BoardViewModel[] | null) =>
-    dispatch(createSetBoardsAction(boards));
+    dispatchForModule(createSetBoardsAction(boards));
 
   const cacheBoard = (board: BoardWithTasksListsViewModel) =>
-    dispatch(createCacheBoardAction(board));
+    dispatchForModule(createCacheBoardAction(board));
 
   const setIsShowFavorites = (isShowFavorites: boolean) =>
-    dispatch(createSetIsShowFavoritesAction(isShowFavorites));
+    dispatchForModule(createSetIsShowFavoritesAction(isShowFavorites));
 
   return {
     addBoard,

@@ -1,9 +1,6 @@
 import { AppState } from "./models/AppState";
 import { AppAction } from "./models/AppAction";
 import { AppActionType } from "./enums/AppActionType.enum";
-import { addBoardReducer } from "App/entities/Board/state/reducers/addBoardReducer";
-import { removeBoardReducer } from "App/entities/Board/state/reducers/removeBoardReducer";
-import { moveBoardReducer } from "App/entities/Board/state/reducers/moveBoardReducer";
 import { addTaskReducer } from "App/entities/Task/state/reducers/addTaskReducer";
 import { removeTaskReducer } from "App/entities/Task/state/reducers/removeTaskReducer";
 import { moveTaskReducer } from "App/entities/Task/state/reducers/moveTaskReducer";
@@ -14,12 +11,13 @@ import { pushTaskInTasksListReducer } from "App/entities/TasksList/state/reducer
 import { pinTasksListReducer } from "App/entities/TasksList/state/reducers/pinTasksListReducer";
 import { unpinTasksListReducer } from "App/entities/TasksList/state/reducers/unpinTasksListReducer";
 import { setAppDraggedItemReducer } from "App/entities/AppDraggedItem/state/reducers/setAppDraggedItemReducer";
-import { updateBoardReducer } from "App/entities/Board/state/reducers/updateBoardReducer";
-import { setBoardsReducer } from "App/entities/Board/state/reducers/setBoardsReducer";
-import { cacheBoardReducer } from "App/entities/Board/state/reducers/cacheBoardReducer";
-import { setIsShowFavoritesReducer } from "App/entities/Board/state/reducers/setIsShowFavoritesReducer";
+import { boardReducer } from "App/entities/Board/state";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
+  switch ((action as any).module) {
+    case "Board":
+      return boardReducer(state, action);
+  }
   switch (action.type) {
     // TasksList
     case AppActionType.AddList:
@@ -53,28 +51,6 @@ export const appReducer = (state: AppState, action: AppAction): AppState => {
     // DraggedItem
     case AppActionType.SetAppDraggedItem:
       return setAppDraggedItemReducer(state, action);
-
-    // Board
-    case AppActionType.AddBoard:
-      return addBoardReducer(state, action);
-
-    case AppActionType.UpdateBoard:
-      return updateBoardReducer(state, action);
-
-    case AppActionType.RemoveBoard:
-      return removeBoardReducer(state, action);
-
-    case AppActionType.MoveBoard:
-      return moveBoardReducer(state, action);
-
-    case AppActionType.SetBoards:
-      return setBoardsReducer(state, action);
-
-    case AppActionType.CacheBoard:
-      return cacheBoardReducer(state, action);
-
-    case AppActionType.SetIsShowFavorites:
-      return setIsShowFavoritesReducer(state, action);
 
     default:
       return { ...state };

@@ -1,5 +1,5 @@
 import { AppState } from "App/state/models/AppState";
-import { SetIsShowFavoritesAction } from "../actions/createSetIsShowFavoritesAction";
+import { SetIsShowFavoritesAction } from "../action-creators/createSetIsShowFavoritesAction";
 
 export const setIsShowFavoritesReducer = (
   state: AppState,

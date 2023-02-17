@@ -23,8 +23,8 @@ export const BoardsCardsList = ({
 
       {boards.length > 0 &&
         boards.map((board: BoardViewModel) => (
-          <div className={`cell ${style.cell}`}>
-            <BoardCard board={board} key={board.id} />
+          <div className={`cell ${style.cell}`} key={board.id}>
+            <BoardCard board={board} />
           </div>
         ))}
 

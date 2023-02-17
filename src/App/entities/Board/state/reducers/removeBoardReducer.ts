@@ -1,6 +1,6 @@
 import { AppState } from "App/state/models/AppState";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
-import { RemoveBoardAction } from "../actions/createRemoveBoardAction";
+import { RemoveBoardAction } from "../action-creators/createRemoveBoardAction";
 
 export const removeBoardReducer = (
   state: AppState,

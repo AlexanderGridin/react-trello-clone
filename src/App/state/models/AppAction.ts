@@ -1,11 +1,5 @@
 import { SetAppDraggedItemAction } from "App/entities/AppDraggedItem/state/actions/setAppDraggedItem";
-import { AddBoardAction } from "App/entities/Board/state/actions/createAddBoardAction";
-import { CacheBoardAction } from "App/entities/Board/state/actions/createCacheBoardAction";
-import { MoveBoardAction } from "App/entities/Board/state/actions/createMoveBoardAction";
-import { RemoveBoardAction } from "App/entities/Board/state/actions/createRemoveBoardAction";
-import { SetBoardsAction } from "App/entities/Board/state/actions/createSetBoardsAction";
-import { SetIsShowFavoritesAction } from "App/entities/Board/state/actions/createSetIsShowFavoritesAction";
-import { UpdateBoardAction } from "App/entities/Board/state/actions/createUpdateBoardAction";
+import { BoardModuleAction } from "App/entities/Board/state";
 import { AddTaskAction } from "App/entities/Task/state/actions/addTask";
 import { MoveTaskAction } from "App/entities/Task/state/actions/moveTask";
 import { RemoveTaskAction } from "App/entities/Task/state/actions/removeTask";
@@ -17,6 +11,7 @@ import { RemoveTasksListAction } from "App/entities/TasksList/state/actions/remo
 import { UnpinTasksListAction } from "App/entities/TasksList/state/actions/unpinTasksList";
 
 export type AppAction =
+  | BoardModuleAction
   // TasksList
   | AddTasksListAction
   | RemoveTasksListAction
@@ -29,12 +24,4 @@ export type AppAction =
   | RemoveTaskAction
   | MoveTaskAction
   //DraggedItem
-  | SetAppDraggedItemAction
-  // Board
-  | CacheBoardAction
-  | AddBoardAction
-  | UpdateBoardAction
-  | RemoveBoardAction
-  | SetBoardsAction
-  | SetIsShowFavoritesAction
-  | MoveBoardAction;
+  | SetAppDraggedItemAction;

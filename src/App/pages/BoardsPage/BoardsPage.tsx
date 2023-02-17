@@ -7,7 +7,7 @@ import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDisp
 import { Toggler } from "App/components/Toggler/Toggler";
 import style from "./BoardsPage.module.css";
 import { mapBoardDtoToViewModel } from "App/entities/Board/Board";
-import { getAllBoards, getFavoriteBoards } from "App/api/Boards/Boards.api";
+import { getAllBoards, getFavoriteBoards } from "App/api/Boards";
 
 export const BoardsPage = () => {
   const { boards, isShowFavorites } = useAppState();

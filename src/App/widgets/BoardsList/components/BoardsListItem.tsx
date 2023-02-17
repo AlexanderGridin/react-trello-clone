@@ -7,15 +7,17 @@ import { useNavigate } from "react-router-dom";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { DraggedItemType } from "App/enums/DraggedItemType";
+
 import {
   BoardViewModel,
   mapBoardDtoToViewModel,
   mapBoardToDraggedItem,
 } from "App/entities/Board/Board";
+
 import {
   removeBoard as removeBoardFromApi,
   updateBoard as updateBoardOnApi,
-} from "App/api/Boards/Boards.api";
+} from "App/api/Board";
 
 interface BoardsListItemProps {
   board: BoardViewModel;

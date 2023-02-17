@@ -1,13 +1,15 @@
 import { AddItemForm } from "App/components/AddItemForm/AddItemForm";
 import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
+
 import {
   BoardViewModel,
   mapBoardDtoToViewModel,
 } from "App/entities/Board/Board";
+
 import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddBoardButton } from "./components/AddBoardButton";
-import { addBoard as addBoardToApi } from "App/api/Boards/Boards.api";
+import { addBoard as addBoardToApi } from "App/api/Board";
 import { useAppState } from "App/state/hooks/useAppState";
 
 export interface AddBoardProps {

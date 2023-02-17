@@ -1,12 +1,11 @@
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { ListOfTasksListItem } from "App/widgets/ListOfTasks/components/ListOfTasksListItem";
 import { TasksList } from "App/widgets/TasksList/TasksList";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import listOfTasksListsStyle from "App/widgets/ListOfTasksLists/ListOfTasksLists.module.css";
 import { BoardViewModel } from "App/entities/Board/Board";
 import { BoardCard } from "../BoardCard/BoardCard";
+import { TaskCard } from "../TaskCard/TaskCard";
 
 interface DraggedItemProps {
   item: AppDraggedItem;
@@ -17,7 +16,7 @@ export const DraggedItem = ({ item }: DraggedItemProps) => {
     case DraggedItemType.TasksList:
       const list: TasksListViewModel = item.data;
       return (
-        <div className={listOfTasksListsStyle.cell}>
+        <div className="cell">
           <TasksList list={list} isDragPreview />
         </div>
       );
@@ -25,8 +24,8 @@ export const DraggedItem = ({ item }: DraggedItemProps) => {
     case DraggedItemType.Task:
       const task: TaskViewModel = item.data;
       return (
-        <div className={listOfTasksListsStyle.cell}>
-          <ListOfTasksListItem task={task} isDragPreview />
+        <div className="cell">
+          <TaskCard task={task} isDragPreview />
         </div>
       );
 

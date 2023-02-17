@@ -11,15 +11,12 @@ import { removeTask as removeTaskFromApi } from "App/api/Task";
 import { useState } from "react";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
 
-interface ListOfTasksListItemProps {
+interface TaskCardProps {
   task: TaskViewModel;
   isDragPreview?: boolean;
 }
 
-export const ListOfTasksListItem = ({
-  task,
-  isDragPreview = false,
-}: ListOfTasksListItemProps) => {
+export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = "#ECEFF4";
 

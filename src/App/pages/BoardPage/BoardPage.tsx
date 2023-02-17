@@ -11,7 +11,7 @@ import {
 
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { getBoard } from "App/api/Board";
-import { ListOfTasksLists } from "App/widgets/tasks-lists/ListOfTasksLists/ListOfTasksLists";
+import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
 
 export const BoardPage = () => {
   const { id } = useParams();
@@ -37,7 +37,7 @@ export const BoardPage = () => {
       isLoading={!board}
     >
       {board && (
-        <ListOfTasksLists
+        <TasksListsCardsList
           boardId={board.id}
           lists={[...board.pinnedTasksLists, ...board.tasksLists]}
           isShowAddTasksList

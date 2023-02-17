@@ -3,19 +3,19 @@ import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DragLayer } from "App/widgets/DragLayer/DragLayer";
 import { AddTasksList } from "../AddTasksList/AddTasksList";
 import { TasksListCard } from "../TasksListCard/TasksListCard";
-import style from "./ListOfTasksLists.module.css";
+import style from "./TasksListsCardsList.module.css";
 
-interface ListOfTasksListsProps {
+interface TasksListsCardsListProps {
   boardId: string;
   lists: TasksListViewModel[];
   isShowAddTasksList?: boolean;
 }
 
-export const ListOfTasksLists = ({
+export const TasksListsCardsList = ({
   boardId,
   lists,
   isShowAddTasksList = false,
-}: ListOfTasksListsProps) => {
+}: TasksListsCardsListProps) => {
   const { dispatchAddTasksList } = useTasksListDispatchers();
 
   const addTasksList = (list: TasksListViewModel) => dispatchAddTasksList(list);

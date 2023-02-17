@@ -7,6 +7,9 @@ import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Task } from "App/widgets/Task/Task";
 import { Card } from "shared/components/Card/Card";
+import { removeTask as removeTaskFromApi } from "App/api/Task/Task.api";
+import { useState } from "react";
+import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
 
 interface ListOfTasksListItemProps {
   task: TaskViewModel;
@@ -17,10 +20,23 @@ export const ListOfTasksListItem = ({
   task,
   isDragPreview = false,
 }: ListOfTasksListItemProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = "#ECEFF4";
 
-  const { dispatchMoveTask } = useTaskDispatchers();
+  const { dispatchMoveTask, dispatchRemoveTask } = useTaskDispatchers();
   const { dispatchSetAppDraggedItem } = useAppDraggedItemDispatchers();
+
+  const removeTask = async () => {
+    setIsLoading(true);
+
+    const taskDto = await removeTaskFromApi(task.id);
+
+    if (taskDto) {
+      dispatchRemoveTask(mapTaskDtoToViewModel(taskDto));
+    }
+
+    setIsLoading(false);
+  };
 
   const dropOnTask = (draggedItem: AppDraggedItem) => {
     if (draggedItem.type !== DraggedItemType.Task) {
@@ -48,10 +64,14 @@ export const ListOfTasksListItem = ({
     return null;
   }
 
-  if (isDragPreview) {
+  if (isDragPreview || isLoading) {
     return (
-      <Card className="drag-preview" backgroundColor={BACKGROUD_COLOR}>
-        <Task task={task}></Task>
+      <Card
+        className={isDragPreview ? "drag-preview" : ""}
+        isLoading={isLoading}
+        backgroundColor={BACKGROUD_COLOR}
+      >
+        <Task task={task} onRemove={removeTask} />
       </Card>
     );
   }
@@ -62,7 +82,7 @@ export const ListOfTasksListItem = ({
       backgroundColor={BACKGROUD_COLOR}
       onDrop={dropOnTask}
     >
-      <Task task={task} />
+      <Task task={task} onRemove={removeTask} />
     </DndCard>
   );
 };

@@ -1,40 +1,10 @@
-import { SetAppDraggedItemAction } from "App/entities/AppDraggedItem/state/actions/setAppDraggedItem";
-import { AddBoardAction } from "App/entities/Board/state/actions/addBoard";
-import { CacheBoardAction } from "App/entities/Board/state/actions/cacheBoard";
-import { MoveBoardAction } from "App/entities/Board/state/actions/moveBoard";
-import { RemoveBoardAction } from "App/entities/Board/state/actions/removeBoard";
-import { SetBoardsAction } from "App/entities/Board/state/actions/setBoards";
-import { SetIsShowFavoritesAction } from "App/entities/Board/state/actions/setIsShowFavorites";
-import { UpdateBoardAction } from "App/entities/Board/state/actions/updateBoard";
-import { AddTaskAction } from "App/entities/Task/state/actions/addTask";
-import { MoveTaskAction } from "App/entities/Task/state/actions/moveTask";
-import { RemoveTaskAction } from "App/entities/Task/state/actions/removeTask";
-import { AddTasksListAction } from "App/entities/TasksList/state/actions/addTasksList";
-import { MoveTasksListAction } from "App/entities/TasksList/state/actions/moveTasksList";
-import { PinTasksListAction } from "App/entities/TasksList/state/actions/pinTasksList";
-import { PushTaskInTasksListAction } from "App/entities/TasksList/state/actions/pushTaskInTasksList";
-import { RemoveTasksListAction } from "App/entities/TasksList/state/actions/removeTasksList";
-import { UnpinTasksListAction } from "App/entities/TasksList/state/actions/unpinTasksList";
+import { AppDraggedItemModuleAction } from "App/entities/AppDraggedItem/state";
+import { BoardModuleAction } from "App/entities/Board/state";
+import { TaskModuleAction } from "App/entities/Task/state";
+import { TasksListModuleAction } from "App/entities/TasksList/state";
 
 export type AppAction =
-  // TasksList
-  | AddTasksListAction
-  | RemoveTasksListAction
-  | MoveTasksListAction
-  | PushTaskInTasksListAction
-  | PinTasksListAction
-  | UnpinTasksListAction
-  //Task
-  | AddTaskAction
-  | RemoveTaskAction
-  | MoveTaskAction
-  //DraggedItem
-  | SetAppDraggedItemAction
-  // Board
-  | CacheBoardAction
-  | AddBoardAction
-  | UpdateBoardAction
-  | RemoveBoardAction
-  | SetBoardsAction
-  | SetIsShowFavoritesAction
-  | MoveBoardAction;
+  | BoardModuleAction
+  | TaskModuleAction
+  | AppDraggedItemModuleAction
+  | TasksListModuleAction;

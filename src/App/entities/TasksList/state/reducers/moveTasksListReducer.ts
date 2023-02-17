@@ -1,5 +1,5 @@
 import { AppState } from "App/state/models/AppState";
-import { MoveTasksListAction } from "../actions/moveTasksList";
+import { MoveTasksListAction } from "../action-creators/createMoveTasksListAction";
 import { moveTasksLists } from "./utils/moveTasksLists";
 
 export const moveTasksListReducer = (

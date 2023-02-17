@@ -1,7 +1,7 @@
 import { AppState } from "App/state/models/AppState";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
-import { UnpinTasksListAction } from "../actions/unpinTasksList";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
+import { UnpinTasksListAction } from "../action-creators/createUnpinTasksListAction";
 
 export const unpinTasksListReducer = (
   state: AppState,

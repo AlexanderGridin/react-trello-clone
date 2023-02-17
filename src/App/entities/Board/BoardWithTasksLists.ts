@@ -25,15 +25,14 @@ export class BoardWithTasksListsViewModel {
 export const mapBoardWithTasksListsDtoToViewModel = (
   source: BoardWithTasksListsDto
 ): BoardWithTasksListsViewModel => {
-  const { pinnedTasksLists, tasksLists } = parseTasksLists<TasksListDto>(
-    source.tasksLists ?? []
-  );
+  const { pinnedTasksLists, unpinnedTasksLists } =
+    parseTasksLists<TasksListDto>(source.tasksLists ?? []);
 
   return {
     ...new BoardWithTasksListsViewModel({}),
     id: source._id,
     title: source.title,
-    tasksLists: tasksLists.map(mapTasksListDtoToViewModel),
+    tasksLists: unpinnedTasksLists.map(mapTasksListDtoToViewModel),
     pinnedTasksLists: pinnedTasksLists.map(mapTasksListDtoToViewModel),
     isFavorite: source.isFavorite,
   };

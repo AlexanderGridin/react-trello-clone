@@ -1,4 +1,4 @@
-import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useTasksListDispatchers";
+import { useTasksListDispatcher } from "App/entities/TasksList/state";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DragLayer } from "App/widgets/DragLayer/DragLayer";
 import { AddTasksList } from "../AddTasksList/AddTasksList";
@@ -16,9 +16,9 @@ export const TasksListsCardsList = ({
   lists,
   isShowAddTasksList = false,
 }: TasksListsCardsListProps) => {
-  const { dispatchAddTasksList } = useTasksListDispatchers();
-
-  const addTasksList = (list: TasksListViewModel) => dispatchAddTasksList(list);
+  const dispatcher = useTasksListDispatcher();
+  const addTasksList = (list: TasksListViewModel) =>
+    dispatcher.addTasksList(list);
 
   if (!lists.length) {
     return (

@@ -2,7 +2,6 @@ import { DndCard } from "App/components/DndCard/DndCard";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { useAppDraggedItemDispatchers } from "App/entities/AppDraggedItem/state/hooks/useAppDraggedItemDispatchers";
 import { mapTasksListToDraggedItem } from "App/entities/TasksList/mappers/mapTasksListToDraggedItem";
-import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useTasksListDispatchers";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
@@ -17,6 +16,7 @@ import { useState } from "react";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
 import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
 import { useTaskDispatcher } from "App/entities/Task/state";
+import { useTasksListDispatcher } from "App/entities/TasksList/state";
 
 export interface TasksListCardProps {
   list: TasksListViewModel;
@@ -30,13 +30,7 @@ export const TasksListCard = ({
   const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = "#D8DEE9";
 
-  const {
-    dispatchMoveTasksList,
-    dispatchPushTaskInTasksList,
-    dispatchRemoveTasksList,
-    dispatchPinTasksList,
-    dispatchUnpinTasksList,
-  } = useTasksListDispatchers();
+  const dispatcher = useTasksListDispatcher();
   const taskDispatcher = useTaskDispatcher();
   const { dispatchSetAppDraggedItem } = useAppDraggedItemDispatchers();
 
@@ -44,9 +38,8 @@ export const TasksListCard = ({
     setIsLoading(true);
 
     const tasksListDto = await removeTasksListFromApi(list.id);
-
     if (tasksListDto) {
-      dispatchRemoveTasksList(mapTasksListDtoToViewModel(tasksListDto));
+      dispatcher.removeTasksList(mapTasksListDtoToViewModel(tasksListDto));
     }
 
     setIsLoading(false);
@@ -62,8 +55,8 @@ export const TasksListCard = ({
     if (listDto) {
       const listViewModel = mapTasksListDtoToViewModel(listDto);
       list.isPinned
-        ? dispatchUnpinTasksList(listViewModel)
-        : dispatchPinTasksList(listViewModel);
+        ? dispatcher.unpinTasksList(listViewModel)
+        : dispatcher.pinTasksList(listViewModel);
     }
 
     setIsLoading(false);
@@ -74,7 +67,7 @@ export const TasksListCard = ({
       draggedItem.type === DraggedItemType.TasksList &&
       draggedItem.data.isPinned === list.isPinned
     ) {
-      dispatchMoveTasksList(draggedItem.data, list);
+      dispatcher.moveTasksList(draggedItem.data, list);
       return;
     }
 
@@ -83,7 +76,7 @@ export const TasksListCard = ({
     }
 
     taskDispatcher.removeTask(draggedItem.data);
-    dispatchPushTaskInTasksList(list, draggedItem.data);
+    dispatcher.pushTaskInTasksList(list, draggedItem.data);
     dispatchSetAppDraggedItem({
       ...draggedItem,
       data: {

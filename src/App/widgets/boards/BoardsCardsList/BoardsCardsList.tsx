@@ -1,19 +1,19 @@
 import { AddBoard } from "../AddBoard/AddBoard";
-import style from "./BoardsList.module.css";
+import style from "./BoardsCardsList.module.css";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { BoardViewModel } from "App/entities/Board/Board";
 import { DragLayer } from "App/widgets/DragLayer/DragLayer";
 import { BoardCard } from "../BoardCard/BoardCard";
 
-interface BoardsListProps {
+interface BoardsCardsListProps {
   boards: BoardViewModel[];
   isShowAddBoard?: boolean;
 }
 
-export const BoardsList = ({
+export const BoardsCardsList = ({
   boards,
   isShowAddBoard = true,
-}: BoardsListProps) => {
+}: BoardsCardsListProps) => {
   const { dispatchAddBoard } = useBoardDispatchers();
 
   const addBoard = (board: BoardViewModel) => dispatchAddBoard(board);

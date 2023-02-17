@@ -7,7 +7,7 @@ import { Toggler } from "App/components/Toggler/Toggler";
 import style from "./BoardsPage.module.css";
 import { mapBoardDtoToViewModel } from "App/entities/Board/Board";
 import { getAllBoards, getFavoriteBoards } from "App/api/Boards";
-import { BoardsList } from "App/widgets/boards/BoardsList/BoardsList";
+import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsList";
 
 export const BoardsPage = () => {
   const { boards, isShowFavorites } = useAppState();
@@ -51,7 +51,10 @@ export const BoardsPage = () => {
 
   return (
     <AppPageLayout slotHeader={header} isLoading={!boards}>
-      <BoardsList boards={boards ?? []} isShowAddBoard={!isShowFavorites} />
+      <BoardsCardsList
+        boards={boards ?? []}
+        isShowAddBoard={!isShowFavorites}
+      />
     </AppPageLayout>
   );
 };

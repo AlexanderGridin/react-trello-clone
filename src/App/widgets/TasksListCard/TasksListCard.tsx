@@ -18,12 +18,15 @@ import {
 import { useState } from "react";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
 
-export interface TasksListProps {
+export interface TasksListCardProps {
   list: TasksListViewModel;
   isDragPreview?: boolean;
 }
 
-export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
+export const TasksListCard = ({
+  list,
+  isDragPreview = false,
+}: TasksListCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = "#D8DEE9";
 

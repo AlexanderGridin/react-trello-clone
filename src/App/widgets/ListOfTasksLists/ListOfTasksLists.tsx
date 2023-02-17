@@ -2,7 +2,7 @@ import { useTasksListDispatchers } from "App/entities/TasksList/state/hooks/useT
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AddTasksList } from "../AddTasksList/AddTasksList";
 import { DragLayer } from "../DragLayer/DragLayer";
-import { TasksList } from "../TasksList/TasksList";
+import { TasksListCard } from "../TasksListCard/TasksListCard";
 import style from "./ListOfTasksLists.module.css";
 
 interface ListOfTasksListsProps {
@@ -34,7 +34,7 @@ export const ListOfTasksLists = ({
 
       {lists.map((list: TasksListViewModel) => (
         <div className={style.cell} key={list.id}>
-          <TasksList list={list} />
+          <TasksListCard list={list} />
         </div>
       ))}
 

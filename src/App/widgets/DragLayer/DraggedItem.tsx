@@ -1,7 +1,7 @@
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { TasksList } from "App/widgets/TasksList/TasksList";
+import { TasksListCard } from "App/widgets/TasksListCard/TasksListCard";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { BoardViewModel } from "App/entities/Board/Board";
 import { BoardCard } from "../BoardCard/BoardCard";
@@ -17,7 +17,7 @@ export const DraggedItem = ({ item }: DraggedItemProps) => {
       const list: TasksListViewModel = item.data;
       return (
         <div className="cell">
-          <TasksList list={list} isDragPreview />
+          <TasksListCard list={list} isDragPreview />
         </div>
       );
 

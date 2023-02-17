@@ -1,9 +1,11 @@
+import { mapTasksListDtoToViewModel } from "../TasksList/mappers/mapTasksListDtoToViewModel";
+import { TasksListDto } from "../TasksList/TasksListDto";
 import { TasksListViewModel } from "../TasksList/TasksListViewModel";
 
 export interface BoardWithTasksListsDto {
   _id: string;
   title: string;
-  tasksLists?: TasksListViewModel[];
+  tasksLists?: TasksListDto[];
   isFavorite: boolean;
 }
 
@@ -21,10 +23,25 @@ export class BoardWithTasksListsViewModel {
 
 export const mapBoardWithTasksListsDtoToViewModel = (
   source: BoardWithTasksListsDto
-): BoardWithTasksListsViewModel => ({
-  ...new BoardWithTasksListsViewModel({}),
-  id: source._id,
-  title: source.title,
-  tasksLists: [],
-  isFavorite: source.isFavorite,
-});
+): BoardWithTasksListsViewModel => {
+  const pinnedTasksLists: TasksListViewModel[] = [];
+  const tasksLists: TasksListViewModel[] = [];
+
+  source.tasksLists?.forEach((list: TasksListDto) => {
+    if (list.isPinned) {
+      pinnedTasksLists.push(mapTasksListDtoToViewModel(list));
+      return;
+    }
+
+    tasksLists.push(mapTasksListDtoToViewModel(list));
+  });
+
+  return {
+    ...new BoardWithTasksListsViewModel({}),
+    id: source._id,
+    title: source.title,
+    tasksLists,
+    pinnedTasksLists,
+    isFavorite: source.isFavorite,
+  };
+};

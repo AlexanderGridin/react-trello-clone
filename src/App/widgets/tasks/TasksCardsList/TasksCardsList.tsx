@@ -3,19 +3,19 @@ import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { AddTask } from "../AddTask/AddTask";
 import { TaskCard } from "../TaskCard/TaskCard";
 
-interface ListOfTasksProps {
+interface TasksCardsListProps {
   boardId: string;
   listId: string;
   tasks: TaskViewModel[];
   isShowAddTask?: boolean;
 }
 
-export const ListOfTasks = ({
+export const TasksCardsList = ({
   boardId,
   listId,
   tasks,
   isShowAddTask = false,
-}: ListOfTasksProps) => {
+}: TasksCardsListProps) => {
   const { dispatchAddTask } = useTaskDispatchers();
 
   const addTask = (task: TaskViewModel) =>

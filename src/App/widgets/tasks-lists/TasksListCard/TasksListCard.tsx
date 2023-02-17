@@ -16,7 +16,7 @@ import {
 
 import { useState } from "react";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
-import { ListOfTasks } from "App/widgets/tasks/ListOfTasks/ListOfTasks";
+import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
 
 export interface TasksListCardProps {
   list: TasksListViewModel;
@@ -97,7 +97,7 @@ export const TasksListCard = ({
     <TasksListHeader list={list} onRemove={remove} onPin={togglePin} />
   );
   const content = (
-    <ListOfTasks
+    <TasksCardsList
       boardId={list.boardId}
       listId={list.id}
       tasks={list.tasks}

@@ -6,7 +6,7 @@ import { tasksListReducer } from "App/entities/TasksList/state";
 import { appDraggedItemReducer } from "App/entities/AppDraggedItem/state";
 
 export const appReducer = (state: AppState, action: AppAction): AppState => {
-  switch ((action as any).module) {
+  switch (action.module) {
     case "Board":
       return boardReducer(state, action);
 

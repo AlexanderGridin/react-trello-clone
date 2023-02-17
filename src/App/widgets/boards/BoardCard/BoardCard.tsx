@@ -1,8 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
-import { Board } from "App/widgets/Board/Board";
-import { useNavigate } from "react-router-dom";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { DraggedItemType } from "App/enums/DraggedItemType";
@@ -17,6 +16,7 @@ import {
   removeBoard as removeBoardFromApi,
   updateBoard as updateBoardOnApi,
 } from "App/api/Board";
+import { Board } from "../Board/Board";
 
 interface BoardCardProps {
   board: BoardViewModel;

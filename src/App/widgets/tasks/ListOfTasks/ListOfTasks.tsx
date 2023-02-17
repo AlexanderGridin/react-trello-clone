@@ -1,7 +1,7 @@
 import { useTaskDispatchers } from "App/entities/Task/state/hooks/useTaskDispatchers";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { AddTask } from "../AddTask/AddTask";
-import { TaskCard } from "../cards/TaskCard/TaskCard";
+import { TaskCard } from "../TaskCard/TaskCard";
 
 interface ListOfTasksProps {
   boardId: string;

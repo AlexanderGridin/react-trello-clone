@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
-import { BoardsList } from "App/widgets/BoardsList/BoardsList";
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { Toggler } from "App/components/Toggler/Toggler";
 import style from "./BoardsPage.module.css";
 import { mapBoardDtoToViewModel } from "App/entities/Board/Board";
 import { getAllBoards, getFavoriteBoards } from "App/api/Boards";
+import { BoardsList } from "App/widgets/boards/BoardsList/BoardsList";
 
 export const BoardsPage = () => {
   const { boards, isShowFavorites } = useAppState();

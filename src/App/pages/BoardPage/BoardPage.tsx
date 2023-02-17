@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
-import { ListOfTasksLists } from "App/widgets/ListOfTasksLists/ListOfTasksLists";
 import { useAppState } from "App/state/hooks/useAppState";
 
 import {
@@ -12,6 +11,7 @@ import {
 
 import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
 import { getBoard } from "App/api/Board";
+import { ListOfTasksLists } from "App/widgets/tasks-lists/ListOfTasksLists/ListOfTasksLists";
 
 export const BoardPage = () => {
   const { id } = useParams();

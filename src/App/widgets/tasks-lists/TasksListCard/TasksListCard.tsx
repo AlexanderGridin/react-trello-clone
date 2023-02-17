@@ -16,7 +16,7 @@ import {
 
 import { useState } from "react";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
-import { ListOfTasks } from "App/widgets/ListOfTasks/ListOfTasks";
+import { ListOfTasks } from "App/widgets/tasks/ListOfTasks/ListOfTasks";
 
 export interface TasksListCardProps {
   list: TasksListViewModel;

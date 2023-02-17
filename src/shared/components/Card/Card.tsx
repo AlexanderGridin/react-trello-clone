@@ -1,6 +1,7 @@
 import { ForwardedRef, forwardRef, PropsWithChildren, ReactNode } from "react";
 import { CardContent } from "./components/CardContent";
 import { CardContainer } from "./components/CardContainer";
+import { Spinner } from "../Spinner/Spinner";
 
 export interface CardProps extends PropsWithChildren {
   slotHeader?: ReactNode;
@@ -9,6 +10,7 @@ export interface CardProps extends PropsWithChildren {
   backgroundColor?: string;
   className?: string;
   minHeight?: number;
+  isLoading?: boolean;
   onDoubleClick?: () => void;
 }
 
@@ -22,6 +24,7 @@ export const Card = forwardRef((props: CardProps, ref: Ref) => {
     backgroundColor,
     className = "",
     minHeight = 0,
+    isLoading = false,
     children,
     onDoubleClick,
   } = props;
@@ -43,6 +46,7 @@ export const Card = forwardRef((props: CardProps, ref: Ref) => {
       )}
 
       {children}
+      {isLoading && <Spinner backgroundColor="#d8dee9" />}
     </CardContainer>
   );
 });

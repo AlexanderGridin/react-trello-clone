@@ -1,8 +1,12 @@
 import style from "./Spinner.module.css";
 
-export const Spinner = () => {
+interface SpinnerProps {
+  backgroundColor?: string;
+}
+
+export const Spinner = ({ backgroundColor = "#2e3440" }: SpinnerProps) => {
   return (
-    <div className={style.SpinnerContainer}>
+    <div className={style.SpinnerContainer} style={{ backgroundColor }}>
       <div className={style.Spinner}>
         <div></div>
         <div></div>

@@ -9,6 +9,12 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { ListOfTasks } from "../ListOfTasks/ListOfTasks";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
+import {
+  removeTasksList as removeTasksListFromApi,
+  updateTasksList as updateTasksListOnApi,
+} from "App/api/TasksList/TasksList.api";
+import { useState } from "react";
+import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
 
 export interface TasksListProps {
   list: TasksListViewModel;
@@ -16,12 +22,47 @@ export interface TasksListProps {
 }
 
 export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = "#D8DEE9";
 
-  const { dispatchMoveTasksList, dispatchPushTaskInTasksList } =
-    useTasksListDispatchers();
+  const {
+    dispatchMoveTasksList,
+    dispatchPushTaskInTasksList,
+    dispatchRemoveTasksList,
+    dispatchPinTasksList,
+    dispatchUnpinTasksList,
+  } = useTasksListDispatchers();
   const { dispatchRemoveTask } = useTaskDispatchers();
   const { dispatchSetAppDraggedItem } = useAppDraggedItemDispatchers();
+
+  const remove = async () => {
+    setIsLoading(true);
+
+    const tasksListDto = await removeTasksListFromApi(list.id);
+
+    if (tasksListDto) {
+      dispatchRemoveTasksList(mapTasksListDtoToViewModel(tasksListDto));
+    }
+
+    setIsLoading(false);
+  };
+
+  const togglePin = async () => {
+    setIsLoading(true);
+
+    const listDto = await updateTasksListOnApi(list.id, {
+      isPinned: !list.isPinned,
+    });
+
+    if (listDto) {
+      const listViewModel = mapTasksListDtoToViewModel(listDto);
+      list.isPinned
+        ? dispatchUnpinTasksList(listViewModel)
+        : dispatchPinTasksList(listViewModel);
+    }
+
+    setIsLoading(false);
+  };
 
   const dropOnList = (draggedItem: AppDraggedItem) => {
     if (
@@ -47,7 +88,9 @@ export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
     });
   };
 
-  const header = <TasksListHeader list={list} />;
+  const header = (
+    <TasksListHeader list={list} onRemove={remove} onPin={togglePin} />
+  );
   const content = (
     <ListOfTasks
       boardId={list.boardId}
@@ -57,13 +100,14 @@ export const TasksList = ({ list, isDragPreview = false }: TasksListProps) => {
     />
   );
 
-  if (isDragPreview) {
+  if (isDragPreview || isLoading) {
     return (
       <Card
         slotHeader={header}
         slotContent={content}
+        isLoading={isLoading}
         backgroundColor={BACKGROUD_COLOR}
-        className="drag-preview"
+        className={isDragPreview ? "drag-preview" : ""}
       />
     );
   }

@@ -33,7 +33,9 @@ export const ListOfTasks = ({
         </ul>
       )}
 
-      {isShowAddTask && <AddTask onAdd={addTask} />}
+      {isShowAddTask && (
+        <AddTask boardId={boardId} listId={listId} onAdd={addTask} />
+      )}
     </>
   );
 };

@@ -18,13 +18,12 @@ export const ListOfTasksLists = ({
 }: ListOfTasksListsProps) => {
   const { dispatchAddTasksList } = useTasksListDispatchers();
 
-  const addTasksList = (list: TasksListViewModel) =>
-    dispatchAddTasksList({ ...list, boardId });
+  const addTasksList = (list: TasksListViewModel) => dispatchAddTasksList(list);
 
   if (!lists.length) {
     return (
       <div className={style.cell}>
-        <AddTasksList onAdd={addTasksList} />
+        <AddTasksList boardId={boardId} onAdd={addTasksList} />
       </div>
     );
   }
@@ -41,7 +40,7 @@ export const ListOfTasksLists = ({
 
       {isShowAddTasksList && (
         <div className={style.cell}>
-          <AddTasksList onAdd={addTasksList} />
+          <AddTasksList boardId={boardId} onAdd={addTasksList} />
         </div>
       )}
     </div>

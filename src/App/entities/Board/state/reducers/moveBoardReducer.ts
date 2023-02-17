@@ -3,7 +3,7 @@ import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUti
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem/moveItemAfterArrayItem";
 import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem/moveItemBeforeArrayItem";
 import { BoardViewModel } from "../../Board";
-import { MoveBoardAction } from "../actions/moveBoard";
+import { MoveBoardAction } from "../actions/createMoveBoardAction";
 
 export const moveBoardReducer = (
   state: AppState,

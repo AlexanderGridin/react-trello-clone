@@ -9,14 +9,14 @@ import {
   mapBoardWithTasksListsDtoToViewModel,
 } from "App/entities/Board/BoardWithTasksLists";
 
-import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
+import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import { getBoard } from "App/api/Board";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
 
 export const BoardPage = () => {
   const { id } = useParams();
   const { boardsCache } = useAppState();
-  const { dispatchCacheBoard } = useBoardDispatchers();
+  const dispatcher = useBoardDispatcher();
   const board = boardsCache[id as string];
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const BoardPage = () => {
 
     getBoard(id as string).then((boardDto: BoardWithTasksListsDto) => {
       const board = mapBoardWithTasksListsDtoToViewModel(boardDto);
-      dispatchCacheBoard(board);
+      dispatcher.cacheBoard(board);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -1,5 +1,5 @@
 import { AppState } from "App/state/models/AppState";
-import { AddBoardAction } from "../actions/addBoard";
+import { AddBoardAction } from "../actions/createAddBoardAction";
 
 export const addBoardReducer = (
   state: AppState,

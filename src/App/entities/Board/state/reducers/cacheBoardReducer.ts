@@ -1,5 +1,5 @@
 import { AppState } from "App/state/models/AppState";
-import { CacheBoardAction } from "../actions/cacheBoard";
+import { CacheBoardAction } from "../actions/createCacheBoardAction";
 
 export const cacheBoardReducer = (
   state: AppState,

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
-import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
+import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 
@@ -29,16 +29,14 @@ const BACKGROUD_COLOR = "#D8DEE9";
 export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const { dispatchMoveBoard, dispatchRemoveBoard, dispatchUpdateBoard } =
-    useBoardDispatchers();
+  const dispatcher = useBoardDispatcher();
 
   const removeBoard = async (board: BoardViewModel) => {
     setIsLoading(true);
 
     const boardDto = await removeBoardFromApi(board.id);
-
     if (boardDto) {
-      dispatchRemoveBoard(board);
+      dispatcher.removeBoard(board);
     }
 
     setIsLoading(false);
@@ -52,7 +50,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
     });
 
     if (boardDto) {
-      dispatchUpdateBoard(mapBoardDtoToViewModel(boardDto));
+      dispatcher.updateBoard(mapBoardDtoToViewModel(boardDto));
     }
 
     setIsLoading(false);
@@ -64,7 +62,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
     }
 
     const draggedBoard = draggedItem.data;
-    dispatchMoveBoard(draggedBoard, board);
+    dispatcher.moveBoard(draggedBoard, board);
   };
 
   const navigateToBoard = () => navigate(`/board/${board.id}`);

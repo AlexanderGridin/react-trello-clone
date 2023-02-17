@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
-import { useBoardDispatchers } from "App/entities/Board/state/hooks/useBoardDispatchers";
+import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import { Toggler } from "App/components/Toggler/Toggler";
 import style from "./BoardsPage.module.css";
 import { mapBoardDtoToViewModel } from "App/entities/Board/Board";
@@ -11,17 +11,16 @@ import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsL
 
 export const BoardsPage = () => {
   const { boards, isShowFavorites } = useAppState();
-  const { dispatchSetBoards, dispatchSetIsShowFavorites } =
-    useBoardDispatchers();
+  const dispatcher = useBoardDispatcher();
 
   const loadBoards = async (isShowFavorites = false) => {
-    dispatchSetBoards(null);
+    dispatcher.setBoards(null);
 
     const boardsDtos = isShowFavorites
       ? await getFavoriteBoards()
       : await getAllBoards();
 
-    dispatchSetBoards(boardsDtos.map(mapBoardDtoToViewModel));
+    dispatcher.setBoards(boardsDtos.map(mapBoardDtoToViewModel));
   };
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export const BoardsPage = () => {
   }, []);
 
   const toggleFavorite = (isShowFavorites: boolean) => {
-    dispatchSetIsShowFavorites(isShowFavorites);
+    dispatcher.setIsShowFavorites(isShowFavorites);
     loadBoards(isShowFavorites);
   };
 

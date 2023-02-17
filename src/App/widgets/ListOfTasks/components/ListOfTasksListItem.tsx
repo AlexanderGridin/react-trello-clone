@@ -7,7 +7,7 @@ import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Task } from "App/widgets/Task/Task";
 import { Card } from "shared/components/Card/Card";
-import { removeTask as removeTaskFromApi } from "App/api/Task/Task.api";
+import { removeTask as removeTaskFromApi } from "App/api/Task";
 import { useState } from "react";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
 

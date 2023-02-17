@@ -4,7 +4,7 @@ import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddTaskButton } from "./components/AddTaskButton";
-import { addTask as addTaskOnApi } from "App/api/Task/Task.api";
+import { addTask as addTaskOnApi } from "App/api/Task";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
 
 export interface AddTaskProps {

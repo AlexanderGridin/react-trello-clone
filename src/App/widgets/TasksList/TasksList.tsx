@@ -9,10 +9,12 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { ListOfTasks } from "../ListOfTasks/ListOfTasks";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
+
 import {
   removeTasksList as removeTasksListFromApi,
   updateTasksList as updateTasksListOnApi,
-} from "App/api/TasksList/TasksList.api";
+} from "App/api/TasksList";
+
 import { useState } from "react";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
 

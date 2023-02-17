@@ -1,9 +1,9 @@
-import { addTasksList as addTasksListOnApi } from "App/api/TasksList/TasksList.api";
+import { useState } from "react";
+import { addTasksList as addTasksListOnApi } from "App/api/TasksList";
 import { AddItemForm } from "App/components/AddItemForm/AddItemForm";
 import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
-import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddListButton } from "./components/AddListButton";
 

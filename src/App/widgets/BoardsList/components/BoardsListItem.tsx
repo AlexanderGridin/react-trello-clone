@@ -41,8 +41,9 @@ export const BoardsListItem = ({
 
     if (boardDto) {
       dispatchRemoveBoard(board);
-      setIsLoading(false);
     }
+
+    setIsLoading(false);
   };
 
   const updateBoard = async (board: BoardViewModel) => {

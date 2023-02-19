@@ -1,6 +1,3 @@
-import { AddItemForm } from "App/components/AddItemForm/AddItemForm";
-import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
-
 import {
   BoardViewModel,
   mapBoardDtoToViewModel,
@@ -11,6 +8,7 @@ import { Card } from "shared/components/Card/Card";
 import { AddBoardButton } from "./components/AddBoardButton";
 import { addBoard as addBoardToApi } from "App/api/Board";
 import { useAppState } from "App/state/hooks/useAppState";
+import { AddBoardForm, AddBoardFormValue } from "../AddBoardForm/AddBoardForm";
 
 export interface AddBoardProps {
   onAdd: (board: BoardViewModel) => void;
@@ -24,11 +22,11 @@ export const AddBoard = ({ onAdd }: AddBoardProps) => {
   const showForm = () => setIsShowForm(true);
   const hideForm = () => setIsShowForm(false);
 
-  const addBoard = async (formValue: AddItemFormValue) => {
+  const addBoard = async (formValue: AddBoardFormValue) => {
     setIsLoading(true);
 
     const boardDto = await addBoardToApi({
-      title: formValue.text,
+      ...formValue,
       rank: (boards?.length ?? -1) + 1,
     });
 
@@ -43,7 +41,7 @@ export const AddBoard = ({ onAdd }: AddBoardProps) => {
   if (isShowForm) {
     return (
       <Card minHeight={150} backgroundColor="#D8DEE9" isLoading={isLoading}>
-        <AddItemForm onSubmit={addBoard} onCancel={hideForm} />
+        <AddBoardForm onSubmit={addBoard} onCancel={hideForm} />
       </Card>
     );
   }

@@ -6,7 +6,7 @@ interface CardContainerProps {
 }
 
 export const CardContainer = styled.div<CardContainerProps>`
-  padding: 7px 12px;
+  padding: 12px;
   border-radius: 3px;
   background-color: ${({ backgroundColor }) => backgroundColor || "#FFF"};
   min-height: ${({ minHeight }) => (minHeight ? `${minHeight}px` : "auto")};

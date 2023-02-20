@@ -27,13 +27,13 @@ export const useTasksListDispatcher = () => {
   const pushTaskInTasksList = (list: TasksListViewModel, task: TaskViewModel) =>
     dispatchForModule(createPushTaskInTasksListAction(list, task));
 
-	const updateTasksList = (list: TasksListViewModel) => dispatchForModule(createUpdateTasksListAction(list))
+  const updateTasksList = (list: TasksListViewModel) => dispatchForModule(createUpdateTasksListAction(list));
 
   return {
     addTasksList,
     removeTasksList,
     moveTasksList,
     pushTaskInTasksList,
-		updateTasksList
+    updateTasksList,
   };
 };

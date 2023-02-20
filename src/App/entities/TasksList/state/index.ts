@@ -19,7 +19,7 @@ export type TasksListAction =
   | RemoveTasksListAction
   | MoveTasksListAction
   | PushTaskInTasksListAction
-	| UpdateTasksListAction
+  | UpdateTasksListAction;
 
 export type TasksListModuleAction = { module: "TasksList" } & TasksListAction;
 
@@ -37,8 +37,8 @@ export const tasksListReducer = (state: AppState, action: AppAction): AppState =
     case AppActionType.PushTaskInTasksList:
       return pushTaskInTasksListReducer(state, action);
 
-		case AppActionType.UpdateList:
-			return updateTasksListReducer(state, action);
+    case AppActionType.UpdateList:
+      return updateTasksListReducer(state, action);
 
     default:
       return { ...state };

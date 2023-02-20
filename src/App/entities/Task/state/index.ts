@@ -25,8 +25,8 @@ export const taskReducer = (state: AppState, action: AppAction): AppState => {
     case AppActionType.MoveTask:
       return moveTaskReducer(state, action);
 
-		case AppActionType.UpdateTask:
-			return updateTaskReducer(state, action)
+    case AppActionType.UpdateTask:
+      return updateTaskReducer(state, action);
 
     default:
       return { ...state };

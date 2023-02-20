@@ -2,6 +2,6 @@ import { TasksListFormValue } from "App/widgets/tasks-lists/TasksListForm/TasksL
 import { TasksListViewModel } from "../TasksListViewModel";
 
 export const mapTasksListViewModelToFormValue = (source: TasksListViewModel): TasksListFormValue => ({
-	title: source.title,
-	isPinned: source.isPinned
-})
+  title: source.title,
+  isPinned: source.isPinned,
+});

@@ -1,4 +1,3 @@
-
 import { AppState } from "App/state/models/AppState";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
@@ -18,7 +17,9 @@ export const updateTaskReducer = (state: AppState, action: UpdateTaskAction): Ap
         }
       : {
           ...list,
-          tasks: list.tasks.map((task: TaskViewModel) => task.id === taskToUpdate.id ? {...taskToUpdate}: {...task}),
+          tasks: list.tasks.map((task: TaskViewModel) =>
+            task.id === taskToUpdate.id ? { ...taskToUpdate } : { ...task }
+          ),
         }
   );
 

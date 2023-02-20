@@ -22,7 +22,7 @@ export const useTaskDispatcher = () => {
   const moveTask = (taskToMove: TaskViewModel, taskToReplace: TaskViewModel) =>
     dispatchForModule(createMoveTaskAction(taskToMove, taskToReplace));
 
-	const updateTask = (task: TaskViewModel) => dispatchForModule(createUpdateTaskAction(task))
+  const updateTask = (task: TaskViewModel) => dispatchForModule(createUpdateTaskAction(task));
 
   return { addTask, removeTask, moveTask, updateTask };
 };

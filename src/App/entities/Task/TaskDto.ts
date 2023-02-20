@@ -5,5 +5,5 @@ export interface TaskDto {
   content: string;
   listId: string;
   boardId: string;
-	priority: TaskPriority;
+  priority: TaskPriority;
 }

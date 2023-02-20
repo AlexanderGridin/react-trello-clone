@@ -38,6 +38,6 @@ export const mapBoardWithTasksListsDtoToViewModel = (source: BoardWithTasksLists
 };
 
 export const mapBoardViewMoelToBoardFormValue = (source: BoardViewModel): BoardFormValue => ({
-	title: source.title,
-	isFavorite: source.isFavorite
-})
+  title: source.title,
+  isFavorite: source.isFavorite,
+});

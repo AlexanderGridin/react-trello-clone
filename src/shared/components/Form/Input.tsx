@@ -25,7 +25,7 @@ const StyledTextField = styled(TextField)({
 });
 
 export const TextInput = forwardRef(
-  ({ placeholder, onChange }: TextInputProps, ref: ForwardedRef<HTMLInputElement>) => {
+  ({ value, placeholder, onChange }: TextInputProps, ref: ForwardedRef<HTMLInputElement>) => {
     const change = (e: ChangeEventType) => {
       const value = e.target.value;
       onChange?.(value);
@@ -38,6 +38,7 @@ export const TextInput = forwardRef(
         fullWidth
         variant="outlined"
         placeholder={placeholder}
+        value={value}
         onChange={change}
       />
     );

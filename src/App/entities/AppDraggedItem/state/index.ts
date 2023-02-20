@@ -11,10 +11,7 @@ export type AppDraggedItemModuleAction = {
   module: "AppDraggedItem";
 } & AppDraggedItemAction;
 
-export const appDraggedItemReducer = (
-  state: AppState,
-  action: AppAction
-): AppState => {
+export const appDraggedItemReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
     case AppActionType.SetAppDraggedItem:
       return setAppDraggedItemReducer(state, action);

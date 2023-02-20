@@ -10,16 +10,10 @@ interface TasksCardsListProps {
   isShowAddTask?: boolean;
 }
 
-export const TasksCardsList = ({
-  boardId,
-  listId,
-  tasks,
-  isShowAddTask = false,
-}: TasksCardsListProps) => {
+export const TasksCardsList = ({ boardId, listId, tasks, isShowAddTask = false }: TasksCardsListProps) => {
   const dispatcher = useTaskDispatcher();
 
-  const addTask = (task: TaskViewModel) =>
-    dispatcher.addTask({ ...task, listId, boardId });
+  const addTask = (task: TaskViewModel) => dispatcher.addTask({ ...task, listId, boardId });
 
   return (
     <>
@@ -33,9 +27,7 @@ export const TasksCardsList = ({
         </ul>
       )}
 
-      {isShowAddTask && (
-        <AddTask boardId={boardId} listId={listId} onAdd={addTask} />
-      )}
+      {isShowAddTask && <AddTask boardId={boardId} listId={listId} onAdd={addTask} />}
     </>
   );
 };

@@ -9,11 +9,7 @@ export const Sidebar = () => {
   return (
     <SidebarLayout
       slotHeader={<User />}
-      slotFooter={
-        <div style={{ color: "#FFF", padding: "25px", textAlign: "center" }}>
-          {date}
-        </div>
-      }
+      slotFooter={<div style={{ color: "#FFF", padding: "25px", textAlign: "center" }}>{date}</div>}
     >
       <AppNavigation />
     </SidebarLayout>

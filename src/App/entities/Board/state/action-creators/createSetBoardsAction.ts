@@ -6,14 +6,9 @@ interface SetBoardsActionPayload {
   boards: BoardViewModel[] | null;
 }
 
-export type SetBoardsAction = Action<
-  AppActionType.SetBoards,
-  SetBoardsActionPayload
->;
+export type SetBoardsAction = Action<AppActionType.SetBoards, SetBoardsActionPayload>;
 
-export const createSetBoardsAction = (
-  boards: BoardViewModel[] | null
-): SetBoardsAction => ({
+export const createSetBoardsAction = (boards: BoardViewModel[] | null): SetBoardsAction => ({
   type: AppActionType.SetBoards,
   payload: { boards },
 });

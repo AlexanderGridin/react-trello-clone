@@ -7,10 +7,7 @@ interface MoveBoardActionPayload {
   boardToReplace: BoardViewModel;
 }
 
-export type MoveBoardAction = Action<
-  AppActionType.MoveBoard,
-  MoveBoardActionPayload
->;
+export type MoveBoardAction = Action<AppActionType.MoveBoard, MoveBoardActionPayload>;
 
 export const createMoveBoardAction = (
   boardToMove: BoardViewModel,

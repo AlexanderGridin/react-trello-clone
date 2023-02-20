@@ -26,9 +26,7 @@ export const mapBoardDtoToViewModel = (source: BoardDto): BoardViewModel => ({
   rank: source.rank,
 });
 
-export const mapBoardToDraggedItem = (
-  board: BoardViewModel
-): AppDraggedItem => ({
+export const mapBoardToDraggedItem = (board: BoardViewModel): AppDraggedItem => ({
   id: board.id,
   type: DraggedItemType.Board,
   acceptType: DraggedItemType.Board,

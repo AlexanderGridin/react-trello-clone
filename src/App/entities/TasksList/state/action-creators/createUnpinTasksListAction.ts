@@ -6,14 +6,9 @@ interface UnpinTasksListActionPayload {
   list: TasksListViewModel;
 }
 
-export type UnpinTasksListAction = Action<
-  AppActionType.UnpinList,
-  UnpinTasksListActionPayload
->;
+export type UnpinTasksListAction = Action<AppActionType.UnpinList, UnpinTasksListActionPayload>;
 
-export const createUnpinTasksListAction = (
-  list: TasksListViewModel
-): UnpinTasksListAction => ({
+export const createUnpinTasksListAction = (list: TasksListViewModel): UnpinTasksListAction => ({
   type: AppActionType.UnpinList,
   payload: { list },
 });

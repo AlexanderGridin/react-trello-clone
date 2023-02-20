@@ -11,14 +11,9 @@ interface TasksListsCardsListProps {
   isShowAddTasksList?: boolean;
 }
 
-export const TasksListsCardsList = ({
-  boardId,
-  lists,
-  isShowAddTasksList = false,
-}: TasksListsCardsListProps) => {
+export const TasksListsCardsList = ({ boardId, lists, isShowAddTasksList = false }: TasksListsCardsListProps) => {
   const dispatcher = useTasksListDispatcher();
-  const addTasksList = (list: TasksListViewModel) =>
-    dispatcher.addTasksList(list);
+  const addTasksList = (list: TasksListViewModel) => dispatcher.addTasksList(list);
 
   if (!lists.length) {
     return (

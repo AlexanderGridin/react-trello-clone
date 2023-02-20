@@ -1,11 +1,10 @@
-import { AddItemForm } from "App/components/AddItemForm/AddItemForm";
-import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
+import { useReducer } from "react";
 import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddTaskButton } from "./components/AddTaskButton";
 import { addTask as addTaskOnApi } from "App/api/Task";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
+import { TaskForm, TaskFormValue } from "../TaskForm/TaskForm";
 
 export interface AddTaskProps {
   listId: string;
@@ -13,18 +12,30 @@ export interface AddTaskProps {
   onAdd: (task: TaskViewModel) => void;
 }
 
+interface AddTaskState {
+  isShowForm: boolean;
+  isLoading: boolean;
+}
+
 export const AddTask = ({ listId, boardId, onAdd }: AddTaskProps) => {
-  const [isShowForm, setIsShowForm] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const initialState: AddTaskState = { isShowForm: false, isLoading: false };
+  const [state, dispatch] = useReducer(
+    (state: AddTaskState, payload: Partial<AddTaskState>) => ({
+      ...state,
+      ...payload,
+    }),
+    initialState
+  );
 
-  const hideForm = () => setIsShowForm(false);
-  const showForm = () => setIsShowForm(true);
+  const hideForm = () => dispatch({ isShowForm: false });
+  const showForm = () => dispatch({ isShowForm: true });
 
-  const addTask = async (formValue: AddItemFormValue) => {
-    setIsLoading(true);
+  const addTask = async (formValue: TaskFormValue) => {
+    dispatch({ isLoading: true });
 
     const taskDto = await addTaskOnApi({
-      content: formValue.text,
+      ...formValue,
+      content: formValue.title,
       listId,
       boardId,
     });
@@ -34,13 +45,13 @@ export const AddTask = ({ listId, boardId, onAdd }: AddTaskProps) => {
       hideForm();
     }
 
-    setIsLoading(false);
+    dispatch({ isLoading: false });
   };
 
-  if (isShowForm) {
+  if (state.isShowForm) {
     return (
-      <Card isLoading={isLoading}>
-        <AddItemForm onSubmit={addTask} onCancel={hideForm} />
+      <Card isLoading={state.isLoading}>
+        <TaskForm onSubmit={addTask} onCancel={hideForm} />
       </Card>
     );
   }

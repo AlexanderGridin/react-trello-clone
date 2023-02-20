@@ -1,13 +1,7 @@
 import { ArrayUtilConfig } from "../models/ArrayUtilConfig";
 
-export const removeItemFromArray = <T>({
-  array,
-  item,
-  uniqueKey,
-}: ArrayUtilConfig<T>): T[] => {
-  const itemIndex =
-    array?.findIndex((arrayItem) => arrayItem[uniqueKey] === item[uniqueKey]) ??
-    -1;
+export const removeItemFromArray = <T>({ array, item, uniqueKey }: ArrayUtilConfig<T>): T[] => {
+  const itemIndex = array?.findIndex((arrayItem) => arrayItem[uniqueKey] === item[uniqueKey]) ?? -1;
 
   if (itemIndex < 0) {
     return [...array];

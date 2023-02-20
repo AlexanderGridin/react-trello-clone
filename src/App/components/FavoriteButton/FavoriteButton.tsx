@@ -9,14 +9,8 @@ interface FavoriteButtonProps extends PropsWithClick {
   className?: string;
 }
 
-export const FavoriteButton = ({
-  isFavorite,
-  className,
-  onClick,
-}: FavoriteButtonProps) => {
-  const classNames = `${style.button} ${isFavorite ? style.active : ""} ${
-    className || ""
-  }`;
+export const FavoriteButton = ({ isFavorite, className, onClick }: FavoriteButtonProps) => {
+  const classNames = `${style.button} ${isFavorite ? style.active : ""} ${className || ""}`;
 
   return (
     <button type={ButtonType.Button} className={classNames} onClick={onClick}>

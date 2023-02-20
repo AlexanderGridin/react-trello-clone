@@ -7,12 +7,7 @@ interface AddTaskButtonProps extends PropsWithChildren, PropsWithClick {}
 
 export const AddTaskButton = ({ children, onClick }: AddTaskButtonProps) => {
   return (
-    <AddButtonContainer
-      type={ButtonType.Button}
-      isFullWidth
-      isTextDark
-      onClick={onClick}
-    >
+    <AddButtonContainer type={ButtonType.Button} isFullWidth isTextDark onClick={onClick}>
       {children}
     </AddButtonContainer>
   );

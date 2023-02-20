@@ -6,10 +6,7 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
 
-import {
-  removeTasksList as removeTasksListFromApi,
-  updateTasksList as updateTasksListOnApi,
-} from "App/api/TasksList";
+import { removeTasksList as removeTasksListFromApi, updateTasksList as updateTasksListOnApi } from "App/api/TasksList";
 
 import { useState } from "react";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
@@ -23,10 +20,7 @@ export interface TasksListCardProps {
   isDragPreview?: boolean;
 }
 
-export const TasksListCard = ({
-  list,
-  isDragPreview = false,
-}: TasksListCardProps) => {
+export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = "#D8DEE9";
 
@@ -54,19 +48,14 @@ export const TasksListCard = ({
 
     if (listDto) {
       const listViewModel = mapTasksListDtoToViewModel(listDto);
-      list.isPinned
-        ? dispatcher.unpinTasksList(listViewModel)
-        : dispatcher.pinTasksList(listViewModel);
+      list.isPinned ? dispatcher.unpinTasksList(listViewModel) : dispatcher.pinTasksList(listViewModel);
     }
 
     setIsLoading(false);
   };
 
   const dropOnList = (draggedItem: AppDraggedItem) => {
-    if (
-      draggedItem.type === DraggedItemType.TasksList &&
-      draggedItem.data.isPinned === list.isPinned
-    ) {
+    if (draggedItem.type === DraggedItemType.TasksList && draggedItem.data.isPinned === list.isPinned) {
       dispatcher.moveTasksList(draggedItem.data, list);
       return;
     }
@@ -86,17 +75,8 @@ export const TasksListCard = ({
     });
   };
 
-  const header = (
-    <TasksListHeader list={list} onRemove={remove} onPin={togglePin} />
-  );
-  const content = (
-    <TasksCardsList
-      boardId={list.boardId}
-      listId={list.id}
-      tasks={list.tasks}
-      isShowAddTask
-    />
-  );
+  const header = <TasksListHeader list={list} onRemove={remove} onPin={togglePin} />;
+  const content = <TasksCardsList boardId={list.boardId} listId={list.id} tasks={list.tasks} isShowAddTask />;
 
   if (isDragPreview || isLoading) {
     return (

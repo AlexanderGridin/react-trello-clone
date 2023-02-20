@@ -6,14 +6,9 @@ interface AddBoardActionPayload {
   board: BoardViewModel;
 }
 
-export type AddBoardAction = Action<
-  AppActionType.AddBoard,
-  AddBoardActionPayload
->;
+export type AddBoardAction = Action<AppActionType.AddBoard, AddBoardActionPayload>;
 
-export const createAddBoardAction = (
-  board: BoardViewModel
-): AddBoardAction => ({
+export const createAddBoardAction = (board: BoardViewModel): AddBoardAction => ({
   type: AppActionType.AddBoard,
   payload: { board },
 });

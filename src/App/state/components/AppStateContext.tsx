@@ -14,5 +14,4 @@ export interface AppStateContextProps {
 
 const initialValue: AppStateContextProps = {} as AppStateContextProps;
 
-export const AppStateContext =
-  createContext<AppStateContextProps>(initialValue);
+export const AppStateContext = createContext<AppStateContextProps>(initialValue);

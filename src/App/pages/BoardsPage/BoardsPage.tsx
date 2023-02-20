@@ -16,9 +16,7 @@ export const BoardsPage = () => {
   const loadBoards = async (isShowFavorites = false) => {
     dispatcher.setBoards(null);
 
-    const boardsDtos = isShowFavorites
-      ? await getFavoriteBoards()
-      : await getAllBoards();
+    const boardsDtos = isShowFavorites ? await getFavoriteBoards() : await getAllBoards();
 
     dispatcher.setBoards(boardsDtos.map(mapBoardDtoToViewModel));
   };
@@ -40,20 +38,13 @@ export const BoardsPage = () => {
   const header = (
     <>
       <PageTitle className={style.title}>Boards</PageTitle>
-      <Toggler
-        initialValue={isShowFavorites}
-        onToggle={toggleFavorite}
-        label="Favorites only"
-      />
+      <Toggler initialValue={isShowFavorites} onToggle={toggleFavorite} label="Favorites only" />
     </>
   );
 
   return (
     <AppPageLayout slotHeader={header} isLoading={!boards}>
-      <BoardsCardsList
-        boards={boards ?? []}
-        isShowAddBoard={!isShowFavorites}
-      />
+      <BoardsCardsList boards={boards ?? []} isShowAddBoard={!isShowFavorites} />
     </AppPageLayout>
   );
 };

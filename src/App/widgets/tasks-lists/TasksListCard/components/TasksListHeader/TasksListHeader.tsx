@@ -8,21 +8,13 @@ interface TasksListHeaderProps {
   onRemove: () => void;
   onPin: () => void;
 }
-export const TasksListHeader = ({
-  list,
-  onRemove,
-  onPin,
-}: TasksListHeaderProps) => {
+export const TasksListHeader = ({ list, onRemove, onPin }: TasksListHeaderProps) => {
   const remove = () => onRemove();
   const togglePin = () => onPin();
 
   return (
     <div className={style.container}>
-      <PinButton
-        className={style.PinButton}
-        isPinned={list.isPinned}
-        onClick={togglePin}
-      />
+      <PinButton className={style.PinButton} isPinned={list.isPinned} onClick={togglePin} />
 
       <h3 className={style.title}>{list.title}</h3>
 

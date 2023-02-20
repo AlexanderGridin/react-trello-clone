@@ -7,15 +7,9 @@ interface MoveTaskActionPayload {
   taskToReplace: TaskViewModel;
 }
 
-export type MoveTaskAction = Action<
-  AppActionType.MoveTask,
-  MoveTaskActionPayload
->;
+export type MoveTaskAction = Action<AppActionType.MoveTask, MoveTaskActionPayload>;
 
-export const createMoveTaskAction = (
-  taskToMove: TaskViewModel,
-  taskToReplace: TaskViewModel
-): MoveTaskAction => ({
+export const createMoveTaskAction = (taskToMove: TaskViewModel, taskToReplace: TaskViewModel): MoveTaskAction => ({
   type: AppActionType.MoveTask,
   payload: { taskToMove, taskToReplace },
 });

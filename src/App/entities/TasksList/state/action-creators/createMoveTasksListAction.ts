@@ -7,10 +7,7 @@ interface MoveTasksListActionPayload {
   listToReplace: TasksListViewModel;
 }
 
-export type MoveTasksListAction = Action<
-  AppActionType.MoveList,
-  MoveTasksListActionPayload
->;
+export type MoveTasksListAction = Action<AppActionType.MoveList, MoveTasksListActionPayload>;
 
 export const createMoveTasksListAction = (
   listToMove: TasksListViewModel,

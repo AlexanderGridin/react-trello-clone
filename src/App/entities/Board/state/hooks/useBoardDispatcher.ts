@@ -19,25 +19,18 @@ export const useBoardDispatcher = () => {
       ...action,
     });
 
-  const addBoard = (board: BoardViewModel) =>
-    dispatchForModule(createAddBoardAction(board));
+  const addBoard = (board: BoardViewModel) => dispatchForModule(createAddBoardAction(board));
 
-  const removeBoard = (board: BoardViewModel) =>
-    dispatchForModule(createRemoveBoardAction(board));
+  const removeBoard = (board: BoardViewModel) => dispatchForModule(createRemoveBoardAction(board));
 
-  const moveBoard = (
-    boardToMove: BoardViewModel,
-    boardToReplace: BoardViewModel
-  ) => dispatchForModule(createMoveBoardAction(boardToMove, boardToReplace));
+  const moveBoard = (boardToMove: BoardViewModel, boardToReplace: BoardViewModel) =>
+    dispatchForModule(createMoveBoardAction(boardToMove, boardToReplace));
 
-  const updateBoard = (board: BoardViewModel) =>
-    dispatchForModule(createUpdateBoardAction(board));
+  const updateBoard = (board: BoardViewModel) => dispatchForModule(createUpdateBoardAction(board));
 
-  const setBoards = (boards: BoardViewModel[] | null) =>
-    dispatchForModule(createSetBoardsAction(boards));
+  const setBoards = (boards: BoardViewModel[] | null) => dispatchForModule(createSetBoardsAction(boards));
 
-  const cacheBoard = (board: BoardWithTasksListsViewModel) =>
-    dispatchForModule(createCacheBoardAction(board));
+  const cacheBoard = (board: BoardWithTasksListsViewModel) => dispatchForModule(createCacheBoardAction(board));
 
   const setIsShowFavorites = (isShowFavorites: boolean) =>
     dispatchForModule(createSetIsShowFavoritesAction(isShowFavorites));

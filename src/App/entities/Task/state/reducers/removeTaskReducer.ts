@@ -4,10 +4,7 @@ import { AppState } from "App/state/models/AppState";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
 import { RemoveTaskAction } from "../action-creators/createRemoveTaskAction";
 
-export const removeTaskReducer = (
-  state: AppState,
-  action: RemoveTaskAction
-): AppState => {
+export const removeTaskReducer = (state: AppState, action: RemoveTaskAction): AppState => {
   const taskToRemove: TaskViewModel = action.payload.task;
   const board = state.boardsCache[taskToRemove.boardId];
   const totalPinned = board.pinnedTasksLists.length;

@@ -7,10 +7,7 @@ interface Config {
   task: TaskViewModel;
 }
 
-export const removeTaskFromList = ({
-  list,
-  task,
-}: Config): TasksListViewModel => ({
+export const removeTaskFromList = ({ list, task }: Config): TasksListViewModel => ({
   ...list,
   tasks: removeItemFromArray<TaskViewModel>({
     array: list.tasks,

@@ -6,14 +6,9 @@ interface RemoveTasksListActionPayload {
   list: TasksListViewModel;
 }
 
-export type RemoveTasksListAction = Action<
-  AppActionType.RemoveList,
-  RemoveTasksListActionPayload
->;
+export type RemoveTasksListAction = Action<AppActionType.RemoveList, RemoveTasksListActionPayload>;
 
-export const createRemoveTasksListAction = (
-  list: TasksListViewModel
-): RemoveTasksListAction => ({
+export const createRemoveTasksListAction = (list: TasksListViewModel): RemoveTasksListAction => ({
   type: AppActionType.RemoveList,
   payload: { list },
 });

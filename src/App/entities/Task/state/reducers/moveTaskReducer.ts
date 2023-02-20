@@ -4,10 +4,7 @@ import { MoveTaskAction } from "../action-creators/createMoveTaskAction";
 import { removeTaskFromList } from "./utils/removeTaskFromList";
 import { replaceTaskInList } from "./utils/replaceTaskInList";
 
-export const moveTaskReducer = (
-  state: AppState,
-  action: MoveTaskAction
-): AppState => {
+export const moveTaskReducer = (state: AppState, action: MoveTaskAction): AppState => {
   const { taskToMove, taskToReplace } = action.payload;
   const board = state.boardsCache[taskToMove.boardId];
   const totalPinned = board.pinnedTasksLists.length;

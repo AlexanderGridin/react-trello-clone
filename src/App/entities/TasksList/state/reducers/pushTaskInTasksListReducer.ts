@@ -2,10 +2,7 @@ import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AppState } from "App/state/models/AppState";
 import { PushTaskInTasksListAction } from "../action-creators/createPushTaskInTasksListAction";
 
-export const pushTaskInTasksListReducer = (
-  state: AppState,
-  action: PushTaskInTasksListAction
-): AppState => {
+export const pushTaskInTasksListReducer = (state: AppState, action: PushTaskInTasksListAction): AppState => {
   const { list, task } = action.payload;
   const board = state.boardsCache[list.boardId];
   const totalPinned = board.pinnedTasksLists.length;

@@ -10,10 +10,7 @@ interface BoardsCardsListProps {
   isShowAddBoard?: boolean;
 }
 
-export const BoardsCardsList = ({
-  boards,
-  isShowAddBoard = true,
-}: BoardsCardsListProps) => {
+export const BoardsCardsList = ({ boards, isShowAddBoard = true }: BoardsCardsListProps) => {
   const dispatcher = useBoardDispatcher();
   const addBoard = (board: BoardViewModel) => dispatcher.addBoard(board);
 

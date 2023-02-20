@@ -62,22 +62,14 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
 
   if (isDragPreview || isLoading) {
     return (
-      <Card
-        className={isDragPreview ? "drag-preview" : ""}
-        isLoading={isLoading}
-        backgroundColor={BACKGROUD_COLOR}
-      >
+      <Card className={isDragPreview ? "drag-preview" : ""} isLoading={isLoading} backgroundColor={BACKGROUD_COLOR}>
         <Task task={task} onRemove={removeTask} />
       </Card>
     );
   }
 
   return (
-    <DndCard
-      draggedItem={mapTaskToDraggedItem(task)}
-      backgroundColor={BACKGROUD_COLOR}
-      onDrop={dropOnTask}
-    >
+    <DndCard draggedItem={mapTaskToDraggedItem(task)} backgroundColor={BACKGROUD_COLOR} onDrop={dropOnTask}>
       <Task task={task} onRemove={removeTask} />
     </DndCard>
   );

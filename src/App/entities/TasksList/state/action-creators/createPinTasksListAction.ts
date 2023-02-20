@@ -6,14 +6,9 @@ interface PinTasksListActionPayload {
   list: TasksListViewModel;
 }
 
-export type PinTasksListAction = Action<
-  AppActionType.PinList,
-  PinTasksListActionPayload
->;
+export type PinTasksListAction = Action<AppActionType.PinList, PinTasksListActionPayload>;
 
-export const createPinTasksListAction = (
-  list: TasksListViewModel
-): PinTasksListAction => ({
+export const createPinTasksListAction = (list: TasksListViewModel): PinTasksListAction => ({
   type: AppActionType.PinList,
   payload: { list },
 });

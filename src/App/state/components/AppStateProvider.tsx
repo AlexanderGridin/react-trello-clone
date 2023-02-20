@@ -8,9 +8,5 @@ interface AppStateProviderProps extends PropsWithChildren {}
 export const AppStateProvider = ({ children }: AppStateProviderProps) => {
   const [state, dispatch] = useReducer(appReducer, INITIAL_STATE);
 
-  return (
-    <AppStateContext.Provider value={{ ...state, dispatch }}>
-      {children}
-    </AppStateContext.Provider>
-  );
+  return <AppStateContext.Provider value={{ ...state, dispatch }}>{children}</AppStateContext.Provider>;
 };

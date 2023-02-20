@@ -6,14 +6,9 @@ interface CacheBoardActionPayload {
   board: BoardWithTasksListsViewModel;
 }
 
-export type CacheBoardAction = Action<
-  AppActionType.CacheBoard,
-  CacheBoardActionPayload
->;
+export type CacheBoardAction = Action<AppActionType.CacheBoard, CacheBoardActionPayload>;
 
-export const createCacheBoardAction = (
-  board: BoardWithTasksListsViewModel
-): CacheBoardAction => ({
+export const createCacheBoardAction = (board: BoardWithTasksListsViewModel): CacheBoardAction => ({
   type: AppActionType.CacheBoard,
   payload: { board },
 });

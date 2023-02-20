@@ -26,10 +26,7 @@ export type TasksListAction =
 
 export type TasksListModuleAction = { module: "TasksList" } & TasksListAction;
 
-export const tasksListReducer = (
-  state: AppState,
-  action: AppAction
-): AppState => {
+export const tasksListReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
     case AppActionType.AddList:
       return addTasksListReducer(state, action);

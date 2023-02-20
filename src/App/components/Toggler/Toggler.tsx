@@ -8,15 +8,8 @@ interface TogglerProps {
   onToggle: (isActive: boolean) => void;
 }
 
-export const Toggler = ({
-  initialValue = false,
-  label = "",
-  onToggle,
-}: TogglerProps) => {
-  const [isActive, dispatch] = useReducer(
-    (_: boolean, payload: boolean) => !payload,
-    initialValue
-  );
+export const Toggler = ({ initialValue = false, label = "", onToggle }: TogglerProps) => {
+  const [isActive, dispatch] = useReducer((_: boolean, payload: boolean) => !payload, initialValue);
   const cn = `${style.button} ${isActive ? style.active : ""}`;
 
   return (

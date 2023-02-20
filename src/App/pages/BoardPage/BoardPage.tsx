@@ -4,10 +4,7 @@ import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
 
-import {
-  BoardWithTasksListsDto,
-  mapBoardWithTasksListsDtoToViewModel,
-} from "App/entities/Board/BoardWithTasksLists";
+import { BoardWithTasksListsDto, mapBoardWithTasksListsDtoToViewModel } from "App/entities/Board/BoardWithTasksLists";
 
 import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import { getBoard } from "App/api/Board";
@@ -32,10 +29,7 @@ export const BoardPage = () => {
   }, []);
 
   return (
-    <AppPageLayout
-      slotHeader={<PageTitle>{board?.title ?? "Loading board..."}</PageTitle>}
-      isLoading={!board}
-    >
+    <AppPageLayout slotHeader={<PageTitle>{board?.title ?? "Loading board..."}</PageTitle>} isLoading={!board}>
       {board && (
         <TasksListsCardsList
           boardId={board.id}

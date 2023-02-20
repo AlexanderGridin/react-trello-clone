@@ -7,21 +7,21 @@ import { FormFooter } from "shared/components/Form/FormFooter";
 
 type FormEventType = FormEvent<HTMLFormElement>;
 
-export interface AddBoardFormValue {
+export interface BoardFormValue {
   title: string;
   isFavorite: boolean;
 }
 
-export interface AddBoardFormProps {
-  onSubmit: (value: AddBoardFormValue) => void;
+export interface BoardFormProps {
+  onSubmit: (value: BoardFormValue) => void;
   onCancel: () => void;
 }
 
-export const AddBoardForm = ({ onSubmit, onCancel }: AddBoardFormProps) => {
-  const initialFormValue: AddBoardFormValue = { title: "", isFavorite: false };
+export const BoardForm = ({ onSubmit, onCancel }: BoardFormProps) => {
+  const initialFormValue: BoardFormValue = { title: "", isFavorite: false };
 
   const [formValue, dispatch] = useReducer(
-    (prevValue: AddBoardFormValue, payload: Partial<AddBoardFormValue>) => ({
+    (prevValue: BoardFormValue, payload: Partial<BoardFormValue>) => ({
       ...prevValue,
       ...payload,
     }),

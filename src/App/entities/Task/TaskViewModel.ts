@@ -1,3 +1,4 @@
+import { TaskPriority } from "App/widgets/tasks/TaskForm/TaskForm";
 import { generateId } from "shared/utils/generateId";
 
 interface TaskViewModelConfig {
@@ -14,6 +15,7 @@ export class TaskViewModel {
   // TODO: update content to be "title"
   public content: string;
 	public isEditing = false;
+	public priority: TaskPriority = 'regular'
 
   constructor({ listId = "", boardId = "", content = "" }: TaskViewModelConfig) {
     this.listId = listId;

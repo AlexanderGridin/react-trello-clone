@@ -21,6 +21,7 @@ export const TaskModal = ({ task }: TaskModalProps) => {
 
     const taskDto = await updateTaskOnApi(task.id, {
       content: formValue.title,
+      priority: formValue.priority,
     });
 
     if (taskDto) {

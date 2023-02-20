@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { addTasksList as addTasksListOnApi } from "App/api/TasksList";
-import { AddItemForm } from "App/components/AddItemForm/AddItemForm";
-import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { Card } from "shared/components/Card/Card";
 import { AddListButton } from "./components/AddListButton";
+import {
+  TasksListForm,
+  TasksListFormValue,
+} from "../TasksListForm/TasksListForm";
 
 export interface AddTasksListProps {
   boardId: string;
@@ -19,11 +21,11 @@ export const AddTasksList = ({ boardId, onAdd }: AddTasksListProps) => {
   const showForm = () => setIsShowForm(true);
   const hideForm = () => setIsShowForm(false);
 
-  const addList = async (formValue: AddItemFormValue) => {
+  const addList = async (formValue: TasksListFormValue) => {
     setIsLoading(true);
 
     const tasksListDto = await addTasksListOnApi({
-      title: formValue.text,
+      ...formValue,
       boardId,
     });
 
@@ -38,7 +40,7 @@ export const AddTasksList = ({ boardId, onAdd }: AddTasksListProps) => {
   if (isShowForm) {
     return (
       <Card backgroundColor="#D8DEE9" isLoading={isLoading}>
-        <AddItemForm onSubmit={addList} onCancel={hideForm} />
+        <TasksListForm onSubmit={addList} onCancel={hideForm} />
       </Card>
     );
   }

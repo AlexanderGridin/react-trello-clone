@@ -15,7 +15,8 @@ export const addTasksListReducer = (
       ...state.boardsCache,
       [board.id]: {
         ...board,
-        tasksLists: [...board.tasksLists, listToAdd],
+        tasksLists: listToAdd.isPinned ? [...board.tasksLists] : [...board.tasksLists, listToAdd],
+				pinnedTasksLists: listToAdd.isPinned ? [...board.pinnedTasksLists, listToAdd]: [...board.pinnedTasksLists],
       },
     },
   };

@@ -14,6 +14,7 @@ import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList"
 import { useTaskDispatcher } from "App/entities/Task/state";
 import { useTasksListDispatcher } from "App/entities/TasksList/state";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
+import { TasksListModal } from "../TasksListModal/TasksListModal";
 
 export interface TasksListCardProps {
   list: TasksListViewModel;
@@ -27,6 +28,10 @@ export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProp
   const dispatcher = useTasksListDispatcher();
   const taskDispatcher = useTaskDispatcher();
   const appDraggedItemDispatcher = useAppDraggedItemDispatcher();
+
+  const edit = () => {
+    dispatcher.updateTasksList({ ...list, isEditing: true });
+  };
 
   const remove = async () => {
     setIsLoading(true);
@@ -47,8 +52,7 @@ export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProp
     });
 
     if (listDto) {
-      const listViewModel = mapTasksListDtoToViewModel(listDto);
-      list.isPinned ? dispatcher.unpinTasksList(listViewModel) : dispatcher.pinTasksList(listViewModel);
+      dispatcher.updateTasksList(mapTasksListDtoToViewModel(listDto));
     }
 
     setIsLoading(false);
@@ -75,7 +79,7 @@ export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProp
     });
   };
 
-  const header = <TasksListHeader list={list} onRemove={remove} onPin={togglePin} />;
+  const header = <TasksListHeader list={list} onRemove={remove} onEdit={edit} onPin={togglePin} />;
   const content = <TasksCardsList boardId={list.boardId} listId={list.id} tasks={list.tasks} isShowAddTask />;
 
   if (isDragPreview || isLoading) {
@@ -91,12 +95,16 @@ export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProp
   }
 
   return (
-    <DndCard
-      slotHeader={header}
-      slotContent={content}
-      backgroundColor={BACKGROUD_COLOR}
-      draggedItem={mapTasksListToDraggedItem(list)}
-      onDrop={dropOnList}
-    />
+    <>
+      <DndCard
+        slotHeader={header}
+        slotContent={content}
+        backgroundColor={BACKGROUD_COLOR}
+        draggedItem={mapTasksListToDraggedItem(list)}
+        onDrop={dropOnList}
+      />
+
+      <TasksListModal list={list} />
+    </>
   );
 };

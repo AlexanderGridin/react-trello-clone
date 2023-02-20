@@ -3,10 +3,7 @@ import { AppState } from "App/state/models/AppState";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
 import { RemoveTasksListAction } from "../action-creators/createRemoveTasksListAction";
 
-export const removeTasksListReducer = (
-  state: AppState,
-  action: RemoveTasksListAction
-): AppState => {
+export const removeTasksListReducer = (state: AppState, action: RemoveTasksListAction): AppState => {
   const listToRemove: TasksListViewModel = action.payload.list;
   const board = state.boardsCache[listToRemove.boardId];
 

@@ -11,14 +11,10 @@ export class TaskViewModel {
 
   public listId: string;
   public boardId: string;
-	// TODO: update content to be "title"
+  // TODO: update content to be "title"
   public content: string;
 
-  constructor({
-    listId = "",
-    boardId = "",
-    content = "",
-  }: TaskViewModelConfig) {
+  constructor({ listId = "", boardId = "", content = "" }: TaskViewModelConfig) {
     this.listId = listId;
     this.boardId = boardId;
     this.content = content;

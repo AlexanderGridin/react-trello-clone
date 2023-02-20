@@ -10,11 +10,7 @@ interface RemoveButtonProps extends PropsWithClick {
 
 export const RemoveButton = ({ className, onClick }: RemoveButtonProps) => {
   return (
-    <button
-      type={ButtonType.Button}
-      className={`${style.button} ${className}`}
-      onClick={onClick}
-    >
+    <button type={ButtonType.Button} className={`${style.button} ${className}`} onClick={onClick}>
       <Icon icon={MaterialIcon.Delete} className={style.icon} />
     </button>
   );

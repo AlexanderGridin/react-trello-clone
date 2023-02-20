@@ -10,17 +10,9 @@ interface Config {
   taskToReplace: TaskViewModel;
 }
 
-export const replaceTaskInList = ({
-  list,
-  task,
-  taskToReplace,
-}: Config): TasksListViewModel => {
-  const taskIndex = list.tasks.findIndex(
-    ({ id }: TaskViewModel) => id === task.id
-  );
-  const taskToReplaceIndex = list.tasks.findIndex(
-    ({ id }: TaskViewModel) => id === taskToReplace.id
-  );
+export const replaceTaskInList = ({ list, task, taskToReplace }: Config): TasksListViewModel => {
+  const taskIndex = list.tasks.findIndex(({ id }: TaskViewModel) => id === task.id);
+  const taskToReplaceIndex = list.tasks.findIndex(({ id }: TaskViewModel) => id === taskToReplace.id);
 
   const isMoveBefore = taskIndex < 0 || taskIndex > taskToReplaceIndex;
   const movingConfig: ArrayUtilConfigWithArrayItem<TaskViewModel> = {

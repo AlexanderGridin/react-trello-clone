@@ -6,14 +6,9 @@ interface SetAppDraggedItemPayload {
   item: AppDraggedItem | null;
 }
 
-export type SetAppDraggedItemAction = Action<
-  AppActionType.SetAppDraggedItem,
-  SetAppDraggedItemPayload
->;
+export type SetAppDraggedItemAction = Action<AppActionType.SetAppDraggedItem, SetAppDraggedItemPayload>;
 
-export const createSetAppDraggedItemAction = (
-  item: AppDraggedItem | null
-): SetAppDraggedItemAction => ({
+export const createSetAppDraggedItemAction = (item: AppDraggedItem | null): SetAppDraggedItemAction => ({
   type: AppActionType.SetAppDraggedItem,
   payload: { item },
 });

@@ -7,11 +7,7 @@ interface AppPageLayoutProps extends PropsWithChildren {
   isLoading?: boolean;
 }
 
-export const AppPageLayout = ({
-  slotHeader,
-  isLoading = false,
-  children,
-}: AppPageLayoutProps) => {
+export const AppPageLayout = ({ slotHeader, isLoading = false, children }: AppPageLayoutProps) => {
   return (
     <>
       <section className={style.container}>

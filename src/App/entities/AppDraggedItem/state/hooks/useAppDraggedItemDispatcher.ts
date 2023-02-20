@@ -12,8 +12,7 @@ export const useAppDraggedItemDispatcher = () => {
       ...action,
     });
 
-  const setAppDraggedItem = (item: AppDraggedItem | null) =>
-    dispatchForModule(createSetAppDraggedItemAction(item));
+  const setAppDraggedItem = (item: AppDraggedItem | null) => dispatchForModule(createSetAppDraggedItemAction(item));
 
   return { setAppDraggedItem };
 };

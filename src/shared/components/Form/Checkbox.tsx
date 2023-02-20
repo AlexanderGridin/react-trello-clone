@@ -20,18 +20,12 @@ export interface CheckboxProps {
 }
 
 export const Checkbox = ({ label = "", value, onChange }: CheckboxProps) => {
-  const handleChange = (
-    _e: ChangeEvent<HTMLInputElement>,
-    checked: boolean
-  ) => {
+  const handleChange = (_e: ChangeEvent<HTMLInputElement>, checked: boolean) => {
     onChange(checked);
   };
   return (
     <div style={{ marginTop: "-9px", marginBottom: "-9px" }}>
-      <FormControlLabel
-        control={<StyledCheckbox value={value} onChange={handleChange} />}
-        label={label}
-      />
+      <FormControlLabel control={<StyledCheckbox value={value} onChange={handleChange} />} label={label} />
     </div>
   );
 };

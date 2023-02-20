@@ -6,16 +6,9 @@ import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispa
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 
-import {
-  BoardViewModel,
-  mapBoardDtoToViewModel,
-  mapBoardToDraggedItem,
-} from "App/entities/Board/Board";
+import { BoardViewModel, mapBoardDtoToViewModel, mapBoardToDraggedItem } from "App/entities/Board/Board";
 
-import {
-  removeBoard as removeBoardFromApi,
-  updateBoard as updateBoardOnApi,
-} from "App/api/Board";
+import { removeBoard as removeBoardFromApi, updateBoard as updateBoardOnApi } from "App/api/Board";
 import { Board } from "../Board/Board";
 
 interface BoardCardProps {

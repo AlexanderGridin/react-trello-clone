@@ -22,11 +22,8 @@ export class BoardWithTasksListsViewModel {
   }
 }
 
-export const mapBoardWithTasksListsDtoToViewModel = (
-  source: BoardWithTasksListsDto
-): BoardWithTasksListsViewModel => {
-  const { pinnedTasksLists, unpinnedTasksLists } =
-    parseTasksLists<TasksListDto>(source.tasksLists ?? []);
+export const mapBoardWithTasksListsDtoToViewModel = (source: BoardWithTasksListsDto): BoardWithTasksListsViewModel => {
+  const { pinnedTasksLists, unpinnedTasksLists } = parseTasksLists<TasksListDto>(source.tasksLists ?? []);
 
   return {
     ...new BoardWithTasksListsViewModel({}),

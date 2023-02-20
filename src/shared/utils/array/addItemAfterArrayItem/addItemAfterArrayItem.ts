@@ -6,10 +6,7 @@ export const addItemAfterArrayItem = <T>({
   arrayItem,
   uniqueKey,
 }: ArrayUtilConfigWithArrayItem<T>): T[] => {
-  const arrayItemIndex =
-    array?.findIndex(
-      (itemFromArray) => itemFromArray[uniqueKey] === arrayItem?.[uniqueKey]
-    ) ?? -1;
+  const arrayItemIndex = array?.findIndex((itemFromArray) => itemFromArray[uniqueKey] === arrayItem?.[uniqueKey]) ?? -1;
 
   if (arrayItemIndex < 0) {
     return [...array, item];

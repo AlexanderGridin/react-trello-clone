@@ -8,12 +8,8 @@ export const moveTasksLists = (
   listToMove: TasksListViewModel,
   listToReplace: TasksListViewModel
 ) => {
-  const listToMoveIndex = lists.findIndex(
-    ({ id }: TasksListViewModel) => id === listToMove.id
-  );
-  const listToReplaceIndex = lists.findIndex(
-    ({ id }: TasksListViewModel) => id === listToReplace.id
-  );
+  const listToMoveIndex = lists.findIndex(({ id }: TasksListViewModel) => id === listToMove.id);
+  const listToReplaceIndex = lists.findIndex(({ id }: TasksListViewModel) => id === listToReplace.id);
 
   const movingConfig: ArrayUtilConfigWithArrayItem<TasksListViewModel> = {
     array: lists,

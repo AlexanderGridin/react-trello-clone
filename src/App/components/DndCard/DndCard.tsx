@@ -9,11 +9,7 @@ export interface DndCardProps extends CardProps {
   onDrop: (draggedItem: AppDraggedItem) => void;
 }
 
-export const DndCard = ({
-  draggedItem,
-  onDrop,
-  ...restProps
-}: DndCardProps) => {
+export const DndCard = ({ draggedItem, onDrop, ...restProps }: DndCardProps) => {
   const { drag, isDragging } = useItemDrag({ ...draggedItem });
   const className = isDragging ? "dragging" : "draggable";
 

@@ -9,12 +9,7 @@ interface FormFooterProps {
   onCancel: () => void;
 }
 
-export const FormFooter = ({
-  submitText = "Submit",
-  cancelText = "Cancel",
-  onSubmit,
-  onCancel,
-}: FormFooterProps) => {
+export const FormFooter = ({ submitText = "Submit", cancelText = "Cancel", onSubmit, onCancel }: FormFooterProps) => {
   return (
     <FlexContainer>
       <Button buttonStyle={ButtonStyle.Success} onClick={onSubmit}>

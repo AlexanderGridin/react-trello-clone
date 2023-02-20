@@ -1,10 +1,7 @@
 import { AppState } from "App/state/models/AppState";
 import { CacheBoardAction } from "../action-creators/createCacheBoardAction";
 
-export const cacheBoardReducer = (
-  state: AppState,
-  action: CacheBoardAction
-): AppState => {
+export const cacheBoardReducer = (state: AppState, action: CacheBoardAction): AppState => {
   const board = action.payload.board;
 
   return {

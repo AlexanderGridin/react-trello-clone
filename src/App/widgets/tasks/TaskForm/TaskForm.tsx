@@ -38,12 +38,7 @@ export const TaskForm = ({ onSubmit, onCancel }: TaskFormProps) => {
   return (
     <FormContainer onSubmit={submit}>
       <div className="form-row">
-        <TextInput
-          ref={useInputFocus()}
-          placeholder="Enter task"
-          value={formValue.title}
-          onChange={changeTitle}
-        />
+        <TextInput ref={useInputFocus()} placeholder="Enter task" value={formValue.title} onChange={changeTitle} />
       </div>
 
       <FormFooter submitText="Add task" onSubmit={add} onCancel={cancel} />

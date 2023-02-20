@@ -54,11 +54,7 @@ export const TasksListForm = ({ onSubmit, onCancel }: TasksListFormProps) => {
       </div>
 
       <div className="form-row">
-        <Checkbox
-          value={formValue.isPinned}
-          label="Pinned"
-          onChange={changeIsPinned}
-        />
+        <Checkbox value={formValue.isPinned} label="Pinned" onChange={changeIsPinned} />
       </div>
 
       <FormFooter submitText="Add list" onSubmit={add} onCancel={cancel} />

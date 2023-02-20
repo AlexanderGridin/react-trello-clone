@@ -15,12 +15,10 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   border: none;
   box-shadow: none;
   color: ${({ isTextDark = false }) => (isTextDark ? "#000" : "#fff")};
-  padding: ${({ isEqualPaddings = false }) =>
-    isEqualPaddings ? "7px" : "7px 12px"};
+  padding: ${({ isEqualPaddings = false }) => (isEqualPaddings ? "7px" : "7px 12px")};
   margin-right: 7px;
   transition: background 0.4s ease-in;
-  background-color: ${({ buttonStyle = ButtonStyle.Regular }) =>
-    getButtonBackgroundByStyle(buttonStyle)};
+  background-color: ${({ buttonStyle = ButtonStyle.Regular }) => getButtonBackgroundByStyle(buttonStyle)};
   font-size: 16px;
 
   &:hover {

@@ -5,20 +5,13 @@ import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayI
 import { BoardViewModel } from "../../Board";
 import { MoveBoardAction } from "../action-creators/createMoveBoardAction";
 
-export const moveBoardReducer = (
-  state: AppState,
-  action: MoveBoardAction
-): AppState => {
+export const moveBoardReducer = (state: AppState, action: MoveBoardAction): AppState => {
   const boards = state.boards ? [...state.boards] : [];
   const boardToMove = action.payload.boardToMove;
   const boardToReplace = action.payload.boardToReplace;
 
-  const boardToMoveIndex = boards.findIndex(
-    ({ id }: BoardViewModel) => id === boardToMove.id
-  );
-  const boardToReplaceIndex = boards.findIndex(
-    ({ id }: BoardViewModel) => id === boardToReplace.id
-  );
+  const boardToMoveIndex = boards.findIndex(({ id }: BoardViewModel) => id === boardToMove.id);
+  const boardToReplaceIndex = boards.findIndex(({ id }: BoardViewModel) => id === boardToReplace.id);
 
   const movingConfig: ArrayUtilConfigWithArrayItem<BoardViewModel> = {
     array: boards,

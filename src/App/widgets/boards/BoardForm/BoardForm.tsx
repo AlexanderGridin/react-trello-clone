@@ -53,11 +53,7 @@ export const BoardForm = ({ onSubmit, onCancel }: BoardFormProps) => {
       </div>
 
       <div className="form-row">
-        <Checkbox
-          value={formValue.isFavorite}
-          label="Favorite"
-          onChange={changeIsFavorite}
-        />
+        <Checkbox value={formValue.isFavorite} label="Favorite" onChange={changeIsFavorite} />
       </div>
 
       <FormFooter submitText="Add board" onSubmit={add} onCancel={cancel} />

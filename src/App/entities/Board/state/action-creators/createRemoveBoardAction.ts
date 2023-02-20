@@ -6,14 +6,9 @@ interface RemoveBoardActionPayload {
   board: BoardViewModel;
 }
 
-export type RemoveBoardAction = Action<
-  AppActionType.RemoveBoard,
-  RemoveBoardActionPayload
->;
+export type RemoveBoardAction = Action<AppActionType.RemoveBoard, RemoveBoardActionPayload>;
 
-export const createRemoveBoardAction = (
-  board: BoardViewModel
-): RemoveBoardAction => ({
+export const createRemoveBoardAction = (board: BoardViewModel): RemoveBoardAction => ({
   type: AppActionType.RemoveBoard,
   payload: { board },
 });

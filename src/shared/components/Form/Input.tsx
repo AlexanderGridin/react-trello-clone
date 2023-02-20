@@ -25,10 +25,7 @@ const StyledTextField = styled(TextField)({
 });
 
 export const TextInput = forwardRef(
-  (
-    { placeholder, onChange }: TextInputProps,
-    ref: ForwardedRef<HTMLInputElement>
-  ) => {
+  ({ placeholder, onChange }: TextInputProps, ref: ForwardedRef<HTMLInputElement>) => {
     const change = (e: ChangeEventType) => {
       const value = e.target.value;
       onChange?.(value);

@@ -2,10 +2,7 @@ import { AppState } from "App/state/models/AppState";
 import { BoardViewModel } from "../../Board";
 import { UpdateBoardAction } from "../action-creators/createUpdateBoardAction";
 
-export const updateBoardReducer = (
-  state: AppState,
-  action: UpdateBoardAction
-): AppState => {
+export const updateBoardReducer = (state: AppState, action: UpdateBoardAction): AppState => {
   const boardToUpdate = action.payload.board;
 
   return {

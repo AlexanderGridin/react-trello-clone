@@ -4,10 +4,7 @@ import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTa
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { Card } from "shared/components/Card/Card";
 import { AddListButton } from "./components/AddListButton";
-import {
-  TasksListForm,
-  TasksListFormValue,
-} from "../TasksListForm/TasksListForm";
+import { TasksListForm, TasksListFormValue } from "../TasksListForm/TasksListForm";
 
 export interface AddTasksListProps {
   boardId: string;

@@ -6,11 +6,7 @@ export interface SidebarLayoutProps extends PropsWithChildren {
   slotFooter?: ReactNode;
 }
 
-export const SidebarLayout = ({
-  slotHeader,
-  children,
-  slotFooter,
-}: SidebarLayoutProps) => {
+export const SidebarLayout = ({ slotHeader, children, slotFooter }: SidebarLayoutProps) => {
   return (
     <div className={style.container}>
       {slotHeader && <div className={style.header}>{slotHeader}</div>}

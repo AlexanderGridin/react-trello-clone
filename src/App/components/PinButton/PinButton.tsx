@@ -9,14 +9,8 @@ interface PinButtonProps extends PropsWithClick {
   className?: string;
 }
 
-export const PinButton = ({
-  isPinned = false,
-  className = "",
-  onClick,
-}: PinButtonProps) => {
-  const classNames = `${style.button} ${
-    isPinned ? style.button__pinned : ""
-  } ${className}`;
+export const PinButton = ({ isPinned = false, className = "", onClick }: PinButtonProps) => {
+  const classNames = `${style.button} ${isPinned ? style.button__pinned : ""} ${className}`;
 
   return (
     <button type={ButtonType.Button} onClick={onClick} className={classNames}>

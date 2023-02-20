@@ -9,10 +9,7 @@ interface PushTaskInTasksListPayload {
   task: TaskViewModel;
 }
 
-export type PushTaskInTasksListAction = Action<
-  AppActionType.PushTaskInTasksList,
-  PushTaskInTasksListPayload
->;
+export type PushTaskInTasksListAction = Action<AppActionType.PushTaskInTasksList, PushTaskInTasksListPayload>;
 
 export const createPushTaskInTasksListAction = (
   list: TasksListViewModel,

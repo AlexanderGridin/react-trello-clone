@@ -18,25 +18,19 @@ export const useTasksListDispatcher = () => {
       ...action,
     });
 
-  const addTasksList = (list: TasksListViewModel) =>
-    dispatchForModule(createAddTasksListAction(list));
+  const addTasksList = (list: TasksListViewModel) => dispatchForModule(createAddTasksListAction(list));
 
-  const removeTasksList = (list: TasksListViewModel) =>
-    dispatchForModule(createRemoveTasksListAction(list));
+  const removeTasksList = (list: TasksListViewModel) => dispatchForModule(createRemoveTasksListAction(list));
 
-  const moveTasksList = (
-    listToMove: TasksListViewModel,
-    listToReplace: TasksListViewModel
-  ) => dispatchForModule(createMoveTasksListAction(listToMove, listToReplace));
+  const moveTasksList = (listToMove: TasksListViewModel, listToReplace: TasksListViewModel) =>
+    dispatchForModule(createMoveTasksListAction(listToMove, listToReplace));
 
   const pushTaskInTasksList = (list: TasksListViewModel, task: TaskViewModel) =>
     dispatchForModule(createPushTaskInTasksListAction(list, task));
 
-  const pinTasksList = (list: TasksListViewModel) =>
-    dispatchForModule(createPinTasksListAction(list));
+  const pinTasksList = (list: TasksListViewModel) => dispatchForModule(createPinTasksListAction(list));
 
-  const unpinTasksList = (list: TasksListViewModel) =>
-    dispatchForModule(createUnpinTasksListAction(list));
+  const unpinTasksList = (list: TasksListViewModel) => dispatchForModule(createUnpinTasksListAction(list));
 
   return {
     addTasksList,

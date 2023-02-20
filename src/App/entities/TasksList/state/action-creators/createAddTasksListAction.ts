@@ -6,14 +6,9 @@ interface AddTasksListActionPayload {
   list: TasksListViewModel;
 }
 
-export type AddTasksListAction = Action<
-  AppActionType.AddList,
-  AddTasksListActionPayload
->;
+export type AddTasksListAction = Action<AppActionType.AddList, AddTasksListActionPayload>;
 
-export const createAddTasksListAction = (
-  list: TasksListViewModel
-): AddTasksListAction => ({
+export const createAddTasksListAction = (list: TasksListViewModel): AddTasksListAction => ({
   type: AppActionType.AddList,
   payload: { list },
 });

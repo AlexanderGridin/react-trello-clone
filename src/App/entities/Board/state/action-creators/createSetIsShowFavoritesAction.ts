@@ -5,14 +5,9 @@ interface SetIsShowFavoritesActionPayload {
   isShowFavorites: boolean;
 }
 
-export type SetIsShowFavoritesAction = Action<
-  AppActionType.SetIsShowFavorites,
-  SetIsShowFavoritesActionPayload
->;
+export type SetIsShowFavoritesAction = Action<AppActionType.SetIsShowFavorites, SetIsShowFavoritesActionPayload>;
 
-export const createSetIsShowFavoritesAction = (
-  isShowFavorites: boolean
-): SetIsShowFavoritesAction => ({
+export const createSetIsShowFavoritesAction = (isShowFavorites: boolean): SetIsShowFavoritesAction => ({
   type: AppActionType.SetIsShowFavorites,
   payload: { isShowFavorites },
 });

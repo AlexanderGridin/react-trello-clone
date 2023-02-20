@@ -1,7 +1,4 @@
-import {
-  BoardViewModel,
-  mapBoardDtoToViewModel,
-} from "App/entities/Board/Board";
+import { BoardViewModel, mapBoardDtoToViewModel } from "App/entities/Board/Board";
 
 import { useState } from "react";
 import { Card } from "shared/components/Card/Card";

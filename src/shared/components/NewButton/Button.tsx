@@ -31,45 +31,25 @@ interface ButtonProps extends PropsWithChildren {
   onClick: () => void;
 }
 
-export const Button = ({
-  visualStyle,
-  children,
-  className = "",
-  onClick,
-}: ButtonProps) => {
+export const Button = ({ visualStyle, children, className = "", onClick }: ButtonProps) => {
   switch (visualStyle) {
     case "success":
       return (
-        <SuccessButton
-          variant="contained"
-          size="small"
-          onClick={onClick}
-          className={className}
-        >
+        <SuccessButton variant="contained" size="small" onClick={onClick} className={className}>
           {children}
         </SuccessButton>
       );
 
     case "error":
       return (
-        <ErrorButton
-          variant="contained"
-          size="small"
-          onClick={onClick}
-          className={className}
-        >
+        <ErrorButton variant="contained" size="small" onClick={onClick} className={className}>
           {children}
         </ErrorButton>
       );
 
     default:
       return (
-        <MuiButton
-          variant="contained"
-          size="small"
-          onClick={onClick}
-          className={className}
-        >
+        <MuiButton variant="contained" size="small" onClick={onClick} className={className}>
           {children}
         </MuiButton>
       );

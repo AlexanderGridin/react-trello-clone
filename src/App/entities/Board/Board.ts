@@ -12,14 +12,16 @@ export class BoardViewModel {
   public id = "";
   public title: string;
   public isFavorite = false;
+	public isEditing = false;
   public rank = 0;
 
-  constructor({ title }: { title: string }) {
+  constructor({ title = '' }: { title?: string }) {
     this.title = title;
   }
 }
 
 export const mapBoardDtoToViewModel = (source: BoardDto): BoardViewModel => ({
+	...new BoardViewModel({}),
   id: source._id,
   title: source.title,
   isFavorite: source.isFavorite,

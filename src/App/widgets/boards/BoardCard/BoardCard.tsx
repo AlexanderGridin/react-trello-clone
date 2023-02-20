@@ -10,6 +10,7 @@ import { BoardViewModel, mapBoardDtoToViewModel, mapBoardToDraggedItem } from "A
 
 import { removeBoard as removeBoardFromApi, updateBoard as updateBoardOnApi } from "App/api/Board";
 import { Board } from "../Board/Board";
+import { BoardModal } from "../BoardMoal/BoardModal";
 
 interface BoardCardProps {
   board: BoardViewModel;
@@ -23,6 +24,8 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const dispatcher = useBoardDispatcher();
+
+  const editBoard = (board: BoardViewModel) => dispatcher.updateBoard({ ...board, isEditing: true });
 
   const removeBoard = async (board: BoardViewModel) => {
     setIsLoading(true);
@@ -68,20 +71,24 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
         minHeight={MIN_HEIGHT}
         backgroundColor={BACKGROUD_COLOR}
       >
-        <Board board={board} onRemove={removeBoard} onFavorite={updateBoard} />
+        <Board board={board} onEdit={editBoard} onRemove={removeBoard} onFavorite={updateBoard} />
       </Card>
     );
   }
 
   return (
-    <DndCard
-      minHeight={MIN_HEIGHT}
-      draggedItem={mapBoardToDraggedItem(board)}
-      backgroundColor={BACKGROUD_COLOR}
-      onDrop={dropOnBoard}
-      onDoubleClick={navigateToBoard}
-    >
-      <Board board={board} onRemove={removeBoard} onFavorite={updateBoard} />
-    </DndCard>
+    <>
+      <DndCard
+        minHeight={MIN_HEIGHT}
+        draggedItem={mapBoardToDraggedItem(board)}
+        backgroundColor={BACKGROUD_COLOR}
+        onDrop={dropOnBoard}
+        onDoubleClick={navigateToBoard}
+      >
+        <Board board={board} onEdit={editBoard} onRemove={removeBoard} onFavorite={updateBoard} />
+      </DndCard>
+
+      <BoardModal board={board} />
+    </>
   );
 };

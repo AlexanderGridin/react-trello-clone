@@ -13,11 +13,12 @@ export interface BoardFormValue {
 }
 
 export interface BoardFormProps {
+  entity?: BoardFormValue;
   onSubmit: (value: BoardFormValue) => void;
   onCancel: () => void;
 }
 
-export const BoardForm = ({ onSubmit, onCancel }: BoardFormProps) => {
+export const BoardForm = ({ entity, onSubmit, onCancel }: BoardFormProps) => {
   const initialFormValue: BoardFormValue = { title: "", isFavorite: false };
 
   const [formValue, dispatch] = useReducer(
@@ -25,7 +26,7 @@ export const BoardForm = ({ onSubmit, onCancel }: BoardFormProps) => {
       ...prevValue,
       ...payload,
     }),
-    initialFormValue
+    entity || initialFormValue
   );
 
   const changeTitle = (title: string) => dispatch({ title });
@@ -56,7 +57,7 @@ export const BoardForm = ({ onSubmit, onCancel }: BoardFormProps) => {
         <Checkbox value={formValue.isFavorite} label="Favorite" onChange={changeIsFavorite} />
       </div>
 
-      <FormFooter submitText="Add board" onSubmit={add} onCancel={cancel} />
+      <FormFooter submitText={entity ? "Update board" : "Add board"} onSubmit={add} onCancel={cancel} />
     </FormContainer>
   );
 };

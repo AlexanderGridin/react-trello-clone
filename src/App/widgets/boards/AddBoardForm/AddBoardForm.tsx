@@ -2,9 +2,8 @@ import { FormEvent, useReducer } from "react";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { TextInput } from "shared/components/Form/Input";
 import { useInputFocus } from "shared/hooks/useInputFocus";
-import { AddItemFormValue } from "App/components/AddItemForm/models/AddItemFormValue";
-import { AddItemFormFooter } from "App/components/AddItemForm/components/AddItemFormFooter";
 import { Checkbox } from "shared/components/Form/Checkbox";
+import { FormFooter } from "shared/components/Form/FormFooter";
 
 type FormEventType = FormEvent<HTMLFormElement>;
 
@@ -47,7 +46,7 @@ export const AddBoardForm = ({ onSubmit, onCancel }: AddBoardFormProps) => {
       <div className="form-row">
         <TextInput
           ref={useInputFocus()}
-          placeholder="Enter"
+          placeholder="Enter board title"
           value={formValue.title}
           onChange={changeTitle}
         />
@@ -61,7 +60,7 @@ export const AddBoardForm = ({ onSubmit, onCancel }: AddBoardFormProps) => {
         />
       </div>
 
-      <AddItemFormFooter onAdd={add} onCancel={cancel} />
+      <FormFooter submitText="Add board" onSubmit={add} onCancel={cancel} />
     </FormContainer>
   );
 };

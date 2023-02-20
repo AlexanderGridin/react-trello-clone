@@ -6,20 +6,20 @@ import { useInputFocus } from "shared/hooks/useInputFocus";
 
 type FormEventType = FormEvent<HTMLFormElement>;
 
-export interface AddTaskFormValue {
+export interface TaskFormValue {
   title: string;
 }
 
-export interface AddTaskFormProps {
-  onSubmit: (value: AddTaskFormValue) => void;
+export interface TaskFormProps {
+  onSubmit: (value: TaskFormValue) => void;
   onCancel: () => void;
 }
 
-export const AddTaskForm = ({ onSubmit, onCancel }: AddTaskFormProps) => {
-  const initialFormValue: AddTaskFormValue = { title: "" };
+export const TaskForm = ({ onSubmit, onCancel }: TaskFormProps) => {
+  const initialFormValue: TaskFormValue = { title: "" };
 
   const [formValue, dispatch] = useReducer(
-    (prevValue: AddTaskFormValue, payload: Partial<AddTaskFormValue>) => ({
+    (prevValue: TaskFormValue, payload: Partial<TaskFormValue>) => ({
       ...prevValue,
       ...payload,
     }),

@@ -4,7 +4,7 @@ import { Card } from "shared/components/Card/Card";
 import { AddTaskButton } from "./components/AddTaskButton";
 import { addTask as addTaskOnApi } from "App/api/Task";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
-import { AddTaskForm, AddTaskFormValue } from "../AddTaskForm/AddTaskForm";
+import { TaskForm, TaskFormValue } from "../TaskForm/TaskForm";
 
 export interface AddTaskProps {
   listId: string;
@@ -30,7 +30,7 @@ export const AddTask = ({ listId, boardId, onAdd }: AddTaskProps) => {
   const hideForm = () => dispatch({ isShowForm: false });
   const showForm = () => dispatch({ isShowForm: true });
 
-  const addTask = async (formValue: AddTaskFormValue) => {
+  const addTask = async (formValue: TaskFormValue) => {
     dispatch({ isLoading: true });
 
     const taskDto = await addTaskOnApi({
@@ -51,7 +51,7 @@ export const AddTask = ({ listId, boardId, onAdd }: AddTaskProps) => {
   if (state.isShowForm) {
     return (
       <Card isLoading={state.isLoading}>
-        <AddTaskForm onSubmit={addTask} onCancel={hideForm} />
+        <TaskForm onSubmit={addTask} onCancel={hideForm} />
       </Card>
     );
   }

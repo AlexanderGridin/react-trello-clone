@@ -6,10 +6,11 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { removeTask as removeTaskFromApi } from "App/api/Task";
 import { useState } from "react";
-import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
+import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDtoToViewModel";
 import { Task } from "../Task/Task";
 import { useTaskDispatcher } from "App/entities/Task/state";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
+import { TaskModal } from "../TaskModal/TaskModal";
 
 interface TaskCardProps {
   task: TaskViewModel;
@@ -22,6 +23,10 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
 
   const dispatcher = useTaskDispatcher();
   const appDraggedItemDispatcher = useAppDraggedItemDispatcher();
+
+  const editTask = (task: TaskViewModel) => {
+    dispatcher.updateTask({ ...task, isEditing: true });
+  };
 
   const removeTask = async () => {
     setIsLoading(true);
@@ -60,17 +65,23 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
     return null;
   }
 
+  const content = <Task task={task} onEdit={editTask} onRemove={removeTask} />;
+
   if (isDragPreview || isLoading) {
     return (
       <Card className={isDragPreview ? "drag-preview" : ""} isLoading={isLoading} backgroundColor={BACKGROUD_COLOR}>
-        <Task task={task} onRemove={removeTask} />
+        {content}
       </Card>
     );
   }
 
   return (
-    <DndCard draggedItem={mapTaskToDraggedItem(task)} backgroundColor={BACKGROUD_COLOR} onDrop={dropOnTask}>
-      <Task task={task} onRemove={removeTask} />
-    </DndCard>
+    <>
+      <DndCard draggedItem={mapTaskToDraggedItem(task)} backgroundColor={BACKGROUD_COLOR} onDrop={dropOnTask}>
+        {content}
+      </DndCard>
+
+      <TaskModal task={task} />
+    </>
   );
 };

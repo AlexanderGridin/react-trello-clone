@@ -11,11 +11,12 @@ export interface TaskFormValue {
 }
 
 export interface TaskFormProps {
+  entity?: TaskFormValue;
   onSubmit: (value: TaskFormValue) => void;
   onCancel: () => void;
 }
 
-export const TaskForm = ({ onSubmit, onCancel }: TaskFormProps) => {
+export const TaskForm = ({ entity, onSubmit, onCancel }: TaskFormProps) => {
   const initialFormValue: TaskFormValue = { title: "" };
 
   const [formValue, dispatch] = useReducer(
@@ -23,7 +24,7 @@ export const TaskForm = ({ onSubmit, onCancel }: TaskFormProps) => {
       ...prevValue,
       ...payload,
     }),
-    initialFormValue
+    entity || initialFormValue
   );
 
   const changeTitle = (title: string) => dispatch({ title });
@@ -41,7 +42,7 @@ export const TaskForm = ({ onSubmit, onCancel }: TaskFormProps) => {
         <TextInput ref={useInputFocus()} placeholder="Enter task" value={formValue.title} onChange={changeTitle} />
       </div>
 
-      <FormFooter submitText="Add task" onSubmit={add} onCancel={cancel} />
+      <FormFooter submitText={entity ? "Update task" : "Add task"} onSubmit={add} onCancel={cancel} />
     </FormContainer>
   );
 };

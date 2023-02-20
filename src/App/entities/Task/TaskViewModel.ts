@@ -13,6 +13,7 @@ export class TaskViewModel {
   public boardId: string;
   // TODO: update content to be "title"
   public content: string;
+	public isEditing = false;
 
   constructor({ listId = "", boardId = "", content = "" }: TaskViewModelConfig) {
     this.listId = listId;

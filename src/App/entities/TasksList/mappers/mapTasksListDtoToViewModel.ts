@@ -1,4 +1,4 @@
-import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
+import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDtoToViewModel";
 import { TasksListDto } from "../TasksListDto";
 import { TasksListViewModel } from "../TasksListViewModel";
 

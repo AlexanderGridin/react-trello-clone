@@ -11,6 +11,7 @@ export class TaskViewModel {
 
   public listId: string;
   public boardId: string;
+	// TODO: update content to be "title"
   public content: string;
 
   constructor({

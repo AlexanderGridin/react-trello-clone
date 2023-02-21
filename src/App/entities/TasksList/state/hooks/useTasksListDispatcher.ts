@@ -4,10 +4,9 @@ import { useAppState } from "App/state/hooks/useAppState";
 import { TasksListAction } from "..";
 import { createAddTasksListAction } from "../action-creators/createAddTasksListAction";
 import { createMoveTasksListAction } from "../action-creators/createMoveTasksListAction";
-import { createPinTasksListAction } from "../action-creators/createPinTasksListAction";
 import { createPushTaskInTasksListAction } from "../action-creators/createPushTaskInTasksListAction";
 import { createRemoveTasksListAction } from "../action-creators/createRemoveTasksListAction";
-import { createUnpinTasksListAction } from "../action-creators/createUnpinTasksListAction";
+import { createUpdateTasksListAction } from "../action-creators/createUpdateTasksListAction";
 
 export const useTasksListDispatcher = () => {
   const { dispatch } = useAppState();
@@ -28,16 +27,13 @@ export const useTasksListDispatcher = () => {
   const pushTaskInTasksList = (list: TasksListViewModel, task: TaskViewModel) =>
     dispatchForModule(createPushTaskInTasksListAction(list, task));
 
-  const pinTasksList = (list: TasksListViewModel) => dispatchForModule(createPinTasksListAction(list));
-
-  const unpinTasksList = (list: TasksListViewModel) => dispatchForModule(createUnpinTasksListAction(list));
+  const updateTasksList = (list: TasksListViewModel) => dispatchForModule(createUpdateTasksListAction(list));
 
   return {
     addTasksList,
     removeTasksList,
     moveTasksList,
     pushTaskInTasksList,
-    pinTasksList,
-    unpinTasksList,
+    updateTasksList,
   };
 };

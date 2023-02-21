@@ -1,6 +1,8 @@
+import { BoardFormValue } from "App/widgets/boards/BoardForm/BoardForm";
 import { mapTasksListDtoToViewModel } from "../TasksList/mappers/mapTasksListDtoToViewModel";
 import { TasksListDto } from "../TasksList/TasksListDto";
 import { TasksListViewModel } from "../TasksList/TasksListViewModel";
+import { BoardViewModel } from "./Board";
 import { parseTasksLists } from "./utils/parseTasksLists";
 
 export interface BoardWithTasksListsDto {
@@ -34,3 +36,8 @@ export const mapBoardWithTasksListsDtoToViewModel = (source: BoardWithTasksLists
     isFavorite: source.isFavorite,
   };
 };
+
+export const mapBoardViewMoelToBoardFormValue = (source: BoardViewModel): BoardFormValue => ({
+  title: source.title,
+  isFavorite: source.isFavorite,
+});

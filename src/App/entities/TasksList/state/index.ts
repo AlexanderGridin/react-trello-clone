@@ -3,16 +3,14 @@ import { AppAction } from "App/state/models/AppAction";
 import { AppState } from "App/state/models/AppState";
 import { AddTasksListAction } from "./action-creators/createAddTasksListAction";
 import { MoveTasksListAction } from "./action-creators/createMoveTasksListAction";
-import { PinTasksListAction } from "./action-creators/createPinTasksListAction";
 import { PushTaskInTasksListAction } from "./action-creators/createPushTaskInTasksListAction";
 import { RemoveTasksListAction } from "./action-creators/createRemoveTasksListAction";
-import { UnpinTasksListAction } from "./action-creators/createUnpinTasksListAction";
+import { UpdateTasksListAction } from "./action-creators/createUpdateTasksListAction";
 import { addTasksListReducer } from "./reducers/addTasksListReducer";
 import { moveTasksListReducer } from "./reducers/moveTasksListReducer";
-import { pinTasksListReducer } from "./reducers/pinTasksListReducer";
 import { pushTaskInTasksListReducer } from "./reducers/pushTaskInTasksListReducer";
 import { removeTasksListReducer } from "./reducers/removeTasksListReducer";
-import { unpinTasksListReducer } from "./reducers/unpinTasksListReducer";
+import { updateTasksListReducer } from "./reducers/updateTasksListReducer";
 
 export * from "./hooks/useTasksListDispatcher";
 
@@ -21,8 +19,7 @@ export type TasksListAction =
   | RemoveTasksListAction
   | MoveTasksListAction
   | PushTaskInTasksListAction
-  | PinTasksListAction
-  | UnpinTasksListAction;
+  | UpdateTasksListAction;
 
 export type TasksListModuleAction = { module: "TasksList" } & TasksListAction;
 
@@ -40,11 +37,8 @@ export const tasksListReducer = (state: AppState, action: AppAction): AppState =
     case AppActionType.PushTaskInTasksList:
       return pushTaskInTasksListReducer(state, action);
 
-    case AppActionType.PinList:
-      return pinTasksListReducer(state, action);
-
-    case AppActionType.UnpinList:
-      return unpinTasksListReducer(state, action);
+    case AppActionType.UpdateList:
+      return updateTasksListReducer(state, action);
 
     default:
       return { ...state };

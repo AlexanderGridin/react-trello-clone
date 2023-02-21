@@ -15,6 +15,7 @@ export class TasksListViewModel {
   public boardId: string;
   public tasks: TaskViewModel[];
   public isPinned = false;
+  public isEditing = false;
 
   constructor({ id = generateId(), title = "", boardId = "", tasks = [] }: TasksListViewModelConfig) {
     this.id = id;

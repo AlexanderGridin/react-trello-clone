@@ -3,7 +3,7 @@ import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { Card } from "shared/components/Card/Card";
 import { AddTaskButton } from "./components/AddTaskButton";
 import { addTask as addTaskOnApi } from "App/api/Task";
-import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDotToViewModel";
+import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDtoToViewModel";
 import { TaskForm, TaskFormValue } from "../TaskForm/TaskForm";
 
 export interface AddTaskProps {

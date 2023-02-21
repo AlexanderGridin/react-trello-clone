@@ -13,11 +13,12 @@ export interface TasksListFormValue {
 }
 
 export interface TasksListFormProps {
+  entity?: TasksListFormValue;
   onSubmit: (value: TasksListFormValue) => void;
   onCancel: () => void;
 }
 
-export const TasksListForm = ({ onSubmit, onCancel }: TasksListFormProps) => {
+export const TasksListForm = ({ entity, onSubmit, onCancel }: TasksListFormProps) => {
   const initialFormValue: TasksListFormValue = {
     title: "",
     isPinned: false,
@@ -28,7 +29,7 @@ export const TasksListForm = ({ onSubmit, onCancel }: TasksListFormProps) => {
       ...prevValue,
       ...payload,
     }),
-    initialFormValue
+    entity || initialFormValue
   );
 
   const changeTitle = (title: string) => dispatch({ title });
@@ -57,7 +58,7 @@ export const TasksListForm = ({ onSubmit, onCancel }: TasksListFormProps) => {
         <Checkbox value={formValue.isPinned} label="Pinned" onChange={changeIsPinned} />
       </div>
 
-      <FormFooter submitText="Add list" onSubmit={add} onCancel={cancel} />
+      <FormFooter submitText={entity ? "Update list" : "Add list"} onSubmit={add} onCancel={cancel} />
     </FormContainer>
   );
 };

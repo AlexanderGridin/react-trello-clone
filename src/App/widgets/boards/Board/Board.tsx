@@ -1,3 +1,4 @@
+import { EditButton } from "App/components/EditButton/EditButton";
 import { FavoriteButton } from "App/components/FavoriteButton/FavoriteButton";
 import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
 import { BoardViewModel } from "App/entities/Board/Board";
@@ -7,10 +8,12 @@ export interface BoardProps {
   board: BoardViewModel;
   onRemove: (board: BoardViewModel) => void;
   onFavorite: (board: BoardViewModel) => void;
+  onEdit: (board: BoardViewModel) => void;
 }
 
-export const Board = ({ board, onRemove, onFavorite }: BoardProps) => {
+export const Board = ({ board, onRemove, onEdit, onFavorite }: BoardProps) => {
   const remove = () => onRemove(board);
+  const edit = () => onEdit(board);
   const toggleFavorite = () => {
     const updatedBoard = board.isFavorite
       ? {
@@ -29,7 +32,8 @@ export const Board = ({ board, onRemove, onFavorite }: BoardProps) => {
     <div className={style.container}>
       <FavoriteButton isFavorite={board.isFavorite} onClick={toggleFavorite} />
       <h2 className={style.title}>{board.title}</h2>
-      <RemoveButton onClick={remove} />
+      <EditButton onClick={edit} />
+      <RemoveButton className={style.RemoveButton} onClick={remove} />
     </div>
   );
 };

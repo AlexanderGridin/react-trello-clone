@@ -6,8 +6,8 @@ export const updateTasksList = async (id: string, body: { isPinned: boolean }): 
   const apiUrl = routes.updateTasksList.replace("{$tasksListId}", id);
 
   try {
-    const tasksList = await http.put<TasksListDto>(apiUrl, body);
-    return tasksList.data;
+    const response = await http.put<TasksListDto>(apiUrl, body);
+    return response.data;
   } catch (e) {
     return null;
   }

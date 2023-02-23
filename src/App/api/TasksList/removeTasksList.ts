@@ -6,8 +6,8 @@ export const removeTasksList = async (id: string): Promise<TasksListDto | null> 
   const apiUrl = routes.removeTasksList.replace("{$tasksListId}", id);
 
   try {
-    const tasksList = await http.delete<TasksListDto>(apiUrl);
-    return tasksList.data;
+    const response = await http.delete<TasksListDto>(apiUrl);
+    return response.data;
   } catch (e) {
     return null;
   }

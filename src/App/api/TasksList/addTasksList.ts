@@ -6,8 +6,8 @@ export const addTasksList = async (body: { title: string; boardId: string }): Pr
   const apiUrl = routes.addTasksList;
 
   try {
-    const tasksList = await http.post(apiUrl, body);
-    return tasksList.data;
+    const response = await http.post(apiUrl, body);
+    return response.data;
   } catch (e) {
     return null;
   }

@@ -10,8 +10,8 @@ export const addBoard = async (body: {
   const apiUrl = routes.addBoard;
 
   try {
-    const board = await http.post<BoardDto>(apiUrl, body);
-    return board.data;
+    const response = await http.post<BoardDto>(apiUrl, body);
+    return response.data;
   } catch (e) {
     return null;
   }

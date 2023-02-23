@@ -9,8 +9,8 @@ export const updateBoard = async (
   const apiUrl = routes.updateBoard.replace("{$boardId}", id);
 
   try {
-    const board = await http.put<BoardDto>(apiUrl, body);
-    return board.data;
+    const response = await http.put<BoardDto>(apiUrl, body);
+    return response.data;
   } catch (e) {
     return null;
   }

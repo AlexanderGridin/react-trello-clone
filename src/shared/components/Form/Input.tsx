@@ -13,13 +13,18 @@ type ChangeEventType = ChangeEvent<HTMLInputElement>;
 const StyledTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "#a5a9b1",
+      border: "none",
     },
-    "&:hover fieldset": {
-      borderColor: "#5E81AC",
+    "& .MuiInputBase-input": {
+      border: "2px solid #a5a9b1",
+      borderRadius: "3px",
+      transition: "border 0.4s",
     },
-    "&.Mui-focused fieldset": {
-      borderColor: "#5E81AC",
+    "&:hover .MuiInputBase-input": {
+      border: "2px solid #5E81AC",
+    },
+    "&.Mui-focused .MuiInputBase-input": {
+      border: "2px solid #5E81AC",
     },
   },
 });

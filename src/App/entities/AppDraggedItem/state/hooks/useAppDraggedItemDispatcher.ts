@@ -1,7 +1,7 @@
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { useAppState } from "App/state/hooks/useAppState";
 import { AppDraggedItemAction } from "..";
-import { createSetAppDraggedItemAction } from "../actions/createSetAppDraggedItemAction";
+import { createSetAppDraggedItemAction } from "../action-creators/createSetAppDraggedItemAction";
 
 export const useAppDraggedItemDispatcher = () => {
   const { dispatch } = useAppState();

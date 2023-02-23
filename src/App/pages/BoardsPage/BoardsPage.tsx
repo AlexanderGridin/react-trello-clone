@@ -13,12 +13,17 @@ export const BoardsPage = () => {
   const { boards, isShowFavorites } = useAppState();
   const dispatcher = useBoardDispatcher();
 
+  const isShowAddBoard = Boolean(!isShowFavorites && boards?.length);
+
   const loadBoards = async (isShowFavorites = false) => {
     dispatcher.setBoards(null);
-
     const boardsDtos = isShowFavorites ? await getFavoriteBoards() : await getAllBoards();
-
     dispatcher.setBoards(boardsDtos.map(mapBoardDtoToViewModel));
+  };
+
+  const toggleFavorite = (isShowFavorites: boolean) => {
+    dispatcher.setIsShowFavorites(isShowFavorites);
+    loadBoards(isShowFavorites);
   };
 
   useEffect(() => {
@@ -30,11 +35,6 @@ export const BoardsPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const toggleFavorite = (isShowFavorites: boolean) => {
-    dispatcher.setIsShowFavorites(isShowFavorites);
-    loadBoards(isShowFavorites);
-  };
-
   const header = (
     <>
       <PageTitle className={style.title}>Boards</PageTitle>
@@ -44,7 +44,7 @@ export const BoardsPage = () => {
 
   return (
     <AppPageLayout slotHeader={header} isLoading={!boards}>
-      <BoardsCardsList boards={boards ?? []} isShowAddBoard={!isShowFavorites} />
+      <BoardsCardsList boards={boards ?? []} isShowAddBoard={isShowAddBoard} />
     </AppPageLayout>
   );
 };

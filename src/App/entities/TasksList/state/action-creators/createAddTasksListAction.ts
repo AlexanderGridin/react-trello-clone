@@ -1,14 +1,14 @@
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
-import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { Action } from "App/state/models/Action";
+import { TasksListActionType } from "../TasksListActionType.enum";
 
 interface AddTasksListActionPayload {
   list: TasksListViewModel;
 }
 
-export type AddTasksListAction = Action<AppActionType.AddList, AddTasksListActionPayload>;
+export type AddTasksListAction = Action<TasksListActionType.AddList, AddTasksListActionPayload>;
 
 export const createAddTasksListAction = (list: TasksListViewModel): AddTasksListAction => ({
-  type: AppActionType.AddList,
+  type: TasksListActionType.AddList,
   payload: { list },
 });

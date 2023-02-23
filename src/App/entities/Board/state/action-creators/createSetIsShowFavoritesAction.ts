@@ -1,13 +1,13 @@
-import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { Action } from "App/state/models/Action";
+import { BoardActionType } from "../BoardActionType.enum";
 
 interface SetIsShowFavoritesActionPayload {
   isShowFavorites: boolean;
 }
 
-export type SetIsShowFavoritesAction = Action<AppActionType.SetIsShowFavorites, SetIsShowFavoritesActionPayload>;
+export type SetIsShowFavoritesAction = Action<BoardActionType.SetIsShowFavorites, SetIsShowFavoritesActionPayload>;
 
 export const createSetIsShowFavoritesAction = (isShowFavorites: boolean): SetIsShowFavoritesAction => ({
-  type: AppActionType.SetIsShowFavorites,
+  type: BoardActionType.SetIsShowFavorites,
   payload: { isShowFavorites },
 });

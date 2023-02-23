@@ -1,14 +1,14 @@
-import { AppActionType } from "App/state/enums/AppActionType.enum";
 import { Action } from "App/state/models/Action";
 import { BoardViewModel } from "../../Board";
+import { BoardActionType } from "../BoardActionType.enum";
 
 interface RemoveBoardActionPayload {
   board: BoardViewModel;
 }
 
-export type RemoveBoardAction = Action<AppActionType.RemoveBoard, RemoveBoardActionPayload>;
+export type RemoveBoardAction = Action<BoardActionType.RemoveBoard, RemoveBoardActionPayload>;
 
 export const createRemoveBoardAction = (board: BoardViewModel): RemoveBoardAction => ({
-  type: AppActionType.RemoveBoard,
+  type: BoardActionType.RemoveBoard,
   payload: { board },
 });

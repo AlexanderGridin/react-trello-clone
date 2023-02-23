@@ -1,4 +1,4 @@
-import { TaskPriority } from "App/widgets/tasks/TaskForm/TaskForm";
+import { TaskPriority } from "App/types/TaskPriority";
 
 export interface TaskDto {
   _id: string;

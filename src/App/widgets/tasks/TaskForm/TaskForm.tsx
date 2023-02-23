@@ -1,31 +1,13 @@
+import { prioritySelectDataItems } from "App/static-data/prioritySelectDataItems";
+import { TaskPriority } from "App/types/TaskPriority";
 import { FormEvent, useReducer } from "react";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { FormFooter } from "shared/components/Form/FormFooter";
 import { TextInput } from "shared/components/Form/Input";
-import { Select, SelectDataItem } from "shared/components/Form/Select";
+import { Select } from "shared/components/Form/Select/Select";
 import { useInputFocus } from "shared/hooks/useInputFocus";
 
 type FormEventType = FormEvent<HTMLFormElement>;
-
-export type TaskPriority = "height" | "medium" | "low" | "regular";
-const priorityData: SelectDataItem[] = [
-  {
-    name: "height",
-    value: "height",
-  },
-  {
-    name: "medium",
-    value: "medium",
-  },
-  {
-    name: "low",
-    value: "low",
-  },
-  {
-    name: "regular",
-    value: "regular",
-  },
-];
 
 export interface TaskFormValue {
   title: string;
@@ -67,7 +49,7 @@ export const TaskForm = ({ entity, onSubmit, onCancel }: TaskFormProps) => {
       </div>
 
       <div className="form-row">
-        <Select value={formValue.priority} data={priorityData} onChange={changePriority} label="Priority" />
+        <Select value={formValue.priority} data={prioritySelectDataItems} onChange={changePriority} label="Priority" />
       </div>
 
       <FormFooter submitText={entity ? "Update task" : "Add task"} onSubmit={add} onCancel={cancel} />

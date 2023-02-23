@@ -1,5 +1,5 @@
 import { TaskDto } from "App/entities/Task/TaskDto";
-import { TaskPriority } from "App/widgets/tasks/TaskForm/TaskForm";
+import { TaskPriority } from "App/types/TaskPriority";
 import { http } from "../http";
 import { routes } from "./routes";
 

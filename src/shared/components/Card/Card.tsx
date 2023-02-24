@@ -4,8 +4,12 @@ import { CardContainer } from "./components/CardContainer";
 import { Spinner } from "../Spinner/Spinner";
 import { Children } from "shared/models/Children";
 import { ClassName } from "shared/models/ClassName";
+import { TestId } from "shared/models/TestId";
+import { CardTestId } from "./static-data/CardTestId";
 
-export interface CardProps extends Children, ClassName {
+const { Header: HeaderId, Content: ContentId, Footer: FooterId, Spinner: SpinnerId } = CardTestId;
+
+export interface CardProps extends Children, ClassName, TestId {
   slotHeader?: ReactNode;
   slotContent?: ReactNode;
   slotFooter?: ReactNode;
@@ -26,6 +30,7 @@ export const Card = forwardRef((props: CardProps, ref: Ref) => {
     className = "",
     minHeight = 0,
     isLoading = false,
+    "data-testid": testId,
     children,
     onDoubleClick,
   } = props;
@@ -33,6 +38,7 @@ export const Card = forwardRef((props: CardProps, ref: Ref) => {
   return (
     <CardContainer
       ref={ref}
+      data-testid={testId}
       backgroundColor={backgroundColor}
       className={className}
       minHeight={minHeight}
@@ -40,14 +46,14 @@ export const Card = forwardRef((props: CardProps, ref: Ref) => {
     >
       {!children && (
         <>
-          {slotHeader && <div>{slotHeader}</div>}
-          {slotContent && <CardContent>{slotContent}</CardContent>}
-          {slotFooter && <div>{slotFooter}</div>}
+          {slotHeader && <div data-testid={HeaderId}>{slotHeader}</div>}
+          {slotContent && <CardContent data-testid={ContentId}>{slotContent}</CardContent>}
+          {slotFooter && <div data-testid={FooterId}>{slotFooter}</div>}
         </>
       )}
 
       {children}
-      {isLoading && <Spinner backgroundColor="#d8dee9" />}
+      {isLoading && <Spinner data-testid={SpinnerId} backgroundColor="#d8dee9" />}
     </CardContainer>
   );
 });

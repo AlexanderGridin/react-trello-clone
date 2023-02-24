@@ -1,17 +1,16 @@
-import { Outlet } from "react-router-dom";
-import { Sidebar } from "App/widgets/Sidebar/Sidebar";
+import { ReactNode } from "react";
 import style from "./AppLayout.module.css";
+import { Children } from "shared/models/Children";
 
-export const AppLayout = () => {
+interface AppLayoutProps extends Children {
+  slotAside?: ReactNode;
+}
+
+export const AppLayout = ({ slotAside, children }: AppLayoutProps) => {
   return (
     <div className={style.container}>
-      <aside className={style.sidebar}>
-        <Sidebar />
-      </aside>
-
-      <main className={style.main}>
-        <Outlet />
-      </main>
+      {slotAside && <aside className={style.sidebar}>{slotAside}</aside>}
+      {children && <main className={style.main}>{children}</main>}
     </div>
   );
 };

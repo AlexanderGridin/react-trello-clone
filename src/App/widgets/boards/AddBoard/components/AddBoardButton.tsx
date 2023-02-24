@@ -1,7 +1,7 @@
-import { PropsWithChildren } from "react";
 import styled from "styled-components";
-import { PropsWithClick } from "shared/models/PropsWithClick";
 import { AddButtonContainer } from "App/components/AddButtonContainer/AddButtonContainer";
+import { Children } from "shared/models/Children";
+import { Click } from "shared/models/Click";
 
 const Container = styled(AddButtonContainer)`
   min-height: 150px;
@@ -12,7 +12,7 @@ const Container = styled(AddButtonContainer)`
   font-size: 16px;
 `;
 
-interface AddBoardButtonProps extends PropsWithChildren, PropsWithClick {}
+interface AddBoardButtonProps extends Children, Click {}
 
 export const AddBoardButton = ({ children, onClick }: AddBoardButtonProps) => {
   return (

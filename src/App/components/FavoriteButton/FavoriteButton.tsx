@@ -1,11 +1,11 @@
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { Icon } from "shared/components/Icon/Icon";
-import { PropsWithClick } from "shared/models/PropsWithClick";
+import { ClassName } from "shared/models/ClassName";
+import { Click } from "shared/models/Click";
 import style from "./FavoriteButton.module.css";
 
-interface FavoriteButtonProps extends PropsWithClick {
+interface FavoriteButtonProps extends Click, ClassName {
   isFavorite: boolean;
-  className?: string;
 }
 
 export const FavoriteButton = ({ isFavorite, className, onClick }: FavoriteButtonProps) => {

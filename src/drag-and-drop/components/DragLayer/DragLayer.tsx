@@ -1,21 +1,20 @@
-import { PropsWithChildren } from "react";
+import { CSSProperties } from "react";
 import { XYCoord } from "react-dnd";
-import style from "./DragLayer.module.css";
+import { Children } from "shared/models/Children";
+import cssStyle from "./DragLayer.module.css";
 
-interface DragLayerProps extends PropsWithChildren {
+interface DragLayerProps extends Children {
   previewPosition: XYCoord;
 }
 
 export const DragLayer = ({ previewPosition, children }: DragLayerProps) => {
+  const style: CSSProperties = {
+    transform: `translate(${previewPosition.x}px, ${previewPosition.y}px)`,
+  };
+
   return (
-    <div className={style.container}>
-      <div
-        style={{
-          transform: `translate(${previewPosition.x}px, ${previewPosition.y}px)`,
-        }}
-      >
-        {children}
-      </div>
+    <div className={cssStyle.container}>
+      <div style={style}>{children}</div>
     </div>
   );
 };

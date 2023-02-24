@@ -1,11 +1,10 @@
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { Icon } from "shared/components/Icon/Icon";
-import { PropsWithClick } from "shared/models/PropsWithClick";
+import { ClassName } from "shared/models/ClassName";
+import { Click } from "shared/models/Click";
 import style from "./EditButton.module.css";
 
-interface EditButtonProps extends PropsWithClick {
-  className?: string;
-}
+interface EditButtonProps extends Click, ClassName {}
 
 export const EditButton = ({ className, onClick }: EditButtonProps) => {
   return (

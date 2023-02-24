@@ -1,12 +1,13 @@
+import { TestId } from "shared/models/TestId";
 import style from "./Spinner.module.css";
 
-interface SpinnerProps {
+interface SpinnerProps extends TestId {
   backgroundColor?: string;
 }
 
-export const Spinner = ({ backgroundColor = "#2e3440" }: SpinnerProps) => {
+export const Spinner = ({ backgroundColor = "#2e3440", "data-testid": testId }: SpinnerProps) => {
   return (
-    <div className={style.SpinnerContainer} style={{ backgroundColor }}>
+    <div data-testid={testId} className={style.SpinnerContainer} style={{ backgroundColor }}>
       <div className={style.Spinner}>
         <div></div>
         <div></div>

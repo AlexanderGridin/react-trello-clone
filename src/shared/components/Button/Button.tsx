@@ -1,30 +1,33 @@
+import { CSSProperties } from "react";
 import { MuiButton } from "./components/MuiButton";
 import { ButtonType } from "./types/ButtonType";
 import { ButtonVisualStyle } from "./types/ButtonVisualStyle";
-import cssStyle from "./Button.module.css";
 import { MaterialIcon } from "../Icon/enums/MaterialIcon";
 import { Icon } from "../Icon/Icon";
-import { CSSProperties } from "react";
+import { TestId } from "shared/models/TestId";
+import { Click } from "shared/models/Click";
+import { Children } from "shared/models/Children";
+import cssStyle from "./Button.module.css";
+import { ClassName } from "shared/models/ClassName";
+import { ButtonTestId } from "./static-data/ButtonTestId";
 
-interface ButtonProps {
+const { Icon: IconId, Text: TextId } = ButtonTestId;
+
+interface ButtonProps extends Click, Children<string>, TestId, ClassName {
   type?: ButtonType;
-  visualStyle?: ButtonVisualStyle;
   icon?: MaterialIcon;
-  isIconOnly?: boolean;
-  className?: string;
-  children?: string;
   style?: CSSProperties;
-  onClick: () => void;
+  visualStyle?: ButtonVisualStyle;
 }
 
 export const Button = ({
   type = "button",
   visualStyle = "regular",
   icon,
-  isIconOnly = false,
   children = "",
   className = "",
   style = {},
+  "data-testid": testId,
   onClick,
 }: ButtonProps) => {
   const bgColor =
@@ -41,9 +44,14 @@ export const Button = ({
   };
 
   return (
-    <MuiButton type={type} sx={sx} className={className} onClick={onClick}>
-      {icon && <Icon icon={icon} className={cssStyle.icon} />}
-      {!isIconOnly && <span className={cssStyle.text}>{children}</span>}
+    <MuiButton data-testid={testId} type={type} sx={sx} className={className} onClick={onClick}>
+      {icon && <Icon data-testid={IconId} icon={icon} className={cssStyle.icon} />}
+
+      {children && (
+        <span data-testid={TextId} className={cssStyle.text}>
+          {children}
+        </span>
+      )}
     </MuiButton>
   );
 };

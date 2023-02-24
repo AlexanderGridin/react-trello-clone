@@ -8,8 +8,8 @@ const HeaderComponent = <div>Header</div>;
 const ContentComponent = <div>Content</div>;
 const FooterComponent = <div>Footer</div>;
 
-describe("Card test", () => {
-  test("Render Card with header slot only", () => {
+describe("Card", () => {
+  it("renders with header slot only", () => {
     render(<CardComponent data-testid={Card} slotHeader={HeaderComponent} />);
 
     expect(screen.getByTestId(Card)).toBeInTheDocument();
@@ -19,7 +19,7 @@ describe("Card test", () => {
     expect(screen.queryByTestId(Footer)).toBeNull();
   });
 
-  test("Render Card with content slot only", () => {
+  it("renders with content slot only", () => {
     render(<CardComponent data-testid={Card} slotContent={ContentComponent} />);
 
     expect(screen.getByTestId(Card)).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe("Card test", () => {
     expect(screen.queryByTestId(Footer)).toBeNull();
   });
 
-  test("Render Card with footer slot only", () => {
+  it("renders with footer slot only", () => {
     render(<CardComponent data-testid={Card} slotFooter={FooterComponent} />);
 
     expect(screen.getByTestId(Card)).toBeInTheDocument();
@@ -39,7 +39,7 @@ describe("Card test", () => {
     expect(screen.queryByTestId(Content)).toBeNull();
   });
 
-  test("Render Card with children", () => {
+  it("renders with children", () => {
     render(
       <CardComponent
         data-testid={Card}
@@ -59,7 +59,7 @@ describe("Card test", () => {
     expect(screen.queryByTestId(Footer)).toBeNull();
   });
 
-  test("Render Card with spinner", () => {
+  it("renders with spinner", () => {
     render(
       <CardComponent data-testid={Card} isLoading>
         <div data-testid={Children}>Children</div>

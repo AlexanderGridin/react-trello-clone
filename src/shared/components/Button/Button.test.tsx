@@ -6,8 +6,8 @@ import { ButtonTestId } from "./static-data/ButtonTestId";
 
 const { Button, Icon, Text } = ButtonTestId;
 
-describe("Button test", () => {
-  test("Button renders without icon", () => {
+describe("Button", () => {
+  it("renders without icon", () => {
     const handleClick = jest.fn();
     render(
       <ButtonComponent data-testid={Button} onClick={handleClick}>
@@ -26,7 +26,7 @@ describe("Button test", () => {
     expect(buttonText).toBeInTheDocument();
   });
 
-  test("Button renders with icon", () => {
+  it("renders with icon", () => {
     const handleClick = jest.fn();
     render(
       <ButtonComponent data-testid={Button} icon={MaterialIcon.Add} onClick={handleClick}>
@@ -45,7 +45,7 @@ describe("Button test", () => {
     expect(buttonText).toBeInTheDocument();
   });
 
-  test("Button renders with icon only", () => {
+  it("renders with icon only", () => {
     const handleClick = jest.fn();
     render(<ButtonComponent data-testid={Button} icon={MaterialIcon.Add} onClick={handleClick} />);
 

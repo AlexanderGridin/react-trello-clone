@@ -4,13 +4,13 @@ import { ModalTestId } from "./static-data/ModalTestId";
 
 const { Modal, Title, Content, Spinner } = ModalTestId;
 
-describe("Modal test", () => {
-  test("Modal is not opened", () => {
+describe("Modal", () => {
+  it("is not opens", () => {
     render(<ModalComponent data-testid={Modal} />);
     expect(screen.queryByTestId(Modal)).toBeNull();
   });
 
-  test("Modal is opened with title only", () => {
+  it("opens with a title only", () => {
     render(<ModalComponent data-testid={Modal} open title="Modal title" />);
 
     expect(screen.getByTestId(Modal)).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe("Modal test", () => {
     expect(screen.queryByTestId(Spinner)).toBeNull();
   });
 
-  test("Modal is opened with title content only", () => {
+  it("opens with a content only", () => {
     render(
       <ModalComponent data-testid={Modal} open>
         <div>Content</div>
@@ -34,7 +34,7 @@ describe("Modal test", () => {
     expect(screen.queryByTestId(Spinner)).toBeNull();
   });
 
-  test("Modal is opened with title and content", () => {
+  it("opens with a title and content", () => {
     render(
       <ModalComponent data-testid={Modal} open title="Modal title">
         <div>Content</div>
@@ -48,7 +48,7 @@ describe("Modal test", () => {
     expect(screen.queryByTestId(Spinner)).toBeNull();
   });
 
-  test("Modal is opened with title, and content, and loading", () => {
+  it("opens with a title, content, and spinner when loading", () => {
     render(
       <ModalComponent data-testid={Modal} open title="Modal title" isLoading>
         <div>Content</div>

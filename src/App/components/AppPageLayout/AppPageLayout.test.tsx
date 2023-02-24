@@ -19,7 +19,7 @@ describe("AppPageLayout", () => {
     expect(screen.queryByTestId(Spinner)).toBeNull();
   });
 
-  it("renders content with header", () => {
+  it("renders content with header slot", () => {
     render(
       <AppPageLayout slotHeader={<div>Header</div>}>
         <div>Content</div>

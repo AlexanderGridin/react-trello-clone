@@ -1,4 +1,3 @@
-import { ButtonType } from "shared/components/Button/enums/ButtonType";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { Icon } from "shared/components/Icon/Icon";
 import { PropsWithClick } from "shared/models/PropsWithClick";
@@ -10,7 +9,7 @@ interface RemoveButtonProps extends PropsWithClick {
 
 export const RemoveButton = ({ className, onClick }: RemoveButtonProps) => {
   return (
-    <button type={ButtonType.Button} className={`${style.button} ${className}`} onClick={onClick}>
+    <button type="button" className={`${style.button} ${className}`} onClick={onClick}>
       <Icon icon={MaterialIcon.Delete} className={style.icon} />
     </button>
   );

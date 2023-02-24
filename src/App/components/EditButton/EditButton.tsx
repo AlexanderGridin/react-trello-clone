@@ -1,4 +1,3 @@
-import { ButtonType } from "shared/components/Button/enums/ButtonType";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { Icon } from "shared/components/Icon/Icon";
 import { PropsWithClick } from "shared/models/PropsWithClick";
@@ -10,8 +9,8 @@ interface EditButtonProps extends PropsWithClick {
 
 export const EditButton = ({ className, onClick }: EditButtonProps) => {
   return (
-    <button type={ButtonType.Button} className={`${style.button} ${className}`} onClick={onClick}>
-      <Icon icon={MaterialIcon.Edit} className={style.icon} />
+    <button type="button" className={`${style.button} ${className}`} onClick={onClick}>
+      <Icon icon={MaterialIcon.EditSquare} className={style.icon} />
     </button>
   );
 };

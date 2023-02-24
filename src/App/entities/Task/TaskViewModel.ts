@@ -1,4 +1,4 @@
-import { TaskPriority } from "App/widgets/tasks/TaskForm/TaskForm";
+import { TaskPriority } from "App/types/TaskPriority";
 import { generateId } from "shared/utils/generateId";
 
 interface TaskViewModelConfig {

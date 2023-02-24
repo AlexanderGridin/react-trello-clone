@@ -1,4 +1,3 @@
-import { ButtonType } from "shared/components/Button/enums/ButtonType";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { Icon } from "shared/components/Icon/Icon";
 import { PropsWithClick } from "shared/models/PropsWithClick";
@@ -13,7 +12,7 @@ export const FavoriteButton = ({ isFavorite, className, onClick }: FavoriteButto
   const classNames = `${style.button} ${isFavorite ? style.active : ""} ${className || ""}`;
 
   return (
-    <button type={ButtonType.Button} className={classNames} onClick={onClick}>
+    <button type="button" className={classNames} onClick={onClick}>
       <Icon icon={MaterialIcon.Star} className={style.icon} />
     </button>
   );

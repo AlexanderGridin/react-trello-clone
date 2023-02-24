@@ -11,7 +11,7 @@ import { Task } from "../Task/Task";
 import { useTaskDispatcher } from "App/entities/Task/state";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskModal } from "../TaskModal/TaskModal";
-import { TaskPriority } from "../TaskForm/TaskForm";
+import { TaskPriority } from "App/types/TaskPriority";
 
 interface TaskCardProps {
   task: TaskViewModel;

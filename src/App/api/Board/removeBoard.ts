@@ -6,8 +6,8 @@ export const removeBoard = async (id: string): Promise<BoardDto | null> => {
   const apiUrl = routes.removeBoard.replace("{$boardId}", id);
 
   try {
-    const board = await http.delete(apiUrl);
-    return board.data;
+    const response = await http.delete(apiUrl);
+    return response.data;
   } catch (e) {
     return null;
   }

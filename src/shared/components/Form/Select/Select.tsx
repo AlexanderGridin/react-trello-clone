@@ -1,12 +1,10 @@
 import MuiInputLabel from "@mui/material/InputLabel";
-import MuiMenuItem from "@mui/material/MenuItem";
 import MuiFormControl from "@mui/material/FormControl";
-import MuiSelect, { SelectChangeEvent } from "@mui/material/Select";
-
-export interface SelectDataItem {
-  name: string;
-  value: string;
-}
+import { SelectChangeEvent } from "@mui/material/Select";
+import { ReactNode } from "react";
+import { MuiSelect } from "./components/MuiSelect";
+import { MenuItem } from "./components/MenuItem";
+import { SelectDataItem } from "./models/SelectDataItem";
 
 interface SelectProps {
   value?: string;
@@ -16,8 +14,8 @@ interface SelectProps {
 }
 
 export const Select = ({ value, label, data = [], onChange }: SelectProps) => {
-  const handleChange = (event: SelectChangeEvent) => {
-    onChange?.(event.target.value);
+  const handleChange = (event: SelectChangeEvent<unknown>, _child: ReactNode) => {
+    onChange?.(event.target.value as string);
   };
 
   return (
@@ -26,9 +24,9 @@ export const Select = ({ value, label, data = [], onChange }: SelectProps) => {
 
       <MuiSelect value={value} label={label} onChange={handleChange}>
         {data.map((item: SelectDataItem, index: number) => (
-          <MuiMenuItem key={index} value={item.value}>
+          <MenuItem key={index} value={item.value}>
             {item.name}
-          </MuiMenuItem>
+          </MenuItem>
         ))}
       </MuiSelect>
     </MuiFormControl>

@@ -1,5 +1,5 @@
 import { AppState } from "App/state/models/AppState";
-import { SetAppDraggedItemAction } from "../actions/createSetAppDraggedItemAction";
+import { SetAppDraggedItemAction } from "../action-creators/createSetAppDraggedItemAction";
 
 export const setAppDraggedItemReducer = (state: AppState, action: SetAppDraggedItemAction): AppState => ({
   ...state,

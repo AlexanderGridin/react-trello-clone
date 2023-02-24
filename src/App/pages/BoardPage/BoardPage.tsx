@@ -1,35 +1,62 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
 
-import { BoardWithTasksListsDto, mapBoardWithTasksListsDtoToViewModel } from "App/entities/Board/BoardWithTasksLists";
+import {
+  BoardWithTasksListsDto,
+  BoardWithTasksListsViewModel,
+  mapBoardWithTasksListsDtoToViewModel,
+} from "App/entities/Board/BoardWithTasksLists";
 
 import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
-import { getBoard } from "App/api/Board";
+import { getBoard as getBoardFromApi } from "App/api/Board";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
 
 export const BoardPage = () => {
   const { id } = useParams();
   const { boardsCache } = useAppState();
   const dispatcher = useBoardDispatcher();
-  const board = boardsCache[id as string];
+  const [isLoading, setIsLoading] = useState(false);
+
+  const board: BoardWithTasksListsViewModel | null = id ? boardsCache[id] : null;
+  const getPageTitle = (): string => {
+    if (!isLoading && board) {
+      return board.title;
+    }
+
+    if (isLoading && !board) {
+      return "Loading board...";
+    }
+
+    return "Board was not loaded...";
+  };
 
   useEffect(() => {
     if (board) {
       return;
     }
 
-    getBoard(id as string).then((boardDto: BoardWithTasksListsDto) => {
-      const board = mapBoardWithTasksListsDtoToViewModel(boardDto);
-      dispatcher.cacheBoard(board);
-    });
+    setIsLoading(true);
+
+    const loadBoard = async (id: string): Promise<void> => {
+      const boardDto: BoardWithTasksListsDto | null = await getBoardFromApi(id);
+
+      if (boardDto) {
+        const board = mapBoardWithTasksListsDtoToViewModel(boardDto);
+        dispatcher.cacheBoard(board);
+      }
+
+      setIsLoading(false);
+    };
+
+    loadBoard(id as string);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <AppPageLayout slotHeader={<PageTitle>{board?.title ?? "Loading board..."}</PageTitle>} isLoading={!board}>
+    <AppPageLayout slotHeader={<PageTitle>{getPageTitle()}</PageTitle>} isLoading={isLoading}>
       {board && (
         <TasksListsCardsList
           boardId={board.id}

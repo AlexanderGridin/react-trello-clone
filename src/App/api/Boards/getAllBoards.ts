@@ -6,8 +6,8 @@ export const getAllBoards = async (): Promise<BoardDto[]> => {
   const apiUrl = routes.getAllBoards;
 
   try {
-    const boards = await http.get<BoardDto[]>(apiUrl);
-    return boards.data;
+    const response = await http.get<BoardDto[]>(apiUrl);
+    return response.data;
   } catch (e) {
     return [];
   }

@@ -1,8 +1,8 @@
 import { AddButtonContainer } from "App/components/AddButtonContainer/AddButtonContainer";
-import { PropsWithChildren } from "react";
-import { PropsWithClick } from "shared/models/PropsWithClick";
+import { Children } from "shared/models/Children";
+import { Click } from "shared/models/Click";
 
-interface AddListButtonProps extends PropsWithChildren, PropsWithClick {}
+interface AddListButtonProps extends Children, Click {}
 
 export const AddListButton = ({ children, onClick }: AddListButtonProps) => {
   return (

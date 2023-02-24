@@ -1,8 +1,9 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { ReactNode } from "react";
 import { Spinner } from "shared/components/Spinner/Spinner";
+import { Children } from "shared/models/Children";
 import style from "./AppPageLayout.module.css";
 
-interface AppPageLayoutProps extends PropsWithChildren {
+interface AppPageLayoutProps extends Children {
   slotHeader?: ReactNode;
   isLoading?: boolean;
 }

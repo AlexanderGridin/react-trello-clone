@@ -1,10 +1,10 @@
-import { PropsWithChildren } from "react";
 import MuiDialog from "@mui/material/Dialog";
 import MuiDialogContent from "@mui/material/DialogContent";
 import MuiDialogTitle from "@mui/material/DialogTitle";
 import { Spinner } from "shared/components/Spinner/Spinner";
+import { Children } from "shared/models/Children";
 
-interface ModalProps extends PropsWithChildren {
+interface ModalProps extends Children {
   title?: string;
   open?: boolean;
   isLoading?: boolean;

@@ -1,14 +1,15 @@
-import { ForwardedRef, forwardRef, PropsWithChildren, ReactNode } from "react";
+import { ForwardedRef, forwardRef, ReactNode } from "react";
 import { CardContent } from "./components/CardContent";
 import { CardContainer } from "./components/CardContainer";
 import { Spinner } from "../Spinner/Spinner";
+import { Children } from "shared/models/Children";
+import { ClassName } from "shared/models/ClassName";
 
-export interface CardProps extends PropsWithChildren {
+export interface CardProps extends Children, ClassName {
   slotHeader?: ReactNode;
   slotContent?: ReactNode;
   slotFooter?: ReactNode;
   backgroundColor?: string;
-  className?: string;
   minHeight?: number;
   isLoading?: boolean;
   onDoubleClick?: () => void;

@@ -1,5 +1,4 @@
 import { useReducer } from "react";
-import { ButtonType } from "shared/components/Button/enums/ButtonType";
 import style from "./Toggler.module.css";
 
 interface TogglerProps {
@@ -15,7 +14,7 @@ export const Toggler = ({ initialValue = false, label = "", onToggle }: TogglerP
   return (
     <div className={style.container}>
       <button
-        type={ButtonType.Button}
+        type="button"
         className={cn}
         onClick={() => {
           dispatch(isActive);

@@ -8,6 +8,5 @@ interface IconProps {
 
 export const Icon = ({ icon, className = "" }: IconProps) => {
   const classNames = `material-symbols-outlined ${className}`;
-
   return <IconContainer className={classNames}>{icon}</IconContainer>;
 };

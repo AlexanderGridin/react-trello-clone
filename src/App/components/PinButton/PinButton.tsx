@@ -1,4 +1,3 @@
-import { ButtonType } from "shared/components/Button/enums/ButtonType";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { Icon } from "shared/components/Icon/Icon";
 import { PropsWithClick } from "shared/models/PropsWithClick";
@@ -13,7 +12,7 @@ export const PinButton = ({ isPinned = false, className = "", onClick }: PinButt
   const classNames = `${style.button} ${isPinned ? style.button__pinned : ""} ${className}`;
 
   return (
-    <button type={ButtonType.Button} onClick={onClick} className={classNames}>
+    <button type="button" onClick={onClick} className={classNames}>
       <Icon className={style.icon} icon={MaterialIcon.Pin} />
     </button>
   );

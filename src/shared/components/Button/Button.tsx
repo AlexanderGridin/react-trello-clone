@@ -1,19 +1,49 @@
-import { PropsWithChildren } from "react";
-import { PropsWithClick } from "shared/models/PropsWithClick";
-import { ButtonContainer, ButtonContainerProps } from "./components/ButtonContainer";
-import { ButtonType } from "./enums/ButtonType";
+import { MuiButton } from "./components/MuiButton";
+import { ButtonType } from "./types/ButtonType";
+import { ButtonVisualStyle } from "./types/ButtonVisualStyle";
+import cssStyle from "./Button.module.css";
+import { MaterialIcon } from "../Icon/enums/MaterialIcon";
+import { Icon } from "../Icon/Icon";
+import { CSSProperties } from "react";
 
-export interface ButtonProps extends ButtonContainerProps, PropsWithChildren, PropsWithClick {
+interface ButtonProps {
   type?: ButtonType;
+  visualStyle?: ButtonVisualStyle;
+  icon?: MaterialIcon;
+  isIconOnly?: boolean;
   className?: string;
+  children?: string;
+  style?: CSSProperties;
+  onClick: () => void;
 }
 
-export const Button = (props: ButtonProps) => {
-  const { type = ButtonType.Button, className = "", children, onClick, ...containerProps } = props;
+export const Button = ({
+  type = "button",
+  visualStyle = "regular",
+  icon,
+  isIconOnly = false,
+  children = "",
+  className = "",
+  style = {},
+  onClick,
+}: ButtonProps) => {
+  const bgColor =
+    (visualStyle === "regular" && "#5E81AC") ||
+    (visualStyle === "error" && "#BF616A") ||
+    (visualStyle === "success" && "#A3BE8C");
+
+  const sx = {
+    backgroundColor: `${bgColor}`,
+    "&:hover": {
+      backgroundColor: `${bgColor}`,
+    },
+    ...style,
+  };
 
   return (
-    <ButtonContainer type={type} className={className} {...containerProps} onClick={onClick}>
-      {children}
-    </ButtonContainer>
+    <MuiButton type={type} sx={sx} className={className} onClick={onClick}>
+      {icon && <Icon icon={icon} className={cssStyle.icon} />}
+      {!isIconOnly && <span className={cssStyle.text}>{children}</span>}
+    </MuiButton>
   );
 };

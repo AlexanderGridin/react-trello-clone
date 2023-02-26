@@ -47,7 +47,7 @@ describe("Button", () => {
 
   it("renders with icon only", () => {
     const handleClick = jest.fn();
-    render(<ButtonComponent data-testid={Button} icon={MaterialIcon.Add} onClick={handleClick} />);
+    render(<ButtonComponent data-testid={Button} icon={MaterialIcon.Add} isIconOnly onClick={handleClick} />);
 
     const button = screen.getByTestId(Button);
     userEvent.click(button);

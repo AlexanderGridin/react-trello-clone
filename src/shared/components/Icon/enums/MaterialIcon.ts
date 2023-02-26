@@ -1,4 +1,4 @@
-export const enum MaterialIcon {
+export enum MaterialIcon {
   Home = "home",
   Delete = "delete",
   Edit = "edit",
@@ -8,4 +8,5 @@ export const enum MaterialIcon {
   Add = "add",
   Close = "close",
   Save = "save",
+  None = "none",
 }

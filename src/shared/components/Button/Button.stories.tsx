@@ -11,6 +11,7 @@ export default {
   args: {
     children: "Button",
     icon: MaterialIcon.None,
+    isIconOnly: false,
     type: "button",
     visualStyle: "regular",
     style: {},
@@ -48,13 +49,22 @@ export default {
         },
       },
     },
+    isIconOnly: {
+      description: "Defines is button text will be omitted",
+    },
     children: {
-      description: "Button text",
+      description: "Text that will be displayed in the button",
       table: {
+        type: {
+          summary: "string",
+        },
         defaultValue: {
           summary: "Button",
         },
       },
+    },
+    visualStyle: {
+      description: "Defines visual style of the button",
     },
   },
 } as ComponentMeta<typeof Button>;

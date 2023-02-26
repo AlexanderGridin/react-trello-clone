@@ -6,7 +6,7 @@ import { parseEnumForStory } from "shared/utils/storybook/parseEnumForStory";
 const { options: materialIconOptions, labels: materialIconLabels } = parseEnumForStory(MaterialIcon);
 
 export default {
-  title: "Button",
+  title: "Shared/Button",
   component: Button,
   args: {
     children: "Button",

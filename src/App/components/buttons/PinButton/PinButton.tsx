@@ -1,5 +1,5 @@
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { Icon } from "shared/components/Icon/Icon";
+import { IconButton } from "shared/components/IconButton/IconButton";
 import { ClassName } from "shared/models/ClassName";
 import { Click } from "shared/models/Click";
 import style from "./PinButton.module.css";
@@ -9,11 +9,9 @@ interface PinButtonProps extends Click, ClassName {
 }
 
 export const PinButton = ({ isPinned = false, className = "", onClick }: PinButtonProps) => {
-  const classNames = `${style.button} ${isPinned ? style.button__pinned : ""} ${className}`;
+  const cn = isPinned ? `${className} ${style.pinned}` : className;
 
   return (
-    <button type="button" onClick={onClick} className={classNames}>
-      <Icon className={style.icon} icon={MaterialIcon.Pin} />
-    </button>
+    <IconButton icon={MaterialIcon.Pin} isActive={isPinned} activeColor="#5e81ac" className={cn} onClick={onClick} />
   );
 };

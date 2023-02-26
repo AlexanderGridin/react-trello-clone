@@ -1,6 +1,6 @@
-import { EditButton } from "App/components/EditButton/EditButton";
-import { FavoriteButton } from "App/components/FavoriteButton/FavoriteButton";
-import { RemoveButton } from "App/components/RemoveButton/RemoveButton";
+import { EditButton } from "App/components/buttons/EditButton/EditButton";
+import { FavoriteButton } from "App/components/buttons/FavoriteButton/FavoriteButton";
+import { RemoveButton } from "App/components/buttons/RemoveButton/RemoveButton";
 import { BoardViewModel } from "App/entities/Board/Board";
 import style from "./Board.module.css";
 

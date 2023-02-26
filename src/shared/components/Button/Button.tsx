@@ -16,6 +16,7 @@ const { Icon: IconId, Text: TextId } = ButtonTestId;
 interface ButtonProps extends Click, Children<string>, TestId, ClassName {
   type?: ButtonType;
   icon?: MaterialIcon;
+  isIconOnly?: boolean;
   style?: CSSProperties;
   visualStyle?: ButtonVisualStyle;
 }
@@ -23,8 +24,9 @@ interface ButtonProps extends Click, Children<string>, TestId, ClassName {
 export const Button = ({
   type = "button",
   visualStyle = "regular",
-  icon,
-  children = "",
+  icon = MaterialIcon.None,
+  isIconOnly = false,
+  children = "Button",
   className = "",
   style = {},
   "data-testid": testId,
@@ -45,9 +47,9 @@ export const Button = ({
 
   return (
     <MuiButton data-testid={testId} type={type} sx={sx} className={className} onClick={onClick}>
-      {icon && <Icon data-testid={IconId} icon={icon} className={cssStyle.icon} />}
+      {icon !== MaterialIcon.None && <Icon data-testid={IconId} icon={icon} className={cssStyle.icon} />}
 
-      {children && (
+      {!isIconOnly && (
         <span data-testid={TextId} className={cssStyle.text}>
           {children}
         </span>

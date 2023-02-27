@@ -7,4 +7,3 @@ export enum BoardActionType {
   SetBoards = "SET_BOARDS",
   SetIsShowFavorites = "SET_IS_SHOW_FAVORITES",
 }
-

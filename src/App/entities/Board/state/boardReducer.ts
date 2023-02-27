@@ -36,4 +36,3 @@ export const boardReducer = (state: AppState, action: AppAction): AppState => {
       return { ...state };
   }
 };
-

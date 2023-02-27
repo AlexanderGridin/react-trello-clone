@@ -12,7 +12,7 @@ export const AppNavigation = () => {
     <nav>
       <ul className="plain-list">
         <li>
-          <NavLink to="/" className={getLinkClassName}>
+          <NavLink to="/boards" className={getLinkClassName}>
             <FlexContainer>
               <Icon className="mr" icon={MaterialIcon.Home} />
               <span> Boards</span>

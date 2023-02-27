@@ -1,6 +1,6 @@
 import { AppNavigation } from "App/components/AppNavigation/AppNavigation";
 import { getFormattedCurrentDate } from "shared/utils/getFormattedCurrentDate";
-import { User } from "../User/User";
+import { User } from "../users/User/User";
 import { SidebarLayout } from "./components/SidebarLayout/SidebarLayout";
 
 const date = getFormattedCurrentDate();

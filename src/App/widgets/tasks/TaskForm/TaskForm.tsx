@@ -3,15 +3,14 @@ import { TaskPriority } from "App/types/TaskPriority";
 import { FormEvent, useReducer } from "react";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { FormFooter } from "shared/components/Form/FormFooter";
-import { TextInput } from "shared/components/Form/Input";
+import { TextInput } from "shared/components/Form/inputs";
 import { Select } from "shared/components/Form/Select/Select";
-import { useInputFocus } from "shared/hooks/useInputFocus";
 
 type FormEventType = FormEvent<HTMLFormElement>;
 
-export interface TaskFormValue {
-  title: string;
-  priority: TaskPriority;
+export class TaskFormValue {
+  public title = "";
+  public priority: TaskPriority = "regular";
 }
 
 export interface TaskFormProps {
@@ -21,14 +20,14 @@ export interface TaskFormProps {
 }
 
 export const TaskForm = ({ entity, onSubmit, onCancel }: TaskFormProps) => {
-  const initialFormValue: TaskFormValue = { title: "", priority: "regular" };
+  const initialFormValue: TaskFormValue = entity || new TaskFormValue();
 
   const [formValue, dispatch] = useReducer(
     (prevValue: TaskFormValue, payload: Partial<TaskFormValue>) => ({
       ...prevValue,
       ...payload,
     }),
-    entity || initialFormValue
+    initialFormValue
   );
 
   const changeTitle = (title: string) => dispatch({ title });
@@ -45,7 +44,7 @@ export const TaskForm = ({ entity, onSubmit, onCancel }: TaskFormProps) => {
   return (
     <FormContainer onSubmit={submit}>
       <div className="form-row">
-        <TextInput ref={useInputFocus()} placeholder="Enter task" value={formValue.title} onChange={changeTitle} />
+        <TextInput placeholder="Enter task" value={formValue.title} isAutoFocus onChange={changeTitle} />
       </div>
 
       <div className="form-row">

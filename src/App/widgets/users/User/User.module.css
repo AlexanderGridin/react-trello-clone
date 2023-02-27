@@ -13,4 +13,17 @@
   border-radius: 50%;
   background-color: #5e81ac;
   margin-right: 15px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 24px;
+}
+
+.logout {
+  margin-left: 7px !important;
 }

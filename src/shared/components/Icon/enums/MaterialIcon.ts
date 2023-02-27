@@ -8,5 +8,8 @@ export enum MaterialIcon {
   Add = "add",
   Close = "close",
   Save = "save",
+  Logout = "logout",
+  Login = "login",
+  AddUser = "person_add",
   None = "none",
 }

@@ -1,15 +1,14 @@
 import { FormEvent, useReducer } from "react";
 import { FormContainer } from "shared/components/Form/FormContainer";
-import { TextInput } from "shared/components/Form/Input";
-import { useInputFocus } from "shared/hooks/useInputFocus";
+import { TextInput } from "shared/components/Form/inputs";
 import { Checkbox } from "shared/components/Form/Checkbox";
 import { FormFooter } from "shared/components/Form/FormFooter";
 
 type FormEventType = FormEvent<HTMLFormElement>;
 
-export interface BoardFormValue {
-  title: string;
-  isFavorite: boolean;
+export class BoardFormValue {
+  public title = "";
+  public isFavorite = false;
 }
 
 export interface BoardFormProps {
@@ -19,14 +18,14 @@ export interface BoardFormProps {
 }
 
 export const BoardForm = ({ entity, onSubmit, onCancel }: BoardFormProps) => {
-  const initialFormValue: BoardFormValue = { title: "", isFavorite: false };
+  const initialFormValue: BoardFormValue = entity || new BoardFormValue();
 
   const [formValue, dispatch] = useReducer(
     (prevValue: BoardFormValue, payload: Partial<BoardFormValue>) => ({
       ...prevValue,
       ...payload,
     }),
-    entity || initialFormValue
+    initialFormValue
   );
 
   const changeTitle = (title: string) => dispatch({ title });
@@ -45,12 +44,7 @@ export const BoardForm = ({ entity, onSubmit, onCancel }: BoardFormProps) => {
   return (
     <FormContainer onSubmit={submit}>
       <div className="form-row">
-        <TextInput
-          ref={useInputFocus()}
-          placeholder="Enter board title"
-          value={formValue.title}
-          onChange={changeTitle}
-        />
+        <TextInput placeholder="Enter board title" value={formValue.title} isAutoFocus onChange={changeTitle} />
       </div>
 
       <div className="form-row">

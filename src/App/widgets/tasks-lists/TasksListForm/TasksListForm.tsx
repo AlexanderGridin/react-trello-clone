@@ -1,15 +1,14 @@
 import { FormEvent, useReducer } from "react";
 import { FormContainer } from "shared/components/Form/FormContainer";
-import { TextInput } from "shared/components/Form/Input";
-import { useInputFocus } from "shared/hooks/useInputFocus";
+import { TextInput } from "shared/components/Form/inputs";
 import { Checkbox } from "shared/components/Form/Checkbox";
 import { FormFooter } from "shared/components/Form/FormFooter";
 
 type FormEventType = FormEvent<HTMLFormElement>;
 
-export interface TasksListFormValue {
-  title: string;
-  isPinned: boolean;
+export class TasksListFormValue {
+  public title = "";
+  public isPinned = false;
 }
 
 export interface TasksListFormProps {
@@ -19,17 +18,14 @@ export interface TasksListFormProps {
 }
 
 export const TasksListForm = ({ entity, onSubmit, onCancel }: TasksListFormProps) => {
-  const initialFormValue: TasksListFormValue = {
-    title: "",
-    isPinned: false,
-  };
+  const initialFormValue: TasksListFormValue = entity || new TasksListFormValue();
 
   const [formValue, dispatch] = useReducer(
     (prevValue: TasksListFormValue, payload: Partial<TasksListFormValue>) => ({
       ...prevValue,
       ...payload,
     }),
-    entity || initialFormValue
+    initialFormValue
   );
 
   const changeTitle = (title: string) => dispatch({ title });
@@ -46,12 +42,7 @@ export const TasksListForm = ({ entity, onSubmit, onCancel }: TasksListFormProps
   return (
     <FormContainer onSubmit={submit}>
       <div className="form-row">
-        <TextInput
-          ref={useInputFocus()}
-          placeholder="Enter list title"
-          value={formValue.title}
-          onChange={changeTitle}
-        />
+        <TextInput placeholder="Enter list title" value={formValue.title} isAutoFocus onChange={changeTitle} />
       </div>
 
       <div className="form-row">

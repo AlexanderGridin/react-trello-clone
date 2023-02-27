@@ -1,0 +1,35 @@
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Switch } from "./Switch";
+
+export default {
+  title: "Shared/Switch",
+  component: Switch,
+  args: {
+    isTextDark: true,
+    initialValue: false,
+    label: "Switch label",
+    disabled: false,
+  },
+  argTypes: {
+    isTextDark: {
+      description: "Defines is text will be displayed in dark or light color",
+    },
+    initialValue: {
+      description: "Defines initial value",
+    },
+    label: {
+      description: "Defines label text",
+    },
+    disabled: {
+      description: "Defines disabled state",
+    },
+    onChange: {
+      description: "Callback, that will be called when value will be changed",
+    },
+  },
+} as ComponentMeta<typeof Switch>;
+
+const Template: ComponentStory<typeof Switch> = (args) => <Switch {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {};

@@ -1,8 +1,7 @@
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { useUserDispatcher } from "App/entities/User/state";
 import { UserViewModel } from "App/entities/User/UserViewModel";
-import { UserSignInForm, UserSignInFormValue } from "App/widgets/users/forms";
-import { CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms/CreateUserForm/CreateUserForm";
+import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "shared/components/Button/Button";

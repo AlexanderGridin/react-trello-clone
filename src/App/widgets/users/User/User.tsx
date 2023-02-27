@@ -9,6 +9,7 @@ export const User = () => {
   const userDispatcher = useUserDispatcher();
 
   const handleSignOutClick = () => {
+    localStorage.removeItem("user");
     userDispatcher.setUser(null);
   };
 

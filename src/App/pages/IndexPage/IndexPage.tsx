@@ -27,6 +27,7 @@ export const IndexPage = () => {
       userName: formValue.userName,
     };
 
+    localStorage.setItem("user", JSON.stringify(user));
     userDispatcher.setUser(user);
     navigate("/boards");
   };

@@ -3,11 +3,11 @@ import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
 import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
-import { Toggler } from "App/components/Toggler/Toggler";
 import style from "./BoardsPage.module.css";
 import { mapBoardDtoToViewModel } from "App/entities/Board/Board";
 import { getAllBoards, getFavoriteBoards } from "App/api/Boards";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsList";
+import { Switch } from "shared/components/Switch/Switch";
 
 export const BoardsPage = () => {
   const { boards, isShowFavorites } = useAppState();
@@ -38,7 +38,7 @@ export const BoardsPage = () => {
   const header = (
     <>
       <PageTitle className={style.title}>Boards</PageTitle>
-      <Toggler initialValue={isShowFavorites} onToggle={toggleFavorite} label="Favorites only" />
+      <Switch label="Favorites only" initialValue={isShowFavorites} isTextDark={false} onChange={toggleFavorite} />
     </>
   );
 

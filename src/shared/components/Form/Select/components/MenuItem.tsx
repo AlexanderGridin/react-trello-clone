@@ -2,11 +2,11 @@ import MuiMenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 
 export const MenuItem = styled(MuiMenuItem)({
-  "&.Mui-selected": {
+  "&.MuiMenuItem-gutters.Mui-selected": {
     backgroundColor: "#5E81AC",
     color: "#FFF",
   },
-  "&.Mui-selected:hover": {
+  "&.MuiMenuItem-gutters.Mui-selected:hover": {
     backgroundColor: "#5E81AC",
   },
 });

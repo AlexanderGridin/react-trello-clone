@@ -47,7 +47,7 @@ export const Button = ({
 
   return (
     <MuiButton data-testid={testId} type={type} sx={sx} className={className} onClick={onClick}>
-      {icon && <Icon data-testid={IconId} icon={icon} className={cssStyle.icon} />}
+      {icon !== MaterialIcon.None && <Icon data-testid={IconId} icon={icon} className={cssStyle.icon} />}
 
       {!isIconOnly && (
         <span data-testid={TextId} className={cssStyle.text}>

@@ -1,9 +1,10 @@
 import axios from "axios";
+import { initMock } from "./mock/initMock";
 
-// const MOCK_MODE = true;
-
-const axiosClient = axios.create({
+export const httpClient = axios.create({
   baseURL: "http://localhost:2211",
 });
 
-export const httpClient = axiosClient;
+if (process.env.REACT_APP_USE_MOCK_API) {
+  initMock(httpClient);
+}

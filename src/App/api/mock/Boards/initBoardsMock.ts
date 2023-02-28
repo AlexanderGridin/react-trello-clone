@@ -4,35 +4,29 @@ import { boardsResponseMap as responseMap } from "./boardsResponseMap";
 import { logMockResponse } from "../utils/logMockResponse";
 
 export const initBoardsMock = (adapter: MockAdapter) => {
-  adapter.onGet(routes.getAllBoards).reply(
-    200,
-    (() => {
-      const apiUrl = routes.getAllBoards;
-      const response = responseMap[apiUrl];
+  adapter.onGet(routes.getAllBoards).reply(() => {
+    const apiUrl = routes.getAllBoards;
+    const response = responseMap[apiUrl];
 
-      logMockResponse({
-        method: "GET",
-        url: apiUrl,
-        response,
-      });
+    logMockResponse({
+      method: "GET",
+      url: apiUrl,
+      response,
+    });
 
-      return response;
-    })()
-  );
+    return [200, response];
+  });
 
-  adapter.onGet(routes.getFavoriteBoards).reply(
-    200,
-    (() => {
-      const apiUrl = routes.getFavoriteBoards;
-      const response = responseMap[apiUrl];
+  adapter.onGet(routes.getFavoriteBoards).reply(() => {
+    const apiUrl = routes.getFavoriteBoards;
+    const response = responseMap[apiUrl];
 
-      logMockResponse({
-        method: "GET",
-        url: apiUrl,
-        response,
-      });
+    logMockResponse({
+      method: "GET",
+      url: apiUrl,
+      response,
+    });
 
-      return response;
-    })()
-  );
+    return [200, response];
+  });
 };

@@ -1,0 +1,29 @@
+name: Main
+run-name: ${{ github.actor }} runs main workflow
+on: [push]
+jobs:
+  Main:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.13]
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Starting NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Installign packages
+        run: npm install
+
+      - name: Run Prettier check
+        run: npm run prettier-check
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Build app
+        run: npm run build

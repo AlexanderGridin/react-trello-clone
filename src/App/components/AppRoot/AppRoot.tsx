@@ -4,6 +4,9 @@ import { AppLayout } from "App/components/AppLayout/AppLayout";
 import { useAppState } from "App/state/hooks/useAppState";
 import { Sidebar } from "App/widgets/Sidebar/Sidebar";
 import { useUserDispatcher } from "App/entities/User/state";
+import { getUser } from "App/api/User/getUser";
+import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
+import { UserViewModel } from "App/entities/User/models";
 
 export const AppRoot = () => {
   const { user } = useAppState();
@@ -11,25 +14,31 @@ export const AppRoot = () => {
   const userDispatcher = useUserDispatcher();
 
   useEffect(() => {
-    if (user) {
-      return;
+    const loadUser = async () => {
+      const userId = localStorage.getItem("userId");
+
+      if (!userId) {
+        userDispatcher.setUser(new UserViewModel());
+        navigate("/");
+
+        return;
+      }
+
+      const userDto = await getUser(userId);
+      if (userDto) {
+        userDispatcher.setUser(mapUserDtoToViewModel(userDto));
+      }
+    };
+
+    if (!user) {
+      loadUser();
     }
 
-    const userString = localStorage.getItem("user");
-    const userFromStorage = userString ? JSON.parse(userString) : null;
-
-    if (!userFromStorage) {
-      navigate("/");
-      return;
-    }
-
-    userDispatcher.setUser(userFromStorage);
-    navigate("/boards");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   return (
-    <AppLayout slotAside={user && <Sidebar />}>
+    <AppLayout slotAside={user?.isLoggedIn && <Sidebar />}>
       <Outlet />
     </AppLayout>
   );

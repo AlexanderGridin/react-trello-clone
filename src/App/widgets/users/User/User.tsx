@@ -9,7 +9,7 @@ export const User = () => {
   const userDispatcher = useUserDispatcher();
 
   const handleSignOutClick = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("userId");
     userDispatcher.setUser(null);
   };
 
@@ -20,11 +20,11 @@ export const User = () => {
   return (
     <div className={style.container}>
       <div className={style.image}>
-        <img src={`https://picsum.photos/seed/${user.userName}/75`} alt="user avatar" />
+        <img src={`https://picsum.photos/seed/${user.name}/75`} alt="user avatar" />
       </div>
 
       <div className={style.name}>
-        <p>{user.userName}</p>
+        <p>{user.name}</p>
 
         <IconButton
           icon={MaterialIcon.Logout}

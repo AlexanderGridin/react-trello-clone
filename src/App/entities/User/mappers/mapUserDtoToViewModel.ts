@@ -1,8 +1,8 @@
-import { UserDto } from "../UserDto";
-import { UserViewModel } from "../UserViewModel";
+import { UserDto, UserViewModel } from "../models";
 
 export const mapUserDtoToViewModel = (source: UserDto): UserViewModel => ({
   ...new UserViewModel(),
   id: source._id,
-  userName: source.userName,
+  name: source.name,
+  isLoggedIn: true,
 });

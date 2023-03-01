@@ -1,6 +1,6 @@
 import { useAppState } from "App/state/hooks/useAppState";
 import { UserAction } from "..";
-import { UserViewModel } from "../../UserViewModel";
+import { UserViewModel } from "../../models";
 import { createSetUserAction } from "../action-creators/createSetUserAction";
 
 export const useUserDispatcher = () => {

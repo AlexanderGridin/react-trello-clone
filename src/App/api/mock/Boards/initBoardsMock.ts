@@ -1,12 +1,14 @@
 import MockAdapter from "axios-mock-adapter";
 import { routes } from "App/api/Boards/routes";
-import { boardsResponseMap as responseMap } from "./boardsResponseMap";
 import { logMockResponse } from "../utils/logMockResponse";
+import { connectToMockDb } from "../mockDb";
+
+const { boards } = connectToMockDb();
 
 export const initBoardsMock = (adapter: MockAdapter) => {
   adapter.onGet(routes.getAllBoards).reply(() => {
     const apiUrl = routes.getAllBoards;
-    const response = responseMap[apiUrl];
+    const response = boards.getAll();
 
     logMockResponse({
       method: "GET",
@@ -19,7 +21,7 @@ export const initBoardsMock = (adapter: MockAdapter) => {
 
   adapter.onGet(routes.getFavoriteBoards).reply(() => {
     const apiUrl = routes.getFavoriteBoards;
-    const response = responseMap[apiUrl];
+    const response = boards.getFavorite();
 
     logMockResponse({
       method: "GET",

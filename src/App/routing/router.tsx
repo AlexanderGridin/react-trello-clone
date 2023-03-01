@@ -12,7 +12,10 @@ export const router = createBrowserRouter([
     element: <AppRoot />,
     errorElement: <ErrorHandler />,
     children: [
-      { index: true, element: <IndexPage /> },
+      {
+        index: true,
+        element: <IndexPage />,
+      },
       {
         path: "boards",
         element: (

@@ -5,7 +5,7 @@ import { routes } from "./routes";
 
 export const updateTask = async (
   id: string,
-  body: { content: string; priority: TaskPriority }
+  body: { content: string; priority: TaskPriority; listId: string; boardId: string }
 ): Promise<TaskDto | null> => {
   const apiUrl = routes.updateTask.replace("{$taskId}", id);
 

@@ -2,7 +2,10 @@ import { TasksListDto } from "App/entities/TasksList/TasksListDto";
 import { httpClient } from "../httpClient";
 import { routes } from "./routes";
 
-export const updateTasksList = async (id: string, body: { isPinned: boolean }): Promise<TasksListDto | null> => {
+export const updateTasksList = async (
+  id: string,
+  body: { title: string; isPinned: boolean; boardId: string }
+): Promise<TasksListDto | null> => {
   const apiUrl = routes.updateTasksList.replace("{$tasksListId}", id);
 
   try {

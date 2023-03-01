@@ -21,6 +21,7 @@ export const TasksListModal = ({ list }: TasksListModalProps) => {
 
     const listDto = await updateTasksListOnApi(list.id, {
       ...formValue,
+      boardId: list.boardId,
     });
 
     if (listDto) {

@@ -1,5 +1,5 @@
 import { BoardDto } from "App/entities/Board/Board";
-import { http } from "../http";
+import { httpClient } from "../httpClient";
 import { routes } from "./routes";
 
 export const updateBoard = async (
@@ -9,7 +9,7 @@ export const updateBoard = async (
   const apiUrl = routes.updateBoard.replace("{$boardId}", id);
 
   try {
-    const response = await http.put<BoardDto>(apiUrl, body);
+    const response = await httpClient.put<BoardDto>(apiUrl, body);
     return response.data;
   } catch (e) {
     return null;

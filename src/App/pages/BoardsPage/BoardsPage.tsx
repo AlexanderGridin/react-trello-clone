@@ -13,7 +13,7 @@ export const BoardsPage = () => {
   const { boards, isShowFavorites } = useAppState();
   const dispatcher = useBoardDispatcher();
 
-  const isShowAddBoard = Boolean(!isShowFavorites && boards?.length);
+  const isShowAddBoard = Boolean(!isShowFavorites);
 
   const loadBoards = async (isShowFavorites = false) => {
     dispatcher.setBoards(null);

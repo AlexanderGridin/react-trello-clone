@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:mock": "REACT_APP_USE_MOCK_API=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -36,15 +37,10 @@
     "build-sb": "build-storybook -s public"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
+    "extends": ["react-app", "react-app/jest"],
     "overrides": [
       {
-        "files": [
-          "**/*.stories.*"
-        ],
+        "files": ["**/*.stories.*"],
         "rules": {
           "import/no-anonymous-default-export": "off"
         }
@@ -52,16 +48,8 @@
     ]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.5.16",
@@ -75,6 +63,7 @@
     "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.0.13",
     "@types/styled-components": "^5.1.26",
+    "axios-mock-adapter": "^1.21.2",
     "babel-plugin-named-exports-order": "^0.0.2",
     "postcss": "^8.4.21",
     "prettier": "2.8.4",

@@ -48,7 +48,9 @@ export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProp
     setIsLoading(true);
 
     const listDto = await updateTasksListOnApi(list.id, {
+      title: list.title,
       isPinned: !list.isPinned,
+      boardId: list.boardId,
     });
 
     if (listDto) {

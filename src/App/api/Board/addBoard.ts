@@ -1,5 +1,5 @@
 import { BoardDto } from "App/entities/Board/Board";
-import { http } from "../http";
+import { httpClient } from "../httpClient";
 import { routes } from "./routes";
 
 export const addBoard = async (body: {
@@ -10,7 +10,7 @@ export const addBoard = async (body: {
   const apiUrl = routes.addBoard;
 
   try {
-    const response = await http.post<BoardDto>(apiUrl, body);
+    const response = await httpClient.post<BoardDto>(apiUrl, body);
     return response.data;
   } catch (e) {
     return null;

@@ -1,5 +1,4 @@
-import { TaskDto } from "../TaskDto";
-import { TaskViewModel } from "../TaskViewModel";
+import { TaskDto, TaskViewModel } from "../models";
 
 export const mapTaskDtoToViewModel = (source: TaskDto): TaskViewModel => ({
   ...new TaskViewModel({}),

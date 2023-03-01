@@ -1,4 +1,4 @@
-import { TaskViewModel } from "App/entities/Task/TaskViewModel";
+import { TaskViewModel } from "App/entities/Task/models";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { Action } from "App/state/models/Action";
 import { TasksListActionType } from "../TasksListActionType.enum";

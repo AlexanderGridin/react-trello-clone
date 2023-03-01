@@ -1,7 +1,7 @@
-import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { TasksListViewModel } from "App/entities/TasksList/models";
 import { AppState } from "App/state/models/AppState";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
+import { TaskViewModel } from "../../models";
 import { RemoveTaskAction } from "../action-creators/createRemoveTaskAction";
 
 export const removeTaskReducer = (state: AppState, action: RemoveTaskAction): AppState => {

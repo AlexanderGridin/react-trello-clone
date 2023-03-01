@@ -1,5 +1,5 @@
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { AppState } from "App/state/models/AppState";
+import { TasksListViewModel } from "../../models";
 import { PushTaskInTasksListAction } from "../action-creators/createPushTaskInTasksListAction";
 
 export const pushTaskInTasksListReducer = (state: AppState, action: PushTaskInTasksListAction): AppState => {

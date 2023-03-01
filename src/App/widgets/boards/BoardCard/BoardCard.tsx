@@ -3,14 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
 import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-
-import { BoardViewModel, mapBoardDtoToViewModel, mapBoardToDraggedItem } from "App/entities/Board/Board";
-
 import { removeBoard as removeBoardFromApi, updateBoard as updateBoardOnApi } from "App/api/Board";
 import { Board } from "../Board/Board";
 import { BoardModal } from "../BoardMoal/BoardModal";
+import { BoardViewModel } from "App/entities/Board/models";
+import { mapBoardDtoToViewModel, mapBoardViewModelToDraggedItem } from "App/entities/Board/mappers";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 
 interface BoardCardProps {
   board: BoardViewModel;
@@ -80,7 +79,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
     <>
       <DndCard
         minHeight={MIN_HEIGHT}
-        draggedItem={mapBoardToDraggedItem(board)}
+        draggedItem={mapBoardViewModelToDraggedItem(board)}
         backgroundColor={BACKGROUD_COLOR}
         onDrop={dropOnBoard}
         onDoubleClick={navigateToBoard}

@@ -1,5 +1,5 @@
 import { Action } from "App/state/models/Action";
-import { BoardViewModel } from "../../Board";
+import { BoardViewModel } from "../../models";
 import { BoardActionType } from "../BoardActionType.enum";
 
 interface UpdateBoardActionPayload {

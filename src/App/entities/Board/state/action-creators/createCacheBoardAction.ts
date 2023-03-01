@@ -1,5 +1,5 @@
 import { Action } from "App/state/models/Action";
-import { BoardWithTasksListsViewModel } from "../../BoardWithTasksLists";
+import { BoardWithTasksListsViewModel } from "../../models";
 import { BoardActionType } from "../BoardActionType.enum";
 
 interface CacheBoardActionPayload {

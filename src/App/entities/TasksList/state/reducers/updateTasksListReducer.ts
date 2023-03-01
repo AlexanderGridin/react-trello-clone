@@ -1,6 +1,6 @@
 import { parseTasksLists } from "App/entities/Board/utils/parseTasksLists";
 import { AppState } from "App/state/models/AppState";
-import { TasksListViewModel } from "../../TasksListViewModel";
+import { TasksListViewModel } from "../../models";
 import { UpdateTasksListAction } from "../action-creators/createUpdateTasksListAction";
 
 export const updateTasksListReducer = (state: AppState, action: UpdateTasksListAction): AppState => {

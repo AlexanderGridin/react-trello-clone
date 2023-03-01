@@ -1,5 +1,5 @@
-import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { Action } from "App/state/models/Action";
+import { AppDraggedItem } from "../../models";
 import { AppDraggedItemActionType } from "../AppDraggedItemActionType.enum";
 
 interface SetAppDraggedItemPayload {

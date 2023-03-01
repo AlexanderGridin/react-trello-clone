@@ -1,6 +1,6 @@
-import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { TaskViewModel } from "App/entities/Task/models";
 import { Action } from "App/state/models/Action";
+import { TasksListViewModel } from "../../models";
 import { TasksListActionType } from "../TasksListActionType.enum";
 
 interface PushTaskInTasksListPayload {

@@ -1,10 +1,10 @@
-import { BoardViewModel, mapBoardDtoToViewModel } from "App/entities/Board/Board";
-import { mapBoardViewMoelToBoardFormValue } from "App/entities/Board/BoardWithTasksLists";
 import { useBoardDispatcher } from "App/entities/Board/state";
 import { useState } from "react";
 import { Modal } from "shared/components/Modal/Modal";
 import { BoardForm, BoardFormValue } from "../BoardForm/BoardForm";
 import { updateBoard as updateBoardOnApi } from "App/api/Board";
+import { BoardViewModel } from "App/entities/Board/models";
+import { mapBoardDtoToViewModel, mapBoardViewModelToBoardFormValue } from "App/entities/Board/mappers";
 
 interface BoardModalProps {
   board: BoardViewModel;
@@ -31,7 +31,7 @@ export const BoardModal = ({ board }: BoardModalProps) => {
 
   return (
     <Modal title="Edit board" isLoading={isLoading} open={board.isEditing} onClose={closeModal}>
-      <BoardForm entity={mapBoardViewMoelToBoardFormValue(board)} onSubmit={update} onCancel={closeModal} />
+      <BoardForm entity={mapBoardViewModelToBoardFormValue(board)} onSubmit={update} onCancel={closeModal} />
     </Modal>
   );
 };

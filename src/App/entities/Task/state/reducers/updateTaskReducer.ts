@@ -1,7 +1,7 @@
 import { AppState } from "App/state/models/AppState";
-import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { UpdateTaskAction } from "../action-creators/createUpdateTaskAction";
+import { TaskViewModel } from "../../models";
+import { TasksListViewModel } from "App/entities/TasksList/models";
 
 export const updateTaskReducer = (state: AppState, action: UpdateTaskAction): AppState => {
   const taskToUpdate: TaskViewModel = { ...action.payload.task };

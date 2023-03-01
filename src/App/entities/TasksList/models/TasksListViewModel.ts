@@ -1,5 +1,5 @@
+import { TaskViewModel } from "App/entities/Task/models";
 import { generateId } from "shared/utils/generateId";
-import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 
 interface TasksListViewModelConfig {
   id?: string;

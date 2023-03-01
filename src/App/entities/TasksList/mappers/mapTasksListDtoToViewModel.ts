@@ -1,6 +1,5 @@
-import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDtoToViewModel";
-import { TasksListDto } from "../TasksListDto";
-import { TasksListViewModel } from "../TasksListViewModel";
+import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
+import { TasksListDto, TasksListViewModel } from "../models";
 
 export const mapTasksListDtoToViewModel = (source: TasksListDto): TasksListViewModel => ({
   ...new TasksListViewModel({}),

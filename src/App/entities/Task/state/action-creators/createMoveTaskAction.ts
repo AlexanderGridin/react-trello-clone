@@ -1,5 +1,5 @@
-import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { Action } from "App/state/models/Action";
+import { TaskViewModel } from "../../models";
 import { TaskActionType } from "../TaskActionType.enum";
 
 interface MoveTaskActionPayload {

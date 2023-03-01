@@ -1,17 +1,16 @@
+import { useState } from "react";
 import { DndCard } from "App/components/DndCard/DndCard";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { mapTaskToDraggedItem } from "App/entities/Task/mappers/mapTaskToDraggedItem";
-import { TaskViewModel } from "App/entities/Task/TaskViewModel";
+import { mapTaskToDraggedItem, mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { removeTask as removeTaskFromApi } from "App/api/Task";
-import { useState } from "react";
-import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDtoToViewModel";
 import { Task } from "../Task/Task";
 import { useTaskDispatcher } from "App/entities/Task/state";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskModal } from "../TaskModal/TaskModal";
 import { TaskPriority } from "App/types/TaskPriority";
+import { TaskViewModel } from "App/entities/Task/models";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 
 interface TaskCardProps {
   task: TaskViewModel;

@@ -1,5 +1,5 @@
 import { AppState } from "App/state/models/AppState";
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { TasksListViewModel } from "../../models";
 import { AddTasksListAction } from "../action-creators/createAddTasksListAction";
 
 export const addTasksListReducer = (state: AppState, action: AddTasksListAction): AppState => {

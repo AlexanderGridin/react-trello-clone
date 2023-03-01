@@ -1,5 +1,5 @@
 import { Action } from "App/state/models/Action";
-import { UserViewModel } from "../../UserViewModel";
+import { UserViewModel } from "../../models";
 import { UserActionType } from "../UserActionType.enum";
 
 interface SetUserPayload {

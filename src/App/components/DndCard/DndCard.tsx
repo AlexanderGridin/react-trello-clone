@@ -1,4 +1,4 @@
-import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { useItemDrag } from "App/hooks/useItemDrag";
 import { useItemDrop } from "App/hooks/useItemDrop";
 import { useRef } from "react";

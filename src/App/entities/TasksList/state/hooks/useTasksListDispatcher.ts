@@ -1,7 +1,7 @@
-import { TaskViewModel } from "App/entities/Task/TaskViewModel";
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { TaskViewModel } from "App/entities/Task/models";
 import { useAppState } from "App/state/hooks/useAppState";
 import { TasksListAction } from "..";
+import { TasksListViewModel } from "../../models";
 import { createAddTasksListAction } from "../action-creators/createAddTasksListAction";
 import { createMoveTasksListAction } from "../action-creators/createMoveTasksListAction";
 import { createPushTaskInTasksListAction } from "../action-creators/createPushTaskInTasksListAction";
@@ -18,16 +18,14 @@ export const useTasksListDispatcher = () => {
     });
 
   const addTasksList = (list: TasksListViewModel) => dispatchForModule(createAddTasksListAction(list));
-
   const removeTasksList = (list: TasksListViewModel) => dispatchForModule(createRemoveTasksListAction(list));
+  const updateTasksList = (list: TasksListViewModel) => dispatchForModule(createUpdateTasksListAction(list));
 
   const moveTasksList = (listToMove: TasksListViewModel, listToReplace: TasksListViewModel) =>
     dispatchForModule(createMoveTasksListAction(listToMove, listToReplace));
 
   const pushTaskInTasksList = (list: TasksListViewModel, task: TaskViewModel) =>
     dispatchForModule(createPushTaskInTasksListAction(list, task));
-
-  const updateTasksList = (list: TasksListViewModel) => dispatchForModule(createUpdateTasksListAction(list));
 
   return {
     addTasksList,

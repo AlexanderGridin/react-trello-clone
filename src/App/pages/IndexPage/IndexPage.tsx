@@ -1,9 +1,10 @@
-import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
-import { useUserDispatcher } from "App/entities/User/state";
-import { UserViewModel } from "App/entities/User/UserViewModel";
-import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { getUser } from "App/api/User/getUser";
+import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
+import { UserViewModel } from "App/entities/User/models";
+import { useUserDispatcher } from "App/entities/User/state";
+import { useAppState } from "App/state/hooks/useAppState";
+import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 import { Button } from "shared/components/Button/Button";
 import { Card } from "shared/components/Card/Card";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
@@ -11,40 +12,69 @@ import { generateId } from "shared/utils/generateId";
 import style from "./IndexPage.module.css";
 
 export const IndexPage = () => {
+  const { user } = useAppState();
   const [isShowSignInForm, setIsShowSignInForm] = useState(false);
   const [isShowCreateUserForm, setIsShowCreateUserForm] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const userDispatcher = useUserDispatcher();
-  const navigate = useNavigate();
 
   const toggleSignInForm = () => setIsShowSignInForm(!isShowSignInForm);
   const toggleCreateUserForm = () => setIsShowCreateUserForm(!isShowCreateUserForm);
 
-  const handleUserSignIn = (formValue: UserSignInFormValue) => {
+  const handleUserSignIn = async (formValue: UserSignInFormValue) => {
+    setIsLoading(true);
+
     const user: UserViewModel = {
       id: generateId(),
-      userName: formValue.userName,
+      name: formValue.userName,
+      isLoggedIn: true,
     };
 
-    localStorage.setItem("user", JSON.stringify(user));
+    // TODO: here will be GET request for user check
+    await getUser(user.id);
+
+    localStorage.setItem("userId", user.id);
     userDispatcher.setUser(user);
-    navigate("/boards");
+
+    setIsLoading(false);
   };
 
-  const handleCreateUser = (formValue: CreateUserFormValue) => {
+  const handleCreateUser = async (formValue: CreateUserFormValue) => {
+    setIsLoading(true);
+
     const user: UserViewModel = {
       id: generateId(),
-      userName: formValue.userName,
+      name: formValue.userName,
+      isLoggedIn: true,
     };
 
+    // TODO: here will be POST request for user creation
+    await getUser(user.id);
+
+    localStorage.setItem("userId", user.id);
     userDispatcher.setUser(user);
-    navigate("/boards");
   };
+
+  if (!user) {
+    return <AppPageLayout isLoading></AppPageLayout>;
+  }
+
+  if (user.isLoggedIn) {
+    return (
+      <AppPageLayout>
+        <div className={style.container}>
+          <Card className={style.card}>
+            <h1 className={style.title}>Hello {user.name}!</h1>
+          </Card>
+        </div>
+      </AppPageLayout>
+    );
+  }
 
   return (
     <AppPageLayout>
       <div className={style.container}>
-        <Card className={style.card}>
+        <Card className={style.card} isLoading={isLoading}>
           <h1 className={style.title}>Welcome to the Tasks Manager app! </h1>
 
           {isShowSignInForm && <UserSignInForm onSubmit={handleUserSignIn} onCancel={toggleSignInForm} />}

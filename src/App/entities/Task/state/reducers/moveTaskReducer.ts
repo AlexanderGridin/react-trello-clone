@@ -1,4 +1,4 @@
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { TasksListViewModel } from "App/entities/TasksList/models";
 import { AppState } from "App/state/models/AppState";
 import { MoveTaskAction } from "../action-creators/createMoveTaskAction";
 import { removeTaskFromList } from "./utils/removeTaskFromList";

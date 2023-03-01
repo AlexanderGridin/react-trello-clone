@@ -3,16 +3,11 @@ import { useParams } from "react-router-dom";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
-
-import {
-  BoardWithTasksListsDto,
-  BoardWithTasksListsViewModel,
-  mapBoardWithTasksListsDtoToViewModel,
-} from "App/entities/Board/BoardWithTasksLists";
-
 import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import { getBoard as getBoardFromApi } from "App/api/Board";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
+import { BoardWithTasksListsDto, BoardWithTasksListsViewModel } from "App/entities/Board/models";
+import { mapBoardWithTasksListsDtoToViewModel } from "App/entities/Board/mappers";
 
 export const BoardPage = () => {
   const { id } = useParams();

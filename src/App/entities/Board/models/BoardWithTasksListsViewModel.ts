@@ -1,4 +1,4 @@
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { TasksListViewModel } from "App/entities/TasksList/models";
 
 export class BoardWithTasksListsViewModel {
   public id = "";

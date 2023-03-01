@@ -1,4 +1,3 @@
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { TasksListCard } from "../tasks-lists/TasksListCard/TasksListCard";
@@ -6,6 +5,7 @@ import { TaskCard } from "../tasks/TaskCard/TaskCard";
 import { BoardCard } from "../boards/BoardCard/BoardCard";
 import { BoardViewModel } from "App/entities/Board/models";
 import { TaskViewModel } from "App/entities/Task/models";
+import { TasksListViewModel } from "App/entities/TasksList/models";
 
 interface DraggedItemProps {
   item: AppDraggedItem;

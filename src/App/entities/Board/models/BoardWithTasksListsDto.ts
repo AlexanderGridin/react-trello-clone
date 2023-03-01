@@ -1,4 +1,4 @@
-import { TasksListDto } from "App/entities/TasksList/TasksListDto";
+import { TasksListDto } from "App/entities/TasksList/models";
 
 export interface BoardWithTasksListsDto {
   _id: string;

@@ -1,4 +1,4 @@
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { TasksListViewModel } from "App/entities/TasksList/models";
 import { AppState } from "App/state/models/AppState";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
 import { TaskViewModel } from "../../models";

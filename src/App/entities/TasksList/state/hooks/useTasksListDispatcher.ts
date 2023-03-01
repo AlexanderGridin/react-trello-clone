@@ -1,7 +1,7 @@
 import { TaskViewModel } from "App/entities/Task/models";
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { useAppState } from "App/state/hooks/useAppState";
 import { TasksListAction } from "..";
+import { TasksListViewModel } from "../../models";
 import { createAddTasksListAction } from "../action-creators/createAddTasksListAction";
 import { createMoveTasksListAction } from "../action-creators/createMoveTasksListAction";
 import { createPushTaskInTasksListAction } from "../action-creators/createPushTaskInTasksListAction";

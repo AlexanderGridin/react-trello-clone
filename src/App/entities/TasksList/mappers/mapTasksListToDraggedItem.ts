@@ -1,6 +1,6 @@
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 import { DraggedItemType } from "App/enums/DraggedItemType";
+import { TasksListViewModel } from "../models";
 
 export const mapTasksListToDraggedItem = (list: TasksListViewModel): AppDraggedItem => ({
   id: list.id,

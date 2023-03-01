@@ -1,4 +1,4 @@
-import { TaskDto } from "../Task/models";
+import { TaskDto } from "App/entities/Task/models";
 
 export interface TasksListDto {
   _id: string;

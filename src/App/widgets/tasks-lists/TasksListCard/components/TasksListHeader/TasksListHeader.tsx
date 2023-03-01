@@ -1,7 +1,7 @@
 import { EditButton } from "App/components/buttons/EditButton/EditButton";
 import { PinButton } from "App/components/buttons/PinButton/PinButton";
 import { RemoveButton } from "App/components/buttons/RemoveButton/RemoveButton";
-import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
+import { TasksListViewModel } from "App/entities/TasksList/models";
 import style from "./TasksListHeader.module.css";
 
 interface TasksListHeaderProps {

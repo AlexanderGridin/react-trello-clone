@@ -1,5 +1,5 @@
-import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers/mapTasksListDtoToViewModel";
-import { TasksListDto } from "App/entities/TasksList/TasksListDto";
+import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers";
+import { TasksListDto } from "App/entities/TasksList/models";
 import { BoardWithTasksListsDto, BoardWithTasksListsViewModel } from "../models";
 import { parseTasksLists } from "../utils/parseTasksLists";
 

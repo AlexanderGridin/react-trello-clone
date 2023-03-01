@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddTaskButton } from "./components/AddTaskButton";
 import { addTask as addTaskOnApi } from "App/api/Task";
-import { mapTaskDtoToViewModel } from "App/entities/Task/mappers/mapTaskDtoToViewModel";
+import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { TaskForm, TaskFormValue } from "../TaskForm/TaskForm";
 import { TaskViewModel } from "App/entities/Task/models";
 

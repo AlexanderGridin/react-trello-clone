@@ -4,10 +4,10 @@ import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
 import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import style from "./BoardsPage.module.css";
-import { mapBoardDtoToViewModel } from "App/entities/Board/Board";
 import { getAllBoards, getFavoriteBoards } from "App/api/Boards";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsList";
 import { Switch } from "shared/components/Switch/Switch";
+import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";
 
 export const BoardsPage = () => {
   const { boards, isShowFavorites } = useAppState();

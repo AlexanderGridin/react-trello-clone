@@ -1,4 +1,4 @@
-import { BoardWithTasksListsDto } from "App/entities/Board/BoardWithTasksLists";
+import { BoardWithTasksListsDto } from "App/entities/Board/models";
 import { httpClient } from "../httpClient";
 import { routes } from "./routes";
 

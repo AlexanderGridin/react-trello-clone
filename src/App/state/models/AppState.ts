@@ -1,6 +1,6 @@
 import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
-import { BoardViewModel } from "App/entities/Board/Board";
-import { BoardWithTasksListsViewModel } from "App/entities/Board/BoardWithTasksLists";
+import { BoardViewModel } from "App/entities/Board/models";
+import { BoardWithTasksListsViewModel } from "App/entities/Board/models";
 import { UserViewModel } from "App/entities/User/UserViewModel";
 
 export class AppState {

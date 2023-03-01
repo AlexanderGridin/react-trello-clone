@@ -4,7 +4,7 @@ import { TaskViewModel } from "App/entities/Task/TaskViewModel";
 import { TasksListViewModel } from "App/entities/TasksList/TasksListViewModel";
 
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { BoardViewModel } from "../Board/Board";
+import { BoardViewModel } from "../Board/models";
 
 export type AppDraggedItem =
   | DraggedItem<DraggedItemType.TasksList, TasksListViewModel>

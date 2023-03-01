@@ -1,11 +1,11 @@
-import { BoardViewModel, mapBoardDtoToViewModel } from "App/entities/Board/Board";
-
 import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddBoardButton } from "./components/AddBoardButton";
 import { addBoard as addBoardToApi } from "App/api/Board";
 import { useAppState } from "App/state/hooks/useAppState";
 import { BoardForm, BoardFormValue } from "../BoardForm/BoardForm";
+import { BoardViewModel } from "App/entities/Board/models";
+import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";
 
 export interface AddBoardProps {
   onAdd: (board: BoardViewModel) => void;

@@ -1,4 +1,4 @@
-import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { BoardViewModel } from "App/entities/Board/models";
 import { BoardWithTasksListsViewModel } from "App/entities/Board/models";
 import { UserViewModel } from "App/entities/User/models";

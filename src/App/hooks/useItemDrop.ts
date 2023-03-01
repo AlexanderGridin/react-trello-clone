@@ -1,6 +1,6 @@
 import { useDrop } from "react-dnd";
 import { useAppState } from "App/state/hooks/useAppState";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 
 interface DroppableItem {
   onDrop: (draggedItem: AppDraggedItem) => void;

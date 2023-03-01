@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DndCard } from "App/components/DndCard/DndCard";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
 import { mapTaskToDraggedItem, mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
@@ -11,6 +10,7 @@ import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskModal } from "../TaskModal/TaskModal";
 import { TaskPriority } from "App/types/TaskPriority";
 import { TaskViewModel } from "App/entities/Task/models";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 
 interface TaskCardProps {
   task: TaskViewModel;

@@ -1,4 +1,4 @@
-import { AppDraggedItem } from "App/entities/AppDraggedItem/AppDraggedItem";
+import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { TasksListViewModel } from "../models";
 

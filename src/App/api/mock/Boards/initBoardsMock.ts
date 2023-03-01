@@ -3,32 +3,30 @@ import { routes } from "App/api/Boards/routes";
 import { logMockResponse } from "../utils/logMockResponse";
 import { connectToMockDb } from "../mockDb";
 
-const { boards } = connectToMockDb();
+const { boards: boardsDb } = connectToMockDb();
 
 export const initBoardsMock = (adapter: MockAdapter) => {
   adapter.onGet(routes.getAllBoards).reply(() => {
-    const apiUrl = routes.getAllBoards;
-    const response = boards.getAll();
+    const boards = boardsDb.getAll();
 
     logMockResponse({
       method: "GET",
-      url: apiUrl,
-      response,
+      url: routes.getAllBoards,
+      response: boards,
     });
 
-    return [200, response];
+    return [200, boards];
   });
 
   adapter.onGet(routes.getFavoriteBoards).reply(() => {
-    const apiUrl = routes.getFavoriteBoards;
-    const response = boards.getFavorite();
+    const boards = boardsDb.getFavorite();
 
     logMockResponse({
       method: "GET",
-      url: apiUrl,
-      response,
+      url: routes.getFavoriteBoards,
+      response: boards,
     });
 
-    return [200, response];
+    return [200, boards];
   });
 };

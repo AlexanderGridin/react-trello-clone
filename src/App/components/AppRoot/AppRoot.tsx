@@ -4,7 +4,7 @@ import { AppLayout } from "App/components/AppLayout/AppLayout";
 import { useAppState } from "App/state/hooks/useAppState";
 import { Sidebar } from "App/widgets/Sidebar/Sidebar";
 import { useUserDispatcher } from "App/entities/User/state";
-import { getUser } from "App/api/User/getUser";
+import { getUserById } from "App/api/User/getUserById";
 import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
 import { UserViewModel } from "App/entities/User/models";
 
@@ -24,7 +24,7 @@ export const AppRoot = () => {
         return;
       }
 
-      const userDto = await getUser(userId);
+      const userDto = await getUserById(userId);
       if (userDto) {
         userDispatcher.setUser(mapUserDtoToViewModel(userDto));
       }

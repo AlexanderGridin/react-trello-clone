@@ -1,21 +1,25 @@
 import { useState } from "react";
-import { getUser } from "App/api/User/getUser";
+import { AxiosError } from "axios";
+import { login } from "App/api/User/getUser";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
-import { UserViewModel } from "App/entities/User/models";
+import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useUserDispatcher } from "App/entities/User/state";
 import { useAppState } from "App/state/hooks/useAppState";
 import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 import { Button } from "shared/components/Button/Button";
 import { Card } from "shared/components/Card/Card";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { generateId } from "shared/utils/generateId";
 import style from "./IndexPage.module.css";
+import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
+import { Alert } from "shared/components/Alert/Alert";
+import { createUser } from "App/api/User";
 
 export const IndexPage = () => {
   const { user } = useAppState();
   const [isShowSignInForm, setIsShowSignInForm] = useState(false);
   const [isShowCreateUserForm, setIsShowCreateUserForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
   const userDispatcher = useUserDispatcher();
 
   const toggleSignInForm = () => setIsShowSignInForm(!isShowSignInForm);
@@ -23,36 +27,60 @@ export const IndexPage = () => {
 
   const handleUserSignIn = async (formValue: UserSignInFormValue) => {
     setIsLoading(true);
+    setAlertMessage("");
 
-    const user: UserViewModel = {
-      id: generateId(),
-      name: formValue.userName,
-      isLoggedIn: true,
-    };
+    const userDto: UserDto | AxiosError = await login({ name: formValue.userName, password: formValue.password });
 
-    // TODO: here will be GET request for user check
-    await getUser(user.id);
+    if (!userDto) {
+      setIsLoading(false);
+      return;
+    }
+
+    if (userDto instanceof AxiosError) {
+      const errorData = userDto.response?.data as { message: string };
+      setAlertMessage(errorData.message);
+      setIsLoading(false);
+
+      return;
+    }
+
+    const user: UserViewModel = mapUserDtoToViewModel(userDto);
 
     localStorage.setItem("userId", user.id);
     userDispatcher.setUser(user);
 
+    setIsShowSignInForm(false);
     setIsLoading(false);
   };
 
   const handleCreateUser = async (formValue: CreateUserFormValue) => {
     setIsLoading(true);
 
-    const user: UserViewModel = {
-      id: generateId(),
-      name: formValue.userName,
-      isLoggedIn: true,
-    };
+    const userDto = await createUser({ name: formValue.userName, password: formValue.password });
 
-    // TODO: here will be POST request for user creation
-    await getUser(user.id);
+    if (!userDto) {
+      setIsLoading(false);
+      return;
+    }
 
+    if (userDto instanceof AxiosError) {
+      const errorData = userDto.response?.data as { message: string };
+      setAlertMessage(errorData.message);
+      setIsLoading(false);
+
+      return;
+    }
+
+    const user: UserViewModel = mapUserDtoToViewModel(userDto);
     localStorage.setItem("userId", user.id);
     userDispatcher.setUser(user);
+
+    setIsShowCreateUserForm(false);
+    setIsLoading(false);
+  };
+
+  const handleAlertClose = () => {
+    setAlertMessage("");
   };
 
   if (!user) {
@@ -64,7 +92,22 @@ export const IndexPage = () => {
       <AppPageLayout>
         <div className={style.container}>
           <Card className={style.card}>
-            <h1 className={style.title}>Hello {user.name}!</h1>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: "15px",
+              }}
+            >
+              <img
+                style={{ borderRadius: "50%", boxShadow: "0 0 15px rgba(0,0,0,0.3)" }}
+                src={`https://picsum.photos/seed/${user.name}/75`}
+                alt="user avatar"
+              />
+            </div>
+            <h1 className={style.title} style={{ marginBottom: "0" }}>
+              Hello!! {user.name}!
+            </h1>
           </Card>
         </div>
       </AppPageLayout>
@@ -76,6 +119,12 @@ export const IndexPage = () => {
       <div className={style.container}>
         <Card className={style.card} isLoading={isLoading}>
           <h1 className={style.title}>Welcome to the Tasks Manager app! </h1>
+
+          {alertMessage && (
+            <Alert type="error" title="Error" className={style.alert} onClose={handleAlertClose}>
+              {alertMessage}
+            </Alert>
+          )}
 
           {isShowSignInForm && <UserSignInForm onSubmit={handleUserSignIn} onCancel={toggleSignInForm} />}
           {isShowCreateUserForm && <CreateUserForm onCreate={handleCreateUser} onCancel={toggleCreateUserForm} />}

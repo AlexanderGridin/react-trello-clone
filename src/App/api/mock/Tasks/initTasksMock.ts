@@ -4,13 +4,14 @@ import { generateId } from "shared/utils/generateId";
 import { logMockResponse } from "../utils/logMockResponse";
 import { connectToMockDb } from "../mockDb";
 
-const { tasks } = connectToMockDb();
+const { tasks, user: userDb } = connectToMockDb();
 
 export const initTasksMock = (adapter: MockAdapter) => {
   adapter.onPost(routes.addTask).reply((config) => {
     const task = {
       _id: generateId(),
       ...JSON.parse(config.data),
+      user: userDb.get(),
     };
 
     tasks.push(task);
@@ -31,6 +32,7 @@ export const initTasksMock = (adapter: MockAdapter) => {
     const task = {
       ...tasks.getById(id),
       ...body,
+      user: userDb.get(),
     };
 
     tasks.update(task);

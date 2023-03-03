@@ -1,7 +1,7 @@
 import { UserDto } from "App/entities/User/models";
 import { httpClient } from "../httpClient";
 
-export const getUser = async (id: string): Promise<UserDto | null> => {
+export const getUserById = async (id: string): Promise<UserDto | null> => {
   const apiUrl = "/user/{$userId}".replace("{$userId}", id);
 
   try {

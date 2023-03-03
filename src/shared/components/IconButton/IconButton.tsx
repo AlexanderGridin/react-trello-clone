@@ -10,13 +10,13 @@ import { IconButtonTestId } from "./static-data/IconButtonTestId";
 
 const { Icon: IconId, Placeholder: PlaceholderId } = IconButtonTestId;
 
-const Container = styled.button<{ isActive?: boolean; activeColor?: string }>`
+const Container = styled.button<{ isActive?: boolean; color?: string; activeColor?: string }>`
   border: none;
   background: none;
   padding: 0;
   margin: 0;
   font-size: 24px;
-  color: ${({ isActive, activeColor }) => (isActive ? activeColor : "#a5a9b1")};
+  color: ${({ isActive, color, activeColor }) => (isActive ? activeColor : color)};
 
   &:hover {
     color: ${({ activeColor }) => activeColor};
@@ -28,6 +28,7 @@ interface IconButtonProps extends Click, ClassName, TestId {
   icon: MaterialIcon;
   type?: ButtonType;
   isActive?: boolean;
+  color?: string;
   activeColor?: string;
 }
 
@@ -36,6 +37,7 @@ export const IconButton = ({
   type = "button",
   isActive = false,
   className = "",
+  color = "#a5a9b1",
   activeColor = "#5E81AC",
   "data-testid": testId,
   onClick,
@@ -46,6 +48,7 @@ export const IconButton = ({
       type={type}
       isActive={isActive}
       className={`${className}`}
+      color={color}
       activeColor={activeColor}
       onClick={onClick}
     >

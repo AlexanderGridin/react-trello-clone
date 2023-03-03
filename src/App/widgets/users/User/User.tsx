@@ -1,14 +1,20 @@
+import { NavLink } from "react-router-dom";
 import { useUserDispatcher } from "App/entities/User/state";
 import { useAppState } from "App/state/hooks/useAppState";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { IconButton } from "shared/components/IconButton/IconButton";
 import style from "./User.module.css";
+import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
+import { Tooltip } from "shared/components/Tooltip/Tooltip";
 
 export const User = () => {
   const { user } = useAppState();
   const userDispatcher = useUserDispatcher();
+  const boardDispatcher = useBoardDispatcher();
 
   const handleSignOutClick = () => {
+    boardDispatcher.setBoards([]);
+    boardDispatcher.clearBoardsCache();
     localStorage.removeItem("userId");
     userDispatcher.setUser(null);
   };
@@ -24,14 +30,18 @@ export const User = () => {
       </div>
 
       <div className={style.name}>
-        <p>{user.name}</p>
+        <NavLink to="/" className={style.link}>
+          {user.name}
+        </NavLink>
 
-        <IconButton
-          icon={MaterialIcon.Logout}
-          className={style.logout}
-          activeColor="#BF616A"
-          onClick={handleSignOutClick}
-        />
+        <Tooltip content="Sign out">
+          <IconButton
+            icon={MaterialIcon.Logout}
+            className={style.logout}
+            activeColor="#BF616A"
+            onClick={handleSignOutClick}
+          />
+        </Tooltip>
       </div>
     </div>
   );

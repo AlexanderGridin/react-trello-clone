@@ -16,6 +16,7 @@ export class TaskViewModel {
   public content: string;
   public isEditing = false;
   public priority: TaskPriority = "regular";
+  public user!: { id: string; name: string };
 
   constructor({ listId = "", boardId = "", content = "" }: TaskViewModelConfig) {
     this.listId = listId;

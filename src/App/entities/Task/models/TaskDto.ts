@@ -6,4 +6,8 @@ export interface TaskDto {
   listId: string;
   boardId: string;
   priority: TaskPriority;
+  user: {
+    _id: string;
+    name: string;
+  };
 }

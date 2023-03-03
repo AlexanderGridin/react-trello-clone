@@ -11,6 +11,8 @@ import { TaskModal } from "../TaskModal/TaskModal";
 import { TaskPriority } from "App/types/TaskPriority";
 import { TaskViewModel } from "App/entities/Task/models";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { Chip } from "shared/components/Chip/Chip";
+import style from "./TaskCard.module.css";
 
 interface TaskCardProps {
   task: TaskViewModel;
@@ -87,6 +89,7 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
   const content = (
     <>
       <Task task={task} onEdit={editTask} onRemove={removeTask} />
+      <Chip className={style.user}>{task.user.name}</Chip>
       <div
         style={{
           backgroundColor: getTaskPriorityColor(task.priority),

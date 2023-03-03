@@ -10,6 +10,8 @@ import { BoardModal } from "../BoardMoal/BoardModal";
 import { BoardViewModel } from "App/entities/Board/models";
 import { mapBoardDtoToViewModel, mapBoardViewModelToDraggedItem } from "App/entities/Board/mappers";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { Chip } from "shared/components/Chip/Chip";
+import style from "./BoardCard.module.css";
 
 interface BoardCardProps {
   board: BoardViewModel;
@@ -17,12 +19,13 @@ interface BoardCardProps {
 }
 
 const MIN_HEIGHT = 150;
-const BACKGROUD_COLOR = "#D8DEE9";
 
 export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const dispatcher = useBoardDispatcher();
+
+  const BACKGROUD_COLOR = board.isFavorite ? "#ebdcbd" : "#D8DEE9";
 
   const editBoard = (board: BoardViewModel) => dispatcher.updateBoard({ ...board, isEditing: true });
 
@@ -62,6 +65,13 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
 
   const navigateToBoard = () => navigate(`/board/${board.id}`);
 
+  const content = (
+    <>
+      <Board board={board} onEdit={editBoard} onRemove={removeBoard} onFavorite={updateBoard} />
+      <Chip className={style.user}>{board.user.name}</Chip>
+    </>
+  );
+
   if (isDragPreview || isLoading) {
     return (
       <Card
@@ -70,7 +80,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
         minHeight={MIN_HEIGHT}
         backgroundColor={BACKGROUD_COLOR}
       >
-        <Board board={board} onEdit={editBoard} onRemove={removeBoard} onFavorite={updateBoard} />
+        {content}
       </Card>
     );
   }
@@ -84,7 +94,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
         onDrop={dropOnBoard}
         onDoubleClick={navigateToBoard}
       >
-        <Board board={board} onEdit={editBoard} onRemove={removeBoard} onFavorite={updateBoard} />
+        {content}
       </DndCard>
 
       <BoardModal board={board} />

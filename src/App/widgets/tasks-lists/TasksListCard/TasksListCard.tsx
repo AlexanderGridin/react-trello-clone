@@ -20,7 +20,7 @@ export interface TasksListCardProps {
 
 export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const BACKGROUD_COLOR = "#D8DEE9";
+  const BACKGROUD_COLOR = list.isPinned ? "#ebdcbd" : "#D8DEE9";
 
   const dispatcher = useTasksListDispatcher();
   const taskDispatcher = useTaskDispatcher();

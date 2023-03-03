@@ -6,6 +6,7 @@ export const addBoard = async (body: {
   title: string;
   isFavorite: boolean;
   rank: number;
+  user: string;
 }): Promise<BoardDto | null> => {
   const apiUrl = routes.addBoard;
 

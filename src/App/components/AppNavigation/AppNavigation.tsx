@@ -14,8 +14,8 @@ export const AppNavigation = () => {
         <li>
           <NavLink to="/boards" className={getLinkClassName}>
             <FlexContainer>
-              <Icon className="mr" icon={MaterialIcon.Home} />
-              <span> Boards</span>
+              <Icon className="mr" icon={MaterialIcon.Boards} />
+              Boards
             </FlexContainer>
           </NavLink>
         </li>

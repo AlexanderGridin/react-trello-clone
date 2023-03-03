@@ -7,4 +7,8 @@ export const mapTaskDtoToViewModel = (source: TaskDto): TaskViewModel => ({
   listId: source.listId,
   content: source.content,
   priority: source.priority,
+  user: {
+    id: source.user._id,
+    name: source.user.name,
+  },
 });

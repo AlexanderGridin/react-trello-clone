@@ -26,11 +26,13 @@ export const Switch = ({
     onChange(newValue);
   };
 
+  const control = <MuiSwitch data-testid={SwitchTestId.Switch} checked={checked} onChange={change} />;
+
   return (
     <MuiFormControlLabel
       disabled={disabled}
       sx={{ marginLeft: 0, color: isTextDark ? "#000" : "#FFF" }}
-      control={<MuiSwitch data-testid={SwitchTestId.Switch} checked={checked} onChange={change} />}
+      control={control}
       label={label}
     />
   );

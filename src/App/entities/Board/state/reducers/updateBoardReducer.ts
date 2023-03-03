@@ -17,5 +17,13 @@ export const updateBoardReducer = (state: AppState, action: UpdateBoardAction): 
           ...boardToUpdate,
         };
       }) ?? [],
+    boardsCache: {
+      ...state.boardsCache,
+      [boardToUpdate.id]: {
+        ...state.boardsCache[boardToUpdate.id],
+        isFavorite: boardToUpdate.isFavorite,
+        title: boardToUpdate.title,
+      },
+    },
   };
 };

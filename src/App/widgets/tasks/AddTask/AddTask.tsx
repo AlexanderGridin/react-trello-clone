@@ -5,6 +5,7 @@ import { addTask as addTaskOnApi } from "App/api/Task";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { TaskForm, TaskFormValue } from "../TaskForm/TaskForm";
 import { TaskViewModel } from "App/entities/Task/models";
+import { useAppState } from "App/state/hooks/useAppState";
 
 export interface AddTaskProps {
   listId: string;
@@ -18,6 +19,7 @@ interface AddTaskState {
 }
 
 export const AddTask = ({ listId, boardId, onAdd }: AddTaskProps) => {
+  const { user } = useAppState();
   const initialState: AddTaskState = { isShowForm: false, isLoading: false };
   const [state, dispatch] = useReducer(
     (state: AddTaskState, payload: Partial<AddTaskState>) => ({
@@ -38,6 +40,7 @@ export const AddTask = ({ listId, boardId, onAdd }: AddTaskProps) => {
       content: formValue.title,
       listId,
       boardId,
+      user: user?.id as string,
     });
 
     if (taskDto) {

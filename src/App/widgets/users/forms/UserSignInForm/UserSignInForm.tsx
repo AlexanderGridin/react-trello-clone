@@ -43,7 +43,7 @@ export const UserSignInForm = ({ onSubmit, onCancel }: UserSignInFormProps) => {
   return (
     <FormContainer>
       <div className="form-row">
-        <TextInput placeholder="User name" onChange={handleUserNameChange} />
+        <TextInput placeholder="User name" isAutoFocus onChange={handleUserNameChange} />
       </div>
 
       <div className="form-row">

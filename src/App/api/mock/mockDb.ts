@@ -1,10 +1,15 @@
 // TODO: add types
-const db: { boards: any[] } = {
+const db: { boards: any[]; user: any | null } = {
   boards: [],
+  user: null,
 };
 
 export const connectToMockDb = () => {
   return {
+    user: {
+      get: () => db.user,
+      set: (user: any) => (db.user = user),
+    },
     boards: {
       getAll: () => db.boards,
       getFavorite: () => db.boards.filter(({ isFavorite }: any) => isFavorite),

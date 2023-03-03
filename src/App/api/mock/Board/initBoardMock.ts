@@ -4,7 +4,7 @@ import { logMockResponse } from "../utils/logMockResponse";
 import { generateId } from "shared/utils/generateId";
 import { connectToMockDb } from "../mockDb";
 
-const { boards } = connectToMockDb();
+const { boards, user: userDb } = connectToMockDb();
 
 export const initBoardMock = (adapter: MockAdapter) => {
   adapter.onGet(/\/board\//).reply((config) => {
@@ -24,6 +24,7 @@ export const initBoardMock = (adapter: MockAdapter) => {
     const board = {
       _id: generateId(),
       ...JSON.parse(config.data),
+      user: userDb.get(),
     };
 
     boards.push(board);
@@ -39,7 +40,7 @@ export const initBoardMock = (adapter: MockAdapter) => {
 
   adapter.onPut(/\/board\//).reply((config) => {
     const id = config.url?.split("/")?.[2] ?? generateId();
-    const board = { ...boards.getById(id), ...JSON.parse(config.data) };
+    const board = { ...boards.getById(id), ...JSON.parse(config.data), user: userDb.get() };
 
     boards.update(board);
 

@@ -11,5 +11,6 @@ export enum MaterialIcon {
   Logout = "logout",
   Login = "login",
   AddUser = "person_add",
+  Boards = "grid_view",
   None = "none",
 }

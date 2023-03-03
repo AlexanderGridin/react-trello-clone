@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
-import { login } from "App/api/User/getUser";
+import { login } from "App/api/User";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useUserDispatcher } from "App/entities/User/state";

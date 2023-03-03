@@ -4,7 +4,7 @@ import { AppLayout } from "App/components/AppLayout/AppLayout";
 import { useAppState } from "App/state/hooks/useAppState";
 import { Sidebar } from "App/widgets/Sidebar/Sidebar";
 import { useUserDispatcher } from "App/entities/User/state";
-import { getUserById } from "App/api/User/getUserById";
+import { getUserById } from "App/api/User";
 import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
 import { UserViewModel } from "App/entities/User/models";
 

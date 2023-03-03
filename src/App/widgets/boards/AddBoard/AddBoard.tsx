@@ -12,6 +12,7 @@ export interface AddBoardProps {
 }
 
 export const AddBoard = ({ onAdd }: AddBoardProps) => {
+  const { user } = useAppState();
   const [isShowForm, setIsShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { boards } = useAppState();
@@ -25,6 +26,7 @@ export const AddBoard = ({ onAdd }: AddBoardProps) => {
     const boardDto = await addBoardToApi({
       ...formValue,
       rank: (boards?.length ?? -1) + 1,
+      user: user?.id as string,
     });
 
     if (boardDto) {

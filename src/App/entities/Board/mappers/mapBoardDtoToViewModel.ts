@@ -6,4 +6,8 @@ export const mapBoardDtoToViewModel = (source: BoardDto): BoardViewModel => ({
   title: source.title,
   isFavorite: source.isFavorite,
   rank: source.rank,
+  user: {
+    id: source.user._id,
+    name: source.user.name,
+  },
 });

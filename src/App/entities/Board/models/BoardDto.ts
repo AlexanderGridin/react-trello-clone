@@ -3,4 +3,8 @@ export interface BoardDto {
   title: string;
   isFavorite: boolean;
   rank: number;
+  user: {
+    _id: string;
+    name: string;
+  };
 }

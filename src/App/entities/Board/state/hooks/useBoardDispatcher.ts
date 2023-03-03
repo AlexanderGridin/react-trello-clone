@@ -3,6 +3,7 @@ import { BoardAction } from "..";
 import { BoardViewModel, BoardWithTasksListsViewModel } from "../../models";
 import { createAddBoardAction } from "../action-creators/createAddBoardAction";
 import { createCacheBoardAction } from "../action-creators/createCacheBoardAction";
+import { createClearBoardsCacheAction } from "../action-creators/createClearBoardsCacheAction";
 import { createMoveBoardAction } from "../action-creators/createMoveBoardAction";
 import { createRemoveBoardAction } from "../action-creators/createRemoveBoardAction";
 import { createSetBoardsAction } from "../action-creators/createSetBoardsAction";
@@ -23,6 +24,7 @@ export const useBoardDispatcher = () => {
   const updateBoard = (board: BoardViewModel) => dispatchForModule(createUpdateBoardAction(board));
   const setBoards = (boards: BoardViewModel[] | null) => dispatchForModule(createSetBoardsAction(boards));
   const cacheBoard = (board: BoardWithTasksListsViewModel) => dispatchForModule(createCacheBoardAction(board));
+  const clearBoardsCache = () => dispatchForModule(createClearBoardsCacheAction());
 
   const moveBoard = (boardToMove: BoardViewModel, boardToReplace: BoardViewModel) =>
     dispatchForModule(createMoveBoardAction(boardToMove, boardToReplace));
@@ -37,6 +39,7 @@ export const useBoardDispatcher = () => {
     updateBoard,
     setBoards,
     cacheBoard,
+    clearBoardsCache,
     setIsShowFavorites,
   };
 };

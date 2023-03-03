@@ -1,15 +1,16 @@
-import { AppAction } from "App/state/models/AppAction";
 import { AppState } from "App/state/models/AppState";
+import { BoardAction } from ".";
 import { BoardActionType } from "./BoardActionType.enum";
 import { addBoardReducer } from "./reducers/addBoardReducer";
 import { cacheBoardReducer } from "./reducers/cacheBoardReducer";
+import { clearBoardsCacheReducer } from "./reducers/clearBoardsCacheReducer";
 import { moveBoardReducer } from "./reducers/moveBoardReducer";
 import { removeBoardReducer } from "./reducers/removeBoardReducer";
 import { setBoardsReducer } from "./reducers/setBoardsReducer";
 import { setIsShowFavoritesReducer } from "./reducers/setIsShowFavoritesReducer";
 import { updateBoardReducer } from "./reducers/updateBoardReducer";
 
-export const boardReducer = (state: AppState, action: AppAction): AppState => {
+export const boardReducer = (state: AppState, action: BoardAction): AppState => {
   switch (action.type) {
     case BoardActionType.AddBoard:
       return addBoardReducer(state, action);
@@ -25,6 +26,9 @@ export const boardReducer = (state: AppState, action: AppAction): AppState => {
 
     case BoardActionType.SetBoards:
       return setBoardsReducer(state, action);
+
+    case BoardActionType.ClearBoardsCache:
+      return clearBoardsCacheReducer(state);
 
     case BoardActionType.CacheBoard:
       return cacheBoardReducer(state, action);

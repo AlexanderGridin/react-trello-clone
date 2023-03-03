@@ -5,12 +5,14 @@ import { RemoveBoardAction } from "App/entities/Board/state/action-creators/crea
 import { SetBoardsAction } from "App/entities/Board/state/action-creators/createSetBoardsAction";
 import { SetIsShowFavoritesAction } from "App/entities/Board/state/action-creators/createSetIsShowFavoritesAction";
 import { UpdateBoardAction } from "App/entities/Board/state/action-creators/createUpdateBoardAction";
+import { ClearBoardsCacheAction } from "./action-creators/createClearBoardsCacheAction";
 
 export * from "./hooks/useBoardDispatcher";
 export * from "./boardReducer";
 
 export type BoardAction =
   | CacheBoardAction
+  | ClearBoardsCacheAction
   | AddBoardAction
   | UpdateBoardAction
   | RemoveBoardAction

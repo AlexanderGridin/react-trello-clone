@@ -4,6 +4,11 @@ import { RemoveBoardAction } from "../action-creators/createRemoveBoardAction";
 
 export const removeBoardReducer = (state: AppState, action: RemoveBoardAction): AppState => {
   const boardToRemove = action.payload.board;
+  const boardsCache = { ...state.boardsCache };
+
+  if (boardsCache[boardToRemove.id]) {
+    delete boardsCache[boardToRemove.id];
+  }
 
   return {
     ...state,
@@ -12,5 +17,6 @@ export const removeBoardReducer = (state: AppState, action: RemoveBoardAction): 
       item: boardToRemove,
       uniqueKey: "id",
     }),
+    boardsCache,
   };
 };

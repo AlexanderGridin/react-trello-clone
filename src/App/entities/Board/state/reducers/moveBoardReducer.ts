@@ -25,5 +25,11 @@ export const moveBoardReducer = (state: AppState, action: MoveBoardAction): AppS
       ? moveItemAfterArrayItem(movingConfig)
       : moveItemBeforeArrayItem(movingConfig);
 
-  return { ...state, boards: updatedBoards };
+  return {
+    ...state,
+    boards: updatedBoards.map((board, index) => ({
+      ...board,
+      rank: index + 1,
+    })),
+  };
 };

@@ -1,4 +1,5 @@
 export class Cache<D> {
+  //TODO: replace with Map
   private readonly _data: Record<string, D> = {};
 
   public add = (key: string, value: D) => {

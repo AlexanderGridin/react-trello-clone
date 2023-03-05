@@ -12,6 +12,8 @@ import { mapBoardDtoToViewModel, mapBoardViewModelToDraggedItem } from "App/enti
 import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import style from "./BoardCard.module.css";
+import { saveBoardsDropResults } from "App/api/Boards";
+import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 
 interface BoardCardProps {
   board: BoardViewModel;
@@ -24,6 +26,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const dispatcher = useBoardDispatcher();
+  const draggetItemDispatcher = useAppDraggedItemDispatcher();
 
   const BACKGROUD_COLOR = board.isFavorite ? "#ebdcbd" : "#D8DEE9";
 
@@ -59,8 +62,22 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
       return;
     }
 
-    const draggedBoard = draggedItem.data;
-    dispatcher.moveBoard(draggedBoard, board);
+    draggetItemDispatcher.setAppDraggedItem({
+      ...draggedItem,
+      data: {
+        ...draggedItem.data,
+        rank: board.rank,
+      },
+    });
+
+    const draggedBoard = { ...draggedItem.data, rank: board.rank };
+    const targetBoard = { ...board, rank: draggedItem.data.rank };
+
+    dispatcher.moveBoard(draggedBoard, targetBoard);
+
+    saveBoardsDropResults({
+      boards: [draggedBoard, targetBoard],
+    });
   };
 
   const navigateToBoard = () => navigate(`/board/${board.id}`);

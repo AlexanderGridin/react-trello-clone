@@ -1,6 +1,7 @@
 import { useDrop } from "react-dnd";
 import { useAppState } from "App/state/hooks/useAppState";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { throttle } from "throttle-debounce";
 
 interface DroppableItem {
   onDrop: (draggedItem: AppDraggedItem) => void;
@@ -13,15 +14,19 @@ export const useItemDrop = (item: Item) => {
 
   const [, drop] = useDrop({
     accept: item.acceptType,
-    hover: () => {
-      const isDrop = draggedItem && draggedItem.id !== item.id;
+    hover: throttle(
+      100,
+      () => {
+        const isDrop = draggedItem && draggedItem.id !== item.id;
 
-      if (!isDrop) {
-        return;
-      }
+        if (!isDrop) {
+          return;
+        }
 
-      item.onDrop(draggedItem);
-    },
+        item.onDrop(draggedItem);
+      },
+      { noTrailing: true }
+    ),
   });
 
   return { drop };

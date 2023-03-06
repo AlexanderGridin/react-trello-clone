@@ -1,8 +1,9 @@
 import { BoardDto } from "App/entities/Board/models";
-import { httpClient } from "../httpClient";
-import { getRequestParams } from "../utils/getRequestParams";
+import { BoardUpdateManyDto } from "App/entities/Board/models";
+import { httpClient } from "App/api/httpClient";
+import { getRequestParams } from "App/api/utils/getRequestParams";
 
-export const updateMany = async (body: { id: string; rank: number }[]): Promise<BoardDto[]> => {
+export const updateMany = async (body: BoardUpdateManyDto[]): Promise<BoardDto[]> => {
   const apiUrl = "/board/updateMany";
 
   try {

@@ -14,7 +14,7 @@ import { Chip } from "shared/components/Chip/Chip";
 import style from "./BoardCard.module.css";
 import { debouncedUpdateMany } from "App/api/Boards";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
-import { mapBoardViewModelToUpdateManyDto } from "App/entities/Board/mappers/mapBoardViewModelToUpdateManyDto";
+import { mapBoardViewModelToUpdateManyDto } from "App/entities/Board/mappers";
 
 interface BoardCardProps {
   board: BoardViewModel;

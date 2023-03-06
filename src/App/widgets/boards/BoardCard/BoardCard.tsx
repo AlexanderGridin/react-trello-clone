@@ -12,7 +12,7 @@ import { mapBoardDtoToViewModel, mapBoardViewModelToDraggedItem } from "App/enti
 import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import style from "./BoardCard.module.css";
-import { saveBoardsDropResults } from "App/api/Boards";
+import { debouncedUpdateMany } from "App/api/Boards";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 
 interface BoardCardProps {
@@ -75,8 +75,13 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
 
     dispatcher.moveBoard(draggedBoard, targetBoard);
 
-    saveBoardsDropResults({
-      boards: [draggedBoard, targetBoard],
+    const requestBody = [draggedBoard, targetBoard].map(({ id, rank }: BoardViewModel) => ({
+      id,
+      rank,
+    }));
+
+    debouncedUpdateMany({
+      body: requestBody,
     });
   };
 

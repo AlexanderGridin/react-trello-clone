@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Modal } from "shared/components/Modal/Modal";
 import { useTasksListDispatcher } from "App/entities/TasksList/state";
-import { TasksListForm, TasksListFormValue } from "../TasksListForm/TasksListForm";
+import { TasksListForm } from "../TasksListForm/TasksListForm";
 import { updateTasksList as updateTasksListOnApi } from "App/api/TasksList/services";
 import { mapTasksListDtoToViewModel, mapTasksListViewModelToFormValue } from "App/entities/TasksList/mappers";
 import { TasksListViewModel } from "App/entities/TasksList/models";
+import { TasksListFormValue } from "../TasksListForm/models";
 
 interface TasksListModalProps {
   list: TasksListViewModel;

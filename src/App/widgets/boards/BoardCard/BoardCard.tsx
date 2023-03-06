@@ -14,6 +14,7 @@ import { Chip } from "shared/components/Chip/Chip";
 import style from "./BoardCard.module.css";
 import { debouncedUpdateMany } from "App/api/Boards";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
+import { mapBoardViewModelToUpdateManyDto } from "App/entities/Board/mappers/mapBoardViewModelToUpdateManyDto";
 
 interface BoardCardProps {
   board: BoardViewModel;
@@ -75,10 +76,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
 
     dispatcher.moveBoard(draggedBoard, targetBoard);
 
-    const requestBody = [draggedBoard, targetBoard].map(({ id, rank }: BoardViewModel) => ({
-      id,
-      rank,
-    }));
+    const requestBody = [draggedBoard, targetBoard].map(mapBoardViewModelToUpdateManyDto);
 
     debouncedUpdateMany({
       body: requestBody,

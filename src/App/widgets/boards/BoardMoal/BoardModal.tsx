@@ -2,7 +2,7 @@ import { useBoardDispatcher } from "App/entities/Board/state";
 import { useState } from "react";
 import { Modal } from "shared/components/Modal/Modal";
 import { BoardForm, BoardFormValue } from "../BoardForm/BoardForm";
-import { updateBoard as updateBoardOnApi } from "App/api/Board";
+import { updateBoard as updateBoardOnApi } from "App/api/Boards/services";
 import { BoardViewModel } from "App/entities/Board/models";
 import { mapBoardDtoToViewModel, mapBoardViewModelToBoardFormValue } from "App/entities/Board/mappers";
 

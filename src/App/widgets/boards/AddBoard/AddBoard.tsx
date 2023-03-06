@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddBoardButton } from "./components/AddBoardButton";
-import { addBoard as addBoardToApi } from "App/api/Boards";
+import { addBoard as addBoardToApi } from "App/api/Boards/services";
 import { useAppState } from "App/state/hooks/useAppState";
 import { BoardForm, BoardFormValue } from "../BoardForm/BoardForm";
 import { BoardViewModel } from "App/entities/Board/models";

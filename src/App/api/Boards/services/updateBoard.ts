@@ -1,6 +1,6 @@
+import { httpClient } from "App/api/httpClient";
 import { BoardDto } from "App/entities/Board/models";
-import { httpClient } from "../httpClient";
-import { routes } from "./routes";
+import { routes } from "../routes";
 
 export const updateBoard = async (
   id: string,

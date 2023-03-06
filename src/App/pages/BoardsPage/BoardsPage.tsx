@@ -4,7 +4,7 @@ import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { useAppState } from "App/state/hooks/useAppState";
 import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import style from "./BoardsPage.module.css";
-import { getAllBoards, getFavoriteBoards } from "App/api/Boards";
+import { getAllBoards, getFavoriteBoards } from "App/api/Boards/services";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsList";
 import { Switch } from "shared/components/Switch/Switch";
 import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";

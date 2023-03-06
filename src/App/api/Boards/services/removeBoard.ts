@@ -1,6 +1,6 @@
+import { httpClient } from "App/api/httpClient";
 import { BoardDto } from "App/entities/Board/models";
-import { httpClient } from "../httpClient";
-import { routes } from "./routes";
+import { routes } from "../routes";
 
 export const removeBoard = async (id: string): Promise<BoardDto | null> => {
   const apiUrl = routes.removeBoard.replace("{$boardId}", id);

@@ -4,7 +4,13 @@ import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
 import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { removeBoard as removeBoardFromApi, updateBoard as updateBoardOnApi } from "App/api/Board";
+
+import {
+  removeBoard as removeBoardFromApi,
+  updateBoard as updateBoardOnApi,
+  debouncedUpdateMany,
+} from "App/api/Boards/services";
+
 import { Board } from "../Board/Board";
 import { BoardModal } from "../BoardMoal/BoardModal";
 import { BoardViewModel } from "App/entities/Board/models";
@@ -12,7 +18,6 @@ import { mapBoardDtoToViewModel, mapBoardViewModelToDraggedItem } from "App/enti
 import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import style from "./BoardCard.module.css";
-import { debouncedUpdateMany } from "App/api/Boards";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { mapBoardViewModelToUpdateManyDto } from "App/entities/Board/mappers";
 

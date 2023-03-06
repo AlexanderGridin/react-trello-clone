@@ -1,6 +1,6 @@
+import { httpClient } from "App/api/httpClient";
 import { BoardWithTasksListsDto } from "App/entities/Board/models";
-import { httpClient } from "../httpClient";
-import { routes } from "./routes";
+import { routes } from "../routes";
 
 export const getBoard = async (id: string): Promise<BoardWithTasksListsDto | null> => {
   const apiUrl = routes.getBoard.replace("{$boardId}", id);

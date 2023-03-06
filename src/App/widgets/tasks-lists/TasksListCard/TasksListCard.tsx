@@ -4,7 +4,12 @@ import { mapTasksListToDraggedItem, mapTasksListDtoToViewModel } from "App/entit
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
-import { removeTasksList as removeTasksListFromApi, updateTasksList as updateTasksListOnApi } from "App/api/TasksList";
+
+import {
+  removeTasksList as removeTasksListFromApi,
+  updateTasksList as updateTasksListOnApi,
+} from "App/api/TasksList/services";
+
 import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
 import { useTaskDispatcher } from "App/entities/Task/state";
 import { useTasksListDispatcher } from "App/entities/TasksList/state";

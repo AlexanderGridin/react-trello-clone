@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addTasksList as addTasksListOnApi } from "App/api/TasksList";
+import { addTasksList as addTasksListOnApi } from "App/api/TasksList/services";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers";
 import { Card } from "shared/components/Card/Card";
 import { AddListButton } from "./components/AddListButton";

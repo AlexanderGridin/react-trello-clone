@@ -4,7 +4,7 @@ import { useTaskDispatcher } from "App/entities/Task/state";
 import { TaskForm, TaskFormValue } from "../TaskForm/TaskForm";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { mapTaskViewModelToFormValue } from "App/entities/Task/mappers";
-import { updateTask as updateTaskOnApi } from "App/api/Task/updateTask";
+import { updateTask as updateTaskOnApi } from "App/api/Task/services";
 import { TaskViewModel } from "App/entities/Task/models";
 
 interface TaskModalProps {

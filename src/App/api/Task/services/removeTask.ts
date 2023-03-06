@@ -1,6 +1,6 @@
+import { httpClient } from "App/api/httpClient";
 import { TaskDto } from "App/entities/Task/models";
-import { httpClient } from "../httpClient";
-import { routes } from "./routes";
+import { routes } from "../routes";
 
 export const removeTask = async (id: string): Promise<TaskDto | null> => {
   const apiUrl = routes.removeTask.replace("{$taskId}", id);

@@ -3,7 +3,7 @@ import { DndCard } from "App/components/DndCard/DndCard";
 import { mapTaskToDraggedItem, mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
-import { removeTask as removeTaskFromApi } from "App/api/Task";
+import { removeTask as removeTaskFromApi } from "App/api/Task/services";
 import { Task } from "../Task/Task";
 import { useTaskDispatcher } from "App/entities/Task/state";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { addTasksList as addTasksListOnApi } from "App/api/TasksList";
+import { addTasksList as addTasksListOnApi } from "App/api/TasksList/services";
 import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers";
 import { Card } from "shared/components/Card/Card";
 import { AddListButton } from "./components/AddListButton";
-import { TasksListForm, TasksListFormValue } from "../TasksListForm/TasksListForm";
+import { TasksListForm } from "../TasksListForm/TasksListForm";
 import { TasksListViewModel } from "App/entities/TasksList/models";
+import { TasksListFormValue } from "../TasksListForm/models";
 
 export interface AddTasksListProps {
   boardId: string;

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddBoardButton } from "./components/AddBoardButton";
-import { addBoard as addBoardToApi } from "App/api/Board";
+import { addBoard as addBoardToApi } from "App/api/Boards/services";
 import { useAppState } from "App/state/hooks/useAppState";
-import { BoardForm, BoardFormValue } from "../BoardForm/BoardForm";
+import { BoardForm } from "../BoardForm/BoardForm";
 import { BoardViewModel } from "App/entities/Board/models";
 import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";
+import { BoardFormValue } from "../BoardForm/models";
 
 export interface AddBoardProps {
   onAdd: (board: BoardViewModel) => void;
@@ -25,7 +26,7 @@ export const AddBoard = ({ onAdd }: AddBoardProps) => {
 
     const boardDto = await addBoardToApi({
       ...formValue,
-      rank: (boards?.length ?? -1) + 1,
+      rank: (boards?.length ?? 0) + 1,
       user: user?.id as string,
     });
 

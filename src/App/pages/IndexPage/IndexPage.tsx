@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
-import { login } from "App/api/User";
+import { login, createUser } from "App/api/User/services";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useUserDispatcher } from "App/entities/User/state";
@@ -12,7 +12,6 @@ import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import style from "./IndexPage.module.css";
 import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
 import { Alert } from "shared/components/Alert/Alert";
-import { createUser } from "App/api/User";
 
 export const IndexPage = () => {
   const { user } = useAppState();

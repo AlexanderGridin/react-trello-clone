@@ -1,11 +1,12 @@
 import { useReducer } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddTaskButton } from "./components/AddTaskButton";
-import { addTask as addTaskOnApi } from "App/api/Task";
+import { addTask as addTaskOnApi } from "App/api/Task/services";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
-import { TaskForm, TaskFormValue } from "../TaskForm/TaskForm";
+import { TaskForm } from "../TaskForm/TaskForm";
 import { TaskViewModel } from "App/entities/Task/models";
 import { useAppState } from "App/state/hooks/useAppState";
+import { TaskFormValue } from "../TaskForm/models";
 
 export interface AddTaskProps {
   listId: string;

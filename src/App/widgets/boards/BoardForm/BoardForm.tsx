@@ -3,13 +3,9 @@ import { FormContainer } from "shared/components/Form/FormContainer";
 import { TextInput } from "shared/components/Form/inputs";
 import { Checkbox } from "shared/components/Form/Checkbox";
 import { FormFooter } from "shared/components/Form/FormFooter";
+import { BoardFormValue } from "./models/BoardFormValue";
 
 type FormEventType = FormEvent<HTMLFormElement>;
-
-export class BoardFormValue {
-  public title = "";
-  public isFavorite = false;
-}
 
 export interface BoardFormProps {
   entity?: BoardFormValue;

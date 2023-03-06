@@ -14,12 +14,18 @@ import {
 import { Board } from "../Board/Board";
 import { BoardModal } from "../BoardMoal/BoardModal";
 import { BoardViewModel } from "App/entities/Board/models";
-import { mapBoardDtoToViewModel, mapBoardViewModelToDraggedItem } from "App/entities/Board/mappers";
+
+import {
+  mapBoardDtoToViewModel,
+  mapBoardViewModelToDraggedItem,
+  mapBoardViewModelToUpdateDto,
+} from "App/entities/Board/mappers";
+
 import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
-import style from "./BoardCard.module.css";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { mapBoardViewModelToUpdateManyDto } from "App/entities/Board/mappers";
+import style from "./BoardCard.module.css";
 
 interface BoardCardProps {
   board: BoardViewModel;
@@ -52,9 +58,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
   const updateBoard = async (board: BoardViewModel) => {
     setIsLoading(true);
 
-    const boardDto = await updateBoardOnApi(board.id, {
-      isFavorite: board.isFavorite,
-    });
+    const boardDto = await updateBoardOnApi(board.id, mapBoardViewModelToUpdateDto(board));
 
     if (boardDto) {
       dispatcher.updateBoard(mapBoardDtoToViewModel(boardDto));

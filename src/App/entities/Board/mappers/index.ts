@@ -1,5 +1,8 @@
 export * from "./mapBoardDtoToViewModel";
+
+export * from "./mapBoardViewModelToUpdateDto";
+export * from "./mapBoardViewModelToFormValue";
 export * from "./mapBoardViewModelToDraggedItem";
-export * from "./mapBoardWithTasksListsDtoToViewModel";
-export * from "./mapBoardViewModelToBoardFormValue";
 export * from "./mapBoardViewModelToUpdateManyDto";
+
+export * from "./mapBoardWithTasksListsDtoToViewModel";

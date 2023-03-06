@@ -1,17 +1,13 @@
+import { FormEvent, useReducer } from "react";
 import { prioritySelectDataItems } from "App/static-data/prioritySelectDataItems";
 import { TaskPriority } from "App/types/TaskPriority";
-import { FormEvent, useReducer } from "react";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { FormFooter } from "shared/components/Form/FormFooter";
 import { TextInput } from "shared/components/Form/inputs";
 import { Select } from "shared/components/Form/Select/Select";
+import { TaskFormValue } from "./models";
 
 type FormEventType = FormEvent<HTMLFormElement>;
-
-export class TaskFormValue {
-  public title = "";
-  public priority: TaskPriority = "regular";
-}
 
 export interface TaskFormProps {
   entity?: TaskFormValue;
@@ -30,8 +26,8 @@ export const TaskForm = ({ entity, onSubmit, onCancel }: TaskFormProps) => {
     initialFormValue
   );
 
-  const changeTitle = (title: string) => dispatch({ title });
-  const changePriority = (value: string) => dispatch({ priority: value as TaskPriority });
+  const handleTitleChange = (title: string) => dispatch({ title });
+  const handlePriorityChange = (value: string) => dispatch({ priority: value as TaskPriority });
 
   const cancel = () => onCancel();
   const add = () => onSubmit(formValue);
@@ -44,11 +40,16 @@ export const TaskForm = ({ entity, onSubmit, onCancel }: TaskFormProps) => {
   return (
     <FormContainer onSubmit={submit}>
       <div className="form-row">
-        <TextInput placeholder="Enter task" value={formValue.title} isAutoFocus onChange={changeTitle} />
+        <TextInput placeholder="Enter task" value={formValue.title} isAutoFocus onChange={handleTitleChange} />
       </div>
 
       <div className="form-row">
-        <Select value={formValue.priority} data={prioritySelectDataItems} onChange={changePriority} label="Priority" />
+        <Select
+          value={formValue.priority}
+          data={prioritySelectDataItems}
+          onChange={handlePriorityChange}
+          label="Priority"
+        />
       </div>
 
       <FormFooter submitText={entity ? "Update task" : "Add task"} onSubmit={add} onCancel={cancel} />

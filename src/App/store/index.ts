@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { boardsReducer } from "App/store/BoardsPage";
-import { userReducer } from "App/entities/User/store";
+import { userReducer } from "App/store/User";
 
 const reducer = combineReducers({
   user: userReducer,

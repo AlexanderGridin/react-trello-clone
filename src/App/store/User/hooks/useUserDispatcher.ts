@@ -1,6 +1,6 @@
+import { UserViewModel } from "App/entities/User/models";
 import { useDispatch } from "App/store/hooks/useDispatch";
 import { setUser as setUserAction } from "..";
-import { UserViewModel } from "../../models";
 
 export const useUserDispatcher = () => {
   const dispatch = useDispatch();

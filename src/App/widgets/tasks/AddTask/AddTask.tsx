@@ -6,7 +6,7 @@ import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { TaskForm } from "../TaskForm/TaskForm";
 import { TaskViewModel } from "App/entities/Task/models";
 import { TaskFormValue } from "../TaskForm/models";
-import { useSelectUser } from "App/entities/User/store/hooks";
+import { useSelectUser } from "App/store/User/hooks";
 
 export interface AddTaskProps {
   listId: string;

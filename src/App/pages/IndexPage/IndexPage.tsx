@@ -3,7 +3,6 @@ import { AxiosError } from "axios";
 import { login, createUser } from "App/api/User/services";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { UserDto, UserViewModel } from "App/entities/User/models";
-import { useUserDispatcher, useSelectUser } from "App/entities/User/store/hooks";
 import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 import { Button } from "shared/components/Button/Button";
 import { Card } from "shared/components/Card/Card";
@@ -11,14 +10,16 @@ import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import style from "./IndexPage.module.css";
 import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
 import { Alert } from "shared/components/Alert/Alert";
+import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 
 export const IndexPage = () => {
   const user = useSelectUser();
+  const userDispatcher = useUserDispatcher();
+
   const [isShowSignInForm, setIsShowSignInForm] = useState(false);
   const [isShowCreateUserForm, setIsShowCreateUserForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-  const userDispatcher = useUserDispatcher();
 
   const toggleSignInForm = () => setIsShowSignInForm(!isShowSignInForm);
   const toggleCreateUserForm = () => setIsShowCreateUserForm(!isShowCreateUserForm);

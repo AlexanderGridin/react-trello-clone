@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { useUserDispatcher, useSelectUser } from "App/entities/User/store/hooks";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { IconButton } from "shared/components/IconButton/IconButton";
 import style from "./User.module.css";
 import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
+import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 
 export const User = () => {
   const user = useSelectUser();

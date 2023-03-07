@@ -12,19 +12,19 @@ import {
   addBoardReducer,
 } from "./reducers";
 
-export interface BoardsState {
+export interface BoardsPageState {
   boards: BoardViewModel[] | null;
   boardsCache: Record<string, BoardWithTasksListsViewModel>;
   isShowFavorites: boolean;
 }
 
-const initialState: BoardsState = {
+const initialState: BoardsPageState = {
   boards: null,
   boardsCache: {},
   isShowFavorites: false,
 };
 
-const boardsSlice = createSlice({
+const boardsPageSlice = createSlice({
   name: "[BOARDS_PAGE]",
   initialState,
   reducers: {
@@ -48,6 +48,6 @@ export const {
   setBoards,
   setIsShowFavorites,
   updateBoard,
-} = boardsSlice.actions;
+} = boardsPageSlice.actions;
 
-export const boardsReducer = boardsSlice.reducer;
+export const boardsPageReducer = boardsPageSlice.reducer;

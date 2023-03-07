@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppLayout } from "App/components/AppLayout/AppLayout";
 import { Sidebar } from "App/widgets/Sidebar/Sidebar";
-import { useUserDispatcher, useSelectUser } from "App/entities/User/store";
+import { useUserDispatcher, useSelectUser } from "App/entities/User/store/hooks";
 import { getUserById } from "App/api/User/services";
 import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
 import { UserViewModel } from "App/entities/User/models";
@@ -17,7 +17,7 @@ export const AppRoot = () => {
       const userId = localStorage.getItem("userId");
 
       if (!userId) {
-        userDispatcher.setUser(new UserViewModel());
+        userDispatcher.setUser({ ...new UserViewModel() });
         navigate("/");
 
         return;

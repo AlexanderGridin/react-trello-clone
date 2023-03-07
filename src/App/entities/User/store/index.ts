@@ -20,6 +20,3 @@ const userSlice = createSlice({
 
 export const { setUser } = userSlice.actions;
 export const userReducer = userSlice.reducer;
-
-export * from "./hooks/useUserDispatcher";
-export * from "./hooks/useSelectUser";

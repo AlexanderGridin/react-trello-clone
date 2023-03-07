@@ -3,7 +3,7 @@ import { AxiosError } from "axios";
 import { login, createUser } from "App/api/User/services";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { UserDto, UserViewModel } from "App/entities/User/models";
-import { useUserDispatcher, useSelectUser } from "App/entities/User/store";
+import { useUserDispatcher, useSelectUser } from "App/entities/User/store/hooks";
 import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 import { Button } from "shared/components/Button/Button";
 import { Card } from "shared/components/Card/Card";

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useUserDispatcher, useSelectUser } from "App/entities/User/store";
+import { useUserDispatcher, useSelectUser } from "App/entities/User/store/hooks";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { IconButton } from "shared/components/IconButton/IconButton";
 import style from "./User.module.css";

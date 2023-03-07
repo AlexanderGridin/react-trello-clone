@@ -1,4 +1,4 @@
-import { useSelectUser } from "App/entities/User/store";
+import { useSelectUser } from "App/entities/User/store/hooks";
 import { Children } from "shared/models/Children";
 import { AppPageLayout } from "../AppPageLayout/AppPageLayout";
 

@@ -25,7 +25,7 @@ const initialState: BoardsState = {
 };
 
 const boardsSlice = createSlice({
-  name: "boards",
+  name: "[BOARDS_PAGE]",
   initialState,
   reducers: {
     addBoard: addBoardReducer,

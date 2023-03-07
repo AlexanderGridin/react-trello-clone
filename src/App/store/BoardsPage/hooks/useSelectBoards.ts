@@ -1,3 +1,3 @@
 import { useSelector } from "App/store/hooks/useSelector";
 
-export const useSelectBoards = () => useSelector((state) => state.boardsPage.boards);
+export const useSelectBoards = () => useSelector((state) => state.BOARDS_PAGE.boards);

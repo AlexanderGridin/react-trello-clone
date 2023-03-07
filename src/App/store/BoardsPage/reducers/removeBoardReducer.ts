@@ -9,17 +9,10 @@ interface Payload {
 
 export const removeBoardReducer = (state: BoardsPageState, action: PayloadAction<Payload>) => {
   const boardToRemove = action.payload.board;
-  const boardsCache = { ...state.boardsCache };
-
-  if (boardsCache[boardToRemove.id]) {
-    delete boardsCache[boardToRemove.id];
-  }
 
   state.boards = removeItemFromArray({
     array: state.boards ?? [],
     item: boardToRemove,
     uniqueKey: "id",
   });
-
-  state.boardsCache = boardsCache;
 };

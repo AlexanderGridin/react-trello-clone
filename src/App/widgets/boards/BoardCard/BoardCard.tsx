@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
-import { useBoardDispatcher } from "App/store/BoardsPage/hooks";
+import { useBoardsPageDispatcher } from "App/store/BoardsPage/hooks";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 
 import {
@@ -37,7 +37,7 @@ const MIN_HEIGHT = 150;
 export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const dispatcher = useBoardDispatcher();
+  const dispatcher = useBoardsPageDispatcher();
   const draggetItemDispatcher = useAppDraggedItemDispatcher();
 
   const BACKGROUD_COLOR = board.isFavorite ? "#ebdcbd" : "#D8DEE9";

@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { BoardViewModel, BoardWithTasksListsViewModel } from "App/entities/Board/models";
+import { BoardViewModel } from "App/entities/Board/models";
 
 import {
-  cacheBoardReducer,
-  clearBoardsCacheReducer,
   moveBoardReducer,
   removeBoardReducer,
   setBoardsReducer,
@@ -14,13 +12,11 @@ import {
 
 export interface BoardsPageState {
   boards: BoardViewModel[] | null;
-  boardsCache: Record<string, BoardWithTasksListsViewModel>;
   isShowFavorites: boolean;
 }
 
 const initialState: BoardsPageState = {
   boards: null,
-  boardsCache: {},
   isShowFavorites: false,
 };
 
@@ -29,8 +25,6 @@ const boardsPageSlice = createSlice({
   initialState,
   reducers: {
     addBoard: addBoardReducer,
-    cacheBoard: cacheBoardReducer,
-    clearBoardsCache: clearBoardsCacheReducer,
     moveBoard: moveBoardReducer,
     removeBoard: removeBoardReducer,
     setBoards: setBoardsReducer,
@@ -39,15 +33,5 @@ const boardsPageSlice = createSlice({
   },
 });
 
-export const {
-  addBoard,
-  cacheBoard,
-  clearBoardsCache,
-  moveBoard,
-  removeBoard,
-  setBoards,
-  setIsShowFavorites,
-  updateBoard,
-} = boardsPageSlice.actions;
-
+export const { addBoard, moveBoard, removeBoard, setBoards, setIsShowFavorites, updateBoard } = boardsPageSlice.actions;
 export const boardsPageReducer = boardsPageSlice.reducer;

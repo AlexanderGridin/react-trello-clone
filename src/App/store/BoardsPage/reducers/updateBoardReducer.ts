@@ -19,12 +19,4 @@ export const updateBoardReducer = (state: BoardsPageState, action: PayloadAction
         ...boardToUpdate,
       };
     }) ?? [];
-
-  if (state.boardsCache[boardToUpdate.id]) {
-    state.boardsCache[boardToUpdate.id] = {
-      ...state.boardsCache[boardToUpdate.id],
-      isFavorite: boardToUpdate.isFavorite,
-      title: boardToUpdate.title,
-    };
-  }
 };

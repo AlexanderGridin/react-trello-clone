@@ -1,4 +1,4 @@
-import { BoardViewModel, BoardWithTasksListsViewModel } from "App/entities/Board/models";
+import { BoardViewModel } from "App/entities/Board/models";
 import { useDispatch } from "App/store/hooks/useDispatch";
 
 import {
@@ -6,21 +6,17 @@ import {
   removeBoard as removeBoardAction,
   updateBoard as updateBoardAction,
   setBoards as setBoardsAction,
-  cacheBoard as cacheBoardAction,
-  clearBoardsCache as clearBoardsCacheAction,
   moveBoard as moveBoardAction,
   setIsShowFavorites as setIsShowFavoritesAction,
 } from "..";
 
-export const useBoardDispatcher = () => {
+export const useBoardsPageDispatcher = () => {
   const dispatch = useDispatch();
 
   const addBoard = (board: BoardViewModel) => dispatch(addBoardAction({ board }));
   const removeBoard = (board: BoardViewModel) => dispatch(removeBoardAction({ board }));
   const updateBoard = (board: BoardViewModel) => dispatch(updateBoardAction({ board }));
   const setBoards = (boards: BoardViewModel[] | null) => dispatch(setBoardsAction({ boards }));
-  const cacheBoard = (board: BoardWithTasksListsViewModel) => dispatch(cacheBoardAction({ board }));
-  const clearBoardsCache = () => dispatch(clearBoardsCacheAction());
 
   const moveBoard = (boardToMove: BoardViewModel, boardToReplace: BoardViewModel) =>
     dispatch(moveBoardAction({ boardToMove, boardToReplace }));
@@ -33,8 +29,6 @@ export const useBoardDispatcher = () => {
     moveBoard,
     updateBoard,
     setBoards,
-    cacheBoard,
-    clearBoardsCache,
     setIsShowFavorites,
   };
 };

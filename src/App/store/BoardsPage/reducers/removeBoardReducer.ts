@@ -1,7 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { BoardViewModel } from "App/entities/Board/models";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
 import { BoardsState } from "..";
-import { BoardViewModel } from "../../models";
 
 interface Payload {
   board: BoardViewModel;

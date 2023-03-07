@@ -6,7 +6,7 @@ import { getAllBoards, getFavoriteBoards } from "App/api/Boards/services";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsList";
 import { Switch } from "shared/components/Switch/Switch";
 import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";
-import { useSelectBoards, useSelectIsShowFavorites, useBoardDispatcher } from "App/entities/Board/store/hooks";
+import { useBoardDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/BoardsPage/hooks";
 
 export const BoardsPage = () => {
   const boards = useSelectBoards();

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { BoardViewModel, BoardWithTasksListsViewModel } from "../models";
+import { BoardViewModel, BoardWithTasksListsViewModel } from "App/entities/Board/models";
 
 import {
   cacheBoardReducer,
@@ -9,9 +9,8 @@ import {
   setBoardsReducer,
   setIsShowFavoritesReducer,
   updateBoardReducer,
+  addBoardReducer,
 } from "./reducers";
-
-import { addBoardReducer } from "./reducers/addBoardReducer";
 
 export interface BoardsState {
   boards: BoardViewModel[] | null;

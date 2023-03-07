@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { BoardWithTasksListsViewModel } from "App/entities/Board/models";
 import { BoardsState } from "..";
-import { BoardWithTasksListsViewModel } from "../../models";
 
 interface Payload {
   board: BoardWithTasksListsViewModel;

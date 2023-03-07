@@ -7,7 +7,7 @@ import { BoardViewModel } from "App/entities/Board/models";
 import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";
 import { BoardFormValue } from "../BoardForm/models";
 import { useSelectUser } from "App/entities/User/store/hooks";
-import { useSelectBoards } from "App/entities/Board/store/hooks";
+import { useSelectBoards } from "App/store/BoardsPage/hooks";
 
 export interface AddBoardProps {
   onAdd: (board: BoardViewModel) => void;

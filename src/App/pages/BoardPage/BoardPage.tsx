@@ -6,7 +6,7 @@ import { getBoard as getBoardFromApi } from "App/api/Boards/services";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
 import { BoardWithTasksListsDto, BoardWithTasksListsViewModel } from "App/entities/Board/models";
 import { mapBoardWithTasksListsDtoToViewModel } from "App/entities/Board/mappers";
-import { useSelectBoardsCache, useBoardDispatcher } from "App/entities/Board/store/hooks";
+import { useBoardDispatcher, useSelectBoardsCache } from "App/store/BoardsPage/hooks";
 
 export const BoardPage = () => {
   const { id } = useParams();

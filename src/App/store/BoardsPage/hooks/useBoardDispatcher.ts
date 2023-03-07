@@ -1,4 +1,6 @@
+import { BoardViewModel, BoardWithTasksListsViewModel } from "App/entities/Board/models";
 import { useDispatch } from "App/store/hooks/useDispatch";
+
 import {
   addBoard as addBoardAction,
   removeBoard as removeBoardAction,
@@ -9,7 +11,6 @@ import {
   moveBoard as moveBoardAction,
   setIsShowFavorites as setIsShowFavoritesAction,
 } from "..";
-import { BoardViewModel, BoardWithTasksListsViewModel } from "../../models";
 
 export const useBoardDispatcher = () => {
   const dispatch = useDispatch();

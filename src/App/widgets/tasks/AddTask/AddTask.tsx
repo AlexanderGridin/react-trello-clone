@@ -5,8 +5,8 @@ import { addTask as addTaskOnApi } from "App/api/Task/services";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { TaskForm } from "../TaskForm/TaskForm";
 import { TaskViewModel } from "App/entities/Task/models";
-import { useAppState } from "App/state/hooks/useAppState";
 import { TaskFormValue } from "../TaskForm/models";
+import { useSelectUser } from "App/entities/User/store/hooks";
 
 export interface AddTaskProps {
   listId: string;
@@ -20,7 +20,8 @@ interface AddTaskState {
 }
 
 export const AddTask = ({ listId, boardId, onAdd }: AddTaskProps) => {
-  const { user } = useAppState();
+  const user = useSelectUser();
+
   const initialState: AddTaskState = { isShowForm: false, isLoading: false };
   const [state, dispatch] = useReducer(
     (state: AddTaskState, payload: Partial<AddTaskState>) => ({

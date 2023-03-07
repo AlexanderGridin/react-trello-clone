@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
-import { useAppState } from "App/state/hooks/useAppState";
-import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import { getBoard as getBoardFromApi } from "App/api/Boards/services";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
 import { BoardWithTasksListsDto, BoardWithTasksListsViewModel } from "App/entities/Board/models";
 import { mapBoardWithTasksListsDtoToViewModel } from "App/entities/Board/mappers";
+import { useSelectBoardsCache, useBoardDispatcher } from "App/entities/Board/store/hooks";
 
 export const BoardPage = () => {
   const { id } = useParams();
-  const { boardsCache } = useAppState();
+  const boardsCache = useSelectBoardsCache();
   const dispatcher = useBoardDispatcher();
   const [isLoading, setIsLoading] = useState(false);
 

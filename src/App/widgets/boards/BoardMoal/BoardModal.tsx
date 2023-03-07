@@ -1,4 +1,4 @@
-import { useBoardDispatcher } from "App/entities/Board/state";
+import { useBoardDispatcher } from "App/entities/Board/store/hooks";
 import { useState } from "react";
 import { Modal } from "shared/components/Modal/Modal";
 import { BoardForm } from "../BoardForm/BoardForm";

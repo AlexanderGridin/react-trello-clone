@@ -3,8 +3,7 @@ import { AxiosError } from "axios";
 import { login, createUser } from "App/api/User/services";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { UserDto, UserViewModel } from "App/entities/User/models";
-import { useUserDispatcher } from "App/entities/User/state";
-import { useAppState } from "App/state/hooks/useAppState";
+import { useUserDispatcher, useSelectUser } from "App/entities/User/store";
 import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 import { Button } from "shared/components/Button/Button";
 import { Card } from "shared/components/Card/Card";
@@ -14,7 +13,7 @@ import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToVie
 import { Alert } from "shared/components/Alert/Alert";
 
 export const IndexPage = () => {
-  const { user } = useAppState();
+  const user = useSelectUser();
   const [isShowSignInForm, setIsShowSignInForm] = useState(false);
   const [isShowCreateUserForm, setIsShowCreateUserForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

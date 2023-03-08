@@ -11,12 +11,12 @@ import {
 } from "App/api/TasksList/services";
 
 import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
-import { useTaskDispatcher } from "App/entities/Task/state";
-import { useTasksListDispatcher } from "App/entities/TasksList/state";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TasksListModal } from "../TasksListModal/TasksListModal";
 import { TasksListViewModel } from "App/entities/TasksList/models";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { useTasksListDispatcher } from "App/store/BoardPage/TasksList/hooks/useTasksListDispatcher";
+import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 
 export interface TasksListCardProps {
   list: TasksListViewModel;

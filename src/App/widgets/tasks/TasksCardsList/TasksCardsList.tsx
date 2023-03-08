@@ -1,5 +1,5 @@
 import { TaskViewModel } from "App/entities/Task/models";
-import { useTaskDispatcher } from "App/entities/Task/state";
+import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 import { AddTask } from "../AddTask/AddTask";
 import { TaskCard } from "../TaskCard/TaskCard";
 

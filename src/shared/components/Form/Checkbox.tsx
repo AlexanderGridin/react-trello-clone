@@ -1,7 +1,7 @@
-import MuiCheckbox from "@mui/material/Checkbox";
-import { styled } from "@mui/material/styles";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import { ChangeEvent } from "react";
+import { styled } from "@mui/material/styles";
+import MuiCheckbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 const StyledCheckbox = styled(MuiCheckbox)({
   "& .MuiSvgIcon-root": {
@@ -14,19 +14,17 @@ const StyledCheckbox = styled(MuiCheckbox)({
 });
 
 export interface CheckboxProps {
+  id: string;
+  name: string;
   label?: string;
   value: boolean;
-  onChange: (value: boolean) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Checkbox = ({ label = "", value, onChange }: CheckboxProps) => {
-  const handleChange = (_e: ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    onChange(checked);
-  };
-
+export const Checkbox = ({ label, value, ...checkboxProps }: CheckboxProps) => {
   return (
     <div style={{ marginTop: "-9px", marginBottom: "-9px" }}>
-      <FormControlLabel control={<StyledCheckbox checked={value} onChange={handleChange} />} label={label} />
+      <FormControlLabel control={<StyledCheckbox checked={value} {...checkboxProps} />} label={label} />
     </div>
   );
 };

@@ -1,21 +1,28 @@
 import { NavLink } from "react-router-dom";
-import { useUserDispatcher } from "App/entities/User/state";
-import { useAppState } from "App/state/hooks/useAppState";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { IconButton } from "shared/components/IconButton/IconButton";
-import style from "./User.module.css";
-import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
+import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
+import { useBoardPageDispatcher } from "App/store/BoardPage/hooks/useBoardPageDispatcher";
+import { useBoardsPageDispatcher } from "App/store/BoardsPage/hooks";
+import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
+import style from "./User.module.css";
 
 export const User = () => {
-  const { user } = useAppState();
+  const user = useSelectUser();
   const userDispatcher = useUserDispatcher();
-  const boardDispatcher = useBoardDispatcher();
+
+  const boardPageDispatcher = useBoardPageDispatcher();
+  const boardsPageDispatcher = useBoardsPageDispatcher();
+  const boardsCahceDispatcher = useBoardsCacheDispatcher();
 
   const handleSignOutClick = () => {
-    boardDispatcher.setBoards([]);
-    boardDispatcher.clearBoardsCache();
+    boardsPageDispatcher.setBoards(null);
+    boardPageDispatcher.setBoard(null);
+    boardsCahceDispatcher.clearCache();
+
     localStorage.removeItem("userId");
+
     userDispatcher.setUser(null);
   };
 

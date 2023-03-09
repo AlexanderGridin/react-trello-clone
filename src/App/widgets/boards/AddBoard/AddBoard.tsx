@@ -2,21 +2,23 @@ import { useState } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddBoardButton } from "./components/AddBoardButton";
 import { addBoard as addBoardToApi } from "App/api/Boards/services";
-import { useAppState } from "App/state/hooks/useAppState";
 import { BoardForm } from "../BoardForm/BoardForm";
 import { BoardViewModel } from "App/entities/Board/models";
 import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";
 import { BoardFormValue } from "../BoardForm/models";
+import { useSelectBoards } from "App/store/BoardsPage/hooks";
+import { useSelectUser } from "App/store/User/hooks";
 
 export interface AddBoardProps {
   onAdd: (board: BoardViewModel) => void;
 }
 
 export const AddBoard = ({ onAdd }: AddBoardProps) => {
-  const { user } = useAppState();
-  const [isShowForm, setIsShowForm] = useState(false);
+  const user = useSelectUser();
+  const boards = useSelectBoards();
+
   const [isLoading, setIsLoading] = useState(false);
-  const { boards } = useAppState();
+  const [isShowForm, setIsShowForm] = useState(false);
 
   const showForm = () => setIsShowForm(true);
   const hideForm = () => setIsShowForm(false);

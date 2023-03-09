@@ -1,4 +1,4 @@
-import { useBoardDispatcher } from "App/entities/Board/state";
+import { useBoardsPageDispatcher } from "App/store/BoardsPage/hooks";
 import { useState } from "react";
 import { Modal } from "shared/components/Modal/Modal";
 import { BoardForm } from "../BoardForm/BoardForm";
@@ -13,7 +13,7 @@ interface BoardModalProps {
 }
 
 export const BoardModal = ({ board }: BoardModalProps) => {
-  const dispatcher = useBoardDispatcher();
+  const dispatcher = useBoardsPageDispatcher();
   const [isLoading, setIsLoading] = useState(false);
 
   const closeModal = () => dispatcher.updateBoard({ ...board, isEditing: false });

@@ -5,7 +5,6 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { removeTask as removeTaskFromApi } from "App/api/Task/services";
 import { Task } from "../Task/Task";
-import { useTaskDispatcher } from "App/entities/Task/state";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskModal } from "../TaskModal/TaskModal";
 import { TaskPriority } from "App/types/TaskPriority";
@@ -13,6 +12,7 @@ import { TaskViewModel } from "App/entities/Task/models";
 import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import style from "./TaskCard.module.css";
+import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 
 interface TaskCardProps {
   task: TaskViewModel;

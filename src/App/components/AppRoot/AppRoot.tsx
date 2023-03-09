@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppLayout } from "App/components/AppLayout/AppLayout";
-import { useAppState } from "App/state/hooks/useAppState";
 import { Sidebar } from "App/widgets/Sidebar/Sidebar";
-import { useUserDispatcher } from "App/entities/User/state";
 import { getUserById } from "App/api/User/services";
 import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
 import { UserViewModel } from "App/entities/User/models";
+import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 
 export const AppRoot = () => {
-  const { user } = useAppState();
   const navigate = useNavigate();
+
+  const user = useSelectUser();
   const userDispatcher = useUserDispatcher();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export const AppRoot = () => {
       const userId = localStorage.getItem("userId");
 
       if (!userId) {
-        userDispatcher.setUser(new UserViewModel());
+        userDispatcher.setUser({ ...new UserViewModel() });
         navigate("/");
 
         return;

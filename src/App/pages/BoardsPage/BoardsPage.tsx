@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
 import { PageTitle } from "App/components/PageTitle/PageTitle";
-import { useAppState } from "App/state/hooks/useAppState";
-import { useBoardDispatcher } from "App/entities/Board/state/hooks/useBoardDispatcher";
 import style from "./BoardsPage.module.css";
 import { getAllBoards, getFavoriteBoards } from "App/api/Boards/services";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsList";
 import { Switch } from "shared/components/Switch/Switch";
 import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";
+import { useBoardsPageDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/BoardsPage/hooks";
 
 export const BoardsPage = () => {
-  const { boards, isShowFavorites } = useAppState();
-  const dispatcher = useBoardDispatcher();
+  const boards = useSelectBoards();
+  const isShowFavorites = useSelectIsShowFavorites();
+  const dispatcher = useBoardsPageDispatcher();
 
   const isShowAddBoard = Boolean(!isShowFavorites);
 

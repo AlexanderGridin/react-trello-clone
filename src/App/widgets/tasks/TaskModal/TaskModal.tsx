@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Modal } from "shared/components/Modal/Modal";
-import { useTaskDispatcher } from "App/entities/Task/state";
 import { TaskForm } from "../TaskForm/TaskForm";
 import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { mapTaskViewModelToFormValue } from "App/entities/Task/mappers";
 import { updateTask as updateTaskOnApi } from "App/api/Task/services";
 import { TaskViewModel } from "App/entities/Task/models";
 import { TaskFormValue } from "../TaskForm/models";
+import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 
 interface TaskModalProps {
   task: TaskViewModel;

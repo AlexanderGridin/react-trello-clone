@@ -5,7 +5,7 @@ import { DragAndDropProvider } from "drag-and-drop/components/DragAndDropProvide
 import { store } from "./store";
 import { AppStateProvider } from "./state/components/AppStateProvider";
 
-// TODO: remove AppStateProvider still needed for tracking dragged item
+// TODO: AppStateProvider still needed for tracking dragged item
 export const App = () => (
   <DragAndDropProvider>
     <AppStateProvider>

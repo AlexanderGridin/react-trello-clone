@@ -1,11 +1,11 @@
 import { RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
 import { router } from "./routing/router";
 import { DragAndDropProvider } from "drag-and-drop/components/DragAndDropProvider";
-import { Provider } from "react-redux";
 import { store } from "./store";
 import { AppStateProvider } from "./state/components/AppStateProvider";
 
-// TODO: remove AppStateProvider after Redux intergration will be completed
+// TODO: remove AppStateProvider still needed for tracking dragged item
 export const App = () => (
   <DragAndDropProvider>
     <AppStateProvider>

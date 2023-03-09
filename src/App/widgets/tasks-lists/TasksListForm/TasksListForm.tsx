@@ -1,11 +1,11 @@
-import { FormEvent, useReducer } from "react";
-import { FormContainer } from "shared/components/Form/FormContainer";
-import { TextInput } from "shared/components/Form/inputs";
-import { Checkbox } from "shared/components/Form/Checkbox";
-import { FormFooter } from "shared/components/Form/FormFooter";
-import { TasksListFormValue } from "./models";
+import { useFormik } from "formik";
 
-type FormEventType = FormEvent<HTMLFormElement>;
+import { Checkbox } from "shared/components/Form/Checkbox";
+import { TextInput } from "shared/components/Form/inputs";
+import { FormFooter } from "shared/components/Form/FormFooter";
+import { FormContainer } from "shared/components/Form/FormContainer";
+import { TasksListFormValue } from "./models";
+import { FormErrorsState } from "App/types/FormErrorsState";
 
 export interface TasksListFormProps {
   entity?: TasksListFormValue;
@@ -14,38 +14,51 @@ export interface TasksListFormProps {
 }
 
 export const TasksListForm = ({ entity, onSubmit, onCancel }: TasksListFormProps) => {
-  const initialFormValue: TasksListFormValue = entity || new TasksListFormValue();
+  const validate = (value: TasksListFormValue) => {
+    const state: FormErrorsState<TasksListFormValue> = {};
 
-  const [formValue, dispatch] = useReducer(
-    (prevValue: TasksListFormValue, payload: Partial<TasksListFormValue>) => ({
-      ...prevValue,
-      ...payload,
-    }),
-    initialFormValue
-  );
+    if (!value.title) {
+      state.title = (
+        <span>
+          <b>Title</b> is required
+        </span>
+      );
+    }
 
-  const handleTitleChange = (title: string) => dispatch({ title });
-  const handleIsPinnedChange = (isPinned: boolean) => dispatch({ isPinned });
+    return state;
+  };
 
-  const cancel = () => onCancel();
-  const add = () => onSubmit(formValue);
+  const form = useFormik({
+    initialValues: entity || { ...new TasksListFormValue() },
+    validate,
+    onSubmit: () => {
+      onSubmit(form.values);
+    },
+  });
 
-  const submit = (e: FormEventType) => {
-    e.preventDefault();
-    add();
+  const cancel = () => {
+    form.resetForm();
+    onCancel();
   };
 
   return (
-    <FormContainer onSubmit={submit}>
+    <FormContainer onSubmit={form.handleSubmit}>
       <div className="form-row">
-        <TextInput placeholder="Enter list title" value={formValue.title} isAutoFocus onChange={handleTitleChange} />
+        <TextInput
+          id="title"
+          label="Title"
+          placeholder="Enter list title"
+          isAutoFocus
+          error={form.errors.title}
+          {...form.getFieldProps("title")}
+        />
       </div>
 
       <div className="form-row">
-        <Checkbox value={formValue.isPinned} label="Pinned" onChange={handleIsPinnedChange} />
+        <Checkbox id="isPinned" label="Pinned" {...form.getFieldProps("isPinned")} />
       </div>
 
-      <FormFooter submitText={entity ? "Update list" : "Add list"} onSubmit={add} onCancel={cancel} />
+      <FormFooter submitText={entity ? "Update list" : "Add list"} onSubmit={form.handleSubmit} onCancel={cancel} />
     </FormContainer>
   );
 };

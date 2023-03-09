@@ -1,14 +1,12 @@
-import { useReducer } from "react";
+import { useFormik } from "formik";
+import { FormErrorsState } from "App/types/FormErrorsState";
+
 import { Button } from "shared/components/Button/Button";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { PasswordInput, TextInput } from "shared/components/Form/inputs";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
+import { UserSignInFormValue } from "..";
 import style from "./UserSignInForm.module.css";
-
-export class UserSignInFormValue {
-  public userName = "";
-  public password = "";
-}
 
 interface UserSignInFormProps {
   onSubmit: (value: UserSignInFormValue) => void;
@@ -16,42 +14,69 @@ interface UserSignInFormProps {
 }
 
 export const UserSignInForm = ({ onSubmit, onCancel }: UserSignInFormProps) => {
-  const [formValue, dispatch] = useReducer(
-    (state: UserSignInFormValue, payload: Partial<UserSignInFormValue>) => ({
-      ...state,
-      ...payload,
-    }),
-    new UserSignInFormValue()
-  );
+  const validate = (value: UserSignInFormValue) => {
+    const state: FormErrorsState<UserSignInFormValue> = {};
 
-  const handleUserNameChange = (userName: string) => dispatch({ userName });
-  const handlePasswordChange = (password: string) => dispatch({ password });
-
-  const handleSignInClick = () => {
-    if (!formValue.userName || !formValue.password) {
-      return;
+    if (!value.userName) {
+      state.userName = (
+        <span>
+          <b>User name</b> is required
+        </span>
+      );
     }
 
-    onSubmit(formValue);
+    if (!value.password) {
+      state.password = (
+        <span>
+          <b>Password</b> is required
+        </span>
+      );
+    }
+
+    return state;
   };
+  const form = useFormik({
+    initialValues: { ...new UserSignInFormValue() },
+    validate,
+    onSubmit: () => {
+      if (!form.values.userName || !form.values.password) {
+        return;
+      }
+
+      onSubmit(form.values);
+    },
+  });
 
   const handleCancelClick = () => {
-    dispatch(new UserSignInFormValue());
+    form.resetForm();
     onCancel();
   };
 
   return (
     <FormContainer>
       <div className="form-row">
-        <TextInput placeholder="User name" isAutoFocus onChange={handleUserNameChange} />
+        <TextInput
+          id="userName"
+          placeholder="User name"
+          isAutoFocus
+          label="User name"
+          error={form.touched.userName ? form.errors.userName : ""}
+          {...form.getFieldProps("userName")}
+        />
       </div>
 
       <div className="form-row">
-        <PasswordInput placeholder="Password" onChange={handlePasswordChange} />
+        <PasswordInput
+          id="password"
+          placeholder="Password"
+          label="Password"
+          error={form.touched.password ? form.errors.password : ""}
+          {...form.getFieldProps("password")}
+        />
       </div>
 
       <div className={style.footer}>
-        <Button icon={MaterialIcon.Login} style={{ marginRight: "7px" }} onClick={handleSignInClick}>
+        <Button icon={MaterialIcon.Login} style={{ marginRight: "7px" }} onClick={form.handleSubmit}>
           Sign in
         </Button>
 

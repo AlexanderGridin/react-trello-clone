@@ -1,15 +1,12 @@
-import { useReducer, useState } from "react";
+import { useFormik } from "formik";
+import { FormErrorsState } from "App/types/FormErrorsState";
+
 import { Button } from "shared/components/Button/Button";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { PasswordInput, TextInput } from "shared/components/Form/inputs";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
+import { CreateUserFormValue } from "..";
 import style from "./CreateUserForm.module.css";
-
-export class CreateUserFormValue {
-  public userName = "";
-  public password = "";
-  public confirmPassword = "";
-}
 
 interface CreateUserFormProps {
   onCreate: (value: CreateUserFormValue) => void;
@@ -17,70 +14,88 @@ interface CreateUserFormProps {
 }
 
 export const CreateUserForm = ({ onCreate, onCancel }: CreateUserFormProps) => {
-  const [isPasswordsMatch, setIsPasswordMatch] = useState(true);
-  const [formValue, dispatch] = useReducer(
-    (state: CreateUserFormValue, payload: Partial<CreateUserFormValue>) => ({
-      ...state,
-      ...payload,
-    }),
-    new CreateUserFormValue()
-  );
+  const validate = (value: CreateUserFormValue) => {
+    const state: FormErrorsState<CreateUserFormValue> = {};
 
-  const handleUserNameChange = (userName: string) => dispatch({ userName });
-  const handlePasswordChange = (password: string) => {
-    dispatch({ password });
-
-    if (formValue.confirmPassword && formValue.confirmPassword !== password) {
-      setIsPasswordMatch(false);
-    } else {
-      setIsPasswordMatch(true);
+    if (!value.userName) {
+      state.userName = (
+        <span>
+          <b>User name</b> is required
+        </span>
+      );
     }
-  };
-  const handleConfirmPasswordChange = (confirmPassword: string) => {
-    dispatch({ confirmPassword });
 
-    if (formValue.password && formValue.password !== confirmPassword) {
-      setIsPasswordMatch(false);
-    } else {
-      setIsPasswordMatch(true);
+    if (!value.password) {
+      state.password = (
+        <span>
+          <b>Password</b> is required
+        </span>
+      );
     }
-  };
 
-  const handleCreateUserClick = () => {
-    const { userName, password, confirmPassword } = formValue;
-
-    if (userName && password && confirmPassword && isPasswordsMatch) {
-      onCreate(formValue);
+    if (!value.confirmPassword) {
+      state.confirmPassword = (
+        <span>
+          <b>Password confirmation</b> is required
+        </span>
+      );
     }
+
+    if (value.password && value.confirmPassword && value.password !== value.confirmPassword) {
+      state.password = "Passwords not match";
+      state.confirmPassword = "Passwords not match";
+    }
+
+    return state;
   };
+  const form = useFormik({
+    initialValues: { ...new CreateUserFormValue() },
+    validate,
+    onSubmit: () => {
+      onCreate(form.values);
+    },
+  });
 
   const handleCancelClick = () => {
-    dispatch(new CreateUserFormValue());
+    form.resetForm();
     onCancel();
   };
-
-  const passwordsValidationMessage = !isPasswordsMatch && (
-    <div style={{ color: "#BF616A", fontSize: "14px", marginTop: "5px" }}>Passwords not match...</div>
-  );
 
   return (
     <FormContainer>
       <div className="form-row">
-        <TextInput placeholder="User name" isAutoFocus onChange={handleUserNameChange} />
+        <TextInput
+          id="userName"
+          placeholder="User name"
+          isAutoFocus
+          label="User name"
+          error={form.touched.userName ? form.errors.userName : ""}
+          {...form.getFieldProps("userName")}
+        />
       </div>
 
       <div className="form-row">
-        <PasswordInput placeholder="Password" onChange={handlePasswordChange} />
-        {passwordsValidationMessage}
+        <PasswordInput
+          id="password"
+          placeholder="Enter password"
+          label="Password"
+          error={form.touched.password ? form.errors.password : ""}
+          {...form.getFieldProps("password")}
+        />
       </div>
 
       <div className="form-row">
-        <PasswordInput placeholder="Confirm password" onChange={handleConfirmPasswordChange} />
-        {passwordsValidationMessage}
+        <PasswordInput
+          id="confirmPassword"
+          placeholder="Confirm password"
+          label="Confirm password"
+          error={form.touched.confirmPassword ? form.errors.confirmPassword : ""}
+          {...form.getFieldProps("confirmPassword")}
+        />
       </div>
 
       <div className={style.footer}>
-        <Button icon={MaterialIcon.AddUser} style={{ marginRight: "7px" }} onClick={handleCreateUserClick}>
+        <Button icon={MaterialIcon.AddUser} style={{ marginRight: "7px" }} onClick={form.handleSubmit}>
           Create user
         </Button>
 

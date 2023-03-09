@@ -1,13 +1,11 @@
-import { FormEvent, useReducer } from "react";
+import { useFormik } from "formik";
 import { prioritySelectDataItems } from "App/static-data/prioritySelectDataItems";
-import { TaskPriority } from "App/types/TaskPriority";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { FormFooter } from "shared/components/Form/FormFooter";
 import { TextInput } from "shared/components/Form/inputs";
 import { Select } from "shared/components/Form/Select/Select";
 import { TaskFormValue } from "./models";
-
-type FormEventType = FormEvent<HTMLFormElement>;
+import { FormErrorsState } from "App/types/FormErrorsState";
 
 export interface TaskFormProps {
   entity?: TaskFormValue;
@@ -16,43 +14,51 @@ export interface TaskFormProps {
 }
 
 export const TaskForm = ({ entity, onSubmit, onCancel }: TaskFormProps) => {
-  const initialFormValue: TaskFormValue = entity || new TaskFormValue();
+  const validate = (value: TaskFormValue) => {
+    const state: FormErrorsState<TaskFormValue> = {};
 
-  const [formValue, dispatch] = useReducer(
-    (prevValue: TaskFormValue, payload: Partial<TaskFormValue>) => ({
-      ...prevValue,
-      ...payload,
-    }),
-    initialFormValue
-  );
+    if (!value.title) {
+      state.title = (
+        <span>
+          <b>Title</b> is required
+        </span>
+      );
+    }
 
-  const handleTitleChange = (title: string) => dispatch({ title });
-  const handlePriorityChange = (value: string) => dispatch({ priority: value as TaskPriority });
+    return state;
+  };
 
-  const cancel = () => onCancel();
-  const add = () => onSubmit(formValue);
+  const form = useFormik({
+    initialValues: entity || { ...new TaskFormValue() },
+    validate,
+    onSubmit: () => {
+      onSubmit(form.values);
+    },
+  });
 
-  const submit = (e: FormEventType) => {
-    e.preventDefault();
-    add();
+  const cancel = () => {
+    form.resetForm();
+    onCancel();
   };
 
   return (
-    <FormContainer onSubmit={submit}>
+    <FormContainer onSubmit={form.handleSubmit}>
       <div className="form-row">
-        <TextInput placeholder="Enter task" value={formValue.title} isAutoFocus onChange={handleTitleChange} />
-      </div>
-
-      <div className="form-row">
-        <Select
-          value={formValue.priority}
-          data={prioritySelectDataItems}
-          onChange={handlePriorityChange}
-          label="Priority"
+        <TextInput
+          id="title"
+          label="Title"
+          placeholder="Enter task title"
+          isAutoFocus
+          error={form.errors.title}
+          {...form.getFieldProps("title")}
         />
       </div>
 
-      <FormFooter submitText={entity ? "Update task" : "Add task"} onSubmit={add} onCancel={cancel} />
+      <div className="form-row">
+        <Select id="priority" label="Priority" data={prioritySelectDataItems} {...form.getFieldProps("priority")} />
+      </div>
+
+      <FormFooter submitText={entity ? "Update task" : "Add task"} onSubmit={form.handleSubmit} onCancel={cancel} />
     </FormContainer>
   );
 };

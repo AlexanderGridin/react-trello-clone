@@ -1,6 +1,14 @@
+import { ChangeEvent } from "react";
+
 export interface InputCommonProps {
-  value?: string;
+  id: string;
+  name: string;
+  value: string;
+  label?: string;
+  error?: string;
   placeholder?: string;
   isAutoFocus?: boolean;
-  onChange?: (value: string) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  // TODO: for temporary purposes
+  onBlur?: (e: any) => void;
 }

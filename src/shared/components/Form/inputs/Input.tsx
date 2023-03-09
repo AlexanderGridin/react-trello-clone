@@ -1,50 +1,26 @@
-import { styled } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
 import { useInputFocus } from "shared/hooks/useInputFocus";
-import { InputChangeEvent } from "./models/InputChangeEvent";
+import { Helper } from "../Helper/Helper";
 import { InputCommonProps } from "./models/InputCommonProps";
-
-export const MuiInput = styled(TextField)({
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      border: "none",
-    },
-    "& .MuiInputBase-input": {
-      border: "2px solid #a5a9b1",
-      borderRadius: "3px",
-      transition: "border 0.4s",
-    },
-    "&:hover .MuiInputBase-input": {
-      border: "2px solid #5E81AC",
-    },
-    "&.Mui-focused .MuiInputBase-input": {
-      border: "2px solid #5E81AC",
-    },
-  },
-});
+import { MuiInput } from "./MuiInput";
 
 interface InputProps extends InputCommonProps {
   type: "text" | "password" | "number";
 }
 
-export const Input = ({ type, isAutoFocus, placeholder, value, onChange }: InputProps) => {
+export const Input = ({ error = "", isAutoFocus, ...inputProps }: InputProps) => {
   const focusRef = useInputFocus();
 
-  const handleChange = (e: InputChangeEvent) => {
-    const value = e.target.value;
-    onChange?.(value);
-  };
-
   return (
-    <MuiInput
-      type={type}
-      inputRef={isAutoFocus ? focusRef : null}
-      size="small"
-      fullWidth
-      variant="outlined"
-      placeholder={placeholder}
-      value={value}
-      onChange={handleChange}
-    />
+    <>
+      <MuiInput
+        error={!!error}
+        inputRef={isAutoFocus ? focusRef : null}
+        size="small"
+        fullWidth
+        variant="outlined"
+        {...inputProps}
+      />
+      {error && <Helper type="error">{error}</Helper>}
+    </>
   );
 };

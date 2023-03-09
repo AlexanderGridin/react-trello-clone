@@ -1,11 +1,11 @@
-import { FormEvent, useReducer } from "react";
+import { useFormik } from "formik";
+
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { TextInput } from "shared/components/Form/inputs";
 import { Checkbox } from "shared/components/Form/Checkbox";
 import { FormFooter } from "shared/components/Form/FormFooter";
 import { BoardFormValue } from "./models/BoardFormValue";
-
-type FormEventType = FormEvent<HTMLFormElement>;
+import { FormErrorsState } from "App/types/FormErrorsState";
 
 export interface BoardFormProps {
   entity?: BoardFormValue;
@@ -14,40 +14,53 @@ export interface BoardFormProps {
 }
 
 export const BoardForm = ({ entity, onSubmit, onCancel }: BoardFormProps) => {
-  const initialFormValue: BoardFormValue = entity || new BoardFormValue();
+  const validate = (value: BoardFormValue) => {
+    const state: FormErrorsState<BoardFormValue> = {};
 
-  const [formValue, dispatch] = useReducer(
-    (prevValue: BoardFormValue, payload: Partial<BoardFormValue>) => ({
-      ...prevValue,
-      ...payload,
-    }),
-    initialFormValue
-  );
+    if (!value.title) {
+      state.title = (
+        <span>
+          <b>Title</b> is required
+        </span>
+      );
+    }
 
-  const changeTitle = (title: string) => dispatch({ title });
-  const changeIsFavorite = (isFavorite: boolean) => dispatch({ isFavorite });
-
-  const cancel = () => onCancel();
-  const add = () => {
-    onSubmit(formValue);
+    return state;
   };
 
-  const submit = (e: FormEventType) => {
-    e.preventDefault();
-    add();
+  const form = useFormik({
+    initialValues: entity || { ...new BoardFormValue() },
+    validate,
+    onSubmit: (): void => onSubmit(form.values),
+  });
+
+  const handleCancel = () => {
+    form.resetForm();
+    onCancel();
   };
 
   return (
-    <FormContainer onSubmit={submit}>
+    <FormContainer onSubmit={form.handleSubmit}>
       <div className="form-row">
-        <TextInput placeholder="Enter board title" value={formValue.title} isAutoFocus onChange={changeTitle} />
+        <TextInput
+          id="title"
+          label="Title"
+          isAutoFocus
+          placeholder="Enter board title"
+          error={form.errors.title}
+          {...form.getFieldProps("title")}
+        />
       </div>
 
       <div className="form-row">
-        <Checkbox value={formValue.isFavorite} label="Favorite" onChange={changeIsFavorite} />
+        <Checkbox id="isFavorite" label="Favorite" {...form.getFieldProps("isFavorite")} />
       </div>
 
-      <FormFooter submitText={entity ? "Update board" : "Add board"} onSubmit={add} onCancel={cancel} />
+      <FormFooter
+        submitText={entity ? "Update board" : "Add board"}
+        onSubmit={form.handleSubmit}
+        onCancel={handleCancel}
+      />
     </FormContainer>
   );
 };

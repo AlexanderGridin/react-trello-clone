@@ -12,5 +12,7 @@ export enum MaterialIcon {
   Login = "login",
   AddUser = "person_add",
   Boards = "grid_view",
+  Cancel = "cancel",
+  Error = "error",
   None = "none",
 }

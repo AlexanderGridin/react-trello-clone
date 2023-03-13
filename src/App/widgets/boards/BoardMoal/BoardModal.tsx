@@ -5,7 +5,6 @@ import { BoardForm } from "../BoardForm/BoardForm";
 import { updateBoard as updateBoardOnApi } from "App/api/Boards/services";
 import { BoardDto, BoardViewModel } from "App/entities/Board/models";
 import { BoardFormValue } from "../BoardForm/models";
-import { mapBoardFormValueToUpdateDto } from "../BoardForm/mappers";
 
 interface BoardModalProps {
   board: BoardViewModel;
@@ -19,8 +18,7 @@ export const BoardModal = ({ board }: BoardModalProps) => {
   const update = async (formValue: BoardFormValue) => {
     setIsLoading(true);
 
-    const boardDto = await updateBoardOnApi(board.id, mapBoardFormValueToUpdateDto(formValue));
-
+    const boardDto = await updateBoardOnApi(board.id, BoardFormValue.toUpdateDto(formValue));
     if (boardDto) {
       dispatcher.updateBoard(BoardDto.toViewModel(boardDto));
     }

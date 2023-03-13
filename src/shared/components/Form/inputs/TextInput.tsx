@@ -1,8 +1,8 @@
 import { Input } from "./Input";
-import { InputCommonProps } from "./models/InputCommonProps";
+import { IInputCommonProps } from "./models";
 
-export interface TextInputProps extends InputCommonProps {}
+export interface ITextInputProps extends IInputCommonProps {}
 
-export const TextInput = (props: TextInputProps) => {
+export const TextInput = (props: ITextInputProps) => {
   return <Input type="text" {...props} />;
 };

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { AddButtonContainer } from "App/components/AddButtonContainer/AddButtonContainer";
-import { Children } from "shared/models/Children";
-import { Click } from "shared/models/Click";
+import { IChildren, IClick } from "shared/models";
 
 const Container = styled(AddButtonContainer)`
   min-height: 150px;
@@ -12,9 +11,9 @@ const Container = styled(AddButtonContainer)`
   font-size: 16px;
 `;
 
-interface AddBoardButtonProps extends Children, Click {}
+interface IAddBoardButtonProps extends IChildren, IClick {}
 
-export const AddBoardButton = ({ children, onClick }: AddBoardButtonProps) => {
+export const AddBoardButton = ({ children, onClick }: IAddBoardButtonProps) => {
   return (
     <Container type="button" onClick={onClick}>
       {children}

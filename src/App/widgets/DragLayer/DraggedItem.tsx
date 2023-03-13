@@ -7,11 +7,11 @@ import { TaskViewModel } from "App/entities/Task/models";
 import { TasksListViewModel } from "App/entities/TasksList/models";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 
-interface DraggedItemProps {
+interface IDraggedItemProps {
   item: TAppDraggedItem;
 }
 
-export const DraggedItem = ({ item }: DraggedItemProps) => {
+export const DraggedItem = ({ item }: IDraggedItemProps) => {
   switch (item.type) {
     case DraggedItemType.TasksList:
       const list: TasksListViewModel = item.data;

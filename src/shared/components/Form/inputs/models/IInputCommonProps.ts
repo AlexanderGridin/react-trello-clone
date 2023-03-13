@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 
-export interface InputCommonProps {
+export interface IInputCommonProps {
   id: string;
   name: string;
   value: string;

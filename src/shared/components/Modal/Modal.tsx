@@ -2,11 +2,10 @@ import MuiDialog from "@mui/material/Dialog";
 import MuiDialogContent from "@mui/material/DialogContent";
 import MuiDialogTitle from "@mui/material/DialogTitle";
 import { Spinner } from "shared/components/Spinner/Spinner";
-import { Children } from "shared/models/Children";
-import { TestId } from "shared/models/TestId";
+import { IChildren, ITestId } from "shared/models";
 import { ModalTestId } from "./static-data/ModalTestId";
 
-interface ModalProps extends Children, TestId {
+interface IModalProps extends IChildren, ITestId {
   title?: string;
   open?: boolean;
   isLoading?: boolean;
@@ -20,7 +19,7 @@ export const Modal = ({
   children,
   "data-testid": testId,
   onClose,
-}: ModalProps) => {
+}: IModalProps) => {
   return (
     <MuiDialog data-testid={testId} open={open} maxWidth="sm" fullWidth onClose={onClose}>
       {title && <MuiDialogTitle data-testid={ModalTestId.Title}>{title}</MuiDialogTitle>}

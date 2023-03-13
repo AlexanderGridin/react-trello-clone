@@ -6,11 +6,11 @@ import { TaskDto, TaskUpdateDto, TaskViewModel } from "App/entities/Task/models"
 import { TaskFormValue } from "../TaskForm/models";
 import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 
-interface TaskModalProps {
+interface ITaskModalProps {
   task: TaskViewModel;
 }
 
-export const TaskModal = ({ task }: TaskModalProps) => {
+export const TaskModal = ({ task }: ITaskModalProps) => {
   const dispatcher = useTaskDispatcher();
   const [isLoading, setIsLoading] = useState(false);
 

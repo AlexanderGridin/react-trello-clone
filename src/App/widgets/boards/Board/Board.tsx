@@ -4,14 +4,14 @@ import { RemoveButton } from "App/components/buttons/RemoveButton/RemoveButton";
 import { BoardViewModel } from "App/entities/Board/models";
 import style from "./Board.module.css";
 
-export interface BoardProps {
+export interface IBoardProps {
   board: BoardViewModel;
   onRemove: (board: BoardViewModel) => void;
   onFavorite: (board: BoardViewModel) => void;
   onEdit: (board: BoardViewModel) => void;
 }
 
-export const Board = ({ board, onRemove, onEdit, onFavorite }: BoardProps) => {
+export const Board = ({ board, onRemove, onEdit, onFavorite }: IBoardProps) => {
   const remove = () => onRemove(board);
   const edit = () => onEdit(board);
   const toggleFavorite = () => {

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { BoardWithTasksListsViewModel } from "App/entities/Board/models";
 
-export interface BoardsCacheState {
+export interface IBoardsCacheState {
   data: Record<string, BoardWithTasksListsViewModel>;
 }
 
-const initialState: BoardsCacheState = {
+const initialState: IBoardsCacheState = {
   data: {},
 };
 
@@ -13,11 +13,11 @@ const boardsCacheSlice = createSlice({
   name: "[BOARDS_CACHE]",
   initialState,
   reducers: {
-    cacheBoard: (state: BoardsCacheState, action: PayloadAction<{ board: BoardWithTasksListsViewModel }>) => {
+    cacheBoard: (state: IBoardsCacheState, action: PayloadAction<{ board: BoardWithTasksListsViewModel }>) => {
       const board = action.payload.board;
       state.data[board.id] = board;
     },
-    removeBoard: (state: BoardsCacheState, action: PayloadAction<{ board: BoardWithTasksListsViewModel }>) => {
+    removeBoard: (state: IBoardsCacheState, action: PayloadAction<{ board: BoardWithTasksListsViewModel }>) => {
       const boardToRemove = action.payload.board;
       const cachedBoard = state.data[boardToRemove.id];
 
@@ -25,7 +25,7 @@ const boardsCacheSlice = createSlice({
         delete state.data[action.payload.board.id];
       }
     },
-    clear: (state: BoardsCacheState) => {
+    clear: (state: IBoardsCacheState) => {
       state.data = {};
     },
   },

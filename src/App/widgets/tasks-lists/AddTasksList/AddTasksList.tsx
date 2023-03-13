@@ -6,12 +6,12 @@ import { TasksListForm } from "../TasksListForm/TasksListForm";
 import { TasksListCreateDto, TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
 import { TasksListFormValue } from "../TasksListForm/models";
 
-export interface AddTasksListProps {
+export interface IAddTasksListProps {
   boardId: string;
   onAdd: (list: TasksListViewModel) => void;
 }
 
-export const AddTasksList = ({ boardId, onAdd }: AddTasksListProps) => {
+export const AddTasksList = ({ boardId, onAdd }: IAddTasksListProps) => {
   const [isShowForm, setIsShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 

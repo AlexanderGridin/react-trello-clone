@@ -17,12 +17,12 @@ import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { useTasksListDispatcher } from "App/store/BoardPage/TasksList/hooks/useTasksListDispatcher";
 import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 
-export interface TasksListCardProps {
+export interface ITasksListCardProps {
   list: TasksListViewModel;
   isDragPreview?: boolean;
 }
 
-export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProps) => {
+export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = list.isPinned ? "#ebdcbd" : "#D8DEE9";
 

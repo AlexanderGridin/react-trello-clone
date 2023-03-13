@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export interface Children<T = ReactNode> {
+export interface IChildren<T = ReactNode> {
   children?: T;
 }

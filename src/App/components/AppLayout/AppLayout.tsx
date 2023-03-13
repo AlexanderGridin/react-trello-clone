@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 import style from "./AppLayout.module.css";
-import { Children } from "shared/models/Children";
+import { IChildren } from "shared/models";
 import { AppLayoutTestId } from "./static-data/AppLayoutTestId";
 
-interface AppLayoutProps extends Children {
+interface IAppLayoutProps extends IChildren {
   slotAside?: ReactNode;
 }
 
-export const AppLayout = ({ slotAside, children }: AppLayoutProps) => {
+export const AppLayout = ({ slotAside, children }: IAppLayoutProps) => {
   return (
     <div data-testid={AppLayoutTestId.Layout} className={style.container}>
       {slotAside && (

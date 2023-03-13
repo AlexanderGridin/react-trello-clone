@@ -7,13 +7,13 @@ import { FormContainer } from "shared/components/Form/FormContainer";
 import { TasksListFormValue } from "./models";
 import { TFormErrorsState } from "App/types";
 
-export interface TasksListFormProps {
+export interface ITasksListFormProps {
   entity?: TasksListFormValue;
   onSubmit: (value: TasksListFormValue) => void;
   onCancel: () => void;
 }
 
-export const TasksListForm = ({ entity, onSubmit, onCancel }: TasksListFormProps) => {
+export const TasksListForm = ({ entity, onSubmit, onCancel }: ITasksListFormProps) => {
   const validate = (value: TasksListFormValue) => {
     const state: TFormErrorsState<TasksListFormValue> = {};
 

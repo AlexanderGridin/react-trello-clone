@@ -1,10 +1,10 @@
 import { useSelectUser } from "App/store/User/hooks";
-import { Children } from "shared/models/Children";
+import { IChildren } from "shared/models";
 import { AppPageLayout } from "../AppPageLayout/AppPageLayout";
 
-interface PageGuardProps extends Children {}
+interface IPageGuardProps extends IChildren {}
 
-export const PageGuard = ({ children }: PageGuardProps) => {
+export const PageGuard = ({ children }: IPageGuardProps) => {
   const user = useSelectUser();
 
   if (!user) {

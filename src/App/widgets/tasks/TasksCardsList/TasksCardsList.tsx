@@ -3,14 +3,14 @@ import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatc
 import { AddTask } from "../AddTask/AddTask";
 import { TaskCard } from "../TaskCard/TaskCard";
 
-interface TasksCardsListProps {
+interface ITasksCardsListProps {
   boardId: string;
   listId: string;
   tasks: TaskViewModel[];
   isShowAddTask?: boolean;
 }
 
-export const TasksCardsList = ({ boardId, listId, tasks, isShowAddTask = false }: TasksCardsListProps) => {
+export const TasksCardsList = ({ boardId, listId, tasks, isShowAddTask = false }: ITasksCardsListProps) => {
   const dispatcher = useTaskDispatcher();
 
   const addTask = (task: TaskViewModel) => dispatcher.addTask({ ...task, listId, boardId });

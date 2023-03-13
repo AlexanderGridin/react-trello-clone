@@ -6,11 +6,11 @@ import { updateBoard as updateBoardOnApi } from "App/api/Boards/services";
 import { BoardDto, BoardViewModel } from "App/entities/Board/models";
 import { BoardFormValue } from "../BoardForm/models";
 
-interface BoardModalProps {
+interface IBoardModalProps {
   board: BoardViewModel;
 }
 
-export const BoardModal = ({ board }: BoardModalProps) => {
+export const BoardModal = ({ board }: IBoardModalProps) => {
   const dispatcher = useBoardsPageDispatcher();
   const [isLoading, setIsLoading] = useState(false);
 

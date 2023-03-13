@@ -8,12 +8,12 @@ import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { UserSignInFormValue } from "..";
 import style from "./UserSignInForm.module.css";
 
-interface UserSignInFormProps {
+interface IUserSignInFormProps {
   onSubmit: (value: UserSignInFormValue) => void;
   onCancel: () => void;
 }
 
-export const UserSignInForm = ({ onSubmit, onCancel }: UserSignInFormProps) => {
+export const UserSignInForm = ({ onSubmit, onCancel }: IUserSignInFormProps) => {
   const validate = (value: UserSignInFormValue) => {
     const state: TFormErrorsState<UserSignInFormValue> = {};
 

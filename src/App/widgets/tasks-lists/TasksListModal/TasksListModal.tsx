@@ -6,11 +6,11 @@ import { TasksListDto, TasksListUpdateDto, TasksListViewModel } from "App/entiti
 import { TasksListFormValue } from "../TasksListForm/models";
 import { useTasksListDispatcher } from "App/store/BoardPage/TasksList/hooks/useTasksListDispatcher";
 
-interface TasksListModalProps {
+interface ITasksListModalProps {
   list: TasksListViewModel;
 }
 
-export const TasksListModal = ({ list }: TasksListModalProps) => {
+export const TasksListModal = ({ list }: ITasksListModalProps) => {
   const dispatcher = useTasksListDispatcher();
   const [isLoading, setIsLoading] = useState(false);
 

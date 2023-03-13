@@ -1,19 +1,15 @@
 import { CSSProperties } from "react";
 import { MuiButton } from "./components/MuiButton";
-import { TButtonType } from "./types/ButtonType";
-import { TButtonVisualStyle } from "./types/ButtonVisualStyle";
+import { TButtonType, TButtonVisualStyle } from "./types";
 import { MaterialIcon } from "../Icon/enums/MaterialIcon";
 import { Icon } from "../Icon/Icon";
-import { TestId } from "shared/models/TestId";
-import { Click } from "shared/models/Click";
-import { Children } from "shared/models/Children";
-import cssStyle from "./Button.module.css";
-import { ClassName } from "shared/models/ClassName";
+import { IChildren, ITestId, IClick, IClassName } from "shared/models";
 import { ButtonTestId } from "./static-data/ButtonTestId";
+import cssStyle from "./Button.module.css";
 
 const { Icon: IconId, Text: TextId } = ButtonTestId;
 
-interface ButtonProps extends Click, Children<string>, TestId, ClassName {
+interface IButtonProps extends IClick, IChildren<string>, ITestId, IClassName {
   type?: TButtonType;
   icon?: MaterialIcon;
   isIconOnly?: boolean;
@@ -31,7 +27,7 @@ export const Button = ({
   style = {},
   "data-testid": testId,
   onClick,
-}: ButtonProps) => {
+}: IButtonProps) => {
   const bgColor =
     (visualStyle === "regular" && "#5E81AC") ||
     (visualStyle === "error" && "#BF616A") ||

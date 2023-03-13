@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { UserViewModel } from "App/entities/User/models";
 import { setUserReducer } from "./reducers";
 
-export interface UserState {
+export interface IUserState {
   user: UserViewModel | null;
 }
 
-const initialState: UserState = {
+const initialState: IUserState = {
   user: null,
 };
 

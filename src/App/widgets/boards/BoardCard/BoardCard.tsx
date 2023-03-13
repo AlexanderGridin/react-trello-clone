@@ -19,14 +19,14 @@ import { Chip } from "shared/components/Chip/Chip";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import style from "./BoardCard.module.css";
 
-interface BoardCardProps {
+interface IBoardCardProps {
   board: BoardViewModel;
   isDragPreview?: boolean;
 }
 
 const MIN_HEIGHT = 150;
 
-export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
+export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const dispatcher = useBoardsPageDispatcher();

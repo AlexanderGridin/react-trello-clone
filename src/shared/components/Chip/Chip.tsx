@@ -1,9 +1,8 @@
 import MuiChip from "@mui/material/Chip";
-import { Children } from "shared/models/Children";
-import { ClassName } from "shared/models/ClassName";
+import { IChildren, IClassName } from "shared/models";
 
-interface ChipProps extends Children<string>, ClassName {}
+interface IChipProps extends IChildren<string>, IClassName {}
 
-export const Chip = ({ className, children }: ChipProps) => {
+export const Chip = ({ className, children }: IChipProps) => {
   return <MuiChip label={children} className={className} sx={{ fontSize: "14px" }} />;
 };

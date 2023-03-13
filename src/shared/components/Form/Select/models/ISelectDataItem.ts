@@ -1,4 +1,4 @@
-export interface SelectDataItem {
+export interface ISelectDataItem {
   name: string;
   value: string;
 }

@@ -8,11 +8,11 @@ import { BoardFormValue } from "../BoardForm/models";
 import { useSelectBoards } from "App/store/BoardsPage/hooks";
 import { useSelectUser } from "App/store/User/hooks";
 
-export interface AddBoardProps {
+export interface IAddBoardProps {
   onAdd: (board: BoardViewModel) => void;
 }
 
-export const AddBoard = ({ onAdd }: AddBoardProps) => {
+export const AddBoard = ({ onAdd }: IAddBoardProps) => {
   const user = useSelectUser();
   const boards = useSelectBoards();
 

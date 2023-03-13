@@ -13,7 +13,7 @@ const StyledCheckbox = styled(MuiCheckbox)({
   },
 });
 
-export interface CheckboxProps {
+export interface ICheckboxProps {
   id: string;
   name: string;
   label?: string;
@@ -21,7 +21,7 @@ export interface CheckboxProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Checkbox = ({ label, value, ...checkboxProps }: CheckboxProps) => {
+export const Checkbox = ({ label, value, ...checkboxProps }: ICheckboxProps) => {
   return (
     <div style={{ marginTop: "-9px", marginBottom: "-9px" }}>
       <FormControlLabel control={<StyledCheckbox checked={value} {...checkboxProps} />} label={label} />

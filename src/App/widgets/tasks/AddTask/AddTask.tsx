@@ -7,7 +7,7 @@ import { TaskCreateDto, TaskDto, TaskViewModel } from "App/entities/Task/models"
 import { TaskFormValue } from "../TaskForm/models";
 import { useSelectUser } from "App/store/User/hooks";
 
-export interface AddTaskProps {
+export interface IAddTaskProps {
   listId: string;
   boardId: string;
   onAdd: (task: TaskViewModel) => void;
@@ -18,7 +18,7 @@ interface AddTaskState {
   isLoading: boolean;
 }
 
-export const AddTask = ({ listId, boardId, onAdd }: AddTaskProps) => {
+export const AddTask = ({ listId, boardId, onAdd }: IAddTaskProps) => {
   const user = useSelectUser();
 
   const initialState: AddTaskState = { isShowForm: false, isLoading: false };

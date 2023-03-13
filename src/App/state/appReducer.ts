@@ -1,5 +1,5 @@
 import { AppState } from "./models/AppState";
-import { TAppAction } from "./models/AppAction";
+import { TAppAction } from "./types/TAppAction";
 import { appDraggedItemReducer } from "App/entities/AppDraggedItem/state";
 
 export const appReducer = (state: AppState, action: TAppAction): AppState => {

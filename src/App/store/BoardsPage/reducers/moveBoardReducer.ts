@@ -3,14 +3,14 @@ import { BoardViewModel } from "App/entities/Board/models";
 import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models/ArrayUtilConfigWithArrayItem";
 import { moveItemAfterArrayItem } from "shared/utils/array/moveItemAfterArrayItem/moveItemAfterArrayItem";
 import { moveItemBeforeArrayItem } from "shared/utils/array/moveItemBeforeArrayItem/moveItemBeforeArrayItem";
-import { BoardsPageState } from "..";
+import { IBoardsPageState } from "..";
 
 interface Payload {
   boardToMove: BoardViewModel;
   boardToReplace: BoardViewModel;
 }
 
-export const moveBoardReducer = (state: BoardsPageState, action: PayloadAction<Payload>) => {
+export const moveBoardReducer = (state: IBoardsPageState, action: PayloadAction<Payload>) => {
   const boards = state.boards ? [...state.boards] : [];
   const boardToMove = action.payload.boardToMove;
   const boardToReplace = action.payload.boardToReplace;

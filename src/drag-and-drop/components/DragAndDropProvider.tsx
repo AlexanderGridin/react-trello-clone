@@ -1,9 +1,9 @@
 import { DndProvider } from "react-dnd";
 import { HTML5Backend as Backend } from "react-dnd-html5-backend";
-import { Children } from "shared/models/Children";
+import { IChildren } from "shared/models";
 
-interface DragAndDropProviderProps extends Children {}
+interface IDragAndDropProviderProps extends IChildren {}
 
-export const DragAndDropProvider = ({ children }: DragAndDropProviderProps) => (
+export const DragAndDropProvider = ({ children }: IDragAndDropProviderProps) => (
   <DndProvider backend={Backend}>{children}</DndProvider>
 );

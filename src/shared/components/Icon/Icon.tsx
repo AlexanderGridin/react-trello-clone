@@ -1,13 +1,12 @@
-import { ClassName } from "shared/models/ClassName";
-import { TestId } from "shared/models/TestId";
+import { ITestId, IClassName } from "shared/models";
 import { IconContainer } from "./components/IconContainer";
 import { MaterialIcon } from "./enums/MaterialIcon";
 
-interface IconProps extends TestId, ClassName {
+interface IIconProps extends ITestId, IClassName {
   icon: MaterialIcon;
 }
 
-export const Icon = ({ icon, className = "", "data-testid": testId }: IconProps) => {
+export const Icon = ({ icon, className = "", "data-testid": testId }: IIconProps) => {
   const classNames = `material-symbols-outlined ${className}`;
 
   return (

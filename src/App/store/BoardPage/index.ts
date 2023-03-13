@@ -10,11 +10,11 @@ import {
   updateTasksListReducer,
 } from "./TasksList/reducers";
 
-export interface BoardPageState {
+export interface IBoardPageState {
   board: BoardWithTasksListsViewModel | null;
 }
 
-const initialState: BoardPageState = {
+const initialState: IBoardPageState = {
   board: null,
 };
 
@@ -22,7 +22,7 @@ const boardPageSlice = createSlice({
   name: "[BOARD_PAGE]",
   initialState,
   reducers: {
-    setBoard: (state: BoardPageState, action: PayloadAction<{ board: BoardWithTasksListsViewModel | null }>) => {
+    setBoard: (state: IBoardPageState, action: PayloadAction<{ board: BoardWithTasksListsViewModel | null }>) => {
       state.board = action.payload.board;
     },
     // TasksList

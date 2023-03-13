@@ -1,13 +1,12 @@
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { IconButton } from "shared/components/IconButton/IconButton";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
-import { ClassName } from "shared/models/ClassName";
-import { Click } from "shared/models/Click";
+import { IClick, IClassName } from "shared/models";
 import style from "./EditButton.module.css";
 
-interface EditButtonProps extends Click, ClassName {}
+interface IEditButtonProps extends IClick, IClassName {}
 
-export const EditButton = ({ className, onClick }: EditButtonProps) => {
+export const EditButton = ({ className, onClick }: IEditButtonProps) => {
   const cn = `${style.button} ${className}`;
 
   return (

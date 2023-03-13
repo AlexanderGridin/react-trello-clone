@@ -8,12 +8,12 @@ import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { CreateUserFormValue } from "..";
 import style from "./CreateUserForm.module.css";
 
-interface CreateUserFormProps {
+interface ICreateUserFormProps {
   onCreate: (value: CreateUserFormValue) => void;
   onCancel: () => void;
 }
 
-export const CreateUserForm = ({ onCreate, onCancel }: CreateUserFormProps) => {
+export const CreateUserForm = ({ onCreate, onCancel }: ICreateUserFormProps) => {
   const validate = (value: CreateUserFormValue) => {
     const state: TFormErrorsState<CreateUserFormValue> = {};
 

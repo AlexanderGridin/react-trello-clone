@@ -1,14 +1,14 @@
 import { Action } from "App/state/models/Action";
-import { AppDraggedItem } from "../../models";
+import { TAppDraggedItem } from "../../models";
 import { AppDraggedItemActionType } from "../AppDraggedItemActionType.enum";
 
 interface SetAppDraggedItemPayload {
-  item: AppDraggedItem | null;
+  item: TAppDraggedItem | null;
 }
 
-export type SetAppDraggedItemAction = Action<AppDraggedItemActionType.SetAppDraggedItem, SetAppDraggedItemPayload>;
+export type TSetAppDraggedItemAction = Action<AppDraggedItemActionType.SetAppDraggedItem, SetAppDraggedItemPayload>;
 
-export const createSetAppDraggedItemAction = (item: AppDraggedItem | null): SetAppDraggedItemAction => ({
+export const createSetAppDraggedItemAction = (item: TAppDraggedItem | null): TSetAppDraggedItemAction => ({
   type: AppDraggedItemActionType.SetAppDraggedItem,
   payload: { item },
 });

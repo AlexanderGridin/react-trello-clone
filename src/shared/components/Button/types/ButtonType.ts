@@ -1,1 +1,1 @@
-export type ButtonType = "button" | "submit";
+export type TButtonType = "button" | "submit";

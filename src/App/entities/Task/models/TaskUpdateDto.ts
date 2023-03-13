@@ -1,8 +1,8 @@
-import { TaskPriority } from "App/types/TaskPriority";
+import { TTaskPriority } from "App/types/TaskPriority";
 
 export interface TaskUpdateDto {
   content: string;
-  priority: TaskPriority;
+  priority: TTaskPriority;
   listId: string;
   boardId: string;
 }

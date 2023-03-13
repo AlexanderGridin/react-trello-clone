@@ -7,9 +7,9 @@ import { removeTask as removeTaskFromApi } from "App/api/Task/services";
 import { Task } from "../Task/Task";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskModal } from "../TaskModal/TaskModal";
-import { TaskPriority } from "App/types/TaskPriority";
+import { TTaskPriority } from "App/types/TaskPriority";
 import { TaskViewModel } from "App/entities/Task/models";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import style from "./TaskCard.module.css";
 import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
@@ -19,7 +19,7 @@ interface TaskCardProps {
   isDragPreview?: boolean;
 }
 
-const getTaskPriorityColor = (priority: TaskPriority): string => {
+const getTaskPriorityColor = (priority: TTaskPriority): string => {
   switch (priority) {
     case "regular":
       return "#ECEFF4";
@@ -60,7 +60,7 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
     setIsLoading(false);
   };
 
-  const dropOnTask = (draggedItem: AppDraggedItem) => {
+  const dropOnTask = (draggedItem: TAppDraggedItem) => {
     if (draggedItem.type !== DraggedItemType.Task) {
       return;
     }

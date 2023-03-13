@@ -3,9 +3,9 @@ import { useDrag } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { useAppState } from "App/state/hooks/useAppState";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 
-export const useItemDrag = (item: AppDraggedItem) => {
+export const useItemDrag = (item: TAppDraggedItem) => {
   const { draggedItem } = useAppState();
   const isDragging = draggedItem?.id === item.id;
 

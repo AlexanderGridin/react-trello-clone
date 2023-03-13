@@ -1,7 +1,7 @@
 import { CSSProperties } from "react";
 import { MuiButton } from "./components/MuiButton";
-import { ButtonType } from "./types/ButtonType";
-import { ButtonVisualStyle } from "./types/ButtonVisualStyle";
+import { TButtonType } from "./types/ButtonType";
+import { TButtonVisualStyle } from "./types/ButtonVisualStyle";
 import { MaterialIcon } from "../Icon/enums/MaterialIcon";
 import { Icon } from "../Icon/Icon";
 import { TestId } from "shared/models/TestId";
@@ -14,11 +14,11 @@ import { ButtonTestId } from "./static-data/ButtonTestId";
 const { Icon: IconId, Text: TextId } = ButtonTestId;
 
 interface ButtonProps extends Click, Children<string>, TestId, ClassName {
-  type?: ButtonType;
+  type?: TButtonType;
   icon?: MaterialIcon;
   isIconOnly?: boolean;
   style?: CSSProperties;
-  visualStyle?: ButtonVisualStyle;
+  visualStyle?: TButtonVisualStyle;
 }
 
 export const Button = ({

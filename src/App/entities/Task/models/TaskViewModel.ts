@@ -1,4 +1,4 @@
-import { TaskPriority } from "App/types/TaskPriority";
+import { TTaskPriority } from "App/types/TaskPriority";
 import { generateId } from "shared/utils/generateId";
 
 interface TaskViewModelConfig {
@@ -15,7 +15,7 @@ export class TaskViewModel {
   // TODO: update content to be "title"
   public content: string;
   public isEditing = false;
-  public priority: TaskPriority = "regular";
+  public priority: TTaskPriority = "regular";
   public user!: { id: string; name: string };
 
   constructor({ listId = "", boardId = "", content = "" }: TaskViewModelConfig) {

@@ -1,15 +1,16 @@
 import { useDrop } from "react-dnd";
-import { useAppState } from "App/state/hooks/useAppState";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { throttle } from "throttle-debounce";
 
+import { useAppState } from "App/state/hooks/useAppState";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
+
 interface DroppableItem {
-  onDrop: (draggedItem: AppDraggedItem) => void;
+  onDrop: (draggedItem: TAppDraggedItem) => void;
 }
 
-type Item = AppDraggedItem & DroppableItem;
+type TItem = TAppDraggedItem & DroppableItem;
 
-export const useItemDrop = (item: Item) => {
+export const useItemDrop = (item: TItem) => {
   const { draggedItem } = useAppState();
 
   const [, drop] = useDrop({

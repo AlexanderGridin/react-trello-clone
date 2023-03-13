@@ -1,6 +1,6 @@
-import { TaskPriority } from "App/types/TaskPriority";
+import { TTaskPriority } from "App/types/TaskPriority";
 
 export class TaskFormValue {
   public title = "";
-  public priority: TaskPriority = "regular";
+  public priority: TTaskPriority = "regular";
 }

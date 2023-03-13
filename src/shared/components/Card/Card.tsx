@@ -19,9 +19,9 @@ export interface CardProps extends Children, ClassName, TestId {
   onDoubleClick?: () => void;
 }
 
-type Ref = ForwardedRef<HTMLDivElement>;
+type TRef = ForwardedRef<HTMLDivElement>;
 
-export const Card = forwardRef((props: CardProps, ref: Ref) => {
+export const Card = forwardRef((props: CardProps, ref: TRef) => {
   const {
     slotHeader,
     slotContent,

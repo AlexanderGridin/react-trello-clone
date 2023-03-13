@@ -1,1 +1,1 @@
-export type ButtonVisualStyle = "regular" | "success" | "error";
+export type TButtonVisualStyle = "regular" | "success" | "error";

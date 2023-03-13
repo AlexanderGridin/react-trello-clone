@@ -1,5 +1,5 @@
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 
 export class AppState {
-  public draggedItem: AppDraggedItem | null = null;
+  public draggedItem: TAppDraggedItem | null = null;
 }

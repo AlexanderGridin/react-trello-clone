@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FormErrorsState } from "App/types/FormErrorsState";
+import { TFormErrorsState } from "App/types/FormErrorsState";
 
 import { Button } from "shared/components/Button/Button";
 import { FormContainer } from "shared/components/Form/FormContainer";
@@ -15,7 +15,7 @@ interface CreateUserFormProps {
 
 export const CreateUserForm = ({ onCreate, onCancel }: CreateUserFormProps) => {
   const validate = (value: CreateUserFormValue) => {
-    const state: FormErrorsState<CreateUserFormValue> = {};
+    const state: TFormErrorsState<CreateUserFormValue> = {};
 
     if (!value.userName) {
       state.userName = (

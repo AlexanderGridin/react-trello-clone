@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FormErrorsState } from "App/types/FormErrorsState";
+import { TFormErrorsState } from "App/types/FormErrorsState";
 
 import { Button } from "shared/components/Button/Button";
 import { FormContainer } from "shared/components/Form/FormContainer";
@@ -15,7 +15,7 @@ interface UserSignInFormProps {
 
 export const UserSignInForm = ({ onSubmit, onCancel }: UserSignInFormProps) => {
   const validate = (value: UserSignInFormValue) => {
-    const state: FormErrorsState<UserSignInFormValue> = {};
+    const state: TFormErrorsState<UserSignInFormValue> = {};
 
     if (!value.userName) {
       state.userName = (

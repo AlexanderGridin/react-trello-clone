@@ -1,18 +1,18 @@
 import { useAppState } from "App/state/hooks/useAppState";
-import { AppDraggedItemAction } from "..";
-import { AppDraggedItem } from "../../models";
+import { TAppDraggedItemAction } from "..";
+import { TAppDraggedItem } from "../../models";
 import { createSetAppDraggedItemAction } from "../action-creators/createSetAppDraggedItemAction";
 
 export const useAppDraggedItemDispatcher = () => {
   const { dispatch } = useAppState();
 
-  const dispatchForModule = (action: AppDraggedItemAction) =>
+  const dispatchForModule = (action: TAppDraggedItemAction) =>
     dispatch({
       module: "AppDraggedItem",
       ...action,
     });
 
-  const setAppDraggedItem = (item: AppDraggedItem | null) => dispatchForModule(createSetAppDraggedItemAction(item));
+  const setAppDraggedItem = (item: TAppDraggedItem | null) => dispatchForModule(createSetAppDraggedItemAction(item));
 
   return { setAppDraggedItem };
 };

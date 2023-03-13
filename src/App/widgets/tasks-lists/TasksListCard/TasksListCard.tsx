@@ -14,7 +14,7 @@ import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList"
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TasksListModal } from "../TasksListModal/TasksListModal";
 import { TasksListViewModel } from "App/entities/TasksList/models";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { useTasksListDispatcher } from "App/store/BoardPage/TasksList/hooks/useTasksListDispatcher";
 import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 
@@ -62,7 +62,7 @@ export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProp
     setIsLoading(false);
   };
 
-  const dropOnList = (draggedItem: AppDraggedItem) => {
+  const dropOnList = (draggedItem: TAppDraggedItem) => {
     if (draggedItem.type === DraggedItemType.TasksList && draggedItem.data.isPinned === list.isPinned) {
       dispatcher.moveTasksList(draggedItem.data, list);
       return;

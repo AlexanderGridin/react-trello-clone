@@ -1,1 +1,1 @@
-export type TaskPriority = "height" | "medium" | "low" | "regular";
+export type TTaskPriority = "height" | "medium" | "low" | "regular";

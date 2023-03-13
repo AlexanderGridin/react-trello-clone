@@ -1,3 +1,3 @@
-import { AppDraggedItemModuleAction } from "App/entities/AppDraggedItem/state";
+import { TAppDraggedItemModuleAction } from "App/entities/AppDraggedItem/state";
 
-export type AppAction = AppDraggedItemModuleAction;
+export type TAppAction = TAppDraggedItemModuleAction;

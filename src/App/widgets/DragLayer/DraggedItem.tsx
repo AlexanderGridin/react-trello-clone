@@ -5,10 +5,10 @@ import { BoardCard } from "../boards/BoardCard/BoardCard";
 import { BoardViewModel } from "App/entities/Board/models";
 import { TaskViewModel } from "App/entities/Task/models";
 import { TasksListViewModel } from "App/entities/TasksList/models";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 
 interface DraggedItemProps {
-  item: AppDraggedItem;
+  item: TAppDraggedItem;
 }
 
 export const DraggedItem = ({ item }: DraggedItemProps) => {

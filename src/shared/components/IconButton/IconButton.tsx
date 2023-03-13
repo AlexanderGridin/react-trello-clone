@@ -2,7 +2,7 @@ import { ClassName } from "shared/models/ClassName";
 import { Click } from "shared/models/Click";
 import { TestId } from "shared/models/TestId";
 import styled from "styled-components";
-import { ButtonType } from "../Button/types/ButtonType";
+import { TButtonType } from "../Button/types/ButtonType";
 import { MaterialIcon } from "../Icon/enums/MaterialIcon";
 import { Icon } from "../Icon/Icon";
 import style from "./IconButton.module.css";
@@ -26,7 +26,7 @@ const Container = styled.button<{ isActive?: boolean; color?: string; activeColo
 
 interface IconButtonProps extends Click, ClassName, TestId {
   icon: MaterialIcon;
-  type?: ButtonType;
+  type?: TButtonType;
   isActive?: boolean;
   color?: string;
   activeColor?: string;

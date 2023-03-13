@@ -1,7 +1,7 @@
 import { AppState } from "App/state/models/AppState";
-import { SetAppDraggedItemAction } from "../action-creators/createSetAppDraggedItemAction";
+import { TSetAppDraggedItemAction } from "../action-creators/createSetAppDraggedItemAction";
 
-export const setAppDraggedItemReducer = (state: AppState, action: SetAppDraggedItemAction): AppState => ({
+export const setAppDraggedItemReducer = (state: AppState, action: TSetAppDraggedItemAction): AppState => ({
   ...state,
   draggedItem: action.payload.item,
 });

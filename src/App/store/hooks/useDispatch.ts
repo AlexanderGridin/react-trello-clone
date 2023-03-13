@@ -1,4 +1,4 @@
 import { useDispatch as nonTypedUseDispatch } from "react-redux";
-import { AppDispatch } from "..";
+import { TAppDispatch } from "..";
 
-export const useDispatch: () => AppDispatch = nonTypedUseDispatch;
+export const useDispatch: () => TAppDispatch = nonTypedUseDispatch;

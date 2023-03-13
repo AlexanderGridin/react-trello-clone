@@ -21,7 +21,7 @@ import {
   mapBoardViewModelToUpdateDto,
 } from "App/entities/Board/mappers";
 
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { mapBoardViewModelToUpdateManyDto } from "App/entities/Board/mappers";
@@ -67,7 +67,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
     setIsLoading(false);
   };
 
-  const dropOnBoard = (draggedItem: AppDraggedItem) => {
+  const dropOnBoard = (draggedItem: TAppDraggedItem) => {
     if (draggedItem.type !== DraggedItemType.Board) {
       return;
     }

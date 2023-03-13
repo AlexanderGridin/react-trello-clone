@@ -5,7 +5,7 @@ import { TextInput } from "shared/components/Form/inputs";
 import { Checkbox } from "shared/components/Form/Checkbox";
 import { FormFooter } from "shared/components/Form/FormFooter";
 import { BoardFormValue } from "./models/BoardFormValue";
-import { FormErrorsState } from "App/types/FormErrorsState";
+import { TFormErrorsState } from "App/types/FormErrorsState";
 
 export interface BoardFormProps {
   entity?: BoardFormValue;
@@ -15,7 +15,7 @@ export interface BoardFormProps {
 
 export const BoardForm = ({ entity, onSubmit, onCancel }: BoardFormProps) => {
   const validate = (value: BoardFormValue) => {
-    const state: FormErrorsState<BoardFormValue> = {};
+    const state: TFormErrorsState<BoardFormValue> = {};
 
     if (!value.title) {
       state.title = (

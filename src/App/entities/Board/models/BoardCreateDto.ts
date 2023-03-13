@@ -18,11 +18,6 @@ export class BoardCreateDto {
       return;
     }
 
-    const { title, isFavorite, rank, user } = config;
-
-    this.title = title;
-    this.isFavorite = isFavorite;
-    this.rank = rank;
-    this.user = user;
+    Object.assign(this, config);
   }
 }

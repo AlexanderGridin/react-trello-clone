@@ -1,7 +1,7 @@
 interface LocalStorage<Value> {
   set: (value: Value) => void;
   clear: () => void;
-  get: (isParsingNeeded: boolean) => Value;
+  get: (isParsingNeeded?: boolean) => Value;
 }
 
 export const createLocalStorage = <Value>(key: string): LocalStorage<Value> => {

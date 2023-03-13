@@ -6,38 +6,19 @@ import { removeTask as removeTaskFromApi } from "App/api/Task/services";
 import { Task } from "../Task/Task";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskModal } from "../TaskModal/TaskModal";
-import { TPriority } from "App/types";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import style from "./TaskCard.module.css";
 import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
+import { getTaskPriorityColor } from "./utils";
 
-interface TaskCardProps {
+interface ITaskCardProps {
   task: TaskViewModel;
   isDragPreview?: boolean;
 }
 
-const getTaskPriorityColor = (priority: TPriority): string => {
-  switch (priority) {
-    case "regular":
-      return "#ECEFF4";
-
-    case "medium":
-      return "#D08770";
-
-    case "height":
-      return "#BF616A";
-
-    case "low":
-      return "#EBCB8B";
-
-    default:
-      return "#ECEFF4";
-  }
-};
-
-export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
+export const TaskCard = ({ task, isDragPreview = false }: ITaskCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = "#ECEFF4";
 

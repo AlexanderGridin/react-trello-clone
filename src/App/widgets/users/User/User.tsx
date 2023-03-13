@@ -7,6 +7,7 @@ import { useBoardPageDispatcher } from "App/store/BoardPage/hooks/useBoardPageDi
 import { useBoardsPageDispatcher } from "App/store/BoardsPage/hooks";
 import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
 import style from "./User.module.css";
+import { logout } from "App/api/User/services/logout";
 
 export const User = () => {
   const user = useSelectUser();
@@ -16,12 +17,13 @@ export const User = () => {
   const boardsPageDispatcher = useBoardsPageDispatcher();
   const boardsCahceDispatcher = useBoardsCacheDispatcher();
 
-  const handleSignOutClick = () => {
+  const handleSignOutClick = async () => {
     boardsPageDispatcher.setBoards(null);
     boardPageDispatcher.setBoard(null);
     boardsCahceDispatcher.clearCache();
 
-    localStorage.removeItem("userId");
+    await logout();
+    localStorage.removeItem("token");
 
     userDispatcher.setUser(null);
   };

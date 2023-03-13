@@ -9,6 +9,6 @@ export const checkAuth = async (): Promise<AuthenticatedUserDto> => {
     const response = await httpClient.get<AuthenticatedUserDto>(apiUrl);
     return response.data;
   } catch (e) {
-    return e as any;
+    return { ...new AuthenticatedUserDto() };
   }
 };

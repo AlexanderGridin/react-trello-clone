@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppLayout } from "App/components/AppLayout/AppLayout";
 import { Sidebar } from "App/widgets/Sidebar/Sidebar";
-import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
-import { UserViewModel } from "App/entities/User/models";
+import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { checkAuth } from "App/api/User/services/checkAuth";
 import { accessTokenStorage } from "App/local-storage";
@@ -24,10 +23,10 @@ export const AppRoot = () => {
       return;
     }
 
-    const userDto = await checkAuth();
+    const userDto: AuthenticatedUserDto = await checkAuth();
     if (userDto._id) {
       accessTokenStorage.set(userDto.accessToken);
-      userDispatcher.setUser(mapUserDtoToViewModel(userDto));
+      userDispatcher.setUser(AuthenticatedUserDto.toViewModel(userDto));
       return;
     }
 

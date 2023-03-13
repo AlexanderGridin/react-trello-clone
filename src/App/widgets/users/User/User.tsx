@@ -8,6 +8,7 @@ import { useBoardsPageDispatcher } from "App/store/BoardsPage/hooks";
 import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
 import style from "./User.module.css";
 import { logout } from "App/api/User/services/logout";
+import { accessTokenStorage } from "App/local-storage";
 
 export const User = () => {
   const user = useSelectUser();
@@ -23,8 +24,7 @@ export const User = () => {
     boardsCahceDispatcher.clearCache();
 
     await logout();
-    localStorage.removeItem("token");
-
+    accessTokenStorage.clear();
     userDispatcher.setUser(null);
   };
 

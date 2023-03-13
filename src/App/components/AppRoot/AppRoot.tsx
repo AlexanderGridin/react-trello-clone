@@ -6,6 +6,7 @@ import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToVie
 import { UserViewModel } from "App/entities/User/models";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { checkAuth } from "App/api/User/services/checkAuth";
+import { accessTokenStorage } from "App/local-storage";
 
 export const AppRoot = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export const AppRoot = () => {
   const userDispatcher = useUserDispatcher();
 
   const checkUserAuth = async () => {
-    const accessToken = localStorage.getItem("token");
+    const accessToken = accessTokenStorage.get();
 
     if (!accessToken) {
       userDispatcher.setUser({ ...new UserViewModel() });
@@ -25,12 +26,12 @@ export const AppRoot = () => {
 
     const userDto = await checkAuth();
     if (userDto._id) {
-      localStorage.setItem("token", userDto.accessToken);
+      accessTokenStorage.set(userDto.accessToken);
       userDispatcher.setUser(mapUserDtoToViewModel(userDto));
       return;
     }
 
-    localStorage.removeItem("token");
+    accessTokenStorage.clear();
     userDispatcher.setUser({ ...new UserViewModel() });
     navigate("/");
   };

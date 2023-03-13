@@ -11,6 +11,7 @@ import style from "./IndexPage.module.css";
 import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
 import { Alert } from "shared/components/Alert/Alert";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
+import { accessTokenStorage } from "App/local-storage";
 
 export const IndexPage = () => {
   const user = useSelectUser();
@@ -45,7 +46,7 @@ export const IndexPage = () => {
 
     const user: UserViewModel = mapUserDtoToViewModel(userDto);
 
-    localStorage.setItem("token", userDto.accessToken);
+    accessTokenStorage.set(userDto.accessToken);
     userDispatcher.setUser(user);
 
     setIsShowSignInForm(false);
@@ -71,7 +72,7 @@ export const IndexPage = () => {
     }
 
     const user: UserViewModel = mapUserDtoToViewModel(userDto);
-    localStorage.setItem("token", userDto.accessToken);
+    accessTokenStorage.set(userDto.accessToken);
     userDispatcher.setUser(user);
 
     setIsShowCreateUserForm(false);

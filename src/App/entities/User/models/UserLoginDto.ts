@@ -1,13 +1,13 @@
-export interface IUserCreateDtoConfig {
+export interface IUserLoginDtoConfig {
   name: string;
   password: string;
 }
 
-export class UserCreateDto {
+export class UserLoginDto {
   public name: string;
   public password: string;
 
-  constructor({ name, password }: IUserCreateDtoConfig) {
+  constructor({ name, password }: IUserLoginDtoConfig) {
     this.name = name;
     this.password = password;
   }

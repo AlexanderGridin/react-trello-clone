@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
-import { login, createUser } from "App/api/User/services";
+import { loginUser, createUser } from "App/api/User/services";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
-import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
+import { AuthenticatedUserDto, UserCreateDto, UserLoginDto, UserViewModel } from "App/entities/User/models";
 import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 import { Button } from "shared/components/Button/Button";
 import { Card } from "shared/components/Card/Card";
@@ -28,10 +28,12 @@ export const IndexPage = () => {
     setIsLoading(true);
     setAlertMessage("");
 
-    const userDto: AuthenticatedUserDto | AxiosError = await login({
+    const userLoginDto = new UserLoginDto({
       name: formValue.userName,
       password: formValue.password,
     });
+
+    const userDto: AuthenticatedUserDto | AxiosError = await loginUser(userLoginDto);
 
     if (!userDto) {
       setIsLoading(false);
@@ -58,10 +60,12 @@ export const IndexPage = () => {
   const handleCreateUser = async (formValue: CreateUserFormValue) => {
     setIsLoading(true);
 
-    const userDto: AuthenticatedUserDto | AxiosError = await createUser({
+    const userCreateDto = new UserCreateDto({
       name: formValue.userName,
       password: formValue.password,
     });
+
+    const userDto: AuthenticatedUserDto | AxiosError = await createUser(userCreateDto);
 
     if (!userDto) {
       setIsLoading(false);

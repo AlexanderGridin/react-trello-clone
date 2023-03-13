@@ -1,10 +1,10 @@
 import { AxiosError } from "axios";
 import { httpClient } from "App/api/httpClient";
-import { UserCreateDto } from "App/entities/User/models";
 import { routes } from "../routes";
 import { AuthenticatedUserDto } from "App/entities/User/models/AuthenticatedUserDto";
+import { UserLoginDto } from "App/entities/User/models";
 
-export const login = async (body: UserCreateDto): Promise<AuthenticatedUserDto | AxiosError> => {
+export const loginUser = async (body: UserLoginDto): Promise<AuthenticatedUserDto | AxiosError> => {
   const apiUrl = routes.login;
 
   try {

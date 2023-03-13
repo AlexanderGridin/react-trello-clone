@@ -13,7 +13,7 @@ export const AppRoot = () => {
   const user = useSelectUser();
   const userDispatcher = useUserDispatcher();
 
-  const checkUserAuth = async () => {
+  const checkAuth = async () => {
     const accessToken = accessTokenStorage.get();
 
     if (!accessToken) {
@@ -37,7 +37,7 @@ export const AppRoot = () => {
 
   useEffect(() => {
     if (!user) {
-      checkUserAuth();
+      checkAuth();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

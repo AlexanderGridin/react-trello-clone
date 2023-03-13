@@ -4,8 +4,8 @@ import { parseTasksLists } from "../utils/parseTasksLists";
 import { BoardWithTasksListsViewModel } from "./BoardWithTasksListsViewModel";
 
 export class BoardWithTasksListsDto {
-  public _id = "";
-  public title = "";
+  public _id!: string;
+  public title!: string;
   public tasksLists: TasksListDto[] = [];
   public isFavorite = false;
 

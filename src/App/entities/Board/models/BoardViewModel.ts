@@ -1,30 +1,16 @@
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { BoardFormValue } from "App/widgets/boards/BoardForm/models";
-import { IBoardUpdateDto } from "./BoardUpdateDto";
-import { IBoardUpdateManyDto } from "./BoardUpdateManyDto";
-
-export interface IBoardViewModelConfig {
-  title: string;
-}
+import { IBoardUpdateDto } from "./IBoardUpdateDto";
+import { IBoardUpdateManyDto } from "./IBoardUpdateManyDto";
 
 export class BoardViewModel {
-  public id = "";
-  public title = "";
+  public id!: string;
+  public title!: string;
   public isFavorite = false;
   public isEditing = false;
-  public rank = 0;
+  public rank!: number;
   public user!: { id: string; name: string };
-
-  constructor(config?: IBoardViewModelConfig) {
-    if (!config) {
-      return;
-    }
-
-    const { title = "" } = config;
-
-    this.title = title;
-  }
 
   static toAppDraggedItem(source: BoardViewModel): TAppDraggedItem {
     return {

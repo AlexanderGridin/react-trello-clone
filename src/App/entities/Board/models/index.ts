@@ -1,7 +1,7 @@
 export * from "./BoardDto";
 export * from "./BoardCreateDto";
-export * from "./BoardUpdateDto";
-export * from "./BoardUpdateManyDto";
+export * from "./IBoardUpdateDto";
+export * from "./IBoardUpdateManyDto";
 export * from "./BoardWithTasksListsDto";
 
 export * from "./BoardViewModel";

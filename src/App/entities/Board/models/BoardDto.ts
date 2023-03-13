@@ -2,11 +2,11 @@ import { UserDto } from "App/entities/User/models";
 import { BoardViewModel } from "./BoardViewModel";
 
 export class BoardDto {
-  public _id = "";
-  public title = "";
+  public _id!: string;
+  public title!: string;
   public isFavorite = false;
-  public rank = -1;
-  public user: UserDto = new UserDto();
+  public rank!: number;
+  public user!: UserDto;
 
   static toViewModel(source: BoardDto): BoardViewModel {
     return {

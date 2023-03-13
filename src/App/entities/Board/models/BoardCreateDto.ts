@@ -7,11 +7,11 @@ export interface IBoardCreateDtoConfig {
 }
 
 export class BoardCreateDto {
-  public title = "";
+  public title!: string;
   public isFavorite = false;
   // TODO: remove this. Rank need to be setted on the API side
-  public rank = -1;
-  public user = "";
+  public rank!: number;
+  public user!: string;
 
   constructor(config?: IBoardCreateDtoConfig) {
     if (!config) {

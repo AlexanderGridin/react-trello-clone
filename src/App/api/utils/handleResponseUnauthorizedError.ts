@@ -1,7 +1,7 @@
-import { accessTokenStorage } from "App/local-storage";
 import { AxiosError } from "axios";
+import { accessTokenStorage } from "App/local-storage";
 import { httpClient } from "../httpClient";
-import { checkAuth } from "../User/services/checkAuth";
+import { checUserkAuth } from "../User/services";
 
 // TODO: remove any
 export const handleResponseUnauthorizedError = async (error: AxiosError<any>) => {
@@ -15,7 +15,7 @@ export const handleResponseUnauthorizedError = async (error: AxiosError<any>) =>
     return;
   }
 
-  const userDto = await checkAuth();
+  const userDto = await checUserkAuth();
 
   if (userDto._id && request) {
     accessTokenStorage.set(userDto.accessToken);

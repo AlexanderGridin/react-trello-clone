@@ -2,7 +2,7 @@ import { httpClient } from "App/api/httpClient";
 import { AuthenticatedUserDto } from "App/entities/User/models/AuthenticatedUserDto";
 import { routes } from "../routes";
 
-export const checkAuth = async (): Promise<AuthenticatedUserDto> => {
+export const checUserkAuth = async (): Promise<AuthenticatedUserDto> => {
   const apiUrl = routes.checkAuth;
 
   try {

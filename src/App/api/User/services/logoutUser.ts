@@ -1,7 +1,7 @@
 import { httpClient } from "App/api/httpClient";
 import { routes } from "../routes";
 
-export const logout = async (): Promise<void> => {
+export const logoutUser = async (): Promise<void> => {
   const apiUrl = routes.logout;
 
   try {

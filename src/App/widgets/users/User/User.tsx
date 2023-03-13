@@ -6,9 +6,9 @@ import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { useBoardPageDispatcher } from "App/store/BoardPage/hooks/useBoardPageDispatcher";
 import { useBoardsPageDispatcher } from "App/store/BoardsPage/hooks";
 import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
-import style from "./User.module.css";
-import { logout } from "App/api/User/services/logout";
+import { logoutUser } from "App/api/User/services";
 import { accessTokenStorage } from "App/local-storage";
+import style from "./User.module.css";
 
 export const User = () => {
   const user = useSelectUser();
@@ -23,7 +23,7 @@ export const User = () => {
     boardPageDispatcher.setBoard(null);
     boardsCahceDispatcher.clearCache();
 
-    await logout();
+    await logoutUser();
     accessTokenStorage.clear();
     userDispatcher.setUser(null);
   };

@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { addTasksList as addTasksListOnApi } from "App/api/TasksList/services";
-import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers";
 import { Card } from "shared/components/Card/Card";
 import { AddListButton } from "./components/AddListButton";
 import { TasksListForm } from "../TasksListForm/TasksListForm";
-import { TasksListViewModel } from "App/entities/TasksList/models";
+import { TasksListCreateDto, TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
 import { TasksListFormValue } from "../TasksListForm/models";
 
 export interface AddTasksListProps {
@@ -22,13 +21,14 @@ export const AddTasksList = ({ boardId, onAdd }: AddTasksListProps) => {
   const addList = async (formValue: TasksListFormValue) => {
     setIsLoading(true);
 
-    const tasksListDto = await addTasksListOnApi({
+    const listCreateDto = new TasksListCreateDto({
       ...formValue,
       boardId,
     });
 
-    if (tasksListDto) {
-      onAdd(mapTasksListDtoToViewModel(tasksListDto));
+    const listDto = await addTasksListOnApi(listCreateDto);
+    if (listDto) {
+      onAdd(TasksListDto.toViewModel(listDto));
       hideForm();
     }
 

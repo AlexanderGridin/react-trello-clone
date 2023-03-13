@@ -4,7 +4,7 @@ import { AppLayout } from "App/components/AppLayout/AppLayout";
 import { Sidebar } from "App/widgets/Sidebar/Sidebar";
 import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
-import { checUserkAuth } from "App/api/User/services";
+import { checUserAuth } from "App/api/User/services";
 import { accessTokenStorage } from "App/local-storage";
 
 export const AppRoot = () => {
@@ -23,7 +23,7 @@ export const AppRoot = () => {
       return;
     }
 
-    const userDto: AuthenticatedUserDto = await checUserkAuth();
+    const userDto: AuthenticatedUserDto = await checUserAuth();
     if (userDto._id) {
       accessTokenStorage.set(userDto.accessToken);
       userDispatcher.setUser(AuthenticatedUserDto.toViewModel(userDto));

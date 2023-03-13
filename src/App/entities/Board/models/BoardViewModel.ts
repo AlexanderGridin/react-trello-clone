@@ -5,7 +5,8 @@ import { IBoardUpdateDto } from "./IBoardUpdateDto";
 import { IBoardUpdateManyDto } from "./IBoardUpdateManyDto";
 
 export class BoardViewModel {
-  public id!: string;
+  public readonly id!: string;
+
   public title!: string;
   public isFavorite = false;
   public isEditing = false;

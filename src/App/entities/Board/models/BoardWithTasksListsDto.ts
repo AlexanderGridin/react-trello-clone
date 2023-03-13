@@ -1,8 +1,23 @@
+import { mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers";
 import { TasksListDto } from "App/entities/TasksList/models";
+import { parseTasksLists } from "../utils/parseTasksLists";
+import { BoardWithTasksListsViewModel } from "./BoardWithTasksListsViewModel";
 
-export interface BoardWithTasksListsDto {
-  _id: string;
-  title: string;
-  tasksLists?: TasksListDto[];
-  isFavorite: boolean;
+export class BoardWithTasksListsDto {
+  public _id = "";
+  public title = "";
+  public tasksLists: TasksListDto[] = [];
+  public isFavorite = false;
+
+  static toViewModel(source: BoardWithTasksListsDto): BoardWithTasksListsViewModel {
+    const { pinnedTasksLists, unpinnedTasksLists } = parseTasksLists<TasksListDto>(source.tasksLists ?? []);
+
+    return {
+      id: source._id,
+      title: source.title,
+      tasksLists: unpinnedTasksLists.map(mapTasksListDtoToViewModel),
+      pinnedTasksLists: pinnedTasksLists.map(mapTasksListDtoToViewModel),
+      isFavorite: source.isFavorite,
+    };
+  }
 }

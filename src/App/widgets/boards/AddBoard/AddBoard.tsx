@@ -3,8 +3,7 @@ import { Card } from "shared/components/Card/Card";
 import { AddBoardButton } from "./components/AddBoardButton";
 import { addBoard as addBoardToApi } from "App/api/Boards/services";
 import { BoardForm } from "../BoardForm/BoardForm";
-import { BoardViewModel } from "App/entities/Board/models";
-import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";
+import { BoardCreateDto, BoardDto, BoardViewModel } from "App/entities/Board/models";
 import { BoardFormValue } from "../BoardForm/models";
 import { useSelectBoards } from "App/store/BoardsPage/hooks";
 import { useSelectUser } from "App/store/User/hooks";
@@ -26,14 +25,16 @@ export const AddBoard = ({ onAdd }: AddBoardProps) => {
   const addBoard = async (formValue: BoardFormValue) => {
     setIsLoading(true);
 
-    const boardDto = await addBoardToApi({
+    const boardCreateDto = new BoardCreateDto({
       ...formValue,
       rank: (boards?.length ?? 0) + 1,
       user: user?.id as string,
     });
 
+    const boardDto = await addBoardToApi(boardCreateDto);
+
     if (boardDto) {
-      onAdd(mapBoardDtoToViewModel(boardDto));
+      onAdd(BoardDto.toViewModel(boardDto));
       hideForm();
     }
 

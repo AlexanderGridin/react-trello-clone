@@ -1,4 +1,4 @@
-export interface BoardUpdateManyDto {
+export interface IBoardUpdateManyDto {
   id: string;
   rank: number;
 }

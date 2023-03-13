@@ -1,4 +1,4 @@
-export interface BoardUpdateDto {
+export interface IBoardUpdateDto {
   title: string;
   isFavorite: boolean;
 }

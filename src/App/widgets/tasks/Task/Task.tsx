@@ -15,7 +15,7 @@ export const Task = ({ task, onEdit, onRemove }: TaskProps) => {
 
   return (
     <div className={style.container}>
-      <div className={style.content}>{task.content}</div>
+      <div className={style.content}>{task.title}</div>
       <EditButton onClick={edit} />
       <RemoveButton className="mr-0" onClick={remove} />
     </div>

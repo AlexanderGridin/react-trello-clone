@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DndCard } from "App/components/DndCard/DndCard";
-import { mapTaskToDraggedItem, mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { removeTask as removeTaskFromApi } from "App/api/Task/services";
@@ -8,7 +7,7 @@ import { Task } from "../Task/Task";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskModal } from "../TaskModal/TaskModal";
 import { TTaskPriority } from "App/types/TaskPriority";
-import { TaskViewModel } from "App/entities/Task/models";
+import { TaskDto, TaskViewModel } from "App/entities/Task/models";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import style from "./TaskCard.module.css";
@@ -54,7 +53,7 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
 
     const taskDto = await removeTaskFromApi(task.id);
     if (taskDto) {
-      dispatcher.removeTask(mapTaskDtoToViewModel(taskDto));
+      dispatcher.removeTask(TaskDto.toViewModel(taskDto));
     }
 
     setIsLoading(false);
@@ -113,7 +112,7 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
 
   return (
     <>
-      <DndCard draggedItem={mapTaskToDraggedItem(task)} backgroundColor={BACKGROUD_COLOR} onDrop={dropOnTask}>
+      <DndCard draggedItem={TaskViewModel.toAppDraggedItem(task)} backgroundColor={BACKGROUD_COLOR} onDrop={dropOnTask}>
         {content}
       </DndCard>
 

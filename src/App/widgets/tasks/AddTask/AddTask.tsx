@@ -2,9 +2,8 @@ import { useReducer } from "react";
 import { Card } from "shared/components/Card/Card";
 import { AddTaskButton } from "./components/AddTaskButton";
 import { addTask as addTaskOnApi } from "App/api/Task/services";
-import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { TaskForm } from "../TaskForm/TaskForm";
-import { TaskViewModel } from "App/entities/Task/models";
+import { TaskCreateDto, TaskDto, TaskViewModel } from "App/entities/Task/models";
 import { TaskFormValue } from "../TaskForm/models";
 import { useSelectUser } from "App/store/User/hooks";
 
@@ -37,16 +36,17 @@ export const AddTask = ({ listId, boardId, onAdd }: AddTaskProps) => {
   const addTask = async (formValue: TaskFormValue) => {
     dispatch({ isLoading: true });
 
-    const taskDto = await addTaskOnApi({
-      ...formValue,
+    const taskCreateDto = new TaskCreateDto({
       content: formValue.title,
+      priority: formValue.priority,
       listId,
       boardId,
       user: user?.id as string,
     });
 
+    const taskDto = await addTaskOnApi(taskCreateDto);
     if (taskDto) {
-      onAdd(mapTaskDtoToViewModel(taskDto));
+      onAdd(TaskDto.toViewModel(taskDto));
       hideForm();
     }
 

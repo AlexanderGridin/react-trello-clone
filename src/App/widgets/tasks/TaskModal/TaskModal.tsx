@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Modal } from "shared/components/Modal/Modal";
 import { TaskForm } from "../TaskForm/TaskForm";
-import { mapTaskDtoToViewModel } from "App/entities/Task/mappers";
-import { mapTaskViewModelToFormValue } from "App/entities/Task/mappers";
 import { updateTask as updateTaskOnApi } from "App/api/Task/services";
-import { TaskViewModel } from "App/entities/Task/models";
+import { TaskDto, TaskUpdateDto, TaskViewModel } from "App/entities/Task/models";
 import { TaskFormValue } from "../TaskForm/models";
 import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 
@@ -20,15 +18,16 @@ export const TaskModal = ({ task }: TaskModalProps) => {
   const update = async (formValue: TaskFormValue) => {
     setIsLoading(true);
 
-    const taskDto = await updateTaskOnApi(task.id, {
+    const taskUpdateDto = new TaskUpdateDto({
       content: formValue.title,
       priority: formValue.priority,
       listId: task.listId,
       boardId: task.boardId,
     });
 
+    const taskDto = await updateTaskOnApi(task.id, taskUpdateDto);
     if (taskDto) {
-      dispatcher.updateTask(mapTaskDtoToViewModel(taskDto));
+      dispatcher.updateTask(TaskDto.toViewModel(taskDto));
     }
 
     setIsLoading(false);
@@ -36,7 +35,7 @@ export const TaskModal = ({ task }: TaskModalProps) => {
 
   return (
     <Modal title="Edit task" isLoading={isLoading} open={task.isEditing} onClose={closeModal}>
-      <TaskForm entity={mapTaskViewModelToFormValue(task)} onSubmit={update} onCancel={closeModal} />
+      <TaskForm entity={TaskViewModel.toFormValue(task)} onSubmit={update} onCancel={closeModal} />
     </Modal>
   );
 };

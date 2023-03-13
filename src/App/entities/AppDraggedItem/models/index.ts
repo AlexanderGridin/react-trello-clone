@@ -1,1 +1,1 @@
-export * from "./AppDraggedItem";
+export * from "./TAppDraggedItem";

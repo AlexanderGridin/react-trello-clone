@@ -1,4 +1,4 @@
-import { IDraggedItem } from "drag-and-drop/models/DraggedItem";
+import { IDraggedItem } from "drag-and-drop/models";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { TasksListViewModel } from "App/entities/TasksList/models";
 import { TaskViewModel } from "App/entities/Task/models";

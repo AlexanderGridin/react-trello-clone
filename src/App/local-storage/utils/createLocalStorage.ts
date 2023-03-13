@@ -1,4 +1,10 @@
-export const createLocalStorage = <Value>(key: string) => {
+interface LocalStorage<Value> {
+  set: (value: Value) => void;
+  clear: () => void;
+  get: (isParsingNeeded: boolean) => Value;
+}
+
+export const createLocalStorage = <Value>(key: string): LocalStorage<Value> => {
   const set = (value: Value): void => {
     if (typeof value === "number") {
       localStorage.setItem(key, value.toString());

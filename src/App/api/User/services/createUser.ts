@@ -3,11 +3,15 @@ import { UserCreateDto, UserDto } from "App/entities/User/models";
 import { AxiosError } from "axios";
 import { routes } from "../routes";
 
-export const createUser = async (body: UserCreateDto): Promise<UserDto | AxiosError> => {
+interface CreateUserDto extends UserDto {
+  accessToken: string;
+}
+
+export const createUser = async (body: UserCreateDto): Promise<CreateUserDto | AxiosError> => {
   const apiUrl = routes.createUser;
 
   try {
-    const response = await httpClient.post<UserDto>(apiUrl, body);
+    const response = await httpClient.post<CreateUserDto>(apiUrl, body);
     return response.data;
   } catch (e) {
     return e as AxiosError;

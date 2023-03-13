@@ -13,28 +13,20 @@ import {
 
 import { Board } from "../Board/Board";
 import { BoardModal } from "../BoardMoal/BoardModal";
-import { BoardViewModel } from "App/entities/Board/models";
-
-import {
-  mapBoardDtoToViewModel,
-  mapBoardViewModelToDraggedItem,
-  mapBoardViewModelToUpdateDto,
-} from "App/entities/Board/mappers";
-
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { BoardDto, BoardViewModel } from "App/entities/Board/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
-import { mapBoardViewModelToUpdateManyDto } from "App/entities/Board/mappers";
 import style from "./BoardCard.module.css";
 
-interface BoardCardProps {
+interface IBoardCardProps {
   board: BoardViewModel;
   isDragPreview?: boolean;
 }
 
 const MIN_HEIGHT = 150;
 
-export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
+export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const dispatcher = useBoardsPageDispatcher();
@@ -58,16 +50,15 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
   const updateBoard = async (board: BoardViewModel) => {
     setIsLoading(true);
 
-    const boardDto = await updateBoardOnApi(board.id, mapBoardViewModelToUpdateDto(board));
-
+    const boardDto = await updateBoardOnApi(board.id, BoardViewModel.toUpdateDto(board));
     if (boardDto) {
-      dispatcher.updateBoard(mapBoardDtoToViewModel(boardDto));
+      dispatcher.updateBoard(BoardDto.toViewModel(boardDto));
     }
 
     setIsLoading(false);
   };
 
-  const dropOnBoard = (draggedItem: AppDraggedItem) => {
+  const dropOnBoard = (draggedItem: TAppDraggedItem) => {
     if (draggedItem.type !== DraggedItemType.Board) {
       return;
     }
@@ -85,8 +76,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
 
     dispatcher.moveBoard(draggedBoard, targetBoard);
 
-    const requestBody = [draggedBoard, targetBoard].map(mapBoardViewModelToUpdateManyDto);
-
+    const requestBody = [draggedBoard, targetBoard].map(BoardViewModel.toUpdateManyDto);
     debouncedUpdateMany({
       body: requestBody,
     });
@@ -118,7 +108,7 @@ export const BoardCard = ({ board, isDragPreview = false }: BoardCardProps) => {
     <>
       <DndCard
         minHeight={MIN_HEIGHT}
-        draggedItem={mapBoardViewModelToDraggedItem(board)}
+        draggedItem={BoardViewModel.toAppDraggedItem(board)}
         backgroundColor={BACKGROUD_COLOR}
         onDrop={dropOnBoard}
         onDoubleClick={navigateToBoard}

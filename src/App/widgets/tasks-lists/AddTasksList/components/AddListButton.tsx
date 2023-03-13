@@ -1,10 +1,9 @@
 import { AddButtonContainer } from "App/components/AddButtonContainer/AddButtonContainer";
-import { Children } from "shared/models/Children";
-import { Click } from "shared/models/Click";
+import { IChildren, IClick } from "shared/models";
 
-interface AddListButtonProps extends Children, Click {}
+interface IAddListButtonProps extends IChildren, IClick {}
 
-export const AddListButton = ({ children, onClick }: AddListButtonProps) => {
+export const AddListButton = ({ children, onClick }: IAddListButtonProps) => {
   return (
     <AddButtonContainer type="button" onClick={onClick}>
       {children}

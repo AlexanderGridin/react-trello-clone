@@ -2,14 +2,12 @@ import { ForwardedRef, forwardRef, ReactNode } from "react";
 import { CardContent } from "./components/CardContent";
 import { CardContainer } from "./components/CardContainer";
 import { Spinner } from "../Spinner/Spinner";
-import { Children } from "shared/models/Children";
-import { ClassName } from "shared/models/ClassName";
-import { TestId } from "shared/models/TestId";
+import { IChildren, ITestId, IClassName } from "shared/models";
 import { CardTestId } from "./static-data/CardTestId";
 
 const { Header: HeaderId, Content: ContentId, Footer: FooterId, Spinner: SpinnerId } = CardTestId;
 
-export interface CardProps extends Children, ClassName, TestId {
+export interface ICardProps extends IChildren, IClassName, ITestId {
   slotHeader?: ReactNode;
   slotContent?: ReactNode;
   slotFooter?: ReactNode;
@@ -19,9 +17,9 @@ export interface CardProps extends Children, ClassName, TestId {
   onDoubleClick?: () => void;
 }
 
-type Ref = ForwardedRef<HTMLDivElement>;
+type TRef = ForwardedRef<HTMLDivElement>;
 
-export const Card = forwardRef((props: CardProps, ref: Ref) => {
+export const Card = forwardRef((props: ICardProps, ref: TRef) => {
   const {
     slotHeader,
     slotContent,

@@ -1,15 +1,15 @@
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { useItemDrag } from "App/hooks/useItemDrag";
 import { useItemDrop } from "App/hooks/useItemDrop";
 import { useRef } from "react";
-import { Card, CardProps } from "shared/components/Card/Card";
+import { Card, ICardProps } from "shared/components/Card/Card";
 
-export interface DndCardProps extends CardProps {
-  draggedItem: AppDraggedItem;
-  onDrop: (draggedItem: AppDraggedItem) => void;
+export interface IDndCardProps extends ICardProps {
+  draggedItem: TAppDraggedItem;
+  onDrop: (draggedItem: TAppDraggedItem) => void;
 }
 
-export const DndCard = ({ draggedItem, onDrop, ...restProps }: DndCardProps) => {
+export const DndCard = ({ draggedItem, onDrop, ...restProps }: IDndCardProps) => {
   const { drag, isDragging } = useItemDrag({ ...draggedItem });
   const className = isDragging ? "dragging" : "draggable";
 

@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { Icon } from "shared/components/Icon/Icon";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { Children } from "shared/models/Children";
+import { IChildren } from "shared/models";
 import style from "./Helper.module.css";
 
-interface HelperType {
+interface IHelperType {
   type?: "regular" | "warning" | "error" | "success";
 }
 
-const Container = styled.span<HelperType>`
+const Container = styled.span<IHelperType>`
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -30,7 +30,7 @@ const Container = styled.span<HelperType>`
   margin-top: 5px;
 `;
 
-interface HelperProps extends Children, HelperType {}
+interface HelperProps extends IChildren, IHelperType {}
 
 export const Helper = ({ type = "regular", children }: HelperProps) => {
   return (

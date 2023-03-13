@@ -1,13 +1,13 @@
 import { useInputFocus } from "shared/hooks/useInputFocus";
 import { Helper } from "../Helper/Helper";
-import { InputCommonProps } from "./models/InputCommonProps";
+import { IInputCommonProps } from "./models";
 import { MuiInput } from "./MuiInput";
 
-interface InputProps extends InputCommonProps {
+interface IInputProps extends IInputCommonProps {
   type: "text" | "password" | "number";
 }
 
-export const Input = ({ error = "", isAutoFocus, ...inputProps }: InputProps) => {
+export const Input = ({ error = "", isAutoFocus, ...inputProps }: IInputProps) => {
   const focusRef = useInputFocus();
 
   return (

@@ -1,9 +1,8 @@
-import { Children } from "shared/models/Children";
-import { ClassName } from "shared/models/ClassName";
+import { IChildren, IClassName } from "shared/models";
 import style from "./PageTitle.module.css";
 
-interface PageTitleProps extends Children, ClassName {}
+interface IPageTitleProps extends IChildren, IClassName {}
 
-export const PageTitle = ({ className = "", children }: PageTitleProps) => {
+export const PageTitle = ({ className = "", children }: IPageTitleProps) => {
   return <h1 className={`${style.container} ${className}`}>{children}</h1>;
 };

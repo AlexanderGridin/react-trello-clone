@@ -1,5 +1,5 @@
 import { TasksListViewModel } from "App/entities/TasksList/models";
-import { BoardPageState } from "../..";
+import { IBoardPageState } from "../..";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { TaskViewModel } from "App/entities/Task/models";
 
@@ -7,7 +7,7 @@ interface Payload {
   task: TaskViewModel;
 }
 
-export const updateTaskReducer = (state: BoardPageState, action: PayloadAction<Payload>): void => {
+export const updateTaskReducer = (state: IBoardPageState, action: PayloadAction<Payload>): void => {
   const board = state.board;
 
   if (!board) {

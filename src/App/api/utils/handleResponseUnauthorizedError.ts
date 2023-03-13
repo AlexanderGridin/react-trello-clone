@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
+import { accessTokenStorage } from "App/local-storage";
 import { httpClient } from "../httpClient";
-import { checkAuth } from "../User/services/checkAuth";
+import { checkUserAuth } from "../User/services";
 
 // TODO: remove any
 export const handleResponseUnauthorizedError = async (error: AxiosError<any>) => {
@@ -10,14 +11,14 @@ export const handleResponseUnauthorizedError = async (error: AxiosError<any>) =>
   }
 
   if (error.response.data.isCheckFailed) {
-    localStorage.removeItem("token");
+    accessTokenStorage.clear();
     return;
   }
 
-  const userDto = await checkAuth();
+  const userDto = await checkUserAuth();
 
   if (userDto._id && request) {
-    localStorage.setItem("token", userDto.accessToken);
+    accessTokenStorage.set(userDto.accessToken);
     return httpClient.request(request);
   }
 };

@@ -5,12 +5,12 @@ import { DragLayer } from "App/widgets/DragLayer/DragLayer";
 import { BoardCard } from "../BoardCard/BoardCard";
 import { BoardViewModel } from "App/entities/Board/models";
 
-interface BoardsCardsListProps {
+interface IBoardsCardsListProps {
   boards: BoardViewModel[];
   isShowAddBoard?: boolean;
 }
 
-export const BoardsCardsList = ({ boards, isShowAddBoard = true }: BoardsCardsListProps) => {
+export const BoardsCardsList = ({ boards, isShowAddBoard = true }: IBoardsCardsListProps) => {
   const dispatcher = useBoardsPageDispatcher();
   const addBoard = (board: BoardViewModel) => dispatcher.addBoard(board);
 

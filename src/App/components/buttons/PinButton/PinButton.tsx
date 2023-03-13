@@ -1,15 +1,14 @@
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { IconButton } from "shared/components/IconButton/IconButton";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
-import { ClassName } from "shared/models/ClassName";
-import { Click } from "shared/models/Click";
+import { IClick, IClassName } from "shared/models";
 import style from "./PinButton.module.css";
 
-interface PinButtonProps extends Click, ClassName {
+interface IPinButtonProps extends IClick, IClassName {
   isPinned?: boolean;
 }
 
-export const PinButton = ({ isPinned = false, className = "", onClick }: PinButtonProps) => {
+export const PinButton = ({ isPinned = false, className = "", onClick }: IPinButtonProps) => {
   const cn = isPinned ? `${className} ${style.pinned}` : className;
 
   return (

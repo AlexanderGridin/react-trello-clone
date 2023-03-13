@@ -1,8 +1,8 @@
 import { Input } from "./Input";
-import { InputCommonProps } from "./models/InputCommonProps";
+import { IInputCommonProps } from "./models";
 
-export interface PasswordInputProps extends InputCommonProps {}
+export interface IPasswordInputProps extends IInputCommonProps {}
 
-export const PasswordInput = (props: PasswordInputProps) => {
+export const PasswordInput = (props: IPasswordInputProps) => {
   return <Input type="password" {...props} />;
 };

@@ -1,10 +1,9 @@
 import { AddButtonContainer } from "App/components/AddButtonContainer/AddButtonContainer";
-import { Children } from "shared/models/Children";
-import { Click } from "shared/models/Click";
+import { IChildren, IClick } from "shared/models";
 
-interface AddTaskButtonProps extends Children, Click {}
+interface IAddTaskButtonProps extends IChildren, IClick {}
 
-export const AddTaskButton = ({ children, onClick }: AddTaskButtonProps) => {
+export const AddTaskButton = ({ children, onClick }: IAddTaskButtonProps) => {
   return (
     <AddButtonContainer type="button" isTextDark onClick={onClick}>
       {children}

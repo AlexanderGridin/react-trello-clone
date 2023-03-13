@@ -1,13 +1,13 @@
 import { CSSProperties } from "react";
 import { XYCoord } from "react-dnd";
-import { Children } from "shared/models/Children";
+import { IChildren } from "shared/models";
 import cssStyle from "./DragLayer.module.css";
 
-interface DragLayerProps extends Children {
+interface IDragLayerProps extends IChildren {
   previewPosition: XYCoord;
 }
 
-export const DragLayer = ({ previewPosition, children }: DragLayerProps) => {
+export const DragLayer = ({ previewPosition, children }: IDragLayerProps) => {
   const style: CSSProperties = {
     transform: `translate(${previewPosition.x}px, ${previewPosition.y}px)`,
   };

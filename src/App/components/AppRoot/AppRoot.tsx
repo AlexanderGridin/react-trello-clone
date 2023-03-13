@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppLayout } from "App/components/AppLayout/AppLayout";
 import { Sidebar } from "App/widgets/Sidebar/Sidebar";
-import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
-import { UserViewModel } from "App/entities/User/models";
+import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
-import { checkAuth } from "App/api/User/services/checkAuth";
+import { checkUserAuth } from "App/api/User/services";
+import { accessTokenStorage } from "App/local-storage";
 
 export const AppRoot = () => {
   const navigate = useNavigate();
@@ -13,8 +13,8 @@ export const AppRoot = () => {
   const user = useSelectUser();
   const userDispatcher = useUserDispatcher();
 
-  const checkUserAuth = async () => {
-    const accessToken = localStorage.getItem("token");
+  const checkAuth = async () => {
+    const accessToken = accessTokenStorage.get();
 
     if (!accessToken) {
       userDispatcher.setUser({ ...new UserViewModel() });
@@ -23,21 +23,21 @@ export const AppRoot = () => {
       return;
     }
 
-    const userDto = await checkAuth();
+    const userDto: AuthenticatedUserDto = await checkUserAuth();
     if (userDto._id) {
-      localStorage.setItem("token", userDto.accessToken);
-      userDispatcher.setUser(mapUserDtoToViewModel(userDto));
+      accessTokenStorage.set(userDto.accessToken);
+      userDispatcher.setUser(AuthenticatedUserDto.toViewModel(userDto));
       return;
     }
 
-    localStorage.removeItem("token");
+    accessTokenStorage.clear();
     userDispatcher.setUser({ ...new UserViewModel() });
     navigate("/");
   };
 
   useEffect(() => {
     if (!user) {
-      checkUserAuth();
+      checkAuth();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

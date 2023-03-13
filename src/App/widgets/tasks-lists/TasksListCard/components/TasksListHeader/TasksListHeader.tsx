@@ -4,13 +4,13 @@ import { RemoveButton } from "App/components/buttons/RemoveButton/RemoveButton";
 import { TasksListViewModel } from "App/entities/TasksList/models";
 import style from "./TasksListHeader.module.css";
 
-interface TasksListHeaderProps {
+interface ITasksListHeaderProps {
   list: TasksListViewModel;
   onRemove: () => void;
   onEdit: () => void;
   onPin: () => void;
 }
-export const TasksListHeader = ({ list, onRemove, onEdit, onPin }: TasksListHeaderProps) => {
+export const TasksListHeader = ({ list, onRemove, onEdit, onPin }: ITasksListHeaderProps) => {
   const remove = () => onRemove();
   const edit = () => onEdit();
   const togglePin = () => onPin();

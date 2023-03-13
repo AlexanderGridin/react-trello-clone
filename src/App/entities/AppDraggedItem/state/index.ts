@@ -1,10 +1,10 @@
-import { SetAppDraggedItemAction } from "./action-creators/createSetAppDraggedItemAction";
+import { TSetAppDraggedItemAction } from "./action-creators/createSetAppDraggedItemAction";
 
 export * from "./hooks/useAppDraggedItemDispatcher";
 export * from "./appDraggedItemReducer";
 
-export type AppDraggedItemAction = SetAppDraggedItemAction;
+export type TAppDraggedItemAction = TSetAppDraggedItemAction;
 
-export type AppDraggedItemModuleAction = {
+export type TAppDraggedItemModuleAction = {
   module: "AppDraggedItem";
-} & AppDraggedItemAction;
+} & TAppDraggedItemAction;

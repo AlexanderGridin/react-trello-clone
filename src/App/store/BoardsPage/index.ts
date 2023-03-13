@@ -10,12 +10,12 @@ import {
   addBoardReducer,
 } from "./reducers";
 
-export interface BoardsPageState {
+export interface IBoardsPageState {
   boards: BoardViewModel[] | null;
   isShowFavorites: boolean;
 }
 
-const initialState: BoardsPageState = {
+const initialState: IBoardsPageState = {
   boards: null,
   isShowFavorites: false,
 };

@@ -1,44 +1,24 @@
 import { useState } from "react";
 import { DndCard } from "App/components/DndCard/DndCard";
-import { mapTaskToDraggedItem, mapTaskDtoToViewModel } from "App/entities/Task/mappers";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { removeTask as removeTaskFromApi } from "App/api/Task/services";
 import { Task } from "../Task/Task";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskModal } from "../TaskModal/TaskModal";
-import { TaskPriority } from "App/types/TaskPriority";
-import { TaskViewModel } from "App/entities/Task/models";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TaskDto, TaskViewModel } from "App/entities/Task/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
 import style from "./TaskCard.module.css";
 import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
+import { getTaskPriorityColor } from "./utils";
 
-interface TaskCardProps {
+interface ITaskCardProps {
   task: TaskViewModel;
   isDragPreview?: boolean;
 }
 
-const getTaskPriorityColor = (priority: TaskPriority): string => {
-  switch (priority) {
-    case "regular":
-      return "#ECEFF4";
-
-    case "medium":
-      return "#D08770";
-
-    case "height":
-      return "#BF616A";
-
-    case "low":
-      return "#EBCB8B";
-
-    default:
-      return "#ECEFF4";
-  }
-};
-
-export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
+export const TaskCard = ({ task, isDragPreview = false }: ITaskCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = "#ECEFF4";
 
@@ -54,13 +34,13 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
 
     const taskDto = await removeTaskFromApi(task.id);
     if (taskDto) {
-      dispatcher.removeTask(mapTaskDtoToViewModel(taskDto));
+      dispatcher.removeTask(TaskDto.toViewModel(taskDto));
     }
 
     setIsLoading(false);
   };
 
-  const dropOnTask = (draggedItem: AppDraggedItem) => {
+  const dropOnTask = (draggedItem: TAppDraggedItem) => {
     if (draggedItem.type !== DraggedItemType.Task) {
       return;
     }
@@ -113,7 +93,7 @@ export const TaskCard = ({ task, isDragPreview = false }: TaskCardProps) => {
 
   return (
     <>
-      <DndCard draggedItem={mapTaskToDraggedItem(task)} backgroundColor={BACKGROUD_COLOR} onDrop={dropOnTask}>
+      <DndCard draggedItem={TaskViewModel.toAppDraggedItem(task)} backgroundColor={BACKGROUD_COLOR} onDrop={dropOnTask}>
         {content}
       </DndCard>
 

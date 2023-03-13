@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { FormErrorsState } from "App/types/FormErrorsState";
+import { TFormErrorsState } from "App/types";
 
 import { Button } from "shared/components/Button/Button";
 import { FormContainer } from "shared/components/Form/FormContainer";
@@ -8,14 +8,14 @@ import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { UserSignInFormValue } from "..";
 import style from "./UserSignInForm.module.css";
 
-interface UserSignInFormProps {
+interface IUserSignInFormProps {
   onSubmit: (value: UserSignInFormValue) => void;
   onCancel: () => void;
 }
 
-export const UserSignInForm = ({ onSubmit, onCancel }: UserSignInFormProps) => {
+export const UserSignInForm = ({ onSubmit, onCancel }: IUserSignInFormProps) => {
   const validate = (value: UserSignInFormValue) => {
-    const state: FormErrorsState<UserSignInFormValue> = {};
+    const state: TFormErrorsState<UserSignInFormValue> = {};
 
     if (!value.userName) {
       state.userName = (

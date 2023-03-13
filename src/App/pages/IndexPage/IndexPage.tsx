@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
-import { login, createUser, UserLoginDto } from "App/api/User/services";
+import { loginUser, createUser } from "App/api/User/services";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
-import { UserViewModel } from "App/entities/User/models";
+import { AuthenticatedUserDto, UserCreateDto, UserLoginDto, UserViewModel } from "App/entities/User/models";
 import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 import { Button } from "shared/components/Button/Button";
 import { Card } from "shared/components/Card/Card";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import style from "./IndexPage.module.css";
-import { mapUserDtoToViewModel } from "App/entities/User/mappers/mapUserDtoToViewModel";
 import { Alert } from "shared/components/Alert/Alert";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
+import { accessTokenStorage } from "App/local-storage";
 
 export const IndexPage = () => {
   const user = useSelectUser();
@@ -28,13 +28,19 @@ export const IndexPage = () => {
     setIsLoading(true);
     setAlertMessage("");
 
-    const userDto: UserLoginDto | AxiosError = await login({ name: formValue.userName, password: formValue.password });
+    const userLoginDto = new UserLoginDto({
+      name: formValue.userName,
+      password: formValue.password,
+    });
+
+    const userDto: AuthenticatedUserDto | AxiosError = await loginUser(userLoginDto);
 
     if (!userDto) {
       setIsLoading(false);
       return;
     }
 
+    // TODO: this is need to be refactored
     if (userDto instanceof AxiosError) {
       const errorData = userDto.response?.data as { message: string };
       setAlertMessage(errorData.message);
@@ -43,9 +49,8 @@ export const IndexPage = () => {
       return;
     }
 
-    const user: UserViewModel = mapUserDtoToViewModel(userDto);
-
-    localStorage.setItem("token", userDto.accessToken);
+    const user: UserViewModel = AuthenticatedUserDto.toViewModel(userDto);
+    accessTokenStorage.set(userDto.accessToken);
     userDispatcher.setUser(user);
 
     setIsShowSignInForm(false);
@@ -55,7 +60,12 @@ export const IndexPage = () => {
   const handleCreateUser = async (formValue: CreateUserFormValue) => {
     setIsLoading(true);
 
-    const userDto = await createUser({ name: formValue.userName, password: formValue.password });
+    const userCreateDto = new UserCreateDto({
+      name: formValue.userName,
+      password: formValue.password,
+    });
+
+    const userDto: AuthenticatedUserDto | AxiosError = await createUser(userCreateDto);
 
     if (!userDto) {
       setIsLoading(false);
@@ -70,8 +80,8 @@ export const IndexPage = () => {
       return;
     }
 
-    const user: UserViewModel = mapUserDtoToViewModel(userDto);
-    localStorage.setItem("token", userDto.accessToken);
+    const user: UserViewModel = AuthenticatedUserDto.toViewModel(userDto);
+    accessTokenStorage.set(userDto.accessToken);
     userDispatcher.setUser(user);
 
     setIsShowCreateUserForm(false);

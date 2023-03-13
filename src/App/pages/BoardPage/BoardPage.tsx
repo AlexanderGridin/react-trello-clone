@@ -5,7 +5,6 @@ import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { getBoard as getBoardFromApi } from "App/api/Boards/services";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
 import { BoardWithTasksListsDto } from "App/entities/Board/models";
-import { mapBoardWithTasksListsDtoToViewModel } from "App/entities/Board/mappers";
 import { useBoardsCacheDispatcher, useSelectBoardsCache } from "App/store/BoardsCache/hooks";
 import { useBoardPageDispatcher } from "App/store/BoardPage/hooks/useBoardPageDispatcher";
 import { useSelectBoard } from "App/store/BoardPage/hooks/useSelectBoard";
@@ -36,7 +35,7 @@ export const BoardPage = () => {
     const boardDto: BoardWithTasksListsDto | null = await getBoardFromApi(id);
 
     if (boardDto) {
-      const board = mapBoardWithTasksListsDtoToViewModel(boardDto);
+      const board = BoardWithTasksListsDto.toViewModel(boardDto);
       dispatcher.setBoard(board);
     }
 

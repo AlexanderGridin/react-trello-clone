@@ -1,11 +1,11 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { UserViewModel } from "App/entities/User/models";
-import { UserState } from "..";
+import { IUserState } from "..";
 
 interface Payload {
   user: UserViewModel | null;
 }
 
-export const setUserReducer = (state: UserState, action: PayloadAction<Payload>) => {
+export const setUserReducer = (state: IUserState, action: PayloadAction<Payload>) => {
   state.user = action.payload.user;
 };

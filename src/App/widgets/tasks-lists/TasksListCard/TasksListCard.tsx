@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DndCard } from "App/components/DndCard/DndCard";
-import { mapTasksListToDraggedItem, mapTasksListDtoToViewModel } from "App/entities/TasksList/mappers";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
@@ -13,17 +12,17 @@ import {
 import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TasksListModal } from "../TasksListModal/TasksListModal";
-import { TasksListViewModel } from "App/entities/TasksList/models";
-import { AppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { useTasksListDispatcher } from "App/store/BoardPage/TasksList/hooks/useTasksListDispatcher";
 import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 
-export interface TasksListCardProps {
+export interface ITasksListCardProps {
   list: TasksListViewModel;
   isDragPreview?: boolean;
 }
 
-export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProps) => {
+export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const BACKGROUD_COLOR = list.isPinned ? "#ebdcbd" : "#D8DEE9";
 
@@ -40,7 +39,7 @@ export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProp
 
     const tasksListDto = await removeTasksListFromApi(list.id);
     if (tasksListDto) {
-      dispatcher.removeTasksList(mapTasksListDtoToViewModel(tasksListDto));
+      dispatcher.removeTasksList(TasksListDto.toViewModel(tasksListDto));
     }
 
     setIsLoading(false);
@@ -56,13 +55,13 @@ export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProp
     });
 
     if (listDto) {
-      dispatcher.updateTasksList(mapTasksListDtoToViewModel(listDto));
+      dispatcher.updateTasksList(TasksListDto.toViewModel(listDto));
     }
 
     setIsLoading(false);
   };
 
-  const dropOnList = (draggedItem: AppDraggedItem) => {
+  const dropOnList = (draggedItem: TAppDraggedItem) => {
     if (draggedItem.type === DraggedItemType.TasksList && draggedItem.data.isPinned === list.isPinned) {
       dispatcher.moveTasksList(draggedItem.data, list);
       return;
@@ -104,7 +103,7 @@ export const TasksListCard = ({ list, isDragPreview = false }: TasksListCardProp
         slotHeader={header}
         slotContent={content}
         backgroundColor={BACKGROUD_COLOR}
-        draggedItem={mapTasksListToDraggedItem(list)}
+        draggedItem={TasksListViewModel.toAppDraggedItem(list)}
         onDrop={dropOnList}
       />
 

@@ -2,13 +2,13 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { TaskViewModel } from "App/entities/Task/models";
 import { TasksListViewModel } from "App/entities/TasksList/models";
 import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
-import { BoardPageState } from "../..";
+import { IBoardPageState } from "../..";
 
 interface Payload {
   task: TaskViewModel;
 }
 
-export const removeTaskReducer = (state: BoardPageState, action: PayloadAction<Payload>): void => {
+export const removeTaskReducer = (state: IBoardPageState, action: PayloadAction<Payload>): void => {
   const board = state.board;
 
   if (!board) {

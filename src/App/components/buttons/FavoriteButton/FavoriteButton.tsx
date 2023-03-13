@@ -1,14 +1,13 @@
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { IconButton } from "shared/components/IconButton/IconButton";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
-import { ClassName } from "shared/models/ClassName";
-import { Click } from "shared/models/Click";
+import { IClick, IClassName } from "shared/models";
 
-interface FavoriteButtonProps extends Click, ClassName {
+interface IFavoriteButtonProps extends IClick, IClassName {
   isFavorite: boolean;
 }
 
-export const FavoriteButton = ({ isFavorite, className, onClick }: FavoriteButtonProps) => {
+export const FavoriteButton = ({ isFavorite, className, onClick }: IFavoriteButtonProps) => {
   return (
     <Tooltip content="Favorite">
       <IconButton

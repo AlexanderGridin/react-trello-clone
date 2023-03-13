@@ -5,8 +5,8 @@ import style from "./BoardsPage.module.css";
 import { getAllBoards, getFavoriteBoards } from "App/api/Boards/services";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsList";
 import { Switch } from "shared/components/Switch/Switch";
-import { mapBoardDtoToViewModel } from "App/entities/Board/mappers";
 import { useBoardsPageDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/BoardsPage/hooks";
+import { BoardDto } from "App/entities/Board/models";
 
 export const BoardsPage = () => {
   const boards = useSelectBoards();
@@ -18,7 +18,7 @@ export const BoardsPage = () => {
   const loadBoards = async (isShowFavorites = false) => {
     dispatcher.setBoards(null);
     const boardsDtos = isShowFavorites ? await getFavoriteBoards() : await getAllBoards();
-    dispatcher.setBoards(boardsDtos.map(mapBoardDtoToViewModel));
+    dispatcher.setBoards(boardsDtos.map(BoardDto.toViewModel));
   };
 
   const toggleFavorite = (isShowFavorites: boolean) => {

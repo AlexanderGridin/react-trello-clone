@@ -5,17 +5,17 @@ import { FormFooter } from "shared/components/Form/FormFooter";
 import { TextInput } from "shared/components/Form/inputs";
 import { Select } from "shared/components/Form/Select/Select";
 import { TaskFormValue } from "./models";
-import { FormErrorsState } from "App/types/FormErrorsState";
+import { TFormErrorsState } from "App/types";
 
-export interface TaskFormProps {
+export interface ITaskFormProps {
   entity?: TaskFormValue;
   onSubmit: (value: TaskFormValue) => void;
   onCancel: () => void;
 }
 
-export const TaskForm = ({ entity, onSubmit, onCancel }: TaskFormProps) => {
+export const TaskForm = ({ entity, onSubmit, onCancel }: ITaskFormProps) => {
   const validate = (value: TaskFormValue) => {
-    const state: FormErrorsState<TaskFormValue> = {};
+    const state: TFormErrorsState<TaskFormValue> = {};
 
     if (!value.title) {
       state.title = (

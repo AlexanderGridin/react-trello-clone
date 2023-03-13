@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
-import { Children } from "shared/models/Children";
+import { IChildren } from "shared/models";
 import style from "./SidebardLayout.module.css";
 
-export interface SidebarLayoutProps extends Children {
+export interface SidebarLayoutProps extends IChildren {
   slotHeader?: ReactNode;
   slotFooter?: ReactNode;
 }

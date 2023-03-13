@@ -5,13 +5,13 @@ import { AddTasksList } from "../AddTasksList/AddTasksList";
 import { TasksListCard } from "../TasksListCard/TasksListCard";
 import style from "./TasksListsCardsList.module.css";
 
-interface TasksListsCardsListProps {
+interface ITasksListsCardsListProps {
   boardId: string;
   lists: TasksListViewModel[];
   isShowAddTasksList?: boolean;
 }
 
-export const TasksListsCardsList = ({ boardId, lists, isShowAddTasksList = false }: TasksListsCardsListProps) => {
+export const TasksListsCardsList = ({ boardId, lists, isShowAddTasksList = false }: ITasksListsCardsListProps) => {
   const dispatcher = useTasksListDispatcher();
   const addTasksList = (list: TasksListViewModel) => dispatcher.addTasksList(list);
 

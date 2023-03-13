@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MuiSwitch } from "./components/MuiSwitch";
 import { SwitchTestId } from "./static-data/SwitchTestId";
 
-interface SwitchProps {
+interface ISwitchProps {
   initialValue?: boolean;
   label?: string;
   disabled?: boolean;
@@ -17,7 +17,7 @@ export const Switch = ({
   disabled = false,
   isTextDark = true,
   onChange,
-}: SwitchProps) => {
+}: ISwitchProps) => {
   const [checked, setChecked] = useState(initialValue);
 
   const change = () => {

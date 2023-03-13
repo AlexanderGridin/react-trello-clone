@@ -2,16 +2,15 @@ import { useState } from "react";
 import { Modal } from "shared/components/Modal/Modal";
 import { TasksListForm } from "../TasksListForm/TasksListForm";
 import { updateTasksList as updateTasksListOnApi } from "App/api/TasksList/services";
-import { mapTasksListDtoToViewModel, mapTasksListViewModelToFormValue } from "App/entities/TasksList/mappers";
-import { TasksListViewModel } from "App/entities/TasksList/models";
+import { TasksListDto, TasksListUpdateDto, TasksListViewModel } from "App/entities/TasksList/models";
 import { TasksListFormValue } from "../TasksListForm/models";
 import { useTasksListDispatcher } from "App/store/BoardPage/TasksList/hooks/useTasksListDispatcher";
 
-interface TasksListModalProps {
+interface ITasksListModalProps {
   list: TasksListViewModel;
 }
 
-export const TasksListModal = ({ list }: TasksListModalProps) => {
+export const TasksListModal = ({ list }: ITasksListModalProps) => {
   const dispatcher = useTasksListDispatcher();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -19,13 +18,14 @@ export const TasksListModal = ({ list }: TasksListModalProps) => {
   const update = async (formValue: TasksListFormValue) => {
     setIsLoading(true);
 
-    const listDto = await updateTasksListOnApi(list.id, {
+    const listUpdateDto = new TasksListUpdateDto({
       ...formValue,
       boardId: list.boardId,
     });
 
+    const listDto = await updateTasksListOnApi(list.id, listUpdateDto);
     if (listDto) {
-      dispatcher.updateTasksList(mapTasksListDtoToViewModel(listDto));
+      dispatcher.updateTasksList(TasksListDto.toViewModel(listDto));
     }
 
     setIsLoading(false);
@@ -33,7 +33,7 @@ export const TasksListModal = ({ list }: TasksListModalProps) => {
 
   return (
     <Modal title="Edit list" isLoading={isLoading} open={list.isEditing} onClose={closeModal}>
-      <TasksListForm entity={mapTasksListViewModelToFormValue(list)} onSubmit={update} onCancel={closeModal} />
+      <TasksListForm entity={TasksListViewModel.toFromValue(list)} onSubmit={update} onCancel={closeModal} />
     </Modal>
   );
 };

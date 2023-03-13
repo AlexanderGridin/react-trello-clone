@@ -1,15 +1,15 @@
-import { TTaskPriority } from "App/types/TaskPriority";
+import { TPriority } from "App/types";
 
 export interface ITaskUpdateDtoConfig {
   content: string;
-  priority: TTaskPriority;
+  priority: TPriority;
   listId: string;
   boardId: string;
 }
 
 export class TaskUpdateDto {
   public content!: string;
-  public priority: TTaskPriority = "regular";
+  public priority: TPriority = "regular";
   public listId!: string;
   public boardId!: string;
 

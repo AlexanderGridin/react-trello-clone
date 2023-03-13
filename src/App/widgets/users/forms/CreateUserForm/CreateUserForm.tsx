@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { TFormErrorsState } from "App/types/FormErrorsState";
+import { TFormErrorsState } from "App/types";
 
 import { Button } from "shared/components/Button/Button";
 import { FormContainer } from "shared/components/Form/FormContainer";

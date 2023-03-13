@@ -6,7 +6,7 @@ import { removeTask as removeTaskFromApi } from "App/api/Task/services";
 import { Task } from "../Task/Task";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskModal } from "../TaskModal/TaskModal";
-import { TTaskPriority } from "App/types/TaskPriority";
+import { TPriority } from "App/types";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
@@ -18,7 +18,7 @@ interface TaskCardProps {
   isDragPreview?: boolean;
 }
 
-const getTaskPriorityColor = (priority: TTaskPriority): string => {
+const getTaskPriorityColor = (priority: TPriority): string => {
   switch (priority) {
     case "regular":
       return "#ECEFF4";

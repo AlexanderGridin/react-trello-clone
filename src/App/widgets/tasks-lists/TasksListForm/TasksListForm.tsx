@@ -5,7 +5,7 @@ import { TextInput } from "shared/components/Form/inputs";
 import { FormFooter } from "shared/components/Form/FormFooter";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { TasksListFormValue } from "./models";
-import { TFormErrorsState } from "App/types/FormErrorsState";
+import { TFormErrorsState } from "App/types";
 
 export interface TasksListFormProps {
   entity?: TasksListFormValue;

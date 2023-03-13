@@ -1,5 +1,5 @@
 import { UserDto } from "App/entities/User/models";
-import { TTaskPriority } from "App/types/TaskPriority";
+import { TPriority } from "App/types";
 import { TaskViewModel } from "./TaskViewModel";
 
 export class TaskDto {
@@ -7,7 +7,7 @@ export class TaskDto {
   public content!: string;
   public listId!: string;
   public boardId!: string;
-  public priority: TTaskPriority = "regular";
+  public priority: TPriority = "regular";
   public user!: UserDto;
 
   static toViewModel(source: TaskDto): TaskViewModel {

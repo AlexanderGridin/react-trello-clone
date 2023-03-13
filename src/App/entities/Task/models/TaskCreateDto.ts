@@ -1,8 +1,8 @@
-import { TTaskPriority } from "App/types/TaskPriority";
+import { TPriority } from "App/types";
 
 export interface ITaskCreateDtoConfig {
   content: string;
-  priority: TTaskPriority;
+  priority: TPriority;
   boardId: string;
   listId: string;
   user: string;
@@ -10,7 +10,7 @@ export interface ITaskCreateDtoConfig {
 
 export class TaskCreateDto {
   public content!: string;
-  public priority!: TTaskPriority;
+  public priority!: TPriority;
   public boardId!: string;
   public listId!: string;
   public user!: string;

@@ -1,6 +1,6 @@
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { TTaskPriority } from "App/types/TaskPriority";
+import { TPriority } from "App/types";
 import { TaskFormValue } from "App/widgets/tasks/TaskForm/models";
 
 export class TaskViewModel {
@@ -10,7 +10,7 @@ export class TaskViewModel {
   public boardId!: string;
   public title!: string;
   public isEditing = false;
-  public priority: TTaskPriority = "regular";
+  public priority: TPriority = "regular";
   public user!: { id: string; name: string };
 
   static toAppDraggedItem(source: TaskViewModel): TAppDraggedItem {

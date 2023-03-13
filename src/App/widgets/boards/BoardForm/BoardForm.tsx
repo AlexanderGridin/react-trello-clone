@@ -5,7 +5,7 @@ import { TextInput } from "shared/components/Form/inputs";
 import { Checkbox } from "shared/components/Form/Checkbox";
 import { FormFooter } from "shared/components/Form/FormFooter";
 import { BoardFormValue } from "./models/BoardFormValue";
-import { TFormErrorsState } from "App/types/FormErrorsState";
+import { TFormErrorsState } from "App/types";
 
 export interface BoardFormProps {
   entity?: BoardFormValue;

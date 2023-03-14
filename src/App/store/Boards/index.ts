@@ -10,18 +10,18 @@ import {
   addBoardReducer,
 } from "./reducers";
 
-export interface IBoardsPageState {
+export interface IBoardsState {
   boards: BoardViewModel[] | null;
   isShowFavorites: boolean;
 }
 
-const initialState: IBoardsPageState = {
+const initialState: IBoardsState = {
   boards: null,
   isShowFavorites: false,
 };
 
-const boardsPageSlice = createSlice({
-  name: "[BOARDS_PAGE]",
+const boardsSlice = createSlice({
+  name: "[BOARDS]",
   initialState,
   reducers: {
     addBoard: addBoardReducer,
@@ -33,5 +33,5 @@ const boardsPageSlice = createSlice({
   },
 });
 
-export const { addBoard, moveBoard, removeBoard, setBoards, setIsShowFavorites, updateBoard } = boardsPageSlice.actions;
-export const boardsPageReducer = boardsPageSlice.reducer;
+export const { addBoard, moveBoard, removeBoard, setBoards, setIsShowFavorites, updateBoard } = boardsSlice.actions;
+export const boardsReducer = boardsSlice.reducer;

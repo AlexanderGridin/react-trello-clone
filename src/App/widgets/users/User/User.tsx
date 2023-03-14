@@ -4,7 +4,7 @@ import { IconButton } from "shared/components/IconButton/IconButton";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { useBoardPageDispatcher } from "App/store/BoardPage/hooks/useBoardPageDispatcher";
-import { useBoardsPageDispatcher } from "App/store/BoardsPage/hooks";
+import { useBoardsPageDispatcher } from "App/store/Boards/hooks";
 import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
 import { logoutUser } from "App/api/User/services";
 import { accessTokenStorage } from "App/local-storage";

@@ -1,12 +1,14 @@
 import { useState } from "react";
+
 import { Card } from "shared/components/Card/Card";
-import { AddBoardButton } from "./components/AddBoardButton";
 import { addBoard as addBoardToApi } from "App/api/Boards/services";
-import { BoardForm } from "../BoardForm/BoardForm";
 import { BoardCreateDto, BoardDto, BoardViewModel } from "App/entities/Board/models";
-import { BoardFormValue } from "../BoardForm/models";
-import { useSelectBoards } from "App/store/BoardsPage/hooks";
+import { useSelectBoards } from "App/store/Boards/hooks";
 import { useSelectUser } from "App/store/User/hooks";
+
+import { AddBoardButton } from "./components/AddBoardButton";
+import { BoardFormValue } from "../BoardForm/models";
+import { BoardForm } from "../BoardForm/BoardForm";
 
 export interface IAddBoardProps {
   onAdd: (board: BoardViewModel) => void;

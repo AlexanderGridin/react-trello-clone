@@ -1,9 +1,11 @@
-import { useBoardsPageDispatcher } from "App/store/BoardsPage/hooks";
 import { useState } from "react";
+
+import { useBoardsPageDispatcher } from "App/store/Boards/hooks";
 import { Modal } from "shared/components/Modal/Modal";
-import { BoardForm } from "../BoardForm/BoardForm";
 import { updateBoard as updateBoardOnApi } from "App/api/Boards/services";
 import { BoardDto, BoardViewModel } from "App/entities/Board/models";
+
+import { BoardForm } from "../BoardForm/BoardForm";
 import { BoardFormValue } from "../BoardForm/models";
 
 interface IBoardModalProps {

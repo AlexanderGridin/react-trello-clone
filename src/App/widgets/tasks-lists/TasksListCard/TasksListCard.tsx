@@ -1,8 +1,8 @@
 import { useState } from "react";
+
 import { DndCard } from "App/components/DndCard/DndCard";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
-import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
 
 import {
   removeTasksList as removeTasksListFromApi,
@@ -11,11 +11,13 @@ import {
 
 import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
-import { TasksListModal } from "../TasksListModal/TasksListModal";
 import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
-import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks/useTasksListDispatcher";
-import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks/useTaskDispatcher";
+import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
+import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
+
+import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
+import { TasksListModal } from "../TasksListModal/TasksListModal";
 
 export interface ITasksListCardProps {
   list: TasksListViewModel;

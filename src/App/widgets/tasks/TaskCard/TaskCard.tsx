@@ -8,7 +8,7 @@ import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
-import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks/useTaskDispatcher";
+import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 
 import { TaskModal } from "../TaskModal/TaskModal";
 import style from "./TaskCard.module.css";

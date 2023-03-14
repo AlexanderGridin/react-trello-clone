@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Modal } from "shared/components/Modal/Modal";
 import { updateTask as updateTaskOnApi } from "App/api/Task/services";
 import { TaskDto, TaskUpdateDto, TaskViewModel } from "App/entities/Task/models";
-import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks/useTaskDispatcher";
+import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 
 import { TaskFormValue } from "../TaskForm/models";
 import { TaskForm } from "../TaskForm/TaskForm";

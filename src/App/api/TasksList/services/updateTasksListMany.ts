@@ -1,8 +1,9 @@
 import { httpClient } from "App/api/httpClient";
 import { ITasksListUpdateManyDto, TasksListDto } from "App/entities/TasksList/models";
+import { routes } from "../routes";
 
 export const updateTasksListMany = async (body: ITasksListUpdateManyDto[]): Promise<TasksListDto[]> => {
-  const apiUrl = "/tasks-lists/updateMany";
+  const apiUrl = routes.updateTasksListMany;
 
   try {
     const response = await httpClient.post<TasksListDto[]>(apiUrl, body);

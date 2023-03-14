@@ -7,8 +7,8 @@ import { getBoard as getBoardFromApi } from "App/api/Boards/services";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
 import { BoardWithTasksListsDto } from "App/entities/Board/models";
 import { useBoardsCacheDispatcher, useSelectBoardsCache } from "App/store/BoardsCache/hooks";
-import { useBoardPageDispatcher } from "App/store/BoardPage/hooks/useBoardPageDispatcher";
-import { useSelectBoard } from "App/store/BoardPage/hooks/useSelectBoard";
+import { useBoardPageDispatcher } from "App/store/OpenedBoard/hooks/useBoardPageDispatcher";
+import { useSelectBoard } from "App/store/OpenedBoard/hooks/useSelectBoard";
 
 export const BoardPage = () => {
   const { id } = useParams();

@@ -1,31 +1,34 @@
 import { TasksListViewModel } from "App/entities/TasksList/models";
-import { TaskViewModel } from "App/entities/Task/models";
-import { IBoardPageState } from "../..";
+import { IOpenedBoardState } from "../..";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { TaskViewModel } from "App/entities/Task/models";
 
 interface Payload {
   task: TaskViewModel;
 }
 
-export const addTaskReducer = (state: IBoardPageState, action: PayloadAction<Payload>): void => {
+export const updateTaskReducer = (state: IOpenedBoardState, action: PayloadAction<Payload>): void => {
   const board = state.board;
 
   if (!board) {
     return;
   }
 
-  const taskToAdd: TaskViewModel = { ...action.payload.task };
+  const taskToUpdate: TaskViewModel = { ...action.payload.task };
+
   const totalPinned = board.pinnedTasksLists.length;
   const lists = [...board.pinnedTasksLists, ...board.tasksLists];
 
   const updatedLists = lists.map((list: TasksListViewModel) =>
-    list.id !== taskToAdd.listId
+    list.id !== taskToUpdate.listId
       ? {
           ...list,
         }
       : {
           ...list,
-          tasks: [...list.tasks, taskToAdd],
+          tasks: list.tasks.map((task: TaskViewModel) =>
+            task.id === taskToUpdate.id ? { ...taskToUpdate } : { ...task }
+          ),
         }
   );
 

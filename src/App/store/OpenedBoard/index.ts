@@ -10,19 +10,19 @@ import {
   updateTasksListReducer,
 } from "./TasksList/reducers";
 
-export interface IBoardPageState {
+export interface IOpenedBoardState {
   board: BoardWithTasksListsViewModel | null;
 }
 
-const initialState: IBoardPageState = {
+const initialState: IOpenedBoardState = {
   board: null,
 };
 
-const boardPageSlice = createSlice({
-  name: "[BOARD_PAGE]",
+const openedBoardSlice = createSlice({
+  name: "[OPENED_BOARD]",
   initialState,
   reducers: {
-    setBoard: (state: IBoardPageState, action: PayloadAction<{ board: BoardWithTasksListsViewModel | null }>) => {
+    setBoard: (state: IOpenedBoardState, action: PayloadAction<{ board: BoardWithTasksListsViewModel | null }>) => {
       state.board = action.payload.board;
     },
     // TasksList
@@ -52,5 +52,5 @@ export const {
   moveTask,
   removeTask,
   updateTask,
-} = boardPageSlice.actions;
-export const boardPageReducer = boardPageSlice.reducer;
+} = openedBoardSlice.actions;
+export const openedBoardReducer = openedBoardSlice.reducer;

@@ -1,36 +1,32 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { TaskViewModel } from "App/entities/Task/models";
 import { TasksListViewModel } from "App/entities/TasksList/models";
-import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
-import { IBoardPageState } from "../..";
+import { IOpenedBoardState } from "../..";
 
 interface Payload {
+  list: TasksListViewModel;
   task: TaskViewModel;
 }
 
-export const removeTaskReducer = (state: IBoardPageState, action: PayloadAction<Payload>): void => {
+export const pushTaskInTasksListReducer = (state: IOpenedBoardState, action: PayloadAction<Payload>): void => {
   const board = state.board;
 
   if (!board) {
     return;
   }
 
-  const taskToRemove: TaskViewModel = action.payload.task;
+  const { list, task } = action.payload;
   const totalPinned = board.pinnedTasksLists.length;
   const lists = [...board.pinnedTasksLists, ...board.tasksLists];
 
-  const updatedLists = lists.map((list: TasksListViewModel) =>
-    list.id !== taskToRemove.listId
+  const updatedLists = lists.map((tasksList: TasksListViewModel) =>
+    tasksList.id !== list.id
       ? {
-          ...list,
+          ...tasksList,
         }
       : {
-          ...list,
-          tasks: removeItemFromArray({
-            array: list.tasks,
-            item: taskToRemove,
-            uniqueKey: "id",
-          }),
+          ...tasksList,
+          tasks: [{ ...task, listId: tasksList.id }],
         }
   );
 

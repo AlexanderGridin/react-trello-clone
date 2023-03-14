@@ -3,7 +3,7 @@ import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { IconButton } from "shared/components/IconButton/IconButton";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
-import { useBoardPageDispatcher } from "App/store/BoardPage/hooks/useBoardPageDispatcher";
+import { useBoardPageDispatcher } from "App/store/OpenedBoard/hooks/useBoardPageDispatcher";
 import { useBoardsPageDispatcher } from "App/store/Boards/hooks";
 import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
 import { logoutUser } from "App/api/User/services";

@@ -14,8 +14,8 @@ import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import { TasksListModal } from "../TasksListModal/TasksListModal";
 import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
-import { useTasksListDispatcher } from "App/store/BoardPage/TasksList/hooks/useTasksListDispatcher";
-import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
+import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks/useTasksListDispatcher";
+import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks/useTaskDispatcher";
 
 export interface ITasksListCardProps {
   list: TasksListViewModel;

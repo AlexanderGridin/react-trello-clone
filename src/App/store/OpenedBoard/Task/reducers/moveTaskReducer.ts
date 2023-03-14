@@ -1,7 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { TaskViewModel } from "App/entities/Task/models";
 import { TasksListViewModel } from "App/entities/TasksList/models";
-import { IBoardPageState } from "../..";
+import { IOpenedBoardState } from "../..";
 import { removeTaskFromList } from "./utils/removeTaskFromList";
 import { replaceTaskInList } from "./utils/replaceTaskInList";
 
@@ -10,7 +10,7 @@ interface Payload {
   taskToReplace: TaskViewModel;
 }
 
-export const moveTaskReducer = (state: IBoardPageState, action: PayloadAction<Payload>): void => {
+export const moveTaskReducer = (state: IOpenedBoardState, action: PayloadAction<Payload>): void => {
   const board = state.board;
 
   if (!board) {

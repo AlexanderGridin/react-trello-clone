@@ -1,13 +1,13 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { parseTasksLists } from "App/entities/Board/utils/parseTasksLists";
 import { TasksListViewModel } from "App/entities/TasksList/models";
-import { IBoardPageState } from "../..";
+import { IOpenedBoardState } from "../..";
 
 interface Payload {
   list: TasksListViewModel;
 }
 
-export const updateTasksListReducer = (state: IBoardPageState, action: PayloadAction<Payload>): void => {
+export const updateTasksListReducer = (state: IOpenedBoardState, action: PayloadAction<Payload>): void => {
   const board = state.board;
 
   if (!board) {

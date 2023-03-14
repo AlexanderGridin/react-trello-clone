@@ -1,17 +1,19 @@
 import { useState } from "react";
+
 import { DndCard } from "App/components/DndCard/DndCard";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 import { removeTask as removeTaskFromApi } from "App/api/Task/services";
-import { Task } from "../Task/Task";
 import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
-import { TaskModal } from "../TaskModal/TaskModal";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
 import { Chip } from "shared/components/Chip/Chip";
+import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks/useTaskDispatcher";
+
+import { TaskModal } from "../TaskModal/TaskModal";
 import style from "./TaskCard.module.css";
-import { useTaskDispatcher } from "App/store/BoardPage/Task/hooks/useTaskDispatcher";
 import { getTaskPriorityColor } from "./utils";
+import { Task } from "../Task/Task";
 
 interface ITaskCardProps {
   task: TaskViewModel;

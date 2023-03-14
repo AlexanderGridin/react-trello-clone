@@ -30,8 +30,7 @@ export const moveBoardReducer = (state: IBoardsState, action: PayloadAction<Payl
       ? moveItemAfterArrayItem(movingConfig)
       : moveItemBeforeArrayItem(movingConfig);
 
-  state.boards = updatedBoards.map((board, index) => ({
-    ...board,
-    rank: index + 1,
-  }));
+  state.boards = updatedBoards.map((board) =>
+    board.id === boardToReplace.id ? { ...board, ...boardToReplace } : { ...board }
+  );
 };

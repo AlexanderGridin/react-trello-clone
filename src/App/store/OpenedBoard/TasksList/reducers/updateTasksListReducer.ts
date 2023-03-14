@@ -1,6 +1,8 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+
 import { parseTasksLists } from "App/entities/Board/utils/parseTasksLists";
 import { TasksListViewModel } from "App/entities/TasksList/models";
+
 import { IOpenedBoardState } from "../..";
 
 interface Payload {
@@ -21,9 +23,14 @@ export const updateTasksListReducer = (state: IOpenedBoardState, action: Payload
   const updatedLists = lists.map(updateList);
   const { pinnedTasksLists, unpinnedTasksLists } = parseTasksLists(updatedLists);
 
+  const isSortNecessary = unpinnedTasksLists.length > 1 && unpinnedTasksLists[0].rank > unpinnedTasksLists[1].rank;
+  const tasksLists = isSortNecessary
+    ? [...unpinnedTasksLists.sort((a, b) => a.rank - b.rank)]
+    : [...unpinnedTasksLists];
+
   state.board = {
     ...board,
     pinnedTasksLists,
-    tasksLists: unpinnedTasksLists,
+    tasksLists,
   };
 };

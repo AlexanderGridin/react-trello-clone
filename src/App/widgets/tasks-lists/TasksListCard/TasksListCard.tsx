@@ -5,6 +5,7 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 
 import {
+  debouncedUpdateTasksListMany,
   removeTasksList as removeTasksListFromApi,
   updateTasksList as updateTasksListOnApi,
 } from "App/api/TasksList/services";
@@ -79,10 +80,13 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
       const draggedList = { ...draggedItem.data, rank: list.rank };
       const targetList = { ...list, rank: draggedItem.data.rank };
 
-      dispatcher.moveTasksList(draggedItem.data, list);
+      dispatcher.moveTasksList(draggedList, targetList);
 
       const requestBody = [draggedList, targetList].map(TasksListViewModel.toUpdateManyDto);
-      console.log(requestBody);
+      debouncedUpdateTasksListMany({
+        body: requestBody,
+      });
+
       return;
     }
 
@@ -105,7 +109,12 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
     <TasksListHeader title={list.title} isPinned={list.isPinned} onRemove={remove} onEdit={edit} onPin={togglePin} />
   );
 
-  const content = <TasksCardsList boardId={list.boardId} listId={list.id} tasks={list.tasks} isShowAddTask />;
+  const content = (
+    <>
+      <TasksCardsList boardId={list.boardId} listId={list.id} tasks={list.tasks} isShowAddTask />
+      <div style={{ paddingTop: "15px", color: "gray", textAlign: "right" }}>{list.rank}</div>
+    </>
+  );
 
   if (isDragPreview || isLoading) {
     return (

@@ -18,7 +18,10 @@ export const moveTasksLists = (
     uniqueKey: "id",
   };
 
-  return listToMoveIndex < listToReplaceIndex
-    ? moveItemAfterArrayItem<TasksListViewModel>(movingConfig)
-    : moveItemBeforeArrayItem<TasksListViewModel>(movingConfig);
+  const updatedLists =
+    listToMoveIndex < listToReplaceIndex
+      ? moveItemAfterArrayItem<TasksListViewModel>(movingConfig)
+      : moveItemBeforeArrayItem<TasksListViewModel>(movingConfig);
+
+  return updatedLists.map((list) => (list.id === listToReplace.id ? { ...list, ...listToReplace } : { ...list }));
 };

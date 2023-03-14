@@ -30,23 +30,26 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
   const taskDispatcher = useTaskDispatcher();
   const appDraggedItemDispatcher = useAppDraggedItemDispatcher();
 
+  const startLoading = () => setIsLoading(true);
+  const endLoading = () => setIsLoading(false);
+
   const edit = () => {
     dispatcher.updateTasksList({ ...list, isEditing: true });
   };
 
   const remove = async () => {
-    setIsLoading(true);
+    startLoading();
 
     const tasksListDto = await removeTasksListFromApi(list.id);
     if (tasksListDto) {
       dispatcher.removeTasksList(TasksListDto.toViewModel(tasksListDto));
     }
 
-    setIsLoading(false);
+    endLoading();
   };
 
   const togglePin = async () => {
-    setIsLoading(true);
+    startLoading();
 
     const listDto = await updateTasksListOnApi(list.id, {
       title: list.title,
@@ -58,7 +61,7 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
       dispatcher.updateTasksList(TasksListDto.toViewModel(listDto));
     }
 
-    setIsLoading(false);
+    endLoading();
   };
 
   const dropOnList = (draggedItem: TAppDraggedItem) => {
@@ -85,6 +88,7 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
   const header = (
     <TasksListHeader title={list.title} isPinned={list.isPinned} onRemove={remove} onEdit={edit} onPin={togglePin} />
   );
+
   const content = <TasksCardsList boardId={list.boardId} listId={list.id} tasks={list.tasks} isShowAddTask />;
 
   if (isDragPreview || isLoading) {

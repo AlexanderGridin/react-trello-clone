@@ -5,7 +5,6 @@ export interface ITaskCreateDtoConfig {
   priority: TPriority;
   boardId: string;
   listId: string;
-  user: string;
 }
 
 export class TaskCreateDto {
@@ -13,7 +12,6 @@ export class TaskCreateDto {
   public priority!: TPriority;
   public boardId!: string;
   public listId!: string;
-  public user!: string;
 
   constructor(config?: ITaskCreateDtoConfig) {
     if (!config) {

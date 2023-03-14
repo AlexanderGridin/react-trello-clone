@@ -1,11 +1,13 @@
 import { useReducer } from "react";
+
 import { Card } from "shared/components/Card/Card";
-import { AddTaskButton } from "./components/AddTaskButton";
 import { addTask as addTaskOnApi } from "App/api/Task/services";
-import { TaskForm } from "../TaskForm/TaskForm";
 import { TaskCreateDto, TaskDto, TaskViewModel } from "App/entities/Task/models";
+
+import { TaskForm } from "../TaskForm/TaskForm";
 import { TaskFormValue } from "../TaskForm/models";
-import { useSelectUser } from "App/store/User/hooks";
+import { AddTaskButton } from "./components/AddTaskButton";
+import { AddTaskComponentState } from "./models";
 
 export interface IAddTaskProps {
   listId: string;
@@ -13,35 +15,29 @@ export interface IAddTaskProps {
   onAdd: (task: TaskViewModel) => void;
 }
 
-interface AddTaskState {
-  isShowForm: boolean;
-  isLoading: boolean;
-}
-
 export const AddTask = ({ listId, boardId, onAdd }: IAddTaskProps) => {
-  const user = useSelectUser();
-
-  const initialState: AddTaskState = { isShowForm: false, isLoading: false };
-  const [state, dispatch] = useReducer(
-    (state: AddTaskState, payload: Partial<AddTaskState>) => ({
+  const [componentState, dispatch] = useReducer(
+    (state: AddTaskComponentState, payload: Partial<AddTaskComponentState>) => ({
       ...state,
       ...payload,
     }),
-    initialState
+    { ...new AddTaskComponentState() }
   );
 
   const hideForm = () => dispatch({ isShowForm: false });
   const showForm = () => dispatch({ isShowForm: true });
 
+  const startLoading = () => dispatch({ isLoading: true });
+  const endLoading = () => dispatch({ isLoading: false });
+
   const addTask = async (formValue: TaskFormValue) => {
-    dispatch({ isLoading: true });
+    startLoading();
 
     const taskCreateDto = new TaskCreateDto({
       content: formValue.title,
       priority: formValue.priority,
       listId,
       boardId,
-      user: user?.id as string,
     });
 
     const taskDto = await addTaskOnApi(taskCreateDto);
@@ -50,12 +46,12 @@ export const AddTask = ({ listId, boardId, onAdd }: IAddTaskProps) => {
       hideForm();
     }
 
-    dispatch({ isLoading: false });
+    endLoading();
   };
 
-  if (state.isShowForm) {
+  if (componentState.isShowForm) {
     return (
-      <Card isLoading={state.isLoading}>
+      <Card isLoading={componentState.isLoading}>
         <TaskForm onSubmit={addTask} onCancel={hideForm} />
       </Card>
     );

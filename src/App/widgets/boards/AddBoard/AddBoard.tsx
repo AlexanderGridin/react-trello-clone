@@ -1,36 +1,38 @@
-import { useState } from "react";
+import { useReducer } from "react";
 
 import { Card } from "shared/components/Card/Card";
 import { addBoard as addBoardToApi } from "App/api/Boards/services";
 import { BoardCreateDto, BoardDto, BoardViewModel } from "App/entities/Board/models";
-import { useSelectBoards } from "App/store/Boards/hooks";
-import { useSelectUser } from "App/store/User/hooks";
 
 import { AddBoardButton } from "./components/AddBoardButton";
 import { BoardFormValue } from "../BoardForm/models";
 import { BoardForm } from "../BoardForm/BoardForm";
+import { AddBoardComponentState } from "./models";
 
 export interface IAddBoardProps {
   onAdd: (board: BoardViewModel) => void;
 }
 
 export const AddBoard = ({ onAdd }: IAddBoardProps) => {
-  const user = useSelectUser();
-  const boards = useSelectBoards();
+  const [componentState, dispatch] = useReducer(
+    (state: AddBoardComponentState, payload: Partial<AddBoardComponentState>) => ({
+      ...state,
+      ...payload,
+    }),
+    { ...new AddBoardComponentState() }
+  );
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [isShowForm, setIsShowForm] = useState(false);
+  const showForm = () => dispatch({ isShowForm: true });
+  const hideForm = () => dispatch({ isShowForm: false });
 
-  const showForm = () => setIsShowForm(true);
-  const hideForm = () => setIsShowForm(false);
+  const startLoading = () => dispatch({ isLoading: true });
+  const endLoading = () => dispatch({ isLoading: false });
 
   const addBoard = async (formValue: BoardFormValue) => {
-    setIsLoading(true);
+    startLoading();
 
     const boardCreateDto = new BoardCreateDto({
       ...formValue,
-      rank: (boards?.length ?? 0) + 1,
-      user: user?.id as string,
     });
 
     const boardDto = await addBoardToApi(boardCreateDto);
@@ -40,12 +42,12 @@ export const AddBoard = ({ onAdd }: IAddBoardProps) => {
       hideForm();
     }
 
-    setIsLoading(false);
+    endLoading();
   };
 
-  if (isShowForm) {
+  if (componentState.isShowForm) {
     return (
-      <Card minHeight={150} backgroundColor="#D8DEE9" isLoading={isLoading}>
+      <Card minHeight={150} backgroundColor="#D8DEE9" isLoading={componentState.isLoading}>
         <BoardForm onSubmit={addBoard} onCancel={hideForm} />
       </Card>
     );

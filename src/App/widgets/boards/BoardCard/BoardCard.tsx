@@ -89,6 +89,7 @@ export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => 
     <>
       <Board board={board} onEdit={editBoard} onRemove={removeBoard} onFavorite={updateBoard} />
       <Chip className={style.user}>{board.user.name}</Chip>
+      <div style={{ color: "gray", position: "absolute", bottom: "15px", right: "15px" }}>{board.rank}</div>
     </>
   );
 

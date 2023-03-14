@@ -1,9 +1,12 @@
-import { useState } from "react";
-import { addTasksList as addTasksListOnApi } from "App/api/TasksList/services";
+import { useReducer } from "react";
+
 import { Card } from "shared/components/Card/Card";
+import { addTasksList as addTasksListOnApi } from "App/api/TasksList/services";
+import { TasksListCreateDto, TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
+
 import { AddListButton } from "./components/AddListButton";
 import { TasksListForm } from "../TasksListForm/TasksListForm";
-import { TasksListCreateDto, TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
+import { AddTasksListState } from "./models";
 import { TasksListFormValue } from "../TasksListForm/models";
 
 export interface IAddTasksListProps {
@@ -12,32 +15,40 @@ export interface IAddTasksListProps {
 }
 
 export const AddTasksList = ({ boardId, onAdd }: IAddTasksListProps) => {
-  const [isShowForm, setIsShowForm] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [componentState, dispatch] = useReducer(
+    (state: AddTasksListState, payload: Partial<AddTasksListState>) => ({
+      ...state,
+      ...payload,
+    }),
+    { ...new AddTasksListState() }
+  );
 
-  const showForm = () => setIsShowForm(true);
-  const hideForm = () => setIsShowForm(false);
+  const showForm = () => dispatch({ isShowForm: true });
+  const hideForm = () => dispatch({ isShowForm: false });
+
+  const startLoading = () => dispatch({ isLoading: true });
+  const endLoading = () => dispatch({ isLoading: false });
 
   const addList = async (formValue: TasksListFormValue) => {
-    setIsLoading(true);
+    startLoading();
 
-    const listCreateDto = new TasksListCreateDto({
+    const createDto = new TasksListCreateDto({
       ...formValue,
       boardId,
     });
 
-    const listDto = await addTasksListOnApi(listCreateDto);
+    const listDto = await addTasksListOnApi(createDto);
     if (listDto) {
       onAdd(TasksListDto.toViewModel(listDto));
       hideForm();
     }
 
-    setIsLoading(false);
+    endLoading();
   };
 
-  if (isShowForm) {
+  if (componentState.isShowForm) {
     return (
-      <Card backgroundColor="#D8DEE9" isLoading={isLoading}>
+      <Card backgroundColor="#D8DEE9" isLoading={componentState.isLoading}>
         <TasksListForm onSubmit={addList} onCancel={hideForm} />
       </Card>
     );

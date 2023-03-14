@@ -1,6 +1,7 @@
 import { TasksListViewModel } from "App/entities/TasksList/models";
-import { useTasksListDispatcher } from "App/store/BoardPage/TasksList/hooks/useTasksListDispatcher";
+import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
 import { DragLayer } from "App/widgets/DragLayer/DragLayer";
+
 import { AddTasksList } from "../AddTasksList/AddTasksList";
 import { TasksListCard } from "../TasksListCard/TasksListCard";
 import style from "./TasksListsCardsList.module.css";

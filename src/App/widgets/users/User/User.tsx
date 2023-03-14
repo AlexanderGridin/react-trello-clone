@@ -1,26 +1,28 @@
 import { NavLink } from "react-router-dom";
+
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { IconButton } from "shared/components/IconButton/IconButton";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
-import { useBoardPageDispatcher } from "App/store/BoardPage/hooks/useBoardPageDispatcher";
-import { useBoardsPageDispatcher } from "App/store/BoardsPage/hooks";
+import { useOpenedBoardDispatcher } from "App/store/OpenedBoard/hooks";
+import { useBoardsPageDispatcher } from "App/store/Boards/hooks";
 import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
 import { logoutUser } from "App/api/User/services";
 import { accessTokenStorage } from "App/local-storage";
+
 import style from "./User.module.css";
 
 export const User = () => {
   const user = useSelectUser();
   const userDispatcher = useUserDispatcher();
 
-  const boardPageDispatcher = useBoardPageDispatcher();
+  const openedBoardDispatcher = useOpenedBoardDispatcher();
   const boardsPageDispatcher = useBoardsPageDispatcher();
   const boardsCahceDispatcher = useBoardsCacheDispatcher();
 
   const handleSignOutClick = async () => {
     boardsPageDispatcher.setBoards(null);
-    boardPageDispatcher.setBoard(null);
+    openedBoardDispatcher.setBoard(null);
     boardsCahceDispatcher.clearCache();
 
     await logoutUser();

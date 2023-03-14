@@ -1,13 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { boardsPageReducer } from "App/store/BoardsPage";
+import { boardsReducer } from "App/store/Boards";
 import { userReducer } from "App/store/User";
-import { boardPageReducer } from "App/store/BoardPage";
+import { openedBoardReducer } from "App/store/OpenedBoard";
 import { boardsCacheReducer } from "./BoardsCache";
 
 const reducer = combineReducers({
   USER: userReducer,
-  BOARDS_PAGE: boardsPageReducer,
-  BOARD_PAGE: boardPageReducer,
+  BOARDS: boardsReducer,
+  OPENED_BOARD: openedBoardReducer,
   BOARDS_CACHE: boardsCacheReducer,
 });
 

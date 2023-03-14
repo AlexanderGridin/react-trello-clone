@@ -3,7 +3,7 @@ import { createCache, createDebouncedRequest, DebouncedRequestConfig } from "App
 import { updateBoardMany } from "App/api/Boards/services";
 
 const cache = createCache<IBoardUpdateManyDto>("id");
-const callDebouncedRequest = createDebouncedRequest<BoardDto[]>(1000, () => updateBoardMany(cache.getValuesAndClear()));
+const callDebouncedRequest = createDebouncedRequest<BoardDto[]>(1500, () => updateBoardMany(cache.getValuesAndClear()));
 
 type TConfig = { body: IBoardUpdateManyDto[] } & DebouncedRequestConfig<BoardDto[]>;
 

@@ -68,7 +68,21 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
 
   const dropOnList = (draggedItem: TAppDraggedItem) => {
     if (draggedItem.type === DraggedItemType.TasksList && draggedItem.data.isPinned === list.isPinned) {
+      appDraggedItemDispatcher.setAppDraggedItem({
+        ...draggedItem,
+        data: {
+          ...draggedItem.data,
+          rank: list.rank,
+        },
+      });
+
+      const draggedList = { ...draggedItem.data, rank: list.rank };
+      const targetList = { ...list, rank: draggedItem.data.rank };
+
       dispatcher.moveTasksList(draggedItem.data, list);
+
+      const requestBody = [draggedList, targetList].map(TasksListViewModel.toUpdateManyDto);
+      console.log(requestBody);
       return;
     }
 

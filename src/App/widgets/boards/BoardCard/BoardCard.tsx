@@ -9,7 +9,7 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import {
   removeBoard as removeBoardFromApi,
   updateBoard as updateBoardOnApi,
-  debouncedUpdateMany,
+  debouncedUpdateBoardMany,
 } from "App/api/Boards/services";
 
 import { Board } from "../Board/Board";
@@ -59,7 +59,7 @@ export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => 
     setIsLoading(false);
   };
 
-  const dropOnBoard = (draggedItem: TAppDraggedItem) => {
+  const handleDrop = (draggedItem: TAppDraggedItem) => {
     if (draggedItem.type !== DraggedItemType.Board) {
       return;
     }
@@ -78,12 +78,12 @@ export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => 
     dispatcher.moveBoard(draggedBoard, targetBoard);
 
     const requestBody = [draggedBoard, targetBoard].map(BoardViewModel.toUpdateManyDto);
-    debouncedUpdateMany({
+    debouncedUpdateBoardMany({
       body: requestBody,
     });
   };
 
-  const navigateToBoard = () => navigate(`/board/${board.id}`);
+  const openBoard = () => navigate(`/board/${board.id}`);
 
   const content = (
     <>
@@ -111,8 +111,8 @@ export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => 
         minHeight={MIN_HEIGHT}
         draggedItem={BoardViewModel.toAppDraggedItem(board)}
         backgroundColor={BACKGROUD_COLOR}
-        onDrop={dropOnBoard}
-        onDoubleClick={navigateToBoard}
+        onDrop={handleDrop}
+        onDoubleClick={openBoard}
       >
         {content}
       </DndCard>

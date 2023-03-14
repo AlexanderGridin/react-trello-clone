@@ -6,5 +6,5 @@ export * from "./updateBoard";
 export * from "./getAllBoards";
 export * from "./getFavoriteBoards";
 
-export * from "./updateMany";
-export * from "./debouncedUpdateMany";
+export * from "./updateBoardMany";
+export * from "./debouncedUpdateBoardMany";

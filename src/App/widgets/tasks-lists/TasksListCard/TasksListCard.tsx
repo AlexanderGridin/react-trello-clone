@@ -82,7 +82,9 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
     });
   };
 
-  const header = <TasksListHeader list={list} onRemove={remove} onEdit={edit} onPin={togglePin} />;
+  const header = (
+    <TasksListHeader title={list.title} isPinned={list.isPinned} onRemove={remove} onEdit={edit} onPin={togglePin} />
+  );
   const content = <TasksCardsList boardId={list.boardId} listId={list.id} tasks={list.tasks} isShowAddTask />;
 
   if (isDragPreview || isLoading) {

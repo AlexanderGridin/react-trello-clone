@@ -10,7 +10,7 @@ import {
   setIsShowFavorites as setIsShowFavoritesAction,
 } from "..";
 
-export const useBoardsPageDispatcher = () => {
+export const useBoardsDispatcher = () => {
   const dispatch = useDispatch();
 
   const addBoard = (board: BoardViewModel) => dispatch(addBoardAction({ board }));

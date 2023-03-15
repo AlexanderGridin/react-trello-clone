@@ -1,12 +1,11 @@
-import { useState } from "react";
-
 import { Modal } from "shared/components/Modal/Modal";
+import { useSwitch } from "App/hooks";
 import { updateTasksList as updateTasksListOnApi } from "App/api/TasksList/services";
 import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
 import { TasksListDto, TasksListUpdateDto, TasksListViewModel } from "App/entities/TasksList/models";
 
-import { TasksListFormValue } from "../TasksListForm/models";
 import { TasksListForm } from "../TasksListForm/TasksListForm";
+import { TasksListFormValue } from "../TasksListForm/models";
 
 interface ITasksListModalProps {
   list: TasksListViewModel;
@@ -14,11 +13,11 @@ interface ITasksListModalProps {
 
 export const TasksListModal = ({ list }: ITasksListModalProps) => {
   const dispatcher = useTasksListDispatcher();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, startLoading, endLoading] = useSwitch();
 
   const closeModal = () => dispatcher.updateTasksList({ ...list, isEditing: false });
   const update = async (formValue: TasksListFormValue) => {
-    setIsLoading(true);
+    startLoading();
 
     const listUpdateDto = new TasksListUpdateDto({
       ...formValue,
@@ -30,7 +29,7 @@ export const TasksListModal = ({ list }: ITasksListModalProps) => {
       dispatcher.updateTasksList(TasksListDto.toViewModel(listDto));
     }
 
-    setIsLoading(false);
+    endLoading();
   };
 
   return (

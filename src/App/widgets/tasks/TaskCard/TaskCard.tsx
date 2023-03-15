@@ -1,19 +1,18 @@
-import { useState } from "react";
-
-import { DndCard } from "App/components/DndCard/DndCard";
-import { DraggedItemType } from "App/enums/DraggedItemType";
+import { Chip } from "shared/components/Chip/Chip";
 import { Card } from "shared/components/Card/Card";
-import { debouncedUpdateTaskMany, removeTask as removeTaskFromApi } from "App/api/Task/services";
+import { DndCard } from "App/components/DndCard/DndCard";
+import { useSwitch } from "App/hooks";
+import { DraggedItemType } from "App/enums/DraggedItemType";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { Chip } from "shared/components/Chip/Chip";
-import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
+import { debouncedUpdateTaskMany, removeTask as removeTaskFromApi } from "App/api/Task/services";
 
-import { TaskModal } from "../TaskModal/TaskModal";
-import style from "./TaskCard.module.css";
-import { getTaskPriorityColor } from "./utils";
 import { Task } from "../Task/Task";
+import { TaskModal } from "../TaskModal/TaskModal";
+import { getTaskPriorityColor } from "./utils";
+import style from "./TaskCard.module.css";
 
 interface ITaskCardProps {
   task: TaskViewModel;
@@ -21,7 +20,7 @@ interface ITaskCardProps {
 }
 
 export const TaskCard = ({ task, isDragPreview = false }: ITaskCardProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, startLoading, endLoading] = useSwitch();
   const BACKGROUD_COLOR = "#ECEFF4";
 
   const dispatcher = useTaskDispatcher();
@@ -32,14 +31,14 @@ export const TaskCard = ({ task, isDragPreview = false }: ITaskCardProps) => {
   };
 
   const removeTask = async () => {
-    setIsLoading(true);
+    startLoading();
 
     const taskDto = await removeTaskFromApi(task.id);
     if (taskDto) {
       dispatcher.removeTask(TaskDto.toViewModel(taskDto));
     }
 
-    setIsLoading(false);
+    endLoading();
   };
 
   const dropOnTask = (draggedItem: TAppDraggedItem) => {

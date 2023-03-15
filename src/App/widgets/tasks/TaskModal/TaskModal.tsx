@@ -1,12 +1,11 @@
-import { useState } from "react";
-
 import { Modal } from "shared/components/Modal/Modal";
+import { useSwitch } from "App/hooks";
 import { updateTask as updateTaskOnApi } from "App/api/Task/services";
-import { TaskDto, TaskUpdateDto, TaskViewModel } from "App/entities/Task/models";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
+import { TaskDto, TaskUpdateDto, TaskViewModel } from "App/entities/Task/models";
 
-import { TaskFormValue } from "../TaskForm/models";
 import { TaskForm } from "../TaskForm/TaskForm";
+import { TaskFormValue } from "../TaskForm/models";
 
 interface ITaskModalProps {
   task: TaskViewModel;
@@ -14,11 +13,11 @@ interface ITaskModalProps {
 
 export const TaskModal = ({ task }: ITaskModalProps) => {
   const dispatcher = useTaskDispatcher();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, startLoading, endLoading] = useSwitch();
 
   const closeModal = () => dispatcher.updateTask({ ...task, isEditing: false });
   const update = async (formValue: TaskFormValue) => {
-    setIsLoading(true);
+    startLoading();
 
     const taskUpdateDto = new TaskUpdateDto({
       content: formValue.title,
@@ -32,7 +31,7 @@ export const TaskModal = ({ task }: ITaskModalProps) => {
       dispatcher.updateTask(TaskDto.toViewModel(taskDto));
     }
 
-    setIsLoading(false);
+    endLoading();
   };
 
   return (

@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { DndCard } from "App/components/DndCard/DndCard";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
@@ -22,6 +20,7 @@ import { IDraggedItem } from "drag-and-drop/models";
 
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
 import { TasksListModal } from "../TasksListModal/TasksListModal";
+import { useSwitch } from "App/hooks";
 
 export interface ITasksListCardProps {
   list: TasksListViewModel;
@@ -29,15 +28,12 @@ export interface ITasksListCardProps {
 }
 
 export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, startLoading, endLoading] = useSwitch();
   const BACKGROUD_COLOR = list.isPinned ? "#ebdcbd" : "#D8DEE9";
 
   const dispatcher = useTasksListDispatcher();
   const taskDispatcher = useTaskDispatcher();
   const appDraggedItemDispatcher = useAppDraggedItemDispatcher();
-
-  const startLoading = () => setIsLoading(true);
-  const endLoading = () => setIsLoading(false);
 
   const edit = () => {
     dispatcher.updateTasksList({ ...list, isEditing: true });

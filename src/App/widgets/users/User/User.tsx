@@ -5,7 +5,7 @@ import { IconButton } from "shared/components/IconButton/IconButton";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { useOpenedBoardDispatcher } from "App/store/OpenedBoard/hooks";
-import { useBoardsPageDispatcher } from "App/store/Boards/hooks";
+import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
 import { logoutUser } from "App/api/User/services";
 import { accessTokenStorage } from "App/local-storage";
@@ -17,11 +17,11 @@ export const User = () => {
   const userDispatcher = useUserDispatcher();
 
   const openedBoardDispatcher = useOpenedBoardDispatcher();
-  const boardsPageDispatcher = useBoardsPageDispatcher();
+  const boardsDispatcher = useBoardsDispatcher();
   const boardsCahceDispatcher = useBoardsCacheDispatcher();
 
   const handleSignOutClick = async () => {
-    boardsPageDispatcher.setBoards(null);
+    boardsDispatcher.setBoards(null);
     openedBoardDispatcher.setBoard(null);
     boardsCahceDispatcher.clearCache();
 

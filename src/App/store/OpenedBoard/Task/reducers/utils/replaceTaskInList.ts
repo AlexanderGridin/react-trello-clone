@@ -25,7 +25,7 @@ export const replaceTaskInList = ({ list, task, taskToReplace }: Config): TasksL
     uniqueKey: "id",
   };
 
-  return isMoveBefore
+  const updatedList = isMoveBefore
     ? {
         ...list,
         tasks: moveItemBeforeArrayItem<TaskViewModel>(movingConfig),
@@ -34,4 +34,11 @@ export const replaceTaskInList = ({ list, task, taskToReplace }: Config): TasksL
         ...list,
         tasks: moveItemAfterArrayItem<TaskViewModel>(movingConfig),
       };
+
+  return {
+    ...updatedList,
+    tasks: updatedList.tasks.map((task) =>
+      task.id === taskToReplace.id ? { ...task, ...taskToReplace } : { ...task }
+    ),
+  };
 };

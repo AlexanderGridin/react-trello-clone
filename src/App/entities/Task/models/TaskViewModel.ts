@@ -1,7 +1,9 @@
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { TPriority } from "App/types";
 import { TaskFormValue } from "App/widgets/tasks/TaskForm/models";
+
+import { ITaskUpdateManyDto } from ".";
 
 export class TaskViewModel {
   public readonly id!: string;
@@ -12,6 +14,7 @@ export class TaskViewModel {
   public isEditing = false;
   public priority: TPriority = "regular";
   public user!: { id: string; name: string };
+  public rank!: number;
 
   static toAppDraggedItem(source: TaskViewModel): TAppDraggedItem {
     return {
@@ -26,6 +29,14 @@ export class TaskViewModel {
     return {
       title: source.title,
       priority: source.priority,
+    };
+  }
+
+  static toUpdateManyDto(source: TaskViewModel): ITaskUpdateManyDto {
+    return {
+      id: source.id,
+      rank: source.rank,
+      listId: source.listId,
     };
   }
 }

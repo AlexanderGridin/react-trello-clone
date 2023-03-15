@@ -9,6 +9,7 @@ export class TaskDto {
   public boardId!: string;
   public priority: TPriority = "regular";
   public user!: UserDto;
+  public rank!: number;
 
   static toViewModel(source: TaskDto): TaskViewModel {
     return {
@@ -18,6 +19,7 @@ export class TaskDto {
       title: source.content,
       priority: source.priority,
       user: UserDto.toViewModel(source.user),
+      rank: source.rank,
       isEditing: false,
     };
   }

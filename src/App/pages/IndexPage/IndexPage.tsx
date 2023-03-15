@@ -1,31 +1,32 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
-import { loginUser, createUser } from "App/api/User/services";
+
+import { Card } from "shared/components/Card/Card";
+import { Alert } from "shared/components/Alert/Alert";
+import { Button } from "shared/components/Button/Button";
+import { useSwitch } from "App/hooks";
+import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
+import { accessTokenStorage } from "App/local-storage";
+import { loginUser, createUser } from "App/api/User/services";
+import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { AuthenticatedUserDto, UserCreateDto, UserLoginDto, UserViewModel } from "App/entities/User/models";
 import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
-import { Button } from "shared/components/Button/Button";
-import { Card } from "shared/components/Card/Card";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
+
 import style from "./IndexPage.module.css";
-import { Alert } from "shared/components/Alert/Alert";
-import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
-import { accessTokenStorage } from "App/local-storage";
 
 export const IndexPage = () => {
   const user = useSelectUser();
   const userDispatcher = useUserDispatcher();
 
-  const [isShowSignInForm, setIsShowSignInForm] = useState(false);
-  const [isShowCreateUserForm, setIsShowCreateUserForm] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, startLoading, endLoading] = useSwitch();
+  const [isShowSignInForm, showSignInForm, hideSignInForm] = useSwitch();
+  const [isShowCreateUserForm, showCreateUserForm, hideCreateUserForm] = useSwitch();
+
   const [alertMessage, setAlertMessage] = useState("");
 
-  const toggleSignInForm = () => setIsShowSignInForm(!isShowSignInForm);
-  const toggleCreateUserForm = () => setIsShowCreateUserForm(!isShowCreateUserForm);
-
   const handleUserSignIn = async (formValue: UserSignInFormValue) => {
-    setIsLoading(true);
+    startLoading();
     setAlertMessage("");
 
     const userLoginDto = new UserLoginDto({
@@ -36,7 +37,7 @@ export const IndexPage = () => {
     const userDto: AuthenticatedUserDto | AxiosError = await loginUser(userLoginDto);
 
     if (!userDto) {
-      setIsLoading(false);
+      endLoading();
       return;
     }
 
@@ -44,7 +45,7 @@ export const IndexPage = () => {
     if (userDto instanceof AxiosError) {
       const errorData = userDto.response?.data as { message: string };
       setAlertMessage(errorData.message);
-      setIsLoading(false);
+      endLoading();
 
       return;
     }
@@ -53,12 +54,12 @@ export const IndexPage = () => {
     accessTokenStorage.set(userDto.accessToken);
     userDispatcher.setUser(user);
 
-    setIsShowSignInForm(false);
-    setIsLoading(false);
+    hideSignInForm();
+    endLoading();
   };
 
   const handleCreateUser = async (formValue: CreateUserFormValue) => {
-    setIsLoading(true);
+    startLoading();
 
     const userCreateDto = new UserCreateDto({
       name: formValue.userName,
@@ -68,14 +69,14 @@ export const IndexPage = () => {
     const userDto: AuthenticatedUserDto | AxiosError = await createUser(userCreateDto);
 
     if (!userDto) {
-      setIsLoading(false);
+      endLoading();
       return;
     }
 
     if (userDto instanceof AxiosError) {
       const errorData = userDto.response?.data as { message: string };
       setAlertMessage(errorData.message);
-      setIsLoading(false);
+      endLoading();
 
       return;
     }
@@ -84,8 +85,8 @@ export const IndexPage = () => {
     accessTokenStorage.set(userDto.accessToken);
     userDispatcher.setUser(user);
 
-    setIsShowCreateUserForm(false);
-    setIsLoading(false);
+    hideCreateUserForm();
+    endLoading();
   };
 
   const handleAlertClose = () => {
@@ -135,16 +136,16 @@ export const IndexPage = () => {
             </Alert>
           )}
 
-          {isShowSignInForm && <UserSignInForm onSubmit={handleUserSignIn} onCancel={toggleSignInForm} />}
-          {isShowCreateUserForm && <CreateUserForm onCreate={handleCreateUser} onCancel={toggleCreateUserForm} />}
+          {isShowSignInForm && <UserSignInForm onSubmit={handleUserSignIn} onCancel={hideSignInForm} />}
+          {isShowCreateUserForm && <CreateUserForm onCreate={handleCreateUser} onCancel={hideCreateUserForm} />}
 
           {!isShowSignInForm && !isShowCreateUserForm && (
             <div className={style.footer}>
-              <Button icon={MaterialIcon.Login} style={{ marginRight: "7px" }} onClick={toggleSignInForm}>
+              <Button icon={MaterialIcon.Login} style={{ marginRight: "7px" }} onClick={showSignInForm}>
                 Sign in
               </Button>
 
-              <Button icon={MaterialIcon.AddUser} visualStyle="success" onClick={toggleCreateUserForm}>
+              <Button icon={MaterialIcon.AddUser} visualStyle="success" onClick={showCreateUserForm}>
                 Create user
               </Button>
             </div>

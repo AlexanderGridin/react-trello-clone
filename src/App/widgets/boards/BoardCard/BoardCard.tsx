@@ -1,9 +1,8 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { DndCard } from "App/components/DndCard/DndCard";
 import { Card } from "shared/components/Card/Card";
-import { useBoardsPageDispatcher } from "App/store/Boards/hooks";
+import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 
 import {
@@ -20,6 +19,7 @@ import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 import { Board } from "../Board/Board";
 import { BoardModal } from "../BoardMoal/BoardModal";
 import style from "./BoardCard.module.css";
+import { useSwitch } from "App/hooks";
 
 interface IBoardCardProps {
   board: BoardViewModel;
@@ -30,8 +30,8 @@ const MIN_HEIGHT = 150;
 
 export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
-  const dispatcher = useBoardsPageDispatcher();
+  const [isLoading, startLoading, endLoading] = useSwitch();
+  const dispatcher = useBoardsDispatcher();
   const draggetItemDispatcher = useAppDraggedItemDispatcher();
 
   const BACKGROUD_COLOR = board.isFavorite ? "#ebdcbd" : "#D8DEE9";
@@ -39,25 +39,25 @@ export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => 
   const editBoard = (board: BoardViewModel) => dispatcher.updateBoard({ ...board, isEditing: true });
 
   const removeBoard = async (board: BoardViewModel) => {
-    setIsLoading(true);
+    startLoading();
 
     const boardDto = await removeBoardFromApi(board.id);
     if (boardDto) {
       dispatcher.removeBoard(board);
     }
 
-    setIsLoading(false);
+    endLoading();
   };
 
   const updateBoard = async (board: BoardViewModel) => {
-    setIsLoading(true);
+    startLoading();
 
     const boardDto = await updateBoardOnApi(board.id, BoardViewModel.toUpdateDto(board));
     if (boardDto) {
       dispatcher.updateBoard(BoardDto.toViewModel(boardDto));
     }
 
-    setIsLoading(false);
+    endLoading();
   };
 
   const handleDrop = (draggedItem: TAppDraggedItem) => {

@@ -1,3 +1,3 @@
 export * from "./useSelectBoards";
-export * from "./useBoardDispatcher";
+export * from "./useBoardsDispatcher";
 export * from "./useSelectIsShowFavorites";

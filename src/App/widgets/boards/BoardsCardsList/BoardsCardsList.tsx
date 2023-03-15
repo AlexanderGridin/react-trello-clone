@@ -1,6 +1,6 @@
 import { AddBoard } from "../AddBoard/AddBoard";
 import style from "./BoardsCardsList.module.css";
-import { useBoardsPageDispatcher } from "App/store/Boards/hooks";
+import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { DragLayer } from "App/widgets/DragLayer/DragLayer";
 import { BoardCard } from "../BoardCard/BoardCard";
 import { BoardViewModel } from "App/entities/Board/models";
@@ -11,7 +11,8 @@ interface IBoardsCardsListProps {
 }
 
 export const BoardsCardsList = ({ boards, isShowAddBoard = true }: IBoardsCardsListProps) => {
-  const dispatcher = useBoardsPageDispatcher();
+  const dispatcher = useBoardsDispatcher();
+
   const addBoard = (board: BoardViewModel) => dispatcher.addBoard(board);
 
   return (

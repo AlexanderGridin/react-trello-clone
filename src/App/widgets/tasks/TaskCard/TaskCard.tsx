@@ -3,10 +3,10 @@ import { useState } from "react";
 import { DndCard } from "App/components/DndCard/DndCard";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
-import { removeTask as removeTaskFromApi } from "App/api/Task/services";
-import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
+import { debouncedUpdateTaskMany, removeTask as removeTaskFromApi } from "App/api/Task/services";
+import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { Chip } from "shared/components/Chip/Chip";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 
@@ -43,15 +43,14 @@ export const TaskCard = ({ task, isDragPreview = false }: ITaskCardProps) => {
   };
 
   const dropOnTask = (draggedItem: TAppDraggedItem) => {
-    if (draggedItem.type !== DraggedItemType.Task) {
+    if (draggedItem.type !== DraggedItemType.Task || draggedItem.data.rank === task.rank) {
       return;
     }
 
-    const draggedTask: TaskViewModel = draggedItem.data;
+    const draggedTask = { ...draggedItem.data, rank: task.rank };
+    const targetTask = { ...task, rank: draggedItem.data.rank };
 
-    dispatcher.moveTask(draggedTask, task);
-
-    if (draggedTask.listId === task.listId) {
+    if (draggedTask.rank === targetTask.rank) {
       return;
     }
 
@@ -61,6 +60,12 @@ export const TaskCard = ({ task, isDragPreview = false }: ITaskCardProps) => {
         ...draggedTask,
         listId: task.listId,
       },
+    });
+
+    dispatcher.moveTask(draggedTask, targetTask);
+
+    debouncedUpdateTaskMany({
+      body: [{ ...draggedTask, listId: task.listId }, targetTask].map(TaskViewModel.toUpdateManyDto),
     });
   };
 
@@ -82,6 +87,7 @@ export const TaskCard = ({ task, isDragPreview = false }: ITaskCardProps) => {
           height: "100%",
         }}
       ></div>
+      <div style={{ color: "gray", position: "absolute", bottom: "15px", right: "15px" }}>{task.rank}</div>
     </>
   );
 

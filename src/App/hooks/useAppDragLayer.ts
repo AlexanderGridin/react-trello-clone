@@ -1,8 +1,9 @@
 import { useDragLayer } from "react-dnd";
-import { useAppState } from "App/state/hooks/useAppState";
+
+import { useSelectAppDraggedItem } from "App/store/AppDraggedItem/hooks";
 
 export const useAppDragLayer = () => {
-  const { draggedItem } = useAppState();
+  const draggedItem = useSelectAppDraggedItem();
 
   const { offset } = useDragLayer((monitor) => ({
     offset: monitor.getSourceClientOffset(),

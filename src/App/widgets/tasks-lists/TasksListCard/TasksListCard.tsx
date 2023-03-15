@@ -11,11 +11,14 @@ import {
 } from "App/api/TasksList/services";
 
 import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
-import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
+import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
+import { debouncedUpdateTaskMany } from "App/api/Task/services";
+import { TaskViewModel } from "App/entities/Task/models";
+import { IDraggedItem } from "drag-and-drop/models";
 
 import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
 import { TasksListModal } from "../TasksListModal/TasksListModal";
@@ -67,33 +70,27 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
     endLoading();
   };
 
-  const dropOnList = (draggedItem: TAppDraggedItem) => {
-    if (draggedItem.type === DraggedItemType.TasksList && draggedItem.data.isPinned === list.isPinned) {
-      appDraggedItemDispatcher.setAppDraggedItem({
-        ...draggedItem,
-        data: {
-          ...draggedItem.data,
-          rank: list.rank,
-        },
-      });
+  const handleListDrop = (draggedItem: IDraggedItem<DraggedItemType.TasksList, TasksListViewModel>) => {
+    appDraggedItemDispatcher.setAppDraggedItem({
+      ...draggedItem,
+      data: {
+        ...draggedItem.data,
+        rank: list.rank,
+      },
+    });
 
-      const draggedList = { ...draggedItem.data, rank: list.rank };
-      const targetList = { ...list, rank: draggedItem.data.rank };
+    const draggedList = { ...draggedItem.data, rank: list.rank };
+    const targetList = { ...list, rank: draggedItem.data.rank };
 
-      dispatcher.moveTasksList(draggedList, targetList);
+    dispatcher.moveTasksList(draggedList, targetList);
 
-      const requestBody = [draggedList, targetList].map(TasksListViewModel.toUpdateManyDto);
-      debouncedUpdateTasksListMany({
-        body: requestBody,
-      });
+    const requestBody = [draggedList, targetList].map(TasksListViewModel.toUpdateManyDto);
+    debouncedUpdateTasksListMany({
+      body: requestBody,
+    });
+  };
 
-      return;
-    }
-
-    if (draggedItem.type !== DraggedItemType.Task || list.tasks.length) {
-      return;
-    }
-
+  const handleTaskDrop = (draggedItem: IDraggedItem<DraggedItemType.Task, TaskViewModel>) => {
     taskDispatcher.removeTask(draggedItem.data);
     dispatcher.pushTaskInTasksList(list, draggedItem.data);
     appDraggedItemDispatcher.setAppDraggedItem({
@@ -103,6 +100,23 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
         listId: list.id,
       },
     });
+
+    debouncedUpdateTaskMany({
+      body: [TaskViewModel.toUpdateManyDto({ ...draggedItem.data, listId: list.id })],
+    });
+  };
+
+  const dropOnList = (draggedItem: TAppDraggedItem) => {
+    if (draggedItem.type === DraggedItemType.TasksList && draggedItem.data.isPinned === list.isPinned) {
+      handleListDrop(draggedItem);
+      return;
+    }
+
+    if (draggedItem.type !== DraggedItemType.Task || list.tasks.length) {
+      return;
+    }
+
+    handleTaskDrop(draggedItem);
   };
 
   const header = (

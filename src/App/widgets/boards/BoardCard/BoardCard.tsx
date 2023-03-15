@@ -12,12 +12,13 @@ import {
   debouncedUpdateBoardMany,
 } from "App/api/Boards/services";
 
+import { BoardDto, BoardViewModel } from "App/entities/Board/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { Chip } from "shared/components/Chip/Chip";
+import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
+
 import { Board } from "../Board/Board";
 import { BoardModal } from "../BoardMoal/BoardModal";
-import { BoardDto, BoardViewModel } from "App/entities/Board/models";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
-import { Chip } from "shared/components/Chip/Chip";
-import { useAppDraggedItemDispatcher } from "App/entities/AppDraggedItem/state";
 import style from "./BoardCard.module.css";
 
 interface IBoardCardProps {

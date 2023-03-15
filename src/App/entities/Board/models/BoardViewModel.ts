@@ -1,6 +1,7 @@
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/models";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { BoardFormValue } from "App/widgets/boards/BoardForm/models";
+
 import { IBoardUpdateDto } from "./IBoardUpdateDto";
 import { IBoardUpdateManyDto } from "./IBoardUpdateManyDto";
 

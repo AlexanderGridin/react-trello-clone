@@ -5,6 +5,7 @@ import { BoardsPage } from "App/pages/BoardsPage/BoardsPage";
 import { IndexPage } from "App/pages/IndexPage/IndexPage";
 import { ErrorHandler } from "App/components/ErrorHandler/ErrorHandler";
 import { PageGuard } from "App/components/PageGuard/PageGuard";
+import { UsersPage } from "App/pages/UsersPage/UsersPage";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,14 @@ export const router = createBrowserRouter([
         element: (
           <PageGuard>
             <BoardPage />
+          </PageGuard>
+        ),
+      },
+      {
+        path: "users",
+        element: (
+          <PageGuard>
+            <UsersPage />
           </PageGuard>
         ),
       },

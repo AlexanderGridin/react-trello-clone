@@ -12,7 +12,10 @@ export enum MaterialIcon {
   Login = "login",
   AddUser = "person_add",
   Boards = "grid_view",
+  Board = "assignment",
   Cancel = "cancel",
   Error = "error",
+  Group = "group",
+  Calendar = "calendar_month",
   None = "none",
 }

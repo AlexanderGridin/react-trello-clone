@@ -4,4 +4,6 @@ export const routes = {
   logout: "/user/logout",
   createUser: "/user",
   getUser: "/user/{$userId}",
+  deleteUser: "/user/{$userId}",
+  getUsers: "/users",
 };

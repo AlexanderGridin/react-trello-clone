@@ -8,6 +8,9 @@ import { Switch } from "shared/components/Switch/Switch";
 import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/Boards/hooks";
 import { BoardDto } from "App/entities/Board/models";
 import style from "./BoardsPage.module.css";
+import { FlexContainer } from "shared/components/FlexContainer";
+import { Icon } from "shared/components/Icon/Icon";
+import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 
 export const BoardsPage = () => {
   const boards = useSelectBoards();
@@ -38,7 +41,12 @@ export const BoardsPage = () => {
 
   const header = (
     <>
-      <PageTitle className={style.title}>Boards</PageTitle>
+      <PageTitle className={style.title}>
+        <FlexContainer>
+          <Icon icon={MaterialIcon.Boards} className="mr" /> Boards
+        </FlexContainer>
+      </PageTitle>
+
       <Switch label="Favorites only" initialValue={isShowFavorites} isTextDark={false} onChange={toggleFavorite} />
     </>
   );

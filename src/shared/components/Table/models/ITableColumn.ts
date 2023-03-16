@@ -1,8 +1,8 @@
 import { TAlign } from "../types";
 
-export interface ITableColumn<Row> {
+export interface ITableColumn<RowType> {
   title: string;
-  field: keyof Row | "actions";
+  field: keyof RowType;
   align?: TAlign;
   cellAlign?: TAlign;
 }

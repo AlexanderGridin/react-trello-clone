@@ -12,20 +12,21 @@ import { TablePapper } from "./components";
 import { ITableColumn } from "./models";
 import { TTableChildren } from "./types";
 
-interface ITableProps<Row> extends IChildren<TTableChildren<Row>> {
-  columns: ITableColumn<Row>[];
-  rows: Row[];
+interface ITableProps<RowType> extends IChildren<TTableChildren<RowType>> {
+  columns: ITableColumn<RowType>[];
+  rows: RowType[];
+  rowUniqueKey: keyof RowType;
   isLoading?: boolean;
 }
 
-export function Table<Row>({ columns, rows, isLoading = false, children }: ITableProps<Row>) {
+export function Table<RowType>({ columns, rows, rowUniqueKey, isLoading = false, children }: ITableProps<RowType>) {
   return (
     <div style={{ position: "relative", borderRadius: "4px", overflow: "hidden" }}>
       <TableContainer component={TablePapper} sx={{ maxWidth: "850px", minHeight: "350px" }}>
         <MuiTable>
           <TableHead>
             <TableRow>
-              {columns.map(({ title, align = "left" }: ITableColumn<Row>) => (
+              {columns.map(({ title, align = "left" }: ITableColumn<RowType>) => (
                 <TableCell key={title} align={align} sx={{ fontSize: "24px" }}>
                   {title}
                 </TableCell>
@@ -34,11 +35,11 @@ export function Table<Row>({ columns, rows, isLoading = false, children }: ITabl
           </TableHead>
 
           <TableBody>
-            {rows.map((row: any) => (
-              <TableRow key={row.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                {columns.map(({ field, cellAlign: contentAlign = "left" }: ITableColumn<Row>) => (
-                  <TableCell key={field as string} align={contentAlign} sx={{ fontSize: "18px" }}>
-                    {children ? children(row[field], field, row) : row[field]}
+            {rows.map((row: RowType) => (
+              <TableRow key={String(row[rowUniqueKey])} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                {columns.map(({ field, cellAlign = "left" }: ITableColumn<RowType>) => (
+                  <TableCell key={String(field)} align={cellAlign} sx={{ fontSize: "18px" }}>
+                    {children ? children({ cellValue: row[field], field, row }) : <>{row[field]}</>}
                   </TableCell>
                 ))}
               </TableRow>

@@ -9,7 +9,7 @@ interface ITooltipProps {
 export const Tooltip = ({ content, children }: ITooltipProps) => {
   return (
     <MuiTooltip title={content} arrow>
-      <div style={{ display: "flex", alignItems: "flex-end" }}>{children}</div>
+      <div style={{ display: "inline-flex", alignItems: "flex-end" }}>{children}</div>
     </MuiTooltip>
   );
 };

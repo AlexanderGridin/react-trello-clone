@@ -1,8 +1,9 @@
 import { httpClient } from "App/api/httpClient";
 import { UserDto } from "App/entities/User/models";
+import { routes } from "../routes";
 
 export const getUsers = async (): Promise<UserDto[]> => {
-  const apiUrl = "/users";
+  const apiUrl = routes.getUsers;
 
   try {
     const response = await httpClient.get<UserDto[]>(apiUrl);

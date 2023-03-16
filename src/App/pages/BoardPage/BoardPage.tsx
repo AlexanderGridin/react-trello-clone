@@ -9,6 +9,9 @@ import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList
 import { BoardWithTasksListsDto } from "App/entities/Board/models";
 import { useOpenedBoardDispatcher, useSelectBoard } from "App/store/OpenedBoard/hooks";
 import { useBoardsCacheDispatcher, useSelectBoardsCache } from "App/store/BoardsCache/hooks";
+import { FlexContainer } from "shared/components/FlexContainer";
+import { Icon } from "shared/components/Icon/Icon";
+import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 
 export const BoardPage = () => {
   const { id } = useParams();
@@ -29,7 +32,11 @@ export const BoardPage = () => {
       return "Loading board...";
     }
 
-    return "Board was not loaded...";
+    if (!isLoading && !board) {
+      return "Board was not loaded...";
+    }
+
+    return "";
   };
 
   const loadBoard = async (id: string): Promise<void> => {
@@ -69,8 +76,16 @@ export const BoardPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [board]);
 
+  const header = (
+    <PageTitle>
+      <FlexContainer>
+        <Icon icon={MaterialIcon.Board} className="mr" /> {getPageTitle()}
+      </FlexContainer>
+    </PageTitle>
+  );
+
   return (
-    <AppPageLayout slotHeader={<PageTitle>{getPageTitle()}</PageTitle>} isLoading={isLoading}>
+    <AppPageLayout slotHeader={header} isLoading={isLoading}>
       {board && (
         <TasksListsCardsList
           boardId={board.id}

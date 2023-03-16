@@ -2,8 +2,9 @@ import { RemoveButton } from "App/components/buttons/RemoveButton/RemoveButton";
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "App/hooks/useSwitch";
 import { useSelectUser } from "App/store/User/hooks";
-import { ITableColumn, Table } from "shared/components/Table/Table";
+import { Table } from "shared/components/Table/Table";
 import { deleteUser as deleteUserFromApi } from "App/api/User/services";
+import { ITableColumn } from "shared/components/Table/models";
 
 interface IUsersTableProps {
   users: UserViewModel[];

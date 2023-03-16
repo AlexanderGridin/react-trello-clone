@@ -19,6 +19,14 @@ export const AppNavigation = () => {
             </FlexContainer>
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/users" className={getLinkClassName}>
+            <FlexContainer>
+              <Icon className="mr" icon={MaterialIcon.Group} />
+              Users
+            </FlexContainer>
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

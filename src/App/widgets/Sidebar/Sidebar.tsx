@@ -1,18 +1,20 @@
-import { AppNavigation } from "App/components/AppNavigation/AppNavigation";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { Icon } from "shared/components/Icon/Icon";
-import { getFormattedCurrentDate } from "shared/utils/getFormattedCurrentDate";
-import { User } from "../users/User/User";
-import { SidebarLayout } from "./components/SidebarLayout/SidebarLayout";
+import { Icon } from "shared/components/Icon";
+import { User } from "App/widgets/users/User";
+import { MaterialIcon } from "shared/components/Icon/enums";
+import { AppNavigation } from "App/components/AppNavigation";
+import { StyledFlexRow } from "shared/components/StyledFlexRow";
+import { getFormattedCurrentDate } from "shared/utils";
+
+import { SidebarLayout } from "./components";
 
 const date = getFormattedCurrentDate();
 
 export const Sidebar = () => {
   const footer = (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "#FFF", padding: "25px" }}>
+    <StyledFlexRow style={{ color: "#FFF", padding: "25px" }} align="center">
       <Icon icon={MaterialIcon.Calendar} className="mr" />
       {date}
-    </div>
+    </StyledFlexRow>
   );
 
   return (

@@ -1,26 +1,14 @@
-import styled from "styled-components";
+import { Icon } from "shared/components/Icon";
 import { ITestId, IClick, IClassName } from "shared/models";
-import { TButtonType } from "../Button/types";
-import { MaterialIcon } from "../Icon/enums/MaterialIcon";
-import { Icon } from "../Icon/Icon";
-import { IconButtonTestId } from "./static-data/IconButtonTestId";
+import { TButtonType } from "shared/components/Button/types";
+import { MaterialIcon } from "shared/components/Icon/enums";
+
+import { IconButtonTestId } from "./static-data";
+import { StyledIconButton } from "./components";
+
 import style from "./IconButton.module.css";
 
 const { Icon: IconId, Placeholder: PlaceholderId } = IconButtonTestId;
-
-const Container = styled.button<{ isActive?: boolean; color?: string; activeColor?: string }>`
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-  font-size: 24px;
-  color: ${({ isActive, color, activeColor }) => (isActive ? activeColor : color)};
-
-  &:hover {
-    color: ${({ activeColor }) => activeColor};
-    cursor: pointer;
-  }
-`;
 
 interface IconButtonProps extends IClick, IClassName, ITestId {
   icon: MaterialIcon;
@@ -41,7 +29,7 @@ export const IconButton = ({
   onClick,
 }: IconButtonProps) => {
   return (
-    <Container
+    <StyledIconButton
       data-testid={testId}
       type={type}
       isActive={isActive}
@@ -52,6 +40,6 @@ export const IconButton = ({
     >
       {icon !== MaterialIcon.None && <Icon data-testid={IconId} icon={icon} className={style.icon} />}
       {icon === MaterialIcon.None && <span data-testid={PlaceholderId}>No icon provided for IconButton...</span>}
-    </Container>
+    </StyledIconButton>
   );
 };

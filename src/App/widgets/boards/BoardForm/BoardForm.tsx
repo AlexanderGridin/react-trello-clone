@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
 
-import { FormContainer } from "shared/components/Form/FormContainer";
-import { TextInput } from "shared/components/Form/inputs";
-import { Checkbox } from "shared/components/Form/Checkbox";
-import { FormFooter } from "shared/components/Form/FormFooter";
-import { BoardFormValue } from "./models/BoardFormValue";
+import { Checkbox } from "shared/components/Form/components/Checkbox";
+import { TextInput } from "shared/components/Form/components/inputs";
+import { FormFooter } from "shared/components/Form/components/FormFooter";
+import { FormContainer } from "shared/components/Form/components/FormContainer";
 import { TFormErrorsState } from "App/types";
+
+import { BoardFormValue } from "./models";
 
 export interface IBoardFormProps {
   entity?: BoardFormValue;

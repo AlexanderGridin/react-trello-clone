@@ -1,6 +1,6 @@
-import { Chip } from "shared/components/Chip/Chip";
-import { Card } from "shared/components/Card/Card";
-import { DndCard } from "App/components/DndCard/DndCard";
+import { Chip } from "shared/components/Chip";
+import { Card } from "shared/components/Card";
+import { DndCard } from "App/components/DndCard";
 import { useSwitch } from "App/hooks";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
@@ -9,9 +9,10 @@ import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
 import { debouncedUpdateTaskMany, removeTask as removeTaskFromApi } from "App/api/Task/services";
 
-import { Task } from "../Task/Task";
-import { TaskModal } from "../TaskModal/TaskModal";
+import { Task } from "../Task";
+import { TaskModal } from "../TaskModal";
 import { getTaskPriorityColor } from "./utils";
+
 import style from "./TaskCard.module.css";
 
 interface ITaskCardProps {

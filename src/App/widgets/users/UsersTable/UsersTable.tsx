@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
-import { Table } from "shared/components/Table/Table";
+import { Table } from "shared/components/Table";
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "App/hooks/useSwitch";
 import { deleteUser as deleteUserFromApi } from "App/api/User/services";
-import { RemoveButton } from "App/components/buttons/RemoveButton/RemoveButton";
+import { DeleteButton } from "App/components/buttons";
 import { ITableColumn } from "shared/components/Table/models";
 import { useSelectUser } from "App/store/User/hooks";
 import { UserTableItem } from "App/entities/User/models/UserTableItem";
@@ -50,7 +50,7 @@ export const UsersTable = ({ users, onDeleteUser }: IUsersTableProps) => {
             return user?.id === row?.id ? <b style={{ color: "#5E81AC" }}>{cellValue}</b> : cellValue;
 
           case "actions":
-            return user?.id === row?.id ? <>-</> : <RemoveButton onClick={deleteUser(row)} />;
+            return user?.id === row?.id ? <>-</> : <DeleteButton onClick={deleteUser(row)} />;
 
           default:
             return <>{cellValue}</>;

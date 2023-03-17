@@ -1,8 +1,8 @@
 import { TaskViewModel } from "App/entities/Task/models";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 
-import { AddTask } from "../AddTask/AddTask";
-import { TaskCard } from "../TaskCard/TaskCard";
+import { AddTask } from "../AddTask";
+import { TaskCard } from "../TaskCard";
 
 interface ITasksCardsListProps {
   boardId: string;

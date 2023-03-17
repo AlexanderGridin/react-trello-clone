@@ -1,6 +1,17 @@
-import { DndCard } from "App/components/DndCard/DndCard";
+import { Card } from "shared/components/Card";
+import { DndCard } from "App/components/DndCard";
+import { useSwitch } from "App/hooks";
+import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
+import { IDraggedItem } from "drag-and-drop/models";
+import { TaskViewModel } from "App/entities/Task/models";
+import { TasksListModal } from "App/widgets/tasks-lists/TasksListModal";
+import { TasksCardsList } from "App/widgets/tasks/TasksCardsList";
 import { DraggedItemType } from "App/enums/DraggedItemType";
-import { Card } from "shared/components/Card/Card";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
+import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
+import { debouncedUpdateTaskMany } from "App/api/Task/services";
+import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 
 import {
   debouncedUpdateTasksListMany,
@@ -8,19 +19,7 @@ import {
   updateTasksList as updateTasksListOnApi,
 } from "App/api/TasksList/services";
 
-import { TasksCardsList } from "App/widgets/tasks/TasksCardsList/TasksCardsList";
-import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
-import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
-import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
-import { debouncedUpdateTaskMany } from "App/api/Task/services";
-import { TaskViewModel } from "App/entities/Task/models";
-import { IDraggedItem } from "drag-and-drop/models";
-
-import { TasksListHeader } from "./components/TasksListHeader/TasksListHeader";
-import { TasksListModal } from "../TasksListModal/TasksListModal";
-import { useSwitch } from "App/hooks";
+import { TasksListHeader } from "./components";
 
 export interface ITasksListCardProps {
   list: TasksListViewModel;

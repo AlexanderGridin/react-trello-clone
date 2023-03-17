@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { AppLayout } from "App/components/AppLayout/AppLayout";
-import { Sidebar } from "App/widgets/Sidebar/Sidebar";
-import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
-import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
+
+import { Sidebar } from "App/widgets/Sidebar";
+import { AppLayout } from "App/components/AppLayout";
 import { checkUserAuth } from "App/api/User/services";
+import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { accessTokenStorage } from "App/local-storage";
+import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
 
 export const AppRoot = () => {
   const navigate = useNavigate();

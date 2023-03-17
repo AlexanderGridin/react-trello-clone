@@ -1,8 +1,9 @@
-import { RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import { router } from "./routing/router";
+import { RouterProvider } from "react-router-dom";
+
+import { store } from "App/store";
+import { router } from "App/routing";
 import { DragAndDropProvider } from "drag-and-drop/components/DragAndDropProvider";
-import { store } from "./store";
 
 export const App = () => (
   <DragAndDropProvider>

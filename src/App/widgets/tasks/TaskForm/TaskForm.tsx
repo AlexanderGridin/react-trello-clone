@@ -1,11 +1,13 @@
 import { useFormik } from "formik";
-import { prioritySelectDataItems } from "App/static-data/prioritySelectDataItems";
-import { FormContainer } from "shared/components/Form/FormContainer";
-import { FormFooter } from "shared/components/Form/FormFooter";
-import { TextInput } from "shared/components/Form/inputs";
-import { Select } from "shared/components/Form/Select/Select";
-import { TaskFormValue } from "./models";
+
+import { Select } from "shared/components/Form/components/Select";
+import { TextInput } from "shared/components/Form/components/inputs";
+import { FormFooter } from "shared/components/Form/components/FormFooter";
+import { FormContainer } from "shared/components/Form/components/FormContainer";
 import { TFormErrorsState } from "App/types";
+import { prioritySelectDataItems } from "App/static-data";
+
+import { TaskFormValue } from "./models";
 
 export interface ITaskFormProps {
   entity?: TaskFormValue;

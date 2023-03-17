@@ -1,7 +1,8 @@
-import MuiFormControlLabel from "@mui/material/FormControlLabel";
 import { useState } from "react";
-import { MuiSwitch } from "./components/MuiSwitch";
-import { SwitchTestId } from "./static-data/SwitchTestId";
+import MuiFormControlLabel from "@mui/material/FormControlLabel";
+
+import { MuiSwitch } from "./components";
+import { SwitchTestId } from "./static-data";
 
 interface ISwitchProps {
   initialValue?: boolean;

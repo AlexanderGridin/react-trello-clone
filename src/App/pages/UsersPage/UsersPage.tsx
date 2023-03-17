@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
-import { PageTitle } from "App/components/PageTitle/PageTitle";
 import { UserDto, UserViewModel } from "App/entities/User/models";
-import { UsersTable } from "App/widgets/users/UsersTable/UsersTable";
-import { FlexContainer } from "shared/components/FlexContainer";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { Icon } from "shared/components/Icon/Icon";
-import { useSwitch } from "App/hooks";
 import { getUsers } from "App/api/User/services";
+import { useSwitch } from "App/hooks";
+import { PageTitle } from "App/components/PageTitle";
+import { UsersTable } from "App/widgets/users/UsersTable";
+import { MaterialIcon } from "shared/components/Icon/enums";
+import { AppPageLayout } from "App/components/AppPageLayout";
 
 export const UsersPage = () => {
   const [users, setUsers] = useState<UserViewModel[] | null>(null);
@@ -31,16 +29,7 @@ export const UsersPage = () => {
   };
 
   return (
-    <AppPageLayout
-      isLoading={isLoading}
-      slotHeader={
-        <PageTitle>
-          <FlexContainer>
-            <Icon icon={MaterialIcon.Group} className="mr" /> Users
-          </FlexContainer>
-        </PageTitle>
-      }
-    >
+    <AppPageLayout isLoading={isLoading} slotHeader={<PageTitle icon={MaterialIcon.Group}>Users</PageTitle>}>
       <UsersTable users={users ?? []} onDeleteUser={handleDeleteUser} />
     </AppPageLayout>
   );

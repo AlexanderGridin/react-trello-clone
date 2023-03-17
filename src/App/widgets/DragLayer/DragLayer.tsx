@@ -1,6 +1,7 @@
+import { DragLayer as DndDragLayer } from "drag-and-drop/components/DragLayer";
 import { useAppDragLayer } from "App/hooks";
-import { DragLayer as DndDragLayer } from "drag-and-drop/components/DragLayer/DragLayer";
-import { DraggedItem } from "./DraggedItem";
+
+import { DraggedItem } from "./components";
 
 export const DragLayer = () => {
   const { draggedItem, offset } = useAppDragLayer();

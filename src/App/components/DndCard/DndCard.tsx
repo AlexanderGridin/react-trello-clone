@@ -1,8 +1,8 @@
 import { useRef } from "react";
 
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { Card, ICardProps } from "shared/components/Card";
 import { useItemDrag, useItemDrop } from "App/hooks";
-import { Card, ICardProps } from "shared/components/Card/Card";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 
 export interface IDndCardProps extends ICardProps {
   draggedItem: TAppDraggedItem;

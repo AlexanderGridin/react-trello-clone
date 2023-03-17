@@ -1,7 +1,8 @@
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { IconButton } from "shared/components/IconButton/IconButton";
-import { Tooltip } from "shared/components/Tooltip/Tooltip";
 import { IClick, IClassName } from "shared/models";
+import { Tooltip } from "shared/components/Tooltip";
+import { IconButton } from "shared/components/IconButton";
+import { MaterialIcon } from "shared/components/Icon/enums";
+
 import style from "./PinButton.module.css";
 
 interface IPinButtonProps extends IClick, IClassName {

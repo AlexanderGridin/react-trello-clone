@@ -1,4 +1,4 @@
-import { ISelectDataItem } from "shared/components/Form/Select/models";
+import { ISelectDataItem } from "shared/components/Form/components/Select/models";
 
 export const prioritySelectDataItems: ISelectDataItem[] = [
   {

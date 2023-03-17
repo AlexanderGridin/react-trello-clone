@@ -1,10 +1,10 @@
-import { Modal } from "shared/components/Modal/Modal";
+import { Modal } from "shared/components/Modal";
 import { useSwitch } from "App/hooks";
+import { TasksListDto, TasksListUpdateDto, TasksListViewModel } from "App/entities/TasksList/models";
 import { updateTasksList as updateTasksListOnApi } from "App/api/TasksList/services";
 import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
-import { TasksListDto, TasksListUpdateDto, TasksListViewModel } from "App/entities/TasksList/models";
 
-import { TasksListForm } from "../TasksListForm/TasksListForm";
+import { TasksListForm } from "../TasksListForm";
 import { TasksListFormValue } from "../TasksListForm/models";
 
 interface ITasksListModalProps {

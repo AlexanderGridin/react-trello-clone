@@ -1,9 +1,10 @@
 import { ForwardedRef, forwardRef, ReactNode } from "react";
-import { CardContent } from "./components/CardContent";
-import { CardContainer } from "./components/CardContainer";
-import { Spinner } from "../Spinner/Spinner";
+
+import { Spinner } from "shared/components/Spinner";
 import { IChildren, ITestId, IClassName } from "shared/models";
-import { CardTestId } from "./static-data/CardTestId";
+
+import { CardTestId } from "./static-data";
+import { CardContent, StyledCard } from "./components";
 
 const { Header: HeaderId, Content: ContentId, Footer: FooterId, Spinner: SpinnerId } = CardTestId;
 
@@ -34,7 +35,7 @@ export const Card = forwardRef((props: ICardProps, ref: TRef) => {
   } = props;
 
   return (
-    <CardContainer
+    <StyledCard
       ref={ref}
       data-testid={testId}
       backgroundColor={backgroundColor}
@@ -52,6 +53,6 @@ export const Card = forwardRef((props: ICardProps, ref: TRef) => {
 
       {children}
       {isLoading && <Spinner data-testid={SpinnerId} backgroundColor="#d8dee9" />}
-    </CardContainer>
+    </StyledCard>
   );
 });

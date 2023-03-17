@@ -1,12 +1,12 @@
-import { AddButtonContainer } from "App/components/AddButtonContainer/AddButtonContainer";
+import { StyledAddButton } from "App/components/StyledAddButton";
 import { IChildren, IClick } from "shared/models";
 
 interface IAddTaskButtonProps extends IChildren, IClick {}
 
 export const AddTaskButton = ({ children, onClick }: IAddTaskButtonProps) => {
   return (
-    <AddButtonContainer type="button" isTextDark onClick={onClick}>
+    <StyledAddButton type="button" isTextDark onClick={onClick}>
       {children}
-    </AddButtonContainer>
+    </StyledAddButton>
   );
 };

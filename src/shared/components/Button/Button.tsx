@@ -1,10 +1,13 @@
 import { CSSProperties } from "react";
-import { MuiButton } from "./components/MuiButton";
-import { TButtonType, TButtonVisualStyle } from "./types";
-import { MaterialIcon } from "../Icon/enums/MaterialIcon";
-import { Icon } from "../Icon/Icon";
+
+import { Icon } from "shared/components/Icon";
 import { IChildren, ITestId, IClick, IClassName } from "shared/models";
-import { ButtonTestId } from "./static-data/ButtonTestId";
+import { MaterialIcon } from "shared/components/Icon/enums";
+
+import { MuiButton } from "./components";
+import { TButtonType, TButtonVisualStyle } from "./types";
+import { ButtonTestId } from "./static-data";
+
 import cssStyle from "./Button.module.css";
 
 const { Icon: IconId, Text: TextId } = ButtonTestId;

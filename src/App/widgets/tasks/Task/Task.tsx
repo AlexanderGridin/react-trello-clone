@@ -1,6 +1,6 @@
-import { EditButton } from "App/components/buttons/EditButton/EditButton";
-import { RemoveButton } from "App/components/buttons/RemoveButton/RemoveButton";
+import { EditButton, DeleteButton } from "App/components/buttons";
 import { TaskViewModel } from "App/entities/Task/models";
+
 import style from "./Task.module.css";
 
 interface ITaskProps {
@@ -17,7 +17,7 @@ export const Task = ({ task, onEdit, onRemove }: ITaskProps) => {
     <div className={style.container}>
       <div className={style.content}>{task.title}</div>
       <EditButton onClick={edit} />
-      <RemoveButton className="mr-0" onClick={remove} />
+      <DeleteButton className="mr-0" onClick={remove} />
     </div>
   );
 };

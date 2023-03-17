@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import { AppRoot } from "App/components/AppRoot/AppRoot";
-import { BoardPage } from "App/pages/BoardPage/BoardPage";
-import { BoardsPage } from "App/pages/BoardsPage/BoardsPage";
-import { IndexPage } from "App/pages/IndexPage/IndexPage";
-import { ErrorHandler } from "App/components/ErrorHandler/ErrorHandler";
-import { PageGuard } from "App/components/PageGuard/PageGuard";
-import { UsersPage } from "App/pages/UsersPage/UsersPage";
+
+import { AppRoot } from "App/components/AppRoot";
+import { PageGuard } from "App/components/PageGuard";
+import { BoardPage } from "App/pages/BoardPage";
+import { IndexPage } from "App/pages/IndexPage";
+import { UsersPage } from "App/pages/UsersPage";
+import { BoardsPage } from "App/pages/BoardsPage";
+import { ErrorHandler } from "App/components/ErrorHandler";
 
 export const router = createBrowserRouter([
   {

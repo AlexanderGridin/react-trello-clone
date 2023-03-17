@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 
-import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
-import { PageTitle } from "App/components/PageTitle/PageTitle";
-import { getAllBoards, getFavoriteBoards } from "App/api/Boards/services";
-import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsList";
-import { Switch } from "shared/components/Switch/Switch";
-import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/Boards/hooks";
+import { Switch } from "shared/components/Switch";
 import { BoardDto } from "App/entities/Board/models";
+import { PageTitle } from "App/components/PageTitle";
+import { MaterialIcon } from "shared/components/Icon/enums";
+import { getAllBoards, getFavoriteBoards } from "App/api/Boards/services";
+import { AppPageLayout } from "App/components/AppPageLayout";
+import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList";
+import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/Boards/hooks";
+
 import style from "./BoardsPage.module.css";
-import { FlexContainer } from "shared/components/FlexContainer";
-import { Icon } from "shared/components/Icon/Icon";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 
 export const BoardsPage = () => {
   const boards = useSelectBoards();
@@ -41,10 +40,8 @@ export const BoardsPage = () => {
 
   const header = (
     <>
-      <PageTitle className={style.title}>
-        <FlexContainer>
-          <Icon icon={MaterialIcon.Boards} className="mr" /> Boards
-        </FlexContainer>
+      <PageTitle icon={MaterialIcon.Boards} className={style.title}>
+        Boards
       </PageTitle>
 
       <Switch label="Favorites only" initialValue={isShowFavorites} isTextDark={false} onChange={toggleFavorite} />

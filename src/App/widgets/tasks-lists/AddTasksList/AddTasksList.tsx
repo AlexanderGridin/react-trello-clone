@@ -1,11 +1,11 @@
 import { useReducer } from "react";
 
-import { Card } from "shared/components/Card/Card";
+import { Card } from "shared/components/Card";
 import { addTasksList as addTasksListOnApi } from "App/api/TasksList/services";
 import { TasksListCreateDto, TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
 
-import { AddListButton } from "./components/AddListButton";
-import { TasksListForm } from "../TasksListForm/TasksListForm";
+import { AddListButton } from "./components";
+import { TasksListForm } from "../TasksListForm";
 import { AddTasksListState } from "./models";
 import { TasksListFormValue } from "../TasksListForm/models";
 

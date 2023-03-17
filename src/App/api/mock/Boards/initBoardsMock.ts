@@ -1,8 +1,10 @@
 import MockAdapter from "axios-mock-adapter";
+
 import { routes } from "App/api/Boards/routes";
+import { generateId } from "shared/utils";
+
 import { logMockResponse } from "../utils/logMockResponse";
 import { connectToMockDb } from "../mockDb";
-import { generateId } from "shared/utils/generateId";
 
 const { boards: boardsDb, user: userDb } = connectToMockDb();
 

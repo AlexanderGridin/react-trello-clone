@@ -1,9 +1,14 @@
 import { useNavigate } from "react-router-dom";
 
-import { DndCard } from "App/components/DndCard/DndCard";
-import { Card } from "shared/components/Card/Card";
-import { useBoardsDispatcher } from "App/store/Boards/hooks";
+import { Chip } from "shared/components/Chip";
+import { Card } from "shared/components/Card";
+import { DndCard } from "App/components/DndCard";
+import { BoardDto, BoardViewModel } from "App/entities/Board/models";
+import { useSwitch } from "App/hooks";
+import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { DraggedItemType } from "App/enums/DraggedItemType";
+import { useBoardsDispatcher } from "App/store/Boards/hooks";
+import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 
 import {
   removeBoard as removeBoardFromApi,
@@ -11,15 +16,10 @@ import {
   debouncedUpdateBoardMany,
 } from "App/api/Boards/services";
 
-import { BoardDto, BoardViewModel } from "App/entities/Board/models";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { Chip } from "shared/components/Chip/Chip";
-import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
+import { Board } from "../Board";
+import { BoardModal } from "../BoardModal";
 
-import { Board } from "../Board/Board";
-import { BoardModal } from "../BoardMoal/BoardModal";
 import style from "./BoardCard.module.css";
-import { useSwitch } from "App/hooks";
 
 interface IBoardCardProps {
   board: BoardViewModel;

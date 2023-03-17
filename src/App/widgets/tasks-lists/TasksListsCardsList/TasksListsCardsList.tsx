@@ -1,9 +1,9 @@
+import { DragLayer } from "App/widgets/DragLayer";
+import { AddTasksList } from "App/widgets/tasks-lists/AddTasksList";
+import { TasksListCard } from "App/widgets/tasks-lists/TasksListCard";
 import { TasksListViewModel } from "App/entities/TasksList/models";
 import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
-import { DragLayer } from "App/widgets/DragLayer/DragLayer";
 
-import { AddTasksList } from "../AddTasksList/AddTasksList";
-import { TasksListCard } from "../TasksListCard/TasksListCard";
 import style from "./TasksListsCardsList.module.css";
 
 interface ITasksListsCardsListProps {

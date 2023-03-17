@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { FlexContainer } from "shared/components/FlexContainer";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { Icon } from "shared/components/Icon/Icon";
+
+import { Icon } from "shared/components/Icon";
+import { StyledFlexRow } from "shared/components/StyledFlexRow";
+
+import { INavigationItem } from "./models";
+import { navigationItems } from "./static-data";
+
 import style from "./AppNavigation.module.css";
 
 const getLinkClassName = ({ isActive }: { isActive: boolean }) =>
@@ -11,22 +15,16 @@ export const AppNavigation = () => {
   return (
     <nav>
       <ul className="plain-list">
-        <li>
-          <NavLink to="/boards" className={getLinkClassName}>
-            <FlexContainer>
-              <Icon className="mr" icon={MaterialIcon.Boards} />
-              Boards
-            </FlexContainer>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/users" className={getLinkClassName}>
-            <FlexContainer>
-              <Icon className="mr" icon={MaterialIcon.Group} />
-              Users
-            </FlexContainer>
-          </NavLink>
-        </li>
+        {navigationItems.map(({ to, icon, text }: INavigationItem) => (
+          <li key={text}>
+            <NavLink to={to} className={getLinkClassName}>
+              <StyledFlexRow>
+                <Icon className="mr" icon={icon} />
+                {text}
+              </StyledFlexRow>
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

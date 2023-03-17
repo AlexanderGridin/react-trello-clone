@@ -1,6 +1,8 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+
 import { TasksListViewModel } from "App/entities/TasksList/models";
-import { removeItemFromArray } from "shared/utils/array/removeItemFromArray/removeItemFromArray";
+import { removeItemFromArray } from "shared/utils/array";
+
 import { IOpenedBoardState } from "../..";
 
 interface Payload {

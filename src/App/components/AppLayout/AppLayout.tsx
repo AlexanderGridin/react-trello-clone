@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
-import style from "./AppLayout.module.css";
+
 import { IChildren } from "shared/models";
+
 import { AppLayoutTestId } from "./static-data/AppLayoutTestId";
+
+import style from "./AppLayout.module.css";
 
 interface IAppLayoutProps extends IChildren {
   slotAside?: ReactNode;

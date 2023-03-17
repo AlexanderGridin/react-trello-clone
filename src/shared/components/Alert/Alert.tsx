@@ -1,8 +1,10 @@
 import MuiAlert from "@mui/material/Alert";
 import MuiAlertTitle from "@mui/material/AlertTitle";
+
 import { IChildren, IClassName } from "shared/models";
-import { MaterialIcon } from "../Icon/enums/MaterialIcon";
-import { IconButton } from "../IconButton/IconButton";
+import { IconButton } from "shared/components/IconButton";
+import { MaterialIcon } from "shared/components/Icon/enums";
+
 import style from "./Alert.module.css";
 
 interface IAlertProps extends IChildren, IClassName {

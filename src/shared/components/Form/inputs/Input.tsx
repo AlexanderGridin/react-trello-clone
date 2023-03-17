@@ -1,4 +1,4 @@
-import { useInputFocus } from "shared/hooks/useInputFocus";
+import { useInputFocus } from "shared/hooks";
 import { Helper } from "../Helper/Helper";
 import { IInputCommonProps } from "./models";
 import { MuiInput } from "./MuiInput";

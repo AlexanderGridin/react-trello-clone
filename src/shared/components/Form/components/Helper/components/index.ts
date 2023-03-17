@@ -1,1 +1,1 @@
-export * from "./StyledHelperWrapper";
+export * from "./StyledHelper";

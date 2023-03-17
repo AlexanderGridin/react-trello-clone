@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { IHelperType } from "../models";
 
-export const StyledHelperWrapper = styled.span<IHelperType>`
+export const StyledHelper = styled.span<IHelperType>`
   display: flex;
   align-items: center;
   font-size: 14px;

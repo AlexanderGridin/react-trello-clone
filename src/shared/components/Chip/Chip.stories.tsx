@@ -6,13 +6,19 @@ export default {
   title: "Shared/Chip",
   component: Chip,
   args: {
-    children: "Chip text",
+    children: "All props",
     textColor: "#000",
     backgroundColor: "#ebebeb",
+    className: "",
   },
   argTypes: {
     children: {
       description: "Content, that will be displayed in the Chip",
+      table: {
+        type: {
+          summary: "ReactNode",
+        },
+      },
     },
     textColor: {
       description: "Text color of the Chip",
@@ -22,20 +28,71 @@ export default {
     },
     className: {
       description: "Expands existing styles by providing additional CSS classes",
+      control: false,
     },
   },
 } as ComponentMeta<typeof Chip>;
 
 const Template: ComponentStory<typeof Chip> = (args) => <Chip {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const AllProps = Template.bind({});
+AllProps.args = {};
 
-export const WithComplexContent = Template.bind({});
-WithComplexContent.args = {
+export const RequiredProps = Template.bind({});
+RequiredProps.argTypes = {
+  textColor: {
+    table: {
+      disable: true,
+    },
+  },
+  backgroundColor: {
+    table: {
+      disable: true,
+    },
+  },
+  className: {
+    table: {
+      disable: true,
+    },
+  },
+};
+
+RequiredProps.args = {
+  textColor: undefined,
+  backgroundColor: undefined,
+  className: undefined,
+  children: "Required props",
+};
+
+export const ComplexChildren = Template.bind({});
+ComplexChildren.argTypes = {
+  children: {
+    control: false,
+  },
+  textColor: {
+    table: {
+      disable: true,
+    },
+  },
+  backgroundColor: {
+    table: {
+      disable: true,
+    },
+  },
+  className: {
+    table: {
+      disable: true,
+    },
+  },
+};
+
+ComplexChildren.args = {
+  textColor: undefined,
+  backgroundColor: undefined,
+  className: undefined,
   children: (
-    <>
+    <span>
       <b>Bold</b> text and <u>underlined</u> text.
-    </>
+    </span>
   ),
 };

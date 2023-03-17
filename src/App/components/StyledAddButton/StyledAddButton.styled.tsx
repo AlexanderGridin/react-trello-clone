@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AddButtonContainer = styled.button<{
+export const StyledAddButton = styled.button<{
   isTextDark?: boolean;
 }>`
   width: 100%;

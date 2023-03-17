@@ -1,7 +1,6 @@
-import { EditButton } from "App/components/buttons/EditButton/EditButton";
-import { FavoriteButton } from "App/components/buttons/FavoriteButton/FavoriteButton";
-import { RemoveButton } from "App/components/buttons/RemoveButton/RemoveButton";
+import { EditButton, FavoriteButton, DeleteButton } from "App/components/buttons";
 import { BoardViewModel } from "App/entities/Board/models";
+
 import style from "./Board.module.css";
 
 export interface IBoardProps {
@@ -33,7 +32,7 @@ export const Board = ({ board, onRemove, onEdit, onFavorite }: IBoardProps) => {
       <FavoriteButton isFavorite={board.isFavorite} onClick={toggleFavorite} />
       <h2 className={style.title}>{board.title}</h2>
       <EditButton onClick={edit} />
-      <RemoveButton className={style.RemoveButton} onClick={remove} />
+      <DeleteButton className={style.RemoveButton} onClick={remove} />
     </div>
   );
 };

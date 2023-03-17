@@ -1,4 +1,4 @@
-import { AppNavigation } from "App/components/AppNavigation/AppNavigation";
+import { AppNavigation } from "App/components/AppNavigation";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { Icon } from "shared/components/Icon/Icon";
 import { getFormattedCurrentDate } from "shared/utils/getFormattedCurrentDate";

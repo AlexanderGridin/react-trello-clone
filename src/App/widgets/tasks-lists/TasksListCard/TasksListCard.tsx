@@ -1,4 +1,4 @@
-import { DndCard } from "App/components/DndCard/DndCard";
+import { DndCard } from "App/components/DndCard";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { Card } from "shared/components/Card/Card";
 

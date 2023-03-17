@@ -3,14 +3,12 @@ import { useParams } from "react-router-dom";
 
 import { getBoard as getBoardFromApi } from "App/api/Boards/services";
 import { useSwitch } from "App/hooks";
-import { PageTitle } from "App/components/PageTitle/PageTitle";
-import { AppPageLayout } from "App/components/AppPageLayout/AppPageLayout";
+import { PageTitle } from "App/components/PageTitle";
+import { AppPageLayout } from "App/components/AppPageLayout";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
 import { BoardWithTasksListsDto } from "App/entities/Board/models";
 import { useOpenedBoardDispatcher, useSelectBoard } from "App/store/OpenedBoard/hooks";
 import { useBoardsCacheDispatcher, useSelectBoardsCache } from "App/store/BoardsCache/hooks";
-import { FlexContainer } from "shared/components/FlexContainer";
-import { Icon } from "shared/components/Icon/Icon";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 
 export const BoardPage = () => {
@@ -76,13 +74,7 @@ export const BoardPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [board]);
 
-  const header = (
-    <PageTitle>
-      <FlexContainer>
-        <Icon icon={MaterialIcon.Board} className="mr" /> {getPageTitle()}
-      </FlexContainer>
-    </PageTitle>
-  );
+  const header = <PageTitle icon={MaterialIcon.Board}>{getPageTitle()}</PageTitle>;
 
   return (
     <AppPageLayout slotHeader={header} isLoading={isLoading}>

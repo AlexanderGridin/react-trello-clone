@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { AddButtonContainer } from "App/components/AddButtonContainer/AddButtonContainer";
+import { StyledAddButton } from "App/components/StyledAddButton";
 import { IChildren, IClick } from "shared/models";
 
-const Container = styled(AddButtonContainer)`
+const Container = styled(StyledAddButton)`
   min-height: 150px;
   color: #fff;
   display: flex;

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { DndCard } from "App/components/DndCard/DndCard";
+import { DndCard } from "App/components/DndCard";
 import { Card } from "shared/components/Card/Card";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { DraggedItemType } from "App/enums/DraggedItemType";

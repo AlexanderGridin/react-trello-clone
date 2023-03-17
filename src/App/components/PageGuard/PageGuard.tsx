@@ -1,6 +1,6 @@
-import { useSelectUser } from "App/store/User/hooks";
 import { IChildren } from "shared/models";
-import { AppPageLayout } from "../AppPageLayout/AppPageLayout";
+import { useSelectUser } from "App/store/User/hooks";
+import { AppPageLayout } from "App/components/AppPageLayout";
 
 interface IPageGuardProps extends IChildren {}
 

@@ -1,4 +1,5 @@
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
+import { MaterialIcon } from "shared/components/Icon/enums";
+
 import { INavigationItem } from "../models";
 
 export const navigationItems: INavigationItem[] = [

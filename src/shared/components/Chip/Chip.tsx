@@ -1,4 +1,5 @@
 import MuiChip from "@mui/material/Chip";
+
 import { IChildren, IClassName } from "shared/models";
 
 interface IChipProps extends IChildren, IClassName {

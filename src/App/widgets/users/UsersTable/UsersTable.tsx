@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { Table } from "shared/components/Table/Table";
+import { Table } from "shared/components/Table";
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "App/hooks/useSwitch";
 import { deleteUser as deleteUserFromApi } from "App/api/User/services";

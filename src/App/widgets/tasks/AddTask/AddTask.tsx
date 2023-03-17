@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-import { Card } from "shared/components/Card/Card";
+import { Card } from "shared/components/Card";
 import { addTask as addTaskOnApi } from "App/api/Task/services";
 import { TaskCreateDto, TaskDto, TaskViewModel } from "App/entities/Task/models";
 

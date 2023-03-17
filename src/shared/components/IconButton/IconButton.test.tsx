@@ -1,8 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MaterialIcon } from "../Icon/enums/MaterialIcon";
+
+import { MaterialIcon } from "shared/components/Icon/enums";
+
 import { IconButton } from "./IconButton";
-import { IconButtonTestId } from "./static-data/IconButtonTestId";
+import { IconButtonTestId } from "./static-data";
 
 const { Button, Icon, Placeholder } = IconButtonTestId;
 

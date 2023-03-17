@@ -1,5 +1,5 @@
-import { Button } from "shared/components/Button/Button";
-import { FlexContainer } from "shared/components/FlexContainer";
+import { Button } from "shared/components/Button";
+import { StyledFlexRow } from "shared/components/StyledFlexRow";
 
 interface IFormFooterProps {
   submitText?: string;
@@ -10,7 +10,7 @@ interface IFormFooterProps {
 
 export const FormFooter = ({ submitText = "Submit", cancelText = "Cancel", onSubmit, onCancel }: IFormFooterProps) => {
   return (
-    <FlexContainer>
+    <StyledFlexRow>
       <Button style={{ marginRight: "7px" }} onClick={onSubmit}>
         {submitText}
       </Button>
@@ -18,6 +18,6 @@ export const FormFooter = ({ submitText = "Submit", cancelText = "Cancel", onSub
       <Button visualStyle="error" onClick={onCancel}>
         {cancelText}
       </Button>
-    </FlexContainer>
+    </StyledFlexRow>
   );
 };

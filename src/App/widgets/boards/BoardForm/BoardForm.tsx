@@ -1,9 +1,9 @@
 import { useFormik } from "formik";
 
-import { Checkbox } from "shared/components/Form/Checkbox";
-import { TextInput } from "shared/components/Form/inputs";
-import { FormFooter } from "shared/components/Form/FormFooter";
-import { FormContainer } from "shared/components/Form/FormContainer";
+import { Checkbox } from "shared/components/Form/components/Checkbox";
+import { TextInput } from "shared/components/Form/components/inputs";
+import { FormFooter } from "shared/components/Form/components/FormFooter";
+import { FormContainer } from "shared/components/Form/components/FormContainer";
 import { TFormErrorsState } from "App/types";
 
 import { BoardFormValue } from "./models";

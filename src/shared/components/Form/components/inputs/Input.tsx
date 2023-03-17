@@ -1,7 +1,7 @@
-import { useInputFocus } from "shared/hooks";
-import { Helper } from "../Helper/Helper";
-import { IInputCommonProps } from "./models";
+import { Helper } from "../Helper";
 import { MuiInput } from "./MuiInput";
+import { useInputFocus } from "../../hooks";
+import { IInputCommonProps } from "./models";
 
 interface IInputProps extends IInputCommonProps {
   type: "text" | "password" | "number";

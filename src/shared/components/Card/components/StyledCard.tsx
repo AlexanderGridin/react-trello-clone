@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-interface ICardContainerProps {
+interface IStyledCardProps {
   minHeight?: number;
   backgroundColor?: string;
 }
 
-export const CardContainer = styled.div<ICardContainerProps>`
+export const StyledCard = styled.div<IStyledCardProps>`
   padding: 12px;
   border-radius: 3px;
   background-color: ${({ backgroundColor }) => backgroundColor || "#FFF"};

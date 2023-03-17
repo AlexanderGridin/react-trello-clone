@@ -1,1 +1,1 @@
-export * from "./StyledAddButton.styled";
+export * from "./StyledAddButton";

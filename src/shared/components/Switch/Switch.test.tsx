@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { SwitchTestId } from "./static-data/SwitchTestId";
+
+import { SwitchTestId } from "./static-data";
 import { Switch as SwitchComponent } from "./Switch";
 
 const { Switch } = SwitchTestId;

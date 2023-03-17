@@ -1,4 +1,5 @@
 import { ITestId } from "shared/models";
+
 import style from "./Spinner.module.css";
 
 interface ISpinnerProps extends ITestId {

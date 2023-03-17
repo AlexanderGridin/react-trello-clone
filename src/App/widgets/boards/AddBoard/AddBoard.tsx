@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-import { Card } from "shared/components/Card/Card";
+import { Card } from "shared/components/Card";
 import { addBoard as addBoardToApi } from "App/api/Boards/services";
 import { BoardCreateDto, BoardDto, BoardViewModel } from "App/entities/Board/models";
 

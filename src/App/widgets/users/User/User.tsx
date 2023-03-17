@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 
-import { Tooltip } from "shared/components/Tooltip/Tooltip";
+import { Tooltip } from "shared/components/Tooltip";
 import { logoutUser } from "App/api/User/services";
-import { IconButton } from "shared/components/IconButton/IconButton";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
+import { IconButton } from "shared/components/IconButton";
+import { MaterialIcon } from "shared/components/Icon/enums";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { accessTokenStorage } from "App/local-storage";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";

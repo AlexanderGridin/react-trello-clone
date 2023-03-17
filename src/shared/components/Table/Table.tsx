@@ -1,11 +1,11 @@
 import MuiTable from "@mui/material/Table";
+import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import TableContainer from "@mui/material/TableContainer";
 
-import { Spinner } from "shared/components/Spinner/Spinner";
+import { Spinner } from "shared/components/Spinner";
 import { IChildren } from "shared/models";
 
 import { TablePapper } from "./components";

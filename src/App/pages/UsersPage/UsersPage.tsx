@@ -5,7 +5,7 @@ import { getUsers } from "App/api/User/services";
 import { useSwitch } from "App/hooks";
 import { PageTitle } from "App/components/PageTitle";
 import { UsersTable } from "App/widgets/users/UsersTable";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
+import { MaterialIcon } from "shared/components/Icon/enums";
 import { AppPageLayout } from "App/components/AppPageLayout";
 
 export const UsersPage = () => {

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
 
-import { Card } from "shared/components/Card/Card";
-import { Alert } from "shared/components/Alert/Alert";
-import { Button } from "shared/components/Button/Button";
+import { Card } from "shared/components/Card";
+import { Alert } from "shared/components/Alert";
+import { Button } from "shared/components/Button";
 import { useSwitch } from "App/hooks";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
+import { MaterialIcon } from "shared/components/Icon/enums";
 import { AppPageLayout } from "App/components/AppPageLayout";
 import { accessTokenStorage } from "App/local-storage";
 import { loginUser, createUser } from "App/api/User/services";

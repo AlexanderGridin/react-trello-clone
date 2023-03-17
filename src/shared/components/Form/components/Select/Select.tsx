@@ -1,9 +1,9 @@
+import { ChangeEvent, ReactNode } from "react";
 import MuiInputLabel from "@mui/material/InputLabel";
 import MuiFormControl from "@mui/material/FormControl";
 import { SelectChangeEvent } from "@mui/material/Select";
-import { ChangeEvent, ReactNode } from "react";
-import { MuiSelect } from "./components/MuiSelect";
-import { MenuItem } from "./components/MenuItem";
+
+import { MenuItem, MuiSelect } from "./components";
 import { ISelectDataItem } from "./models";
 
 interface ISelectProps {

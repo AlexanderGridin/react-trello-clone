@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
-import { Icon } from "shared/components/Icon/Icon";
-import { FlexContainer } from "shared/components/FlexContainer";
+import { Icon } from "shared/components/Icon";
+import { StyledFlexRow } from "shared/components/StyledFlexRow";
 
 import { INavigationItem } from "./models";
 import { navigationItems } from "./static-data";
@@ -18,10 +18,10 @@ export const AppNavigation = () => {
         {navigationItems.map(({ to, icon, text }: INavigationItem) => (
           <li key={text}>
             <NavLink to={to} className={getLinkClassName}>
-              <FlexContainer>
+              <StyledFlexRow>
                 <Icon className="mr" icon={icon} />
                 {text}
-              </FlexContainer>
+              </StyledFlexRow>
             </NavLink>
           </li>
         ))}

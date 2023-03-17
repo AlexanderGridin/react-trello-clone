@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { AppPageLayout } from "App/components/AppPageLayout";
-import { PageTitle } from "App/components/PageTitle";
 import { UserDto, UserViewModel } from "App/entities/User/models";
+import { getUsers } from "App/api/User/services";
+import { useSwitch } from "App/hooks";
+import { PageTitle } from "App/components/PageTitle";
 import { UsersTable } from "App/widgets/users/UsersTable/UsersTable";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { useSwitch } from "App/hooks";
-import { getUsers } from "App/api/User/services";
+import { AppPageLayout } from "App/components/AppPageLayout";
 
 export const UsersPage = () => {
   const [users, setUsers] = useState<UserViewModel[] | null>(null);

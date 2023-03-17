@@ -4,7 +4,7 @@ import { updateTask as updateTaskOnApi } from "App/api/Task/services";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { TaskDto, TaskUpdateDto, TaskViewModel } from "App/entities/Task/models";
 
-import { TaskForm } from "../TaskForm/TaskForm";
+import { TaskForm } from "../TaskForm";
 import { TaskFormValue } from "../TaskForm/models";
 
 interface ITaskModalProps {

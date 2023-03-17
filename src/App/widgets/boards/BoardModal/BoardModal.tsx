@@ -4,7 +4,7 @@ import { updateBoard as updateBoardOnApi } from "App/api/Boards/services";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { BoardDto, BoardViewModel } from "App/entities/Board/models";
 
-import { BoardForm } from "../BoardForm/BoardForm";
+import { BoardForm } from "../BoardForm";
 import { BoardFormValue } from "../BoardForm/models";
 
 interface IBoardModalProps {

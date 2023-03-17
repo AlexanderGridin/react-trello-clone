@@ -9,9 +9,10 @@ import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
 import { debouncedUpdateTaskMany, removeTask as removeTaskFromApi } from "App/api/Task/services";
 
-import { Task } from "../Task/Task";
-import { TaskModal } from "../TaskModal/TaskModal";
+import { Task } from "../Task";
+import { TaskModal } from "../TaskModal";
 import { getTaskPriorityColor } from "./utils";
+
 import style from "./TaskCard.module.css";
 
 interface ITaskCardProps {

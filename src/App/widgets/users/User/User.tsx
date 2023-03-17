@@ -1,14 +1,14 @@
 import { NavLink } from "react-router-dom";
 
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { IconButton } from "shared/components/IconButton/IconButton";
 import { Tooltip } from "shared/components/Tooltip/Tooltip";
-import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
-import { useOpenedBoardDispatcher } from "App/store/OpenedBoard/hooks";
-import { useBoardsDispatcher } from "App/store/Boards/hooks";
-import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
 import { logoutUser } from "App/api/User/services";
+import { IconButton } from "shared/components/IconButton/IconButton";
+import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
+import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { accessTokenStorage } from "App/local-storage";
+import { useBoardsDispatcher } from "App/store/Boards/hooks";
+import { useOpenedBoardDispatcher } from "App/store/OpenedBoard/hooks";
+import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
 
 import style from "./User.module.css";
 

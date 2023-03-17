@@ -1,9 +1,10 @@
-import { AppNavigation } from "App/components/AppNavigation";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { Icon } from "shared/components/Icon/Icon";
+import { User } from "App/widgets/users/User";
+import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
+import { AppNavigation } from "App/components/AppNavigation";
 import { getFormattedCurrentDate } from "shared/utils/getFormattedCurrentDate";
-import { User } from "../users/User/User";
-import { SidebarLayout } from "./components/SidebarLayout/SidebarLayout";
+
+import { SidebarLayout } from "./components";
 
 const date = getFormattedCurrentDate();
 

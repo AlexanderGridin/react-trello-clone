@@ -1,11 +1,13 @@
 import { useFormik } from "formik";
-import { TFormErrorsState } from "App/types";
 
 import { Button } from "shared/components/Button/Button";
+import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { PasswordInput, TextInput } from "shared/components/Form/inputs";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { CreateUserFormValue } from "..";
+import { TFormErrorsState } from "App/types";
+
+import { CreateUserFormValue } from "./models";
+
 import style from "./CreateUserForm.module.css";
 
 interface ICreateUserFormProps {

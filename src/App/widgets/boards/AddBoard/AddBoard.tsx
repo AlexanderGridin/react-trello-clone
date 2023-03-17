@@ -4,9 +4,9 @@ import { Card } from "shared/components/Card/Card";
 import { addBoard as addBoardToApi } from "App/api/Boards/services";
 import { BoardCreateDto, BoardDto, BoardViewModel } from "App/entities/Board/models";
 
-import { AddBoardButton } from "./components/AddBoardButton";
+import { BoardForm } from "../BoardForm";
+import { AddBoardButton } from "./components";
 import { BoardFormValue } from "../BoardForm/models";
-import { BoardForm } from "../BoardForm/BoardForm";
 import { AddBoardComponentState } from "./models";
 
 export interface IAddBoardProps {

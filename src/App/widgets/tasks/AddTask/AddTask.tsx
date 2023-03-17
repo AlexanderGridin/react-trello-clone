@@ -4,9 +4,9 @@ import { Card } from "shared/components/Card/Card";
 import { addTask as addTaskOnApi } from "App/api/Task/services";
 import { TaskCreateDto, TaskDto, TaskViewModel } from "App/entities/Task/models";
 
-import { TaskForm } from "../TaskForm/TaskForm";
+import { TaskForm } from "../TaskForm";
 import { TaskFormValue } from "../TaskForm/models";
-import { AddTaskButton } from "./components/AddTaskButton";
+import { AddTaskButton } from "./components";
 import { AddTaskComponentState } from "./models";
 
 export interface IAddTaskProps {

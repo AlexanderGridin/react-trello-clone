@@ -6,7 +6,7 @@ import { PageTitle } from "App/components/PageTitle";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { getAllBoards, getFavoriteBoards } from "App/api/Boards/services";
 import { AppPageLayout } from "App/components/AppPageLayout";
-import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList/BoardsCardsList";
+import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList";
 import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/Boards/hooks";
 
 import style from "./BoardsPage.module.css";

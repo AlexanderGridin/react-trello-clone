@@ -1,9 +1,11 @@
-import { AddBoard } from "../AddBoard/AddBoard";
-import style from "./BoardsCardsList.module.css";
-import { useBoardsDispatcher } from "App/store/Boards/hooks";
-import { DragLayer } from "App/widgets/DragLayer/DragLayer";
-import { BoardCard } from "../BoardCard/BoardCard";
+import { DragLayer } from "App/widgets/DragLayer";
 import { BoardViewModel } from "App/entities/Board/models";
+import { useBoardsDispatcher } from "App/store/Boards/hooks";
+
+import { AddBoard } from "../AddBoard";
+import { BoardCard } from "../BoardCard";
+
+import style from "./BoardsCardsList.module.css";
 
 interface IBoardsCardsListProps {
   boards: BoardViewModel[];

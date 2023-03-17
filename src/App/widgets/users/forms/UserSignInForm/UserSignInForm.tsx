@@ -1,11 +1,13 @@
 import { useFormik } from "formik";
-import { TFormErrorsState } from "App/types";
 
 import { Button } from "shared/components/Button/Button";
+import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { FormContainer } from "shared/components/Form/FormContainer";
 import { PasswordInput, TextInput } from "shared/components/Form/inputs";
-import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
-import { UserSignInFormValue } from "..";
+import { TFormErrorsState } from "App/types";
+
+import { UserSignInFormValue } from "./models";
+
 import style from "./UserSignInForm.module.css";
 
 interface IUserSignInFormProps {

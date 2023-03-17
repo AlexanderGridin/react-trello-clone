@@ -1,13 +1,15 @@
 import { ReactNode } from "react";
+
 import { IChildren } from "shared/models";
+
 import style from "./SidebardLayout.module.css";
 
-export interface SidebarLayoutProps extends IChildren {
+export interface ISidebarLayoutProps extends IChildren {
   slotHeader?: ReactNode;
   slotFooter?: ReactNode;
 }
 
-export const SidebarLayout = ({ slotHeader, children, slotFooter }: SidebarLayoutProps) => {
+export const SidebarLayout = ({ slotHeader, children, slotFooter }: ISidebarLayoutProps) => {
   return (
     <div className={style.container}>
       {slotHeader && <div className={style.header}>{slotHeader}</div>}

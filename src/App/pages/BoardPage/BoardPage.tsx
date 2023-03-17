@@ -6,7 +6,7 @@ import { useSwitch } from "App/hooks";
 import { PageTitle } from "App/components/PageTitle";
 import { MaterialIcon } from "shared/components/Icon/enums/MaterialIcon";
 import { AppPageLayout } from "App/components/AppPageLayout";
-import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList/TasksListsCardsList";
+import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList";
 import { BoardWithTasksListsDto } from "App/entities/Board/models";
 import { useOpenedBoardDispatcher, useSelectBoard } from "App/store/OpenedBoard/hooks";
 import { useBoardsCacheDispatcher, useSelectBoardsCache } from "App/store/BoardsCache/hooks";

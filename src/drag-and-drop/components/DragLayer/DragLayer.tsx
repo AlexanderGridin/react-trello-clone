@@ -1,6 +1,8 @@
 import { CSSProperties } from "react";
 import { XYCoord } from "react-dnd";
+
 import { IChildren } from "shared/models";
+
 import cssStyle from "./DragLayer.module.css";
 
 interface IDragLayerProps extends IChildren {

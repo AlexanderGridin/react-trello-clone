@@ -1,4 +1,4 @@
-import { DragLayer as DndDragLayer } from "drag-and-drop/components/DragLayer/DragLayer";
+import { DragLayer as DndDragLayer } from "drag-and-drop/components/DragLayer";
 import { useAppDragLayer } from "App/hooks";
 
 import { DraggedItem } from "./components";

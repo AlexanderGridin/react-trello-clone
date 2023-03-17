@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { MaterialIcon } from "shared/components/Icon/enums";
-import { parseEnumForStory } from "shared/utils/storybook/parseEnumForStory";
+import { parseEnumForStory } from "shared/utils/storybook";
 
 import { Button } from "./Button";
 

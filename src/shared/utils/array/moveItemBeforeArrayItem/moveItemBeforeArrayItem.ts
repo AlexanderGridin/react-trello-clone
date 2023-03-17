@@ -1,6 +1,6 @@
-import { addItemBeforeArrayItem } from "../addItemBeforeArrayItem/addItemBeforeArrayItem";
-import { ArrayUtilConfigWithArrayItem } from "../models/ArrayUtilConfigWithArrayItem";
-import { removeItemFromArray } from "../removeItemFromArray/removeItemFromArray";
+import { removeItemFromArray } from "../removeItemFromArray";
+import { addItemBeforeArrayItem } from "../addItemBeforeArrayItem";
+import { ArrayUtilConfigWithArrayItem } from "../models";
 
 export const moveItemBeforeArrayItem = <T>({
   array,

@@ -1,6 +1,6 @@
-import { addItemAfterArrayItem } from "../addItemAfterArrayItem/addItemAfterArrayItem";
-import { ArrayUtilConfigWithArrayItem } from "../models/ArrayUtilConfigWithArrayItem";
-import { removeItemFromArray } from "../removeItemFromArray/removeItemFromArray";
+import { removeItemFromArray } from "../removeItemFromArray";
+import { addItemAfterArrayItem } from "../addItemAfterArrayItem";
+import { ArrayUtilConfigWithArrayItem } from "../models";
 
 export const moveItemAfterArrayItem = <T>({
   array,

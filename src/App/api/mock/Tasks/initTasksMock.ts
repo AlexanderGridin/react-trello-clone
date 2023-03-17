@@ -1,6 +1,8 @@
 import MockAdapter from "axios-mock-adapter";
+
 import { routes } from "App/api/Task/routes";
-import { generateId } from "shared/utils/generateId";
+import { generateId } from "shared/utils";
+
 import { logMockResponse } from "../utils/logMockResponse";
 import { connectToMockDb } from "../mockDb";
 

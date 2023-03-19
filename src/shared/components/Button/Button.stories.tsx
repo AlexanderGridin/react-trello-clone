@@ -1,7 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 
 import { MaterialIcon } from "shared/components/Icon/enums";
-import { parseEnumForStory } from "shared/utils/storybook";
+import { argTypesCommonDescription } from "storybook/static-data";
+import { parseEnumForStory } from "storybook/utils";
 
 import { Button } from "./Button";
 
@@ -11,28 +13,33 @@ export default {
   title: "Shared/Button",
   component: Button,
   args: {
-    children: "Button",
+    type: "button",
     icon: MaterialIcon.None,
     isIconOnly: false,
-    type: "button",
-    visualStyle: "regular",
     style: {},
+    visualStyle: "regular",
+    children: "Button",
+    "data-testid": "",
+    className: "",
+    onClick: action("onClick"),
   },
   argTypes: {
     type: {
       description: "HTML5 button type",
     },
     style: {
-      description: "Extend component inline styles",
+      description: argTypesCommonDescription.style,
     },
     className: {
-      description: "String with additional CSS classes",
+      description: argTypesCommonDescription.className,
+      control: false,
     },
     "data-testid": {
-      description: "Id that will be used in the testing",
+      description: argTypesCommonDescription.dataTestId,
+      control: false,
     },
     onClick: {
-      description: "Callback that will be called when button will be clicked",
+      description: `${argTypesCommonDescription.eventPrefix} click on the button`,
     },
     icon: {
       description: "Icon displayed before text",
@@ -73,5 +80,35 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const AllProps = Template.bind({});
+AllProps.args = {};
+
+export const RequiredProps = Template.bind({});
+
+RequiredProps.argTypes = {
+  type: { table: { disable: true } },
+  icon: { table: { disable: true } },
+  isIconOnly: { table: { disable: true } },
+  style: { table: { disable: true } },
+  visualStyle: { table: { disable: true } },
+  "data-testid": { table: { disable: true } },
+  className: { table: { disable: true } },
+  children: { table: { disable: true } },
+};
+
+RequiredProps.args = {
+  onClick: action("onClick"),
+  type: "button",
+  icon: MaterialIcon.None,
+  isIconOnly: false,
+  style: {},
+  visualStyle: "regular",
+  "data-testid": "",
+  className: "",
+};
+
+export const WithIconOnly = Template.bind({});
+WithIconOnly.args = {
+  isIconOnly: true,
+  icon: MaterialIcon.Home,
+};

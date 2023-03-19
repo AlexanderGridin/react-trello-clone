@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { argTypesCommonDescription } from "storybook/static-data";
 
 import { Chip } from "./Chip";
 
@@ -13,6 +14,7 @@ export default {
   },
   argTypes: {
     children: {
+      type: { name: "string", required: true },
       description: "Content, that will be displayed in the Chip",
       table: {
         type: {
@@ -27,7 +29,7 @@ export default {
       description: "Background color of the Chip",
     },
     className: {
-      description: "Expands existing styles by providing additional CSS classes",
+      description: argTypesCommonDescription.className,
       control: false,
     },
   },
@@ -58,10 +60,10 @@ RequiredProps.argTypes = {
 };
 
 RequiredProps.args = {
+  children: "Required props",
   textColor: undefined,
   backgroundColor: undefined,
   className: undefined,
-  children: "Required props",
 };
 
 export const ComplexChildren = Template.bind({});

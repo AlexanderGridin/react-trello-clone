@@ -68,24 +68,10 @@ RequiredProps.args = {
 
 export const ComplexChildren = Template.bind({});
 ComplexChildren.argTypes = {
-  children: {
-    control: false,
-  },
-  textColor: {
-    table: {
-      disable: true,
-    },
-  },
-  backgroundColor: {
-    table: {
-      disable: true,
-    },
-  },
-  className: {
-    table: {
-      disable: true,
-    },
-  },
+  children: { control: false },
+  textColor: { table: { disable: true } },
+  backgroundColor: { table: { disable: true } },
+  className: { table: { disable: true } },
 };
 
 ComplexChildren.args = {

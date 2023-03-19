@@ -42,21 +42,9 @@ AllProps.args = {};
 
 export const RequiredProps = Template.bind({});
 RequiredProps.argTypes = {
-  textColor: {
-    table: {
-      disable: true,
-    },
-  },
-  backgroundColor: {
-    table: {
-      disable: true,
-    },
-  },
-  className: {
-    table: {
-      disable: true,
-    },
-  },
+  textColor: { table: { disable: true } },
+  backgroundColor: { table: { disable: true } },
+  className: { table: { disable: true } },
 };
 
 RequiredProps.args = {

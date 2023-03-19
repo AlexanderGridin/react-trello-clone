@@ -13,4 +13,6 @@ export const StyledCard = styled.div<IStyledCardProps>`
   box-shadow: #091e4240 0px 1px 0px 0px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;

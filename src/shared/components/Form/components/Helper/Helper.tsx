@@ -7,7 +7,7 @@ import { StyledHelper } from "./components";
 
 import style from "./Helper.module.css";
 
-interface HelperProps extends IChildren, IHelperType {}
+interface HelperProps extends Required<IChildren>, IHelperType {}
 
 export const Helper = ({ type = "regular", children }: HelperProps) => {
   return (

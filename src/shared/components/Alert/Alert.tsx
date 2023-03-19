@@ -5,11 +5,14 @@ import { IChildren, IClassName } from "shared/models";
 import { IconButton } from "shared/components/IconButton";
 import { MaterialIcon } from "shared/components/Icon/enums";
 
+import { TAlertType } from "./types";
+import { getCloseButtonColor } from "./utils";
+
 import style from "./Alert.module.css";
 
 interface IAlertProps extends IChildren, IClassName {
   title?: string;
-  type?: "error" | "warning" | "info" | "success";
+  type?: TAlertType;
   onClose?: () => void;
 }
 
@@ -22,13 +25,15 @@ export const Alert = ({ title, type = "info", className = "", children, onClose 
     <MuiAlert severity={type} className={className} sx={{ position: "relative" }}>
       {title && <MuiAlertTitle>{title}</MuiAlertTitle>}
       {children}
-      <IconButton
-        icon={MaterialIcon.Close}
-        color="#bf616a"
-        activeColor="#bf616a"
-        className={style.close}
-        onClick={handleCloseClick}
-      />
+      {onClose && (
+        <IconButton
+          icon={MaterialIcon.Close}
+          color={getCloseButtonColor(type)}
+          activeColor={getCloseButtonColor(type)}
+          className={style.close}
+          onClick={handleCloseClick}
+        />
+      )}
     </MuiAlert>
   );
 };

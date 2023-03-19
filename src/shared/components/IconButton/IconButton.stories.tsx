@@ -1,9 +1,10 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { parseEnumForStory } from "shared/utils/storybook";
+import { parseEnumForStory } from "storybook/utils";
 import { MaterialIcon } from "shared/components/Icon/enums";
 
 import { IconButton } from "./IconButton";
+import { argTypesCommonDescription } from "storybook/static-data";
 
 const { options: materialIconOptions, labels: materialIconLabels } = parseEnumForStory(MaterialIcon);
 
@@ -14,6 +15,7 @@ export default {
     icon: MaterialIcon.Home,
     type: "button",
     isActive: false,
+    color: "#a5a9b1",
     activeColor: "#5E81AC",
   },
   argTypes: {
@@ -27,19 +29,23 @@ export default {
       description: "Active color, that will be used on hover, and when button will be marked as active",
     },
     className: {
-      description: "String with additional CSS classes",
+      description: argTypesCommonDescription.className,
+      control: false,
     },
     "data-testid": {
-      description: "Id that will be used in the testing",
+      description: argTypesCommonDescription.dataTestId,
+      control: false,
     },
     onClick: {
-      description: "Callback that will be called when button will be clicked",
+      description: `${argTypesCommonDescription.eventPrefix} after click on the button`,
     },
     icon: {
+      type: { name: "string", required: true },
       description: "Icon that will be displayed",
       options: materialIconOptions,
       mapping: MaterialIcon,
       control: {
+        type: "select",
         labels: materialIconLabels,
       },
       table: {
@@ -57,5 +63,5 @@ export default {
 
 const Template: ComponentStory<typeof IconButton> = (args) => <IconButton {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const AllProps = Template.bind({});
+AllProps.args = {};

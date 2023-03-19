@@ -1,14 +1,17 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+
 import { Switch } from "./Switch";
 
 export default {
   title: "Shared/Switch",
   component: Switch,
   args: {
-    isTextDark: true,
     initialValue: false,
     label: "Switch label",
     disabled: false,
+    isTextDark: true,
+    onChange: action("onChange"),
   },
   argTypes: {
     isTextDark: {
@@ -31,5 +34,5 @@ export default {
 
 const Template: ComponentStory<typeof Switch> = (args) => <Switch {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const AllProps = Template.bind({});
+AllProps.args = {};

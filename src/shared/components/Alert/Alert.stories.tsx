@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import { Alert } from "./Alert";
+import { argTypesCommonDescription } from "storybook/static-data";
 
 export default {
   title: "Shared/Alert",
@@ -23,33 +24,25 @@ export default {
       description: "Visual type of the Alert",
     },
     className: {
-      description: "Expands existing styles by providing additional CSS classes",
+      description: argTypesCommonDescription.className,
       control: false,
     },
     onClose: {
       description: "Callback that will be called after click on the close button",
-      table: {
-        disable: true,
-      },
+      table: { disable: true },
     },
   },
 } as ComponentMeta<typeof Alert>;
 
 const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const AllProps = Template.bind({});
+AllProps.args = {};
 
 export const WithComplexContentAndCloseButton = Template.bind({});
 WithComplexContentAndCloseButton.argTypes = {
-  children: {
-    control: false,
-  },
-  onClose: {
-    table: {
-      disable: false,
-    },
-  },
+  children: { control: false },
+  onClose: { table: { disable: false } },
 };
 
 WithComplexContentAndCloseButton.args = {

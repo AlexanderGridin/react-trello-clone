@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 
 import { Tooltip } from "shared/components/Tooltip";
-import { logoutUser } from "App/api/User/services";
 import { IconButton } from "shared/components/IconButton";
 import { MaterialIcon } from "shared/components/Icon/enums";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
+import { logoutUserAsync } from "App/api/User/services";
 import { accessTokenStorage } from "App/local-storage";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { useOpenedBoardDispatcher } from "App/store/OpenedBoard/hooks";
@@ -25,7 +25,7 @@ export const User = () => {
     openedBoardDispatcher.setBoard(null);
     boardsCahceDispatcher.clearCache();
 
-    await logoutUser();
+    await logoutUserAsync();
     accessTokenStorage.clear();
     userDispatcher.setUser(null);
   };

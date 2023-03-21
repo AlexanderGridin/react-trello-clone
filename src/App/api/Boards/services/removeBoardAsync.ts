@@ -1,9 +1,9 @@
 import { httpClient } from "App/api/httpClient";
-import { TaskDto } from "App/entities/Task/models";
+import { BoardDto } from "App/entities/Board/models";
 import { routes } from "../routes";
 
-export const removeTask = async (id: string): Promise<TaskDto | null> => {
-  const apiUrl = routes.removeTask.replace("{$taskId}", id);
+export const removeBoardAsync = async (id: string): Promise<BoardDto | null> => {
+  const apiUrl = routes.removeBoard.replace("{$boardId}", id);
 
   try {
     const response = await httpClient.delete(apiUrl);

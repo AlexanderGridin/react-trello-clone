@@ -7,7 +7,7 @@ import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
-import { debouncedUpdateTaskMany, removeTask as removeTaskFromApi } from "App/api/Task/services";
+import { debouncedUpdateTaskMany, removeTaskAsync } from "App/api/Task/services";
 
 import { Task } from "../Task";
 import { TaskModal } from "../TaskModal";
@@ -34,7 +34,7 @@ export const TaskCard = ({ task, isDragPreview = false }: ITaskCardProps) => {
   const removeTask = async () => {
     startLoading();
 
-    const taskDto = await removeTaskFromApi(task.id);
+    const taskDto = await removeTaskAsync(task.id);
     if (taskDto) {
       dispatcher.removeTask(TaskDto.toViewModel(taskDto));
     }

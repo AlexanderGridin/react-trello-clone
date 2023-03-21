@@ -4,7 +4,7 @@ import { AuthenticatedUserDto } from "App/entities/User/models/AuthenticatedUser
 import { AxiosError } from "axios";
 import { routes } from "../routes";
 
-export const createUser = async (body: UserCreateDto): Promise<AuthenticatedUserDto | AxiosError> => {
+export const createUserAsync = async (body: UserCreateDto): Promise<AuthenticatedUserDto | AxiosError> => {
   const apiUrl = routes.createUser;
 
   try {

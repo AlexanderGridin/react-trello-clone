@@ -1,9 +1,12 @@
 import { BoardDto, IBoardUpdateManyDto } from "App/entities/Board/models";
 import { createCache, createDebouncedRequest, DebouncedRequestConfig } from "App/utils";
-import { updateBoardMany } from "App/api/Boards/services";
+
+import { updateBoardManyAsync } from "./updateBoardManyAsync";
 
 const cache = createCache<IBoardUpdateManyDto>("id");
-const callDebouncedRequest = createDebouncedRequest<BoardDto[]>(1500, () => updateBoardMany(cache.getValuesAndClear()));
+const callDebouncedRequest = createDebouncedRequest<BoardDto[]>(1500, () =>
+  updateBoardManyAsync(cache.getValuesAndClear())
+);
 
 type TConfig = { body: IBoardUpdateManyDto[] } & DebouncedRequestConfig<BoardDto[]>;
 

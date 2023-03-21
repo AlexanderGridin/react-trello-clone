@@ -4,7 +4,7 @@ import { routes } from "../routes";
 import { AuthenticatedUserDto } from "App/entities/User/models/AuthenticatedUserDto";
 import { UserLoginDto } from "App/entities/User/models";
 
-export const loginUser = async (body: UserLoginDto): Promise<AuthenticatedUserDto | AxiosError> => {
+export const loginUserAsync = async (body: UserLoginDto): Promise<AuthenticatedUserDto | AxiosError> => {
   const apiUrl = routes.login;
 
   try {

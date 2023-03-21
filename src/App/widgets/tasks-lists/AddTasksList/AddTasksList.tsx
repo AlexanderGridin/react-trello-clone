@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 
 import { Card } from "shared/components/Card";
-import { addTasksList as addTasksListOnApi } from "App/api/TasksList/services";
+import { addTasksListAsync } from "App/api/TasksList/services";
 import { TasksListCreateDto, TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
 
 import { AddListButton } from "./components";
@@ -37,7 +37,7 @@ export const AddTasksList = ({ boardId, onAdd }: IAddTasksListProps) => {
       boardId,
     });
 
-    const listDto = await addTasksListOnApi(createDto);
+    const listDto = await addTasksListAsync(createDto);
     if (listDto) {
       onAdd(TasksListDto.toViewModel(listDto));
       hideForm();

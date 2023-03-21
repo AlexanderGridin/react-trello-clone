@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 
 import { Card } from "shared/components/Card";
-import { addBoard as addBoardToApi } from "App/api/Boards/services";
+import { addBoardAsync } from "App/api/Boards/services";
 import { BoardCreateDto, BoardDto, BoardViewModel } from "App/entities/Board/models";
 
 import { BoardForm } from "../BoardForm";
@@ -35,7 +35,7 @@ export const AddBoard = ({ onAdd }: IAddBoardProps) => {
       ...formValue,
     });
 
-    const boardDto = await addBoardToApi(boardCreateDto);
+    const boardDto = await addBoardAsync(boardCreateDto);
 
     if (boardDto) {
       onAdd(BoardDto.toViewModel(boardDto));

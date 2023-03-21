@@ -9,12 +9,7 @@ import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
-
-import {
-  removeBoard as removeBoardFromApi,
-  updateBoard as updateBoardOnApi,
-  debouncedUpdateBoardMany,
-} from "App/api/Boards/services";
+import { removeBoardAsync, updateBoardAsync, debouncedUpdateBoardMany } from "App/api/Boards/services";
 
 import { Board } from "../Board";
 import { BoardModal } from "../BoardModal";
@@ -41,7 +36,7 @@ export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => 
   const removeBoard = async (board: BoardViewModel) => {
     startLoading();
 
-    const boardDto = await removeBoardFromApi(board.id);
+    const boardDto = await removeBoardAsync(board.id);
     if (boardDto) {
       dispatcher.removeBoard(board);
     }
@@ -52,7 +47,7 @@ export const BoardCard = ({ board, isDragPreview = false }: IBoardCardProps) => 
   const updateBoard = async (board: BoardViewModel) => {
     startLoading();
 
-    const boardDto = await updateBoardOnApi(board.id, BoardViewModel.toUpdateDto(board));
+    const boardDto = await updateBoardAsync(board.id, BoardViewModel.toUpdateDto(board));
     if (boardDto) {
       dispatcher.updateBoard(BoardDto.toViewModel(boardDto));
     }

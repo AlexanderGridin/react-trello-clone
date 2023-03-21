@@ -2,7 +2,7 @@ import { httpClient } from "App/api/httpClient";
 import { TaskCreateDto, TaskDto } from "App/entities/Task/models";
 import { routes } from "../routes";
 
-export const addTask = async (body: TaskCreateDto): Promise<TaskDto | null> => {
+export const addTaskAsync = async (body: TaskCreateDto): Promise<TaskDto | null> => {
   const apiUrl = routes.addTask;
 
   try {

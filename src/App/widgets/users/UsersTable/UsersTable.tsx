@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { Table } from "shared/components/Table";
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "App/hooks/useSwitch";
-import { deleteUser as deleteUserFromApi } from "App/api/User/services";
+import { deleteUserAsync } from "App/api/User/services";
 import { DeleteButton } from "App/components/buttons";
 import { ITableColumn } from "shared/components/Table/models";
 import { useSelectUser } from "App/store/User/hooks";
@@ -33,7 +33,7 @@ export const UsersTable = ({ users, onDeleteUser }: IUsersTableProps) => {
 
     startLoading();
 
-    const dto = await deleteUserFromApi(user.id);
+    const dto = await deleteUserAsync(user.id);
     if (dto) {
       onDeleteUser(UserDto.toViewModel(dto));
     }

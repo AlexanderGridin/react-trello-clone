@@ -8,7 +8,7 @@ import { useSwitch } from "App/hooks";
 import { MaterialIcon } from "shared/components/Icon/enums";
 import { AppPageLayout } from "App/components/AppPageLayout";
 import { accessTokenStorage } from "App/local-storage";
-import { loginUser, createUser } from "App/api/User/services";
+import { loginUserAsync, createUserAsync } from "App/api/User/services";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { AuthenticatedUserDto, UserCreateDto, UserLoginDto, UserViewModel } from "App/entities/User/models";
 import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
@@ -34,7 +34,7 @@ export const IndexPage = () => {
       password: formValue.password,
     });
 
-    const userDto: AuthenticatedUserDto | AxiosError = await loginUser(userLoginDto);
+    const userDto: AuthenticatedUserDto | AxiosError = await loginUserAsync(userLoginDto);
 
     if (!userDto) {
       endLoading();
@@ -66,7 +66,7 @@ export const IndexPage = () => {
       password: formValue.password,
     });
 
-    const userDto: AuthenticatedUserDto | AxiosError = await createUser(userCreateDto);
+    const userDto: AuthenticatedUserDto | AxiosError = await createUserAsync(userCreateDto);
 
     if (!userDto) {
       endLoading();

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 import { UserDto, UserViewModel } from "App/entities/User/models";
-import { getUsers } from "App/api/User/services";
 import { useSwitch } from "App/hooks";
 import { PageTitle } from "App/components/PageTitle";
 import { UsersTable } from "App/widgets/users/UsersTable";
 import { MaterialIcon } from "shared/components/Icon/enums";
+import { getUsersAsync } from "App/api/User/services";
 import { AppPageLayout } from "App/components/AppPageLayout";
 
 export const UsersPage = () => {
@@ -13,7 +13,7 @@ export const UsersPage = () => {
   const [isLoading, startLoading, endLoading] = useSwitch(true);
 
   const loadUsers = async () => {
-    const usersDtos = await getUsers();
+    const usersDtos = await getUsersAsync();
     setUsers(usersDtos.map((dto: UserDto) => UserDto.toViewModel(dto)));
     endLoading();
   };

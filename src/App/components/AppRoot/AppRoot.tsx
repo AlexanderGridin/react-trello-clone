@@ -3,8 +3,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 import { Sidebar } from "App/widgets/Sidebar";
 import { AppLayout } from "App/components/AppLayout";
-import { checkUserAuth } from "App/api/User/services";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
+import { checkUserAuthAsync } from "App/api/User/services";
 import { accessTokenStorage } from "App/local-storage";
 import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
 
@@ -24,7 +24,7 @@ export const AppRoot = () => {
       return;
     }
 
-    const userDto: AuthenticatedUserDto = await checkUserAuth();
+    const userDto: AuthenticatedUserDto = await checkUserAuthAsync();
     if (userDto._id) {
       accessTokenStorage.set(userDto.accessToken);
       userDispatcher.setUser(AuthenticatedUserDto.toViewModel(userDto));

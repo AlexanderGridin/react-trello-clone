@@ -7,7 +7,12 @@ interface IChipProps extends Required<IChildren>, IClassName {
   backgroundColor?: string;
 }
 
-export const Chip = ({ className, textColor = "#000", backgroundColor = "#ebebeb", children }: IChipProps) => {
+export const Chip = ({
+  className,
+  textColor = "#000",
+  backgroundColor = "rgba(0, 0, 0, 0.08)",
+  children,
+}: IChipProps) => {
   return (
     <MuiChip label={children} className={className} sx={{ fontSize: "14px", backgroundColor, color: textColor }} />
   );

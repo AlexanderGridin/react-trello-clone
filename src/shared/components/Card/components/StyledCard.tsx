@@ -3,6 +3,7 @@ import styled from "styled-components";
 interface IStyledCardProps {
   minHeight?: number;
   backgroundColor?: string;
+  isHasChildren?: boolean;
 }
 
 export const StyledCard = styled.div<IStyledCardProps>`
@@ -13,6 +14,6 @@ export const StyledCard = styled.div<IStyledCardProps>`
   box-shadow: #091e4240 0px 1px 0px 0px;
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display: ${({ isHasChildren = false }) => (isHasChildren ? "block" : "flex")};
+  ${({ isHasChildren = false }) => (isHasChildren ? null : "align-items: flex-start; flex-direction: column;")}
 `;

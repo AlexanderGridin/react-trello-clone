@@ -43,20 +43,22 @@ export const Card = forwardRef((props: ICardProps, ref: TRef) => {
       minHeight={minHeight}
       onDoubleClick={onDoubleClick}
     >
-      {!children && (
-        <>
-          {slotHeader && <div data-testid={HeaderId}>{slotHeader}</div>}
-          {slotContent && (
-            <div data-testid={ContentId} style={{ margin: "7px 0", flexGrow: "1" }}>
-              {slotContent}
-            </div>
-          )}
-          {slotFooter && <div data-testid={FooterId}>{slotFooter}</div>}
-        </>
-      )}
+      <div style={{ width: "100%" }}>
+        {!children ? (
+          <>
+            {slotHeader ? <div data-testid={HeaderId}>{slotHeader}</div> : null}
+            {slotContent ? (
+              <div data-testid={ContentId} style={{ margin: "7px 0", flexGrow: "1" }}>
+                {slotContent}
+              </div>
+            ) : null}
+            {slotFooter ? <div data-testid={FooterId}>{slotFooter}</div> : null}
+          </>
+        ) : null}
 
-      {children}
-      {isLoading && <Spinner data-testid={SpinnerId} backgroundColor={backgroundColor} />}
+        {children}
+        {isLoading ? <Spinner data-testid={SpinnerId} backgroundColor={backgroundColor} /> : null}
+      </div>
     </StyledCard>
   );
 });

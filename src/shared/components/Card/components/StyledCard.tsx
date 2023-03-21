@@ -14,5 +14,6 @@ export const StyledCard = styled.div<IStyledCardProps>`
   position: relative;
   overflow: hidden;
   display: flex;
+  align-items: flex-start;
   flex-direction: column;
 `;

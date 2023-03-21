@@ -3,7 +3,7 @@ import { ITaskUpdateManyDto, TaskDto } from "App/entities/Task/models";
 
 import { routes } from "../routes";
 
-export const updateTaskMany = async (body: ITaskUpdateManyDto[]): Promise<TaskDto[]> => {
+export const updateTaskManyAsync = async (body: ITaskUpdateManyDto[]): Promise<TaskDto[]> => {
   const apiUrl = routes.updateTaskMany;
 
   try {

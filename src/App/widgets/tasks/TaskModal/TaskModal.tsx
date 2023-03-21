@@ -1,6 +1,6 @@
 import { Modal } from "shared/components/Modal";
 import { useSwitch } from "App/hooks";
-import { updateTask as updateTaskOnApi } from "App/api/Task/services";
+import { updateTaskAsync } from "App/api/Task/services";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { TaskDto, TaskUpdateDto, TaskViewModel } from "App/entities/Task/models";
 
@@ -26,7 +26,7 @@ export const TaskModal = ({ task }: ITaskModalProps) => {
       boardId: task.boardId,
     });
 
-    const taskDto = await updateTaskOnApi(task.id, taskUpdateDto);
+    const taskDto = await updateTaskAsync(task.id, taskUpdateDto);
     if (taskDto) {
       dispatcher.updateTask(TaskDto.toViewModel(taskDto));
     }

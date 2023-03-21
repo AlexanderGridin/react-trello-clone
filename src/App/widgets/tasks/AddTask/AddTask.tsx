@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 
 import { Card } from "shared/components/Card";
-import { addTask as addTaskOnApi } from "App/api/Task/services";
+import { addTaskAsync } from "App/api/Task/services";
 import { TaskCreateDto, TaskDto, TaskViewModel } from "App/entities/Task/models";
 
 import { TaskForm } from "../TaskForm";
@@ -40,7 +40,7 @@ export const AddTask = ({ listId, boardId, onAdd }: IAddTaskProps) => {
       boardId,
     });
 
-    const taskDto = await addTaskOnApi(taskCreateDto);
+    const taskDto = await addTaskAsync(taskCreateDto);
     if (taskDto) {
       onAdd(TaskDto.toViewModel(taskDto));
       hideForm();

@@ -1,6 +1,6 @@
 import { Modal } from "shared/components/Modal";
 import { useSwitch } from "App/hooks";
-import { updateBoard as updateBoardOnApi } from "App/api/Boards/services";
+import { updateBoardAsync } from "App/api/Boards/services";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { BoardDto, BoardViewModel } from "App/entities/Board/models";
 
@@ -19,7 +19,7 @@ export const BoardModal = ({ board }: IBoardModalProps) => {
   const update = async (formValue: BoardFormValue) => {
     startLoading();
 
-    const boardDto = await updateBoardOnApi(board.id, BoardFormValue.toUpdateDto(formValue));
+    const boardDto = await updateBoardAsync(board.id, BoardFormValue.toUpdateDto(formValue));
     if (boardDto) {
       dispatcher.updateBoard(BoardDto.toViewModel(boardDto));
     }

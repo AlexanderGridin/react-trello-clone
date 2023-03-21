@@ -2,7 +2,7 @@ import { httpClient } from "App/api/httpClient";
 import { BoardDto, IBoardUpdateDto } from "App/entities/Board/models";
 import { routes } from "../routes";
 
-export const updateBoard = async (id: string, body: IBoardUpdateDto): Promise<BoardDto | null> => {
+export const updateBoardAsync = async (id: string, body: IBoardUpdateDto): Promise<BoardDto | null> => {
   const apiUrl = routes.updateBoard.replace("{$boardId}", id);
 
   try {

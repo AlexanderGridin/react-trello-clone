@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { getBoard as getBoardFromApi } from "App/api/Boards/services";
+import { getBoardAsync } from "App/api/Boards/services";
 import { useSwitch } from "App/hooks";
 import { PageTitle } from "App/components/PageTitle";
 import { MaterialIcon } from "shared/components/Icon/enums";
@@ -38,7 +38,7 @@ export const BoardPage = () => {
   };
 
   const loadBoard = async (id: string): Promise<void> => {
-    const boardDto: BoardWithTasksListsDto | null = await getBoardFromApi(id);
+    const boardDto: BoardWithTasksListsDto | null = await getBoardAsync(id);
 
     if (boardDto) {
       const board = BoardWithTasksListsDto.toViewModel(boardDto);

@@ -1,10 +1,10 @@
-export * from "./addBoard";
-export * from "./getBoard";
-export * from "./removeBoard";
-export * from "./updateBoard";
+export * from "./addBoardAsync";
+export * from "./getBoardAsync";
+export * from "./removeBoardAsync";
+export * from "./updateBoardAsync";
 
-export * from "./getAllBoards";
-export * from "./getFavoriteBoards";
+export * from "./getAllBoardsAsync";
+export * from "./getFavoriteBoardsAsync";
 
-export * from "./updateBoardMany";
+export * from "./updateBoardManyAsync";
 export * from "./debouncedUpdateBoardMany";

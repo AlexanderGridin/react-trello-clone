@@ -4,7 +4,7 @@ import { Switch } from "shared/components/Switch";
 import { BoardDto } from "App/entities/Board/models";
 import { PageTitle } from "App/components/PageTitle";
 import { MaterialIcon } from "shared/components/Icon/enums";
-import { getAllBoards, getFavoriteBoards } from "App/api/Boards/services";
+import { getAllBoardsAsync, getFavoriteBoardsAsync } from "App/api/Boards/services";
 import { AppPageLayout } from "App/components/AppPageLayout";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList";
 import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/Boards/hooks";
@@ -20,7 +20,7 @@ export const BoardsPage = () => {
 
   const loadBoards = async (isShowFavorites = false) => {
     dispatcher.setBoards(null);
-    const boardsDtos = isShowFavorites ? await getFavoriteBoards() : await getAllBoards();
+    const boardsDtos = isShowFavorites ? await getFavoriteBoardsAsync() : await getAllBoardsAsync();
     dispatcher.setBoards(boardsDtos.map(BoardDto.toViewModel));
   };
 

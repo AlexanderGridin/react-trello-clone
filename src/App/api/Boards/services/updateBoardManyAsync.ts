@@ -3,7 +3,7 @@ import { IBoardUpdateManyDto } from "App/entities/Board/models";
 import { httpClient } from "App/api/httpClient";
 import { routes } from "../routes";
 
-export const updateBoardMany = async (body: IBoardUpdateManyDto[]): Promise<BoardDto[]> => {
+export const updateBoardManyAsync = async (body: IBoardUpdateManyDto[]): Promise<BoardDto[]> => {
   const apiUrl = routes.updateMany;
 
   try {

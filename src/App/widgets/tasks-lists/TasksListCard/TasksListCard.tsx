@@ -12,12 +12,7 @@ import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
 import { debouncedUpdateTaskMany } from "App/api/Task/services";
 import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
-
-import {
-  debouncedUpdateTasksListMany,
-  removeTasksList as removeTasksListFromApi,
-  updateTasksList as updateTasksListOnApi,
-} from "App/api/TasksList/services";
+import { debouncedUpdateTasksListMany, removeTasksListAsync, updateTasksListAsync } from "App/api/TasksList/services";
 
 import { TasksListHeader } from "./components";
 
@@ -41,7 +36,7 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
   const remove = async () => {
     startLoading();
 
-    const tasksListDto = await removeTasksListFromApi(list.id);
+    const tasksListDto = await removeTasksListAsync(list.id);
     if (tasksListDto) {
       dispatcher.removeTasksList(TasksListDto.toViewModel(tasksListDto));
     }
@@ -52,7 +47,7 @@ export const TasksListCard = ({ list, isDragPreview = false }: ITasksListCardPro
   const togglePin = async () => {
     startLoading();
 
-    const listDto = await updateTasksListOnApi(list.id, {
+    const listDto = await updateTasksListAsync(list.id, {
       title: list.title,
       isPinned: !list.isPinned,
       boardId: list.boardId,

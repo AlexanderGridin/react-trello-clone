@@ -1,10 +1,11 @@
 import { ITasksListUpdateManyDto, TasksListDto } from "App/entities/TasksList/models";
 import { createCache, createDebouncedRequest, DebouncedRequestConfig } from "App/utils";
-import { updateTasksListMany } from "./updateTasksListMany";
+
+import { updateTasksListManyAsync } from "./updateTasksListManyAsync";
 
 const cache = createCache<ITasksListUpdateManyDto>("id");
 const callDebouncedRequest = createDebouncedRequest<TasksListDto[]>(1500, () =>
-  updateTasksListMany(cache.getValuesAndClear())
+  updateTasksListManyAsync(cache.getValuesAndClear())
 );
 
 type TConfig = { body: ITasksListUpdateManyDto[] } & DebouncedRequestConfig<TasksListDto[]>;

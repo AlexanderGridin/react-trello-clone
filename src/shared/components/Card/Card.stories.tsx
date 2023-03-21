@@ -9,11 +9,11 @@ export default {
   title: "Shared/Card",
   component: Card,
   args: {
-    slotHeader: <h1 style={{ margin: "0" }}>Slot header</h1>,
-    slotContent: <p>Slot content</p>,
+    slotHeader: <h1 style={{ margin: "0" }}>Slot Header</h1>,
+    slotContent: <p>Slot Content</p>,
     slotFooter: (
       <>
-        <Button onClick={action("onClick")}>Submit</Button>
+        <Button onClick={action("onClick")}>Button in Slot Footer</Button>
       </>
     ),
     backgroundColor: "#eceff4",

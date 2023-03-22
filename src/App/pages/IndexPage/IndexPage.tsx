@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
 
-import { Alert, Button, Card } from "shared/components";
+import { Alert, Button, Card, MaterialIcon } from "shared/components";
 import { useSwitch } from "App/hooks";
-import { MaterialIcon } from "shared/components/Icon/enums";
 import { AppPageLayout } from "App/components/AppPageLayout";
 import { accessTokenStorage } from "App/local-storage";
 import { loginUserAsync, createUserAsync } from "App/api/User/services";

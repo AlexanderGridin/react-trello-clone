@@ -4,7 +4,7 @@ import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "App/hooks";
 import { PageTitle } from "App/components/PageTitle";
 import { UsersTable } from "App/widgets/users/UsersTable";
-import { MaterialIcon } from "shared/components/Icon/enums";
+import { MaterialIcon } from "shared/components";
 import { getUsersAsync } from "App/api/User/services";
 import { AppPageLayout } from "App/components/AppPageLayout";
 

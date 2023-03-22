@@ -1,9 +1,10 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import { MaterialIcon } from "shared/components/Icon/enums";
 import { argTypesCommonDescription } from "storybook/static-data";
 import { parseEnumForStory } from "storybook/utils";
+
+import { MaterialIcon } from "../Icon";
 
 import { Button } from "./Button";
 

@@ -1,7 +1,7 @@
-import { Icon } from "shared/components/Icon";
 import { ITestId, IClick, IClassName } from "shared/models";
-import { TButtonType } from "shared/components/Button/types";
-import { MaterialIcon } from "shared/components/Icon/enums";
+
+import { Icon, MaterialIcon } from "../Icon";
+import { TButtonType } from "../Button";
 
 import { IconButtonTestId } from "./static-data";
 import { StyledIconButton } from "./components";

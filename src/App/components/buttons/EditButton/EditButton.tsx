@@ -1,7 +1,7 @@
 import { IClick, IClassName } from "shared/models";
 import { Tooltip } from "shared/components/Tooltip";
 import { IconButton } from "shared/components/IconButton";
-import { MaterialIcon } from "shared/components/Icon/enums";
+import { MaterialIcon } from "shared/components";
 
 import style from "./EditButton.module.css";
 

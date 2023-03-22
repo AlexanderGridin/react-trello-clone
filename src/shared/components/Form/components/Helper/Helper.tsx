@@ -1,7 +1,6 @@
-import { Icon } from "shared/components/Icon";
 import { IChildren } from "shared/models";
-import { MaterialIcon } from "shared/components/Icon/enums";
 
+import { Icon, MaterialIcon } from "../../../Icon";
 import { IHelperType } from "./models";
 import { StyledHelper } from "./components";
 

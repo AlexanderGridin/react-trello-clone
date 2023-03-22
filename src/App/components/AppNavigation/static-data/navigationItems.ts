@@ -1,4 +1,4 @@
-import { MaterialIcon } from "shared/components/Icon/enums";
+import { MaterialIcon } from "shared/components";
 
 import { INavigationItem } from "../models";
 

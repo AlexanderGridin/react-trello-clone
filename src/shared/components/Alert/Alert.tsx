@@ -2,8 +2,9 @@ import MuiAlert from "@mui/material/Alert";
 import MuiAlertTitle from "@mui/material/AlertTitle";
 
 import { IChildren, IClassName } from "shared/models";
-import { IconButton } from "shared/components/IconButton";
-import { MaterialIcon } from "shared/components/Icon/enums";
+
+import { IconButton } from "../IconButton";
+import { MaterialIcon } from "../Icon";
 
 import { TAlertType } from "./types";
 import { getCloseButtonColor } from "./utils";

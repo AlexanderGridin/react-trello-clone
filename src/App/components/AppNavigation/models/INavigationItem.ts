@@ -1,4 +1,4 @@
-import { MaterialIcon } from "shared/components/Icon/enums";
+import { MaterialIcon } from "shared/components";
 
 export interface INavigationItem {
   to: string;

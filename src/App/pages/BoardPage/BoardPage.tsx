@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getBoardAsync } from "App/api/Boards/services";
 import { useSwitch } from "App/hooks";
 import { PageTitle } from "App/components/PageTitle";
-import { MaterialIcon } from "shared/components/Icon/enums";
+import { MaterialIcon } from "shared/components";
 import { AppPageLayout } from "App/components/AppPageLayout";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList";
 import { BoardWithTasksListsDto } from "App/entities/Board/models";

@@ -2,9 +2,9 @@ import MuiDialog from "@mui/material/Dialog";
 import MuiDialogTitle from "@mui/material/DialogTitle";
 import MuiDialogContent from "@mui/material/DialogContent";
 
-import { Spinner } from "shared/components/Spinner";
 import { IChildren, ITestId } from "shared/models";
 
+import { Spinner } from "../Spinner";
 import { ModalTestId } from "./static-data";
 
 interface IModalProps extends IChildren, ITestId {

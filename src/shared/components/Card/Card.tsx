@@ -1,8 +1,8 @@
 import { ForwardedRef, forwardRef, ReactNode } from "react";
 
-import { Spinner } from "shared/components/Spinner";
 import { IChildren, ITestId, IClassName } from "shared/models";
 
+import { Spinner } from "../Spinner";
 import { CardTestId } from "./static-data";
 import { StyledCard } from "./components";
 

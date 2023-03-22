@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { Card, ICardProps } from "shared/components/Card";
+import { Card, ICardProps } from "shared/components";
 import { useItemDrag, useItemDrop } from "App/hooks";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 

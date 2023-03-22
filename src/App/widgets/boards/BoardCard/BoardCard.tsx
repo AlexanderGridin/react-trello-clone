@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { Chip } from "shared/components/Chip";
-import { Card } from "shared/components/Card";
+import { Card } from "shared/components";
 import { DndCard } from "App/components/DndCard";
 import { BoardDto, BoardViewModel } from "App/entities/Board/models";
 import { useSwitch } from "App/hooks";

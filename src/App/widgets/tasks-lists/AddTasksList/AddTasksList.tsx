@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-import { Card } from "shared/components/Card";
+import { Card } from "shared/components";
 import { addTasksListAsync } from "App/api/TasksList/services";
 import { TasksListCreateDto, TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
 

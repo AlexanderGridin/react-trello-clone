@@ -1,9 +1,6 @@
 import { useFormik } from "formik";
 
-import { Select } from "shared/components/Form/components/Select";
-import { TextInput } from "shared/components/Form/components/inputs";
-import { FormFooter } from "shared/components/Form/components/FormFooter";
-import { FormContainer } from "shared/components/Form/components/FormContainer";
+import { Select, TextInput, FormFooter, FormContainer } from "shared/components";
 import { TFormErrorsState } from "App/types";
 import { prioritySelectDataItems } from "App/static-data";
 

@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 import { Tooltip } from "shared/components/Tooltip";
-import { IconButton } from "shared/components/IconButton";
-import { MaterialIcon } from "shared/components";
+import { MaterialIcon, IconButton } from "shared/components";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { logoutUserAsync } from "App/api/User/services";
 import { accessTokenStorage } from "App/local-storage";

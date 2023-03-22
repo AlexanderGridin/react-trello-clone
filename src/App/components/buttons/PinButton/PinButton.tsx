@@ -1,7 +1,6 @@
 import { IClick, IClassName } from "shared/models";
 import { Tooltip } from "shared/components/Tooltip";
-import { IconButton } from "shared/components/IconButton";
-import { MaterialIcon } from "shared/components";
+import { MaterialIcon, IconButton } from "shared/components";
 
 import style from "./PinButton.module.css";
 

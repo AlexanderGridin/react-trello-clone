@@ -5,9 +5,9 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableContainer from "@mui/material/TableContainer";
 
-import { Spinner } from "shared/components/Spinner";
 import { IChildren } from "shared/models";
 
+import { Spinner } from "../Spinner";
 import { TablePapper } from "./components";
 import { ITableColumn } from "./models";
 import { TTableChildren } from "./types";

@@ -1,5 +1,5 @@
-import { Button } from "shared/components/Button";
-import { StyledFlexRow } from "shared/components/StyledFlexRow";
+import { Button } from "../../Button";
+import { StyledFlexRow } from "../../StyledFlexRow";
 
 interface IFormFooterProps {
   submitText?: string;

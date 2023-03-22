@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import { parseEnumForStory } from "storybook/utils";
-import { MaterialIcon } from "shared/components/Icon/enums";
 
 import { IconButton } from "./IconButton";
+import { MaterialIcon } from "../Icon";
 import { argTypesCommonDescription } from "storybook/static-data";
 
 const { options: materialIconOptions, labels: materialIconLabels } = parseEnumForStory(MaterialIcon);

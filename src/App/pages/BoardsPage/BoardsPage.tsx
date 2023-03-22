@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 
-import { Switch } from "shared/components/Switch";
+import { Switch, MaterialIcon } from "shared/components";
 import { BoardDto } from "App/entities/Board/models";
 import { PageTitle } from "App/components/PageTitle";
-import { MaterialIcon } from "shared/components/Icon/enums";
 import { getAllBoardsAsync, getFavoriteBoardsAsync } from "App/api/Boards/services";
 import { AppPageLayout } from "App/components/AppPageLayout";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList";

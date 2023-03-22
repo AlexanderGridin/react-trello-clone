@@ -1,4 +1,4 @@
-import { Card } from "shared/components/Card";
+import { Card } from "shared/components";
 import { DndCard } from "App/components/DndCard";
 import { useSwitch } from "App/hooks";
 import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";

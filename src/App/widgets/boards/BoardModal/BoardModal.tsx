@@ -1,4 +1,4 @@
-import { Modal } from "shared/components/Modal";
+import { Modal } from "shared/components";
 import { useSwitch } from "App/hooks";
 import { updateBoardAsync } from "App/api/Boards/services";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";

@@ -1,4 +1,4 @@
-import { Modal } from "shared/components/Modal";
+import { Modal } from "shared/components";
 import { useSwitch } from "App/hooks";
 import { updateTaskAsync } from "App/api/Task/services";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";

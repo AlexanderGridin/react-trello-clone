@@ -1,9 +1,8 @@
 import { CSSProperties } from "react";
 
-import { Icon } from "shared/components/Icon";
 import { IChildren, ITestId, IClick, IClassName } from "shared/models";
-import { MaterialIcon } from "shared/components/Icon/enums";
 
+import { Icon, MaterialIcon } from "../Icon";
 import { MuiButton } from "./components";
 import { TButtonType, TButtonVisualStyle } from "./types";
 import { ButtonTestId } from "./static-data";

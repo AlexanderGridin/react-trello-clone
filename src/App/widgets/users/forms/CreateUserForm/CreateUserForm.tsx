@@ -1,9 +1,6 @@
 import { useFormik } from "formik";
 
-import { Button } from "shared/components/Button";
-import { MaterialIcon } from "shared/components/Icon/enums";
-import { FormContainer } from "shared/components/Form/components/FormContainer";
-import { PasswordInput, TextInput } from "shared/components/Form/components/inputs";
+import { Button, FormContainer, PasswordInput, TextInput, MaterialIcon } from "shared/components";
 import { TFormErrorsState } from "App/types";
 
 import { CreateUserFormValue } from "./models";

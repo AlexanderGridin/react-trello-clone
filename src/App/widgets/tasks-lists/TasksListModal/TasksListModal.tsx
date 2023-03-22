@@ -1,4 +1,4 @@
-import { Modal } from "shared/components/Modal";
+import { Modal } from "shared/components";
 import { useSwitch } from "App/hooks";
 import { TasksListDto, TasksListUpdateDto, TasksListViewModel } from "App/entities/TasksList/models";
 import { updateTasksListAsync } from "App/api/TasksList/services";

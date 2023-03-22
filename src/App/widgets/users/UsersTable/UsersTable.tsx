@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 
-import { Table } from "shared/components/Table";
+import { Table } from "shared/components";
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "App/hooks/useSwitch";
 import { deleteUserAsync } from "App/api/User/services";
 import { DeleteButton } from "App/components/buttons";
-import { ITableColumn } from "shared/components/Table/models";
+import { ITableColumn } from "shared/components";
 import { useSelectUser } from "App/store/User/hooks";
 import { UserTableItem } from "App/entities/User/models/UserTableItem";
 

@@ -4,6 +4,7 @@ export * from "./Form";
 export * from "./Card";
 export * from "./Modal";
 export * from "./Alert";
+export * from "./Table";
 export * from "./Button";
 export * from "./Switch";
 export * from "./Spinner";

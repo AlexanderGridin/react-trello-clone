@@ -1,5 +1,4 @@
-import { Chip } from "shared/components/Chip";
-import { Card } from "shared/components";
+import { Card, Chip } from "shared/components";
 import { DndCard } from "App/components/DndCard";
 import { useSwitch } from "App/hooks";
 import { DraggedItemType } from "App/enums/DraggedItemType";

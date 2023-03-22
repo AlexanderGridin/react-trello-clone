@@ -5,6 +5,7 @@ export * from "./Card";
 export * from "./Modal";
 export * from "./Alert";
 export * from "./Button";
+export * from "./Switch";
 export * from "./Spinner";
 export * from "./IconButton";
 export * from "./StyledFlexRow";

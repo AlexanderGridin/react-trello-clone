@@ -2,8 +2,7 @@ import { useState } from "react";
 import { AxiosError } from "axios";
 
 import { Card } from "shared/components/Card";
-import { Alert } from "shared/components";
-import { Button } from "shared/components/Button";
+import { Alert, Button } from "shared/components";
 import { useSwitch } from "App/hooks";
 import { MaterialIcon } from "shared/components/Icon/enums";
 import { AppPageLayout } from "App/components/AppPageLayout";

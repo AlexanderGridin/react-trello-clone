@@ -7,6 +7,7 @@ export * from "./Alert";
 export * from "./Table";
 export * from "./Button";
 export * from "./Switch";
+export * from "./Tooltip";
 export * from "./Spinner";
 export * from "./IconButton";
 export * from "./StyledFlexRow";

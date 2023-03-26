@@ -1,6 +1,6 @@
+import { Card, ICardProps } from "@alexandergridin/rtc-components-lib";
 import { useRef } from "react";
 
-import { Card, ICardProps } from "shared/components";
 import { useItemDrag, useItemDrop } from "App/hooks";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 

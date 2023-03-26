@@ -1,6 +1,6 @@
+import { Switch, MaterialIcon } from "@alexandergridin/rtc-components-lib";
 import { useEffect } from "react";
 
-import { Switch, MaterialIcon } from "shared/components";
 import { BoardDto } from "App/entities/Board/models";
 import { PageTitle } from "App/components/PageTitle";
 import { getAllBoardsAsync, getFavoriteBoardsAsync } from "App/api/Boards/services";

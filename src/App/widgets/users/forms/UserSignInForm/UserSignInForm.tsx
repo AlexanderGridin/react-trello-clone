@@ -1,6 +1,6 @@
+import { Button, FormContainer, PasswordInput, TextInput, MaterialIcon } from "@alexandergridin/rtc-components-lib";
 import { useFormik } from "formik";
 
-import { Button, FormContainer, PasswordInput, TextInput, MaterialIcon } from "shared/components";
 import { TFormErrorsState } from "App/types";
 
 import { UserSignInFormValue } from "./models";

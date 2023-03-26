@@ -1,4 +1,5 @@
-import { Card } from "shared/components";
+import { Card } from "@alexandergridin/rtc-components-lib";
+
 import { DndCard } from "App/components/DndCard";
 import { useSwitch } from "App/hooks";
 import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";

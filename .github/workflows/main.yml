@@ -15,10 +15,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: "https://npm.pkg.github.com"
-
-      # - name: Auth for packages installing
-      # run: echo "//npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}" > ~/.npmrc
+          # registry-url: "https://npm.pkg.github.com"
 
       - name: Installign packages
         run: npm install

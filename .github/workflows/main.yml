@@ -21,8 +21,6 @@ jobs:
 
       - name: Installign packages
         run: npm install
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Prettier check
         run: npm run prettier-check

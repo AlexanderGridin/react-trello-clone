@@ -1,4 +1,4 @@
-import { ISelectDataItem } from "shared/components";
+import { ISelectDataItem } from "@alexandergridin/rtc-components-lib";
 
 export const prioritySelectDataItems: ISelectDataItem[] = [
   {

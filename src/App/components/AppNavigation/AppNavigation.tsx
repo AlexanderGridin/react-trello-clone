@@ -1,6 +1,5 @@
+import { Icon, StyledFlexRow } from "@alexandergridin/rtc-components-lib";
 import { NavLink } from "react-router-dom";
-
-import { Icon, StyledFlexRow } from "shared/components";
 
 import { INavigationItem } from "./models";
 import { navigationItems } from "./static-data";

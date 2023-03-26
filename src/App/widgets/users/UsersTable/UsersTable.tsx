@@ -1,6 +1,6 @@
 import { useMemo } from "react";
+import { ITableColumn, Table } from "@alexandergridin/rtc-components-lib";
 
-import { Table, ITableColumn } from "shared/components";
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "App/hooks/useSwitch";
 import { deleteUserAsync } from "App/api/User/services";

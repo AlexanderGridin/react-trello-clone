@@ -1,5 +1,6 @@
+import { MaterialIcon, IconButton, Tooltip } from "@alexandergridin/rtc-components-lib";
+
 import { IClick, IClassName } from "shared/models";
-import { MaterialIcon, IconButton, Tooltip } from "shared/components";
 
 import style from "./PinButton.module.css";
 

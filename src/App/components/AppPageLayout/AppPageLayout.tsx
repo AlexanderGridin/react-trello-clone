@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
+import { Spinner } from "@alexandergridin/rtc-components-lib";
 
-import { Spinner } from "shared/components";
 import { IChildren } from "shared/models";
 
 import { AppPageLayoutTestId } from "./static-data";

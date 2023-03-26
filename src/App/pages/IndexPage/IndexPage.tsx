@@ -1,7 +1,7 @@
+import { Alert, Button, Card, MaterialIcon } from "@alexandergridin/rtc-components-lib";
 import { useState } from "react";
 import { AxiosError } from "axios";
 
-import { Alert, Button, Card, MaterialIcon } from "shared/components";
 import { useSwitch } from "App/hooks";
 import { AppPageLayout } from "App/components/AppPageLayout";
 import { accessTokenStorage } from "App/local-storage";

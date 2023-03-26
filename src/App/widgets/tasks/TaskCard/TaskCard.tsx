@@ -1,4 +1,5 @@
-import { Card, Chip } from "shared/components";
+import { Card, Chip } from "@alexandergridin/rtc-components-lib";
+
 import { DndCard } from "App/components/DndCard";
 import { useSwitch } from "App/hooks";
 import { DraggedItemType } from "App/enums/DraggedItemType";

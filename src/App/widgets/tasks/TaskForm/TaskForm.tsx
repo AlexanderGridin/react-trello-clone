@@ -1,6 +1,6 @@
+import { Select, TextInput, FormFooter, FormContainer } from "@alexandergridin/rtc-components-lib";
 import { useFormik } from "formik";
 
-import { Select, TextInput, FormFooter, FormContainer } from "shared/components";
 import { TFormErrorsState } from "App/types";
 import { prioritySelectDataItems } from "App/static-data";
 

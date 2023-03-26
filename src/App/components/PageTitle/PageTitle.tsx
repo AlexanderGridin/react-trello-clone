@@ -1,4 +1,5 @@
-import { Icon, MaterialIcon, StyledFlexRow } from "shared/components";
+import { Icon, MaterialIcon, StyledFlexRow } from "@alexandergridin/rtc-components-lib";
+
 import { IChildren, IClassName } from "shared/models";
 
 import style from "./PageTitle.module.css";

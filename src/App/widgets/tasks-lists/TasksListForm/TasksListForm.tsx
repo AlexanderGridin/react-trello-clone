@@ -1,6 +1,6 @@
+import { Checkbox, TextInput, FormFooter, FormContainer } from "@alexandergridin/rtc-components-lib";
 import { useFormik } from "formik";
 
-import { Checkbox, TextInput, FormFooter, FormContainer } from "shared/components";
 import { TFormErrorsState } from "App/types";
 
 import { TasksListFormValue } from "./models";

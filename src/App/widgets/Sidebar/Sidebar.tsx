@@ -1,7 +1,7 @@
-import { Icon, MaterialIcon, StyledFlexRow } from "@alexandergridin/rtc-components-lib";
+import { Icon, MaterialIcon, StyledFlexRow, AppNavigation } from "@alexandergridin/rtc-components-lib";
 
 import { User } from "App/widgets/users/User";
-import { AppNavigation } from "App/components/AppNavigation";
+import { navigationItems } from "App/routing";
 import { getFormattedCurrentDate } from "shared/utils";
 
 import { SidebarLayout } from "./components";
@@ -18,7 +18,7 @@ export const Sidebar = () => {
 
   return (
     <SidebarLayout slotHeader={<User />} slotFooter={footer}>
-      <AppNavigation />
+      <AppNavigation items={navigationItems} />
     </SidebarLayout>
   );
 };

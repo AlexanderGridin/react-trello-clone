@@ -1,6 +1,4 @@
-import { MaterialIcon } from "@alexandergridin/rtc-components-lib";
-
-import { INavigationItem } from "../models";
+import { MaterialIcon, INavigationItem } from "@alexandergridin/rtc-components-lib";
 
 export const navigationItems: INavigationItem[] = [
   {

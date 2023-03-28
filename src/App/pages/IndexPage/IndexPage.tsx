@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AxiosError } from "axios";
 
 import { useSwitch } from "App/hooks";
-import { accessTokenStorage } from "App/local-storage";
+import { accessTokenStorage } from "local-storage";
 import { loginUserAsync, createUserAsync } from "api/User/services";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { AuthenticatedUserDto, UserCreateDto, UserLoginDto, UserViewModel } from "App/entities/User/models";

@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 
-import { accessTokenStorage } from "App/local-storage";
+import { accessTokenStorage } from "local-storage";
 
 import { httpClient } from "../httpClient";
 import { checkUserAuthAsync } from "../User/services";

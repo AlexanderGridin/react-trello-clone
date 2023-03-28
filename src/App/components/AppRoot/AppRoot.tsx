@@ -5,7 +5,7 @@ import { AppLayout } from "@alexandergridin/rtc-components-lib";
 import { Sidebar } from "App/widgets/Sidebar";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { checkUserAuthAsync } from "api/User/services";
-import { accessTokenStorage } from "App/local-storage";
+import { accessTokenStorage } from "local-storage";
 import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
 
 export const AppRoot = () => {

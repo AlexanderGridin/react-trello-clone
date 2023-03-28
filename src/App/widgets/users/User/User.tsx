@@ -3,7 +3,7 @@ import { MaterialIcon, IconButton, Tooltip } from "@alexandergridin/rtc-componen
 
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { logoutUserAsync } from "api/User/services";
-import { accessTokenStorage } from "App/local-storage";
+import { accessTokenStorage } from "local-storage";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { useOpenedBoardDispatcher } from "App/store/OpenedBoard/hooks";
 import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";

@@ -6,8 +6,8 @@ import { BoardDto, BoardViewModel } from "App/entities/Board/models";
 import { useSwitch } from "hooks";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { DraggedItemType } from "drag-and-drop/enums";
-import { useBoardsDispatcher } from "App/store/Boards/hooks";
-import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
+import { useBoardsDispatcher } from "store/Boards/hooks";
+import { useAppDraggedItemDispatcher } from "store/AppDraggedItem/hooks";
 import { removeBoardAsync, updateBoardAsync, debouncedUpdateBoardMany } from "api/Boards/services";
 
 import { Board } from "../Board";

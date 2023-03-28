@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { AppLayout } from "@alexandergridin/rtc-components-lib";
 
 import { Sidebar } from "App/widgets/Sidebar";
-import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
+import { useSelectUser, useUserDispatcher } from "store/User/hooks";
 import { checkUserAuthAsync } from "api/User/services";
 import { accessTokenStorage } from "local-storage";
 import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";

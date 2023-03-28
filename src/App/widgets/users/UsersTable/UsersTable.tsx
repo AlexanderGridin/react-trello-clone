@@ -5,7 +5,7 @@ import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "hooks";
 import { deleteUserAsync } from "api/User/services";
 import { DeleteButton } from "App/components/buttons";
-import { useSelectUser } from "App/store/User/hooks";
+import { useSelectUser } from "store/User/hooks";
 import { UserTableItem } from "App/entities/User/models/UserTableItem";
 
 const columns: ITableColumn<UserTableItem>[] = [

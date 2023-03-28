@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDrag } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
 
-import { useAppDraggedItemDispatcher, useSelectAppDraggedItem } from "App/store/AppDraggedItem/hooks";
+import { useAppDraggedItemDispatcher, useSelectAppDraggedItem } from "store/AppDraggedItem/hooks";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 
 export const useItemDrag = (item: TAppDraggedItem) => {

@@ -1,6 +1,6 @@
 import { useDragLayer } from "react-dnd";
 
-import { useSelectAppDraggedItem } from "App/store/AppDraggedItem/hooks";
+import { useSelectAppDraggedItem } from "store/AppDraggedItem/hooks";
 
 export const useAppDragLayer = () => {
   const draggedItem = useSelectAppDraggedItem();

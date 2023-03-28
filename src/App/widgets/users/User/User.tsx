@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { MaterialIcon, IconButton, Tooltip } from "@alexandergridin/rtc-components-lib";
 
-import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
+import { useSelectUser, useUserDispatcher } from "store/User/hooks";
 import { logoutUserAsync } from "api/User/services";
 import { accessTokenStorage } from "local-storage";
-import { useBoardsDispatcher } from "App/store/Boards/hooks";
-import { useOpenedBoardDispatcher } from "App/store/OpenedBoard/hooks";
-import { useBoardsCacheDispatcher } from "App/store/BoardsCache/hooks";
+import { useBoardsDispatcher } from "store/Boards/hooks";
+import { useOpenedBoardDispatcher } from "store/OpenedBoard/hooks";
+import { useBoardsCacheDispatcher } from "store/BoardsCache/hooks";
 
 import style from "./User.module.css";
 

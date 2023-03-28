@@ -1,6 +1,6 @@
 import { DragLayer } from "App/widgets/DragLayer";
 import { BoardViewModel } from "App/entities/Board/models";
-import { useBoardsDispatcher } from "App/store/Boards/hooks";
+import { useBoardsDispatcher } from "store/Boards/hooks";
 
 import { AddBoard } from "../AddBoard";
 import { BoardCard } from "../BoardCard";

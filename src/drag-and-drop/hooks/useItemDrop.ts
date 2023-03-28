@@ -2,7 +2,7 @@ import { useDrop } from "react-dnd";
 import { throttle } from "throttle-debounce";
 
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { useSelectAppDraggedItem } from "App/store/AppDraggedItem/hooks";
+import { useSelectAppDraggedItem } from "store/AppDraggedItem/hooks";
 
 interface DroppableItem {
   onDrop: (draggedItem: TAppDraggedItem) => void;

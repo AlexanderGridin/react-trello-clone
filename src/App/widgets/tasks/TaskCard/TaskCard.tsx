@@ -4,8 +4,8 @@ import { DndCard } from "App/components/DndCard";
 import { useSwitch } from "hooks";
 import { DraggedItemType } from "drag-and-drop/enums";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
-import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
+import { useTaskDispatcher } from "store/OpenedBoard/Task/hooks";
+import { useAppDraggedItemDispatcher } from "store/AppDraggedItem/hooks";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
 import { debouncedUpdateTaskMany, removeTaskAsync } from "api/Task/services";
 

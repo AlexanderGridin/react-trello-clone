@@ -6,8 +6,8 @@ import { useSwitch } from "hooks";
 import { getBoardAsync } from "api/Boards/services";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList";
 import { BoardWithTasksListsDto } from "App/entities/Board/models";
-import { useOpenedBoardDispatcher, useSelectBoard } from "App/store/OpenedBoard/hooks";
-import { useBoardsCacheDispatcher, useSelectBoardsCache } from "App/store/BoardsCache/hooks";
+import { useOpenedBoardDispatcher, useSelectBoard } from "store/OpenedBoard/hooks";
+import { useBoardsCacheDispatcher, useSelectBoardsCache } from "store/BoardsCache/hooks";
 
 export const BoardPage = () => {
   const { id } = useParams();

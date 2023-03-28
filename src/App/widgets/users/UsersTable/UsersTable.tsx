@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { ITableColumn, Table } from "@alexandergridin/rtc-components-lib";
 
 import { UserDto, UserViewModel } from "App/entities/User/models";
-import { useSwitch } from "App/hooks/useSwitch";
+import { useSwitch } from "hooks";
 import { deleteUserAsync } from "api/User/services";
 import { DeleteButton } from "App/components/buttons";
 import { useSelectUser } from "App/store/User/hooks";

@@ -1,13 +1,13 @@
 import { Card } from "@alexandergridin/rtc-components-lib";
 
 import { DndCard } from "App/components/DndCard";
-import { useSwitch } from "App/hooks";
+import { useSwitch } from "hooks";
 import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
 import { IDraggedItem } from "drag-and-drop/models";
 import { TaskViewModel } from "App/entities/Task/models";
 import { TasksListModal } from "App/widgets/tasks-lists/TasksListModal";
 import { TasksCardsList } from "App/widgets/tasks/TasksCardsList";
-import { DraggedItemType } from "App/enums/DraggedItemType";
+import { DraggedItemType } from "drag-and-drop/enums";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";

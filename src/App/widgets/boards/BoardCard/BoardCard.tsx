@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { DndCard } from "App/components/DndCard";
 import { BoardDto, BoardViewModel } from "App/entities/Board/models";
-import { useSwitch } from "App/hooks";
+import { useSwitch } from "hooks";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { DraggedItemType } from "App/enums/DraggedItemType";
+import { DraggedItemType } from "drag-and-drop/enums";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 import { removeBoardAsync, updateBoardAsync, debouncedUpdateBoardMany } from "api/Boards/services";

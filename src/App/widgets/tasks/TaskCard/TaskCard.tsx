@@ -1,8 +1,8 @@
 import { Card, Chip } from "@alexandergridin/rtc-components-lib";
 
 import { DndCard } from "App/components/DndCard";
-import { useSwitch } from "App/hooks";
-import { DraggedItemType } from "App/enums/DraggedItemType";
+import { useSwitch } from "hooks";
+import { DraggedItemType } from "drag-and-drop/enums";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";

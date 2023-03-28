@@ -2,7 +2,7 @@ import { Switch, MaterialIcon, AppPageLayout, PageTitle } from "@alexandergridin
 import { useEffect } from "react";
 
 import { BoardDto } from "App/entities/Board/models";
-import { getAllBoardsAsync, getFavoriteBoardsAsync } from "App/api/Boards/services";
+import { getAllBoardsAsync, getFavoriteBoardsAsync } from "api/Boards/services";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList";
 import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/Boards/hooks";
 

@@ -1,7 +1,7 @@
 import { Modal } from "@alexandergridin/rtc-components-lib";
 
 import { useSwitch } from "App/hooks";
-import { updateTaskAsync } from "App/api/Task/services";
+import { updateTaskAsync } from "api/Task/services";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { TaskDto, TaskUpdateDto, TaskViewModel } from "App/entities/Task/models";
 

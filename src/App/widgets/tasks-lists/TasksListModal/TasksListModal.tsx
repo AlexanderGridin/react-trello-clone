@@ -2,7 +2,7 @@ import { Modal } from "@alexandergridin/rtc-components-lib";
 
 import { useSwitch } from "App/hooks";
 import { TasksListDto, TasksListUpdateDto, TasksListViewModel } from "App/entities/TasksList/models";
-import { updateTasksListAsync } from "App/api/TasksList/services";
+import { updateTasksListAsync } from "api/TasksList/services";
 import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
 
 import { TasksListForm } from "../TasksListForm";

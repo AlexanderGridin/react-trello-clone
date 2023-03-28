@@ -3,7 +3,7 @@ import { ITableColumn, Table } from "@alexandergridin/rtc-components-lib";
 
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "App/hooks/useSwitch";
-import { deleteUserAsync } from "App/api/User/services";
+import { deleteUserAsync } from "api/User/services";
 import { DeleteButton } from "App/components/buttons";
 import { useSelectUser } from "App/store/User/hooks";
 import { UserTableItem } from "App/entities/User/models/UserTableItem";

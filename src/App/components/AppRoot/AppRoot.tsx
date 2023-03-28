@@ -4,7 +4,7 @@ import { AppLayout } from "@alexandergridin/rtc-components-lib";
 
 import { Sidebar } from "App/widgets/Sidebar";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
-import { checkUserAuthAsync } from "App/api/User/services";
+import { checkUserAuthAsync } from "api/User/services";
 import { accessTokenStorage } from "App/local-storage";
 import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
 

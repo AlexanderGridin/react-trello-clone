@@ -11,9 +11,9 @@ import { DraggedItemType } from "App/enums/DraggedItemType";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
-import { debouncedUpdateTaskMany } from "App/api/Task/services";
+import { debouncedUpdateTaskMany } from "api/Task/services";
 import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
-import { debouncedUpdateTasksListMany, removeTasksListAsync, updateTasksListAsync } from "App/api/TasksList/services";
+import { debouncedUpdateTasksListMany, removeTasksListAsync, updateTasksListAsync } from "api/TasksList/services";
 
 import { TasksListHeader } from "./components";
 

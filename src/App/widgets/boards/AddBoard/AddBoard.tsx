@@ -1,7 +1,7 @@
 import { Card } from "@alexandergridin/rtc-components-lib";
 import { useReducer } from "react";
 
-import { addBoardAsync } from "App/api/Boards/services";
+import { addBoardAsync } from "api/Boards/services";
 import { BoardCreateDto, BoardDto, BoardViewModel } from "App/entities/Board/models";
 
 import { BoardForm } from "../BoardForm";

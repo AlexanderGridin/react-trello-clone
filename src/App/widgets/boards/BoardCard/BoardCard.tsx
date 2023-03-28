@@ -8,7 +8,7 @@ import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { DraggedItemType } from "App/enums/DraggedItemType";
 import { useBoardsDispatcher } from "App/store/Boards/hooks";
 import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
-import { removeBoardAsync, updateBoardAsync, debouncedUpdateBoardMany } from "App/api/Boards/services";
+import { removeBoardAsync, updateBoardAsync, debouncedUpdateBoardMany } from "api/Boards/services";
 
 import { Board } from "../Board";
 import { BoardModal } from "../BoardModal";

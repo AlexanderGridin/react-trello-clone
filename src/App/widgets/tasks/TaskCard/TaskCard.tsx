@@ -7,7 +7,7 @@ import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
 import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
 import { TaskDto, TaskViewModel } from "App/entities/Task/models";
-import { debouncedUpdateTaskMany, removeTaskAsync } from "App/api/Task/services";
+import { debouncedUpdateTaskMany, removeTaskAsync } from "api/Task/services";
 
 import { Task } from "../Task";
 import { TaskModal } from "../TaskModal";

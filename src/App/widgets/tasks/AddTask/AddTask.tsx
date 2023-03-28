@@ -1,7 +1,7 @@
 import { Card } from "@alexandergridin/rtc-components-lib";
 import { useReducer } from "react";
 
-import { addTaskAsync } from "App/api/Task/services";
+import { addTaskAsync } from "api/Task/services";
 import { TaskCreateDto, TaskDto, TaskViewModel } from "App/entities/Task/models";
 
 import { TaskForm } from "../TaskForm";

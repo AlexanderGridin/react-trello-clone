@@ -4,7 +4,7 @@ import { MaterialIcon, AppPageLayout, PageTitle } from "@alexandergridin/rtc-com
 import { UserDto, UserViewModel } from "App/entities/User/models";
 import { useSwitch } from "App/hooks";
 import { UsersTable } from "App/widgets/users/UsersTable";
-import { getUsersAsync } from "App/api/User/services";
+import { getUsersAsync } from "api/User/services";
 
 export const UsersPage = () => {
   const [users, setUsers] = useState<UserViewModel[] | null>(null);

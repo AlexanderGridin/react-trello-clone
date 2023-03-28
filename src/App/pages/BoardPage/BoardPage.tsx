@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MaterialIcon } from "@alexandergridin/rtc-components-lib";
+import { MaterialIcon, AppPageLayout, PageTitle } from "@alexandergridin/rtc-components-lib";
 
 import { getBoardAsync } from "App/api/Boards/services";
 import { useSwitch } from "App/hooks";
-import { PageTitle } from "App/components/PageTitle";
-import { AppPageLayout } from "App/components/AppPageLayout";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList";
 import { BoardWithTasksListsDto } from "App/entities/Board/models";
 import { useOpenedBoardDispatcher, useSelectBoard } from "App/store/OpenedBoard/hooks";

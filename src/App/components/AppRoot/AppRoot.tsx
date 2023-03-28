@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { AppLayout } from "@alexandergridin/rtc-components-lib";
 
 import { Sidebar } from "App/widgets/Sidebar";
-import { AppLayout } from "App/components/AppLayout";
 import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
 import { checkUserAuthAsync } from "App/api/User/services";
 import { accessTokenStorage } from "App/local-storage";

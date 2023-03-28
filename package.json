@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@alexandergridin/rtc-components-lib": "npm:@alexandergridin/rtc-components-lib@^0.0.1",
+    "@alexandergridin/rtc-components-lib": "npm:@alexandergridin/rtc-components-lib@^0.0.3",
     "@reduxjs/toolkit": "^1.9.3",
     "axios": "^1.3.2",
     "formik": "^2.2.9",

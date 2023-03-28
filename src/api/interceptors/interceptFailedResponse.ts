@@ -1,5 +1,6 @@
 import { AxiosError } from "axios";
-import { handleResponseUnauthorizedError } from "../utils/handleResponseUnauthorizedError";
+
+import { handleResponseUnauthorizedError } from "../utils";
 
 export const interceptFailedResponse =
   // TODO: remove any

@@ -1,7 +1,8 @@
 import { BoardDto, IBoardUpdateManyDto } from "App/entities/Board/models";
-import { createCache, createDebouncedRequest, DebouncedRequestConfig } from "App/utils";
+import { createCache } from "shared/utils";
 
 import { updateBoardManyAsync } from "./updateBoardManyAsync";
+import { createDebouncedRequest, DebouncedRequestConfig } from "../../utils";
 
 const cache = createCache<IBoardUpdateManyDto>("id");
 const callDebouncedRequest = createDebouncedRequest<BoardDto[]>(1500, () =>

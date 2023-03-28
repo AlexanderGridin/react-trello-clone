@@ -1,6 +1,7 @@
+import { createCache } from "shared/utils";
 import { ITasksListUpdateManyDto, TasksListDto } from "App/entities/TasksList/models";
-import { createCache, createDebouncedRequest, DebouncedRequestConfig } from "App/utils";
 
+import { createDebouncedRequest, DebouncedRequestConfig } from "../../utils";
 import { updateTasksListManyAsync } from "./updateTasksListManyAsync";
 
 const cache = createCache<ITasksListUpdateManyDto>("id");

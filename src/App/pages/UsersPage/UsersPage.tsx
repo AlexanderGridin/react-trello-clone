@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MaterialIcon, AppPageLayout, PageTitle } from "@alexandergridin/rtc-components-lib";
 
 import { UserDto, UserViewModel } from "App/entities/User/models";
-import { useSwitch } from "hooks";
+import { useSwitch } from "shared/hooks";
 import { UsersTable } from "App/widgets/users/UsersTable";
 import { getUsersAsync } from "api/User/services";
 

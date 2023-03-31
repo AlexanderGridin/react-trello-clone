@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { DndCard } from "App/components/DndCard";
 import { BoardDto, BoardViewModel } from "App/entities/Board/models";
-import { useSwitch } from "hooks";
+import { useSwitch } from "shared/hooks";
 import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 import { DraggedItemType } from "drag-and-drop/enums";
 import { useBoardsDispatcher } from "store/Boards/hooks";

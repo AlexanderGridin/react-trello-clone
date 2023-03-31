@@ -2,7 +2,7 @@ import { Alert, Button, Card, MaterialIcon, AppPageLayout } from "@alexandergrid
 import { useState } from "react";
 import { AxiosError } from "axios";
 
-import { useSwitch } from "hooks";
+import { useSwitch } from "shared/hooks";
 import { accessTokenStorage } from "local-storage";
 import { loginUserAsync, createUserAsync } from "api/User/services";
 import { useSelectUser, useUserDispatcher } from "store/User/hooks";

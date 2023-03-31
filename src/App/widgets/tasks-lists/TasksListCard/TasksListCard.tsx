@@ -1,7 +1,7 @@
 import { Card } from "@alexandergridin/rtc-components-lib";
 
 import { DndCard } from "App/components/DndCard";
-import { useSwitch } from "hooks";
+import { useSwitch } from "shared/hooks";
 import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
 import { IDraggedItem } from "drag-and-drop/models";
 import { TaskViewModel } from "App/entities/Task/models";

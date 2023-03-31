@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 import { IChildren, IClick } from "shared/models";
-import { StyledAddButton } from "App/components/StyledAddButton";
+
+import { StyledAddButton } from "../../../../components/StyledAddButton";
 
 const StyledAddBoardButton = styled(StyledAddButton)`
   min-height: 150px;

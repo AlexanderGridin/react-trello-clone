@@ -3,10 +3,11 @@ import { ITableColumn, Table } from "@alexandergridin/rtc-components-lib";
 
 import { UserDto, UserViewModel } from "entities/User/models";
 import { useSwitch } from "shared/hooks";
-import { deleteUserAsync } from "api/User/services";
-import { DeleteButton } from "App/components/buttons";
 import { useSelectUser } from "store/User/hooks";
 import { UserTableItem } from "entities/User/models/UserTableItem";
+import { deleteUserAsync } from "api/User/services";
+
+import { DeleteButton } from "../../../components/buttons";
 
 const columns: ITableColumn<UserTableItem>[] = [
   { title: "ID", field: "id" },

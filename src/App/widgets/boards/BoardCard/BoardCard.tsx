@@ -1,7 +1,6 @@
 import { Card, Chip } from "@alexandergridin/rtc-components-lib";
 import { useNavigate } from "react-router-dom";
 
-import { DndCard } from "App/components/DndCard";
 import { BoardDto, BoardViewModel } from "entities/Board/models";
 import { useSwitch } from "shared/hooks";
 import { TAppDraggedItem } from "entities/AppDraggedItem/types";
@@ -11,6 +10,7 @@ import { useAppDraggedItemDispatcher } from "store/AppDraggedItem/hooks";
 import { removeBoardAsync, updateBoardAsync, debouncedUpdateBoardMany } from "api/Boards/services";
 
 import { Board } from "../Board";
+import { DndCard } from "../../../components/DndCard";
 import { BoardModal } from "../BoardModal";
 
 import style from "./BoardCard.module.css";

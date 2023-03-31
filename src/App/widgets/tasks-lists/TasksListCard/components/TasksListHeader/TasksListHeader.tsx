@@ -1,5 +1,4 @@
-import { PinButton, DeleteButton, EditButton } from "App/components/buttons";
-
+import { PinButton, DeleteButton, EditButton } from "../../../../../components/buttons";
 import style from "./TasksListHeader.module.css";
 
 interface ITasksListHeaderProps {

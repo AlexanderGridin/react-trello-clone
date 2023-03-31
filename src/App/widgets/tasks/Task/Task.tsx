@@ -1,6 +1,6 @@
-import { EditButton, DeleteButton } from "App/components/buttons";
 import { TaskViewModel } from "entities/Task/models";
 
+import { EditButton, DeleteButton } from "../../../components/buttons";
 import style from "./Task.module.css";
 
 interface ITaskProps {

@@ -1,6 +1,5 @@
 import { Card } from "@alexandergridin/rtc-components-lib";
 
-import { DndCard } from "App/components/DndCard";
 import { useSwitch } from "shared/hooks";
 import { TasksListDto, TasksListViewModel } from "entities/TasksList/models";
 import { IDraggedItem } from "drag-and-drop/models";
@@ -13,6 +12,7 @@ import { debouncedUpdateTaskMany } from "api/Task/services";
 import { useAppDraggedItemDispatcher } from "store/AppDraggedItem/hooks";
 import { debouncedUpdateTasksListMany, removeTasksListAsync, updateTasksListAsync } from "api/TasksList/services";
 
+import { DndCard } from "../../../components/DndCard";
 import { TasksListModal } from "../../../widgets/tasks-lists/TasksListModal";
 import { TasksCardsList } from "../../../widgets/tasks/TasksCardsList";
 

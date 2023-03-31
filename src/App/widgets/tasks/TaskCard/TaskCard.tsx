@@ -1,6 +1,5 @@
 import { Card, Chip } from "@alexandergridin/rtc-components-lib";
 
-import { DndCard } from "App/components/DndCard";
 import { useSwitch } from "shared/hooks";
 import { DraggedItemType } from "drag-and-drop/enums";
 import { TAppDraggedItem } from "entities/AppDraggedItem/types";
@@ -10,6 +9,7 @@ import { TaskDto, TaskViewModel } from "entities/Task/models";
 import { debouncedUpdateTaskMany, removeTaskAsync } from "api/Task/services";
 
 import { Task } from "../Task";
+import { DndCard } from "../../../components/DndCard";
 import { TaskModal } from "../TaskModal";
 import { getTaskPriorityColor } from "./utils";
 

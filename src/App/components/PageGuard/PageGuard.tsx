@@ -1,7 +1,7 @@
 import { AppPageLayout } from "@alexandergridin/rtc-components-lib";
 
 import { IChildren } from "shared/models";
-import { useSelectUser } from "App/store/User/hooks";
+import { useSelectUser } from "store/User/hooks";
 
 interface IPageGuardProps extends IChildren {}
 

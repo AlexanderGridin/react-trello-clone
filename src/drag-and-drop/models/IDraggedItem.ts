@@ -1,4 +1,4 @@
-import { DraggedItemType } from "App/enums/DraggedItemType";
+import { DraggedItemType } from "drag-and-drop/enums";
 
 export interface IDraggedItem<T, D> {
   id: string;

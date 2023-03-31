@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { MaterialIcon, AppPageLayout, PageTitle } from "@alexandergridin/rtc-components-lib";
 
-import { UserDto, UserViewModel } from "App/entities/User/models";
-import { useSwitch } from "App/hooks";
-import { UsersTable } from "App/widgets/users/UsersTable";
-import { getUsersAsync } from "App/api/User/services";
+import { UserDto, UserViewModel } from "entities/User/models";
+import { useSwitch } from "shared/hooks";
+import { getUsersAsync } from "api/User/services";
+
+import { UsersTable } from "../../widgets/users/UsersTable";
 
 export const UsersPage = () => {
   const [users, setUsers] = useState<UserViewModel[] | null>(null);

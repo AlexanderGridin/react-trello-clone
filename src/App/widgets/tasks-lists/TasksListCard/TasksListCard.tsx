@@ -1,19 +1,20 @@
 import { Card } from "@alexandergridin/rtc-components-lib";
 
-import { DndCard } from "App/components/DndCard";
-import { useSwitch } from "App/hooks";
-import { TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
+import { useSwitch } from "shared/hooks";
+import { TasksListDto, TasksListViewModel } from "entities/TasksList/models";
 import { IDraggedItem } from "drag-and-drop/models";
-import { TaskViewModel } from "App/entities/Task/models";
-import { TasksListModal } from "App/widgets/tasks-lists/TasksListModal";
-import { TasksCardsList } from "App/widgets/tasks/TasksCardsList";
-import { DraggedItemType } from "App/enums/DraggedItemType";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
-import { useTasksListDispatcher } from "App/store/OpenedBoard/TasksList/hooks";
-import { debouncedUpdateTaskMany } from "App/api/Task/services";
-import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
-import { debouncedUpdateTasksListMany, removeTasksListAsync, updateTasksListAsync } from "App/api/TasksList/services";
+import { TaskViewModel } from "entities/Task/models";
+import { DraggedItemType } from "drag-and-drop/enums";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
+import { useTaskDispatcher } from "store/OpenedBoard/Task/hooks";
+import { useTasksListDispatcher } from "store/OpenedBoard/TasksList/hooks";
+import { debouncedUpdateTaskMany } from "api/Task/services";
+import { useAppDraggedItemDispatcher } from "store/AppDraggedItem/hooks";
+import { debouncedUpdateTasksListMany, removeTasksListAsync, updateTasksListAsync } from "api/TasksList/services";
+
+import { DndCard } from "../../../components/DndCard";
+import { TasksListModal } from "../../../widgets/tasks-lists/TasksListModal";
+import { TasksCardsList } from "../../../widgets/tasks/TasksCardsList";
 
 import { TasksListHeader } from "./components";
 

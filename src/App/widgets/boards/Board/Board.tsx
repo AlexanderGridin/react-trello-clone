@@ -1,6 +1,6 @@
-import { EditButton, FavoriteButton, DeleteButton } from "App/components/buttons";
-import { BoardViewModel } from "App/entities/Board/models";
+import { BoardViewModel } from "entities/Board/models";
 
+import { EditButton, FavoriteButton, DeleteButton } from "../../../components/buttons";
 import style from "./Board.module.css";
 
 export interface IBoardProps {

@@ -1,8 +1,8 @@
 import { Card } from "@alexandergridin/rtc-components-lib";
 import { useReducer } from "react";
 
-import { addTasksListAsync } from "App/api/TasksList/services";
-import { TasksListCreateDto, TasksListDto, TasksListViewModel } from "App/entities/TasksList/models";
+import { addTasksListAsync } from "api/TasksList/services";
+import { TasksListCreateDto, TasksListDto, TasksListViewModel } from "entities/TasksList/models";
 
 import { AddListButton } from "./components";
 import { TasksListForm } from "../TasksListForm";

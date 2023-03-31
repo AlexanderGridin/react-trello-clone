@@ -2,13 +2,13 @@ import { Alert, Button, Card, MaterialIcon, AppPageLayout } from "@alexandergrid
 import { useState } from "react";
 import { AxiosError } from "axios";
 
-import { useSwitch } from "App/hooks";
-import { accessTokenStorage } from "App/local-storage";
-import { loginUserAsync, createUserAsync } from "App/api/User/services";
-import { useSelectUser, useUserDispatcher } from "App/store/User/hooks";
-import { AuthenticatedUserDto, UserCreateDto, UserLoginDto, UserViewModel } from "App/entities/User/models";
-import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
+import { useSwitch } from "shared/hooks";
+import { accessTokenStorage } from "local-storage";
+import { loginUserAsync, createUserAsync } from "api/User/services";
+import { useSelectUser, useUserDispatcher } from "store/User/hooks";
+import { AuthenticatedUserDto, UserCreateDto, UserLoginDto, UserViewModel } from "entities/User/models";
 
+import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "../../widgets/users/forms";
 import style from "./IndexPage.module.css";
 
 export const IndexPage = () => {

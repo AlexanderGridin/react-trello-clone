@@ -1,16 +1,16 @@
 import { Card, Chip } from "@alexandergridin/rtc-components-lib";
 import { useNavigate } from "react-router-dom";
 
-import { DndCard } from "App/components/DndCard";
-import { BoardDto, BoardViewModel } from "App/entities/Board/models";
-import { useSwitch } from "App/hooks";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { DraggedItemType } from "App/enums/DraggedItemType";
-import { useBoardsDispatcher } from "App/store/Boards/hooks";
-import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
-import { removeBoardAsync, updateBoardAsync, debouncedUpdateBoardMany } from "App/api/Boards/services";
+import { BoardDto, BoardViewModel } from "entities/Board/models";
+import { useSwitch } from "shared/hooks";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
+import { DraggedItemType } from "drag-and-drop/enums";
+import { useBoardsDispatcher } from "store/Boards/hooks";
+import { useAppDraggedItemDispatcher } from "store/AppDraggedItem/hooks";
+import { removeBoardAsync, updateBoardAsync, debouncedUpdateBoardMany } from "api/Boards/services";
 
 import { Board } from "../Board";
+import { DndCard } from "../../../components/DndCard";
 import { BoardModal } from "../BoardModal";
 
 import style from "./BoardCard.module.css";

@@ -1,8 +1,8 @@
 import { Card, ICardProps } from "@alexandergridin/rtc-components-lib";
 import { useRef } from "react";
 
-import { useItemDrag, useItemDrop } from "App/hooks";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { useItemDrag, useItemDrop } from "drag-and-drop/hooks";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
 
 export interface IDndCardProps extends ICardProps {
   draggedItem: TAppDraggedItem;

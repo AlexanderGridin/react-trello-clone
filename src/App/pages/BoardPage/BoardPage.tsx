@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MaterialIcon, AppPageLayout, PageTitle } from "@alexandergridin/rtc-components-lib";
 
-import { getBoardAsync } from "App/api/Boards/services";
-import { useSwitch } from "App/hooks";
-import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList";
-import { BoardWithTasksListsDto } from "App/entities/Board/models";
-import { useOpenedBoardDispatcher, useSelectBoard } from "App/store/OpenedBoard/hooks";
-import { useBoardsCacheDispatcher, useSelectBoardsCache } from "App/store/BoardsCache/hooks";
+import { useSwitch } from "shared/hooks";
+import { getBoardAsync } from "api/Boards/services";
+import { BoardWithTasksListsDto } from "entities/Board/models";
+import { useOpenedBoardDispatcher, useSelectBoard } from "store/OpenedBoard/hooks";
+import { useBoardsCacheDispatcher, useSelectBoardsCache } from "store/BoardsCache/hooks";
+
+import { TasksListsCardsList } from "../../widgets/tasks-lists/TasksListsCardsList";
 
 export const BoardPage = () => {
   const { id } = useParams();

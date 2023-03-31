@@ -1,5 +1,6 @@
-import { StyledAddButton } from "App/components/StyledAddButton";
 import { IChildren, IClick } from "shared/models";
+
+import { StyledAddButton } from "../../../../components/StyledAddButton";
 
 interface IAddTaskButtonProps extends IChildren, IClick {}
 

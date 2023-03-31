@@ -1,11 +1,11 @@
 import { Switch, MaterialIcon, AppPageLayout, PageTitle } from "@alexandergridin/rtc-components-lib";
 import { useEffect } from "react";
 
-import { BoardDto } from "App/entities/Board/models";
-import { getAllBoardsAsync, getFavoriteBoardsAsync } from "App/api/Boards/services";
-import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList";
-import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "App/store/Boards/hooks";
+import { BoardDto } from "entities/Board/models";
+import { getAllBoardsAsync, getFavoriteBoardsAsync } from "api/Boards/services";
+import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "store/Boards/hooks";
 
+import { BoardsCardsList } from "../../widgets/boards/BoardsCardsList";
 import style from "./BoardsPage.module.css";
 
 export const BoardsPage = () => {

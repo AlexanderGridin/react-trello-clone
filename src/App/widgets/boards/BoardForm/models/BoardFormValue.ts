@@ -1,4 +1,4 @@
-import { IBoardUpdateDto } from "App/entities/Board/models";
+import { IBoardUpdateDto } from "entities/Board/models";
 
 export class BoardFormValue {
   public title = "";

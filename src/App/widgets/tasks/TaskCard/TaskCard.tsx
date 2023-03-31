@@ -1,15 +1,15 @@
 import { Card, Chip } from "@alexandergridin/rtc-components-lib";
 
-import { DndCard } from "App/components/DndCard";
-import { useSwitch } from "App/hooks";
-import { DraggedItemType } from "App/enums/DraggedItemType";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { useTaskDispatcher } from "App/store/OpenedBoard/Task/hooks";
-import { useAppDraggedItemDispatcher } from "App/store/AppDraggedItem/hooks";
-import { TaskDto, TaskViewModel } from "App/entities/Task/models";
-import { debouncedUpdateTaskMany, removeTaskAsync } from "App/api/Task/services";
+import { useSwitch } from "shared/hooks";
+import { DraggedItemType } from "drag-and-drop/enums";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
+import { useTaskDispatcher } from "store/OpenedBoard/Task/hooks";
+import { useAppDraggedItemDispatcher } from "store/AppDraggedItem/hooks";
+import { TaskDto, TaskViewModel } from "entities/Task/models";
+import { debouncedUpdateTaskMany, removeTaskAsync } from "api/Task/services";
 
 import { Task } from "../Task";
+import { DndCard } from "../../../components/DndCard";
 import { TaskModal } from "../TaskModal";
 import { getTaskPriorityColor } from "./utils";
 

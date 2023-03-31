@@ -3,9 +3,9 @@ import { useEffect } from "react";
 
 import { BoardDto } from "entities/Board/models";
 import { getAllBoardsAsync, getFavoriteBoardsAsync } from "api/Boards/services";
-import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList";
 import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "store/Boards/hooks";
 
+import { BoardsCardsList } from "../../widgets/boards/BoardsCardsList";
 import style from "./BoardsPage.module.css";
 
 export const BoardsPage = () => {

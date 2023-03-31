@@ -1,9 +1,9 @@
 import { Icon, MaterialIcon, StyledFlexRow, AppNavigation } from "@alexandergridin/rtc-components-lib";
 
-import { User } from "App/widgets/users/User";
 import { navigationItems } from "routing";
 import { getFormattedCurrentDate } from "shared/utils";
 
+import { User } from "../../widgets/users/User";
 import { SidebarLayout } from "./components";
 
 const date = getFormattedCurrentDate();

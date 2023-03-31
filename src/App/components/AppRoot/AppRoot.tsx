@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AppLayout } from "@alexandergridin/rtc-components-lib";
 
-import { Sidebar } from "App/widgets/Sidebar";
 import { useSelectUser, useUserDispatcher } from "store/User/hooks";
 import { checkUserAuthAsync } from "api/User/services";
 import { accessTokenStorage } from "local-storage";
 import { AuthenticatedUserDto, UserViewModel } from "entities/User/models";
+
+import { Sidebar } from "../../widgets/Sidebar";
 
 export const AppRoot = () => {
   const navigate = useNavigate();

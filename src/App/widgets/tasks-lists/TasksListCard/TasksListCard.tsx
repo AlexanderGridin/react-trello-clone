@@ -5,8 +5,6 @@ import { useSwitch } from "shared/hooks";
 import { TasksListDto, TasksListViewModel } from "entities/TasksList/models";
 import { IDraggedItem } from "drag-and-drop/models";
 import { TaskViewModel } from "entities/Task/models";
-import { TasksListModal } from "App/widgets/tasks-lists/TasksListModal";
-import { TasksCardsList } from "App/widgets/tasks/TasksCardsList";
 import { DraggedItemType } from "drag-and-drop/enums";
 import { TAppDraggedItem } from "entities/AppDraggedItem/types";
 import { useTaskDispatcher } from "store/OpenedBoard/Task/hooks";
@@ -14,6 +12,9 @@ import { useTasksListDispatcher } from "store/OpenedBoard/TasksList/hooks";
 import { debouncedUpdateTaskMany } from "api/Task/services";
 import { useAppDraggedItemDispatcher } from "store/AppDraggedItem/hooks";
 import { debouncedUpdateTasksListMany, removeTasksListAsync, updateTasksListAsync } from "api/TasksList/services";
+
+import { TasksListModal } from "../../../widgets/tasks-lists/TasksListModal";
+import { TasksCardsList } from "../../../widgets/tasks/TasksCardsList";
 
 import { TasksListHeader } from "./components";
 

@@ -1,5 +1,6 @@
-import { UserDto } from "App/entities/User/models";
+import { UserDto } from "entities/User/models";
 import { TPriority } from "App/types";
+
 import { TaskViewModel } from "./TaskViewModel";
 
 export class TaskDto {

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserViewModel } from "App/entities/User/models";
+
+import { UserViewModel } from "entities/User/models";
+
 import { setUserReducer } from "./reducers";
 
 export interface IUserState {

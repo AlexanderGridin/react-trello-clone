@@ -2,9 +2,9 @@ import { Card, Chip } from "@alexandergridin/rtc-components-lib";
 import { useNavigate } from "react-router-dom";
 
 import { DndCard } from "App/components/DndCard";
-import { BoardDto, BoardViewModel } from "App/entities/Board/models";
+import { BoardDto, BoardViewModel } from "entities/Board/models";
 import { useSwitch } from "shared/hooks";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
 import { DraggedItemType } from "drag-and-drop/enums";
 import { useBoardsDispatcher } from "store/Boards/hooks";
 import { useAppDraggedItemDispatcher } from "store/AppDraggedItem/hooks";

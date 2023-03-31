@@ -1,4 +1,4 @@
-import { BoardDto, IBoardUpdateManyDto } from "App/entities/Board/models";
+import { BoardDto, IBoardUpdateManyDto } from "entities/Board/models";
 import { createCache } from "shared/utils";
 
 import { updateBoardManyAsync } from "./updateBoardManyAsync";

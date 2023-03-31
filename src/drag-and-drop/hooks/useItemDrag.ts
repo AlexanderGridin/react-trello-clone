@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import { useDrag } from "react-dnd";
+import { useEffect } from "react";
 import { getEmptyImage } from "react-dnd-html5-backend";
 
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
 import { useAppDraggedItemDispatcher, useSelectAppDraggedItem } from "store/AppDraggedItem/hooks";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
 
 export const useItemDrag = (item: TAppDraggedItem) => {
   const draggedItem = useSelectAppDraggedItem();

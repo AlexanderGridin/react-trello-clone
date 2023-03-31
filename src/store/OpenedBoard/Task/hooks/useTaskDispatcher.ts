@@ -1,5 +1,5 @@
 import { useDispatch } from "store/hooks/useDispatch";
-import { TaskViewModel } from "App/entities/Task/models";
+import { TaskViewModel } from "entities/Task/models";
 
 import {
   addTask as addTaskAction,

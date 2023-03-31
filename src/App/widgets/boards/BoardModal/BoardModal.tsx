@@ -3,7 +3,7 @@ import { Modal } from "@alexandergridin/rtc-components-lib";
 import { useSwitch } from "shared/hooks";
 import { updateBoardAsync } from "api/Boards/services";
 import { useBoardsDispatcher } from "store/Boards/hooks";
-import { BoardDto, BoardViewModel } from "App/entities/Board/models";
+import { BoardDto, BoardViewModel } from "entities/Board/models";
 
 import { BoardForm } from "../BoardForm";
 import { BoardFormValue } from "../BoardForm/models";

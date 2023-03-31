@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 
-import { UserCreateDto } from "App/entities/User/models";
-import { AuthenticatedUserDto } from "App/entities/User/models/AuthenticatedUserDto";
+import { UserCreateDto } from "entities/User/models";
+import { AuthenticatedUserDto } from "entities/User/models/AuthenticatedUserDto";
 
 import { routes } from "../routes";
 import { httpClient } from "../../httpClient";

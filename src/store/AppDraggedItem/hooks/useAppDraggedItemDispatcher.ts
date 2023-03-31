@@ -1,5 +1,5 @@
 import { useDispatch } from "store/hooks/useDispatch";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
 
 import { setAppDraggedItem as setAppDraggedItemAction } from "..";
 

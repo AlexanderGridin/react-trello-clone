@@ -1,5 +1,5 @@
 import { EditButton, DeleteButton } from "App/components/buttons";
-import { TaskViewModel } from "App/entities/Task/models";
+import { TaskViewModel } from "entities/Task/models";
 
 import style from "./Task.module.css";
 

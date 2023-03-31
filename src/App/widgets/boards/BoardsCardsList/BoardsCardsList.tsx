@@ -1,5 +1,5 @@
 import { DragLayer } from "App/widgets/DragLayer";
-import { BoardViewModel } from "App/entities/Board/models";
+import { BoardViewModel } from "entities/Board/models";
 import { useBoardsDispatcher } from "store/Boards/hooks";
 
 import { AddBoard } from "../AddBoard";

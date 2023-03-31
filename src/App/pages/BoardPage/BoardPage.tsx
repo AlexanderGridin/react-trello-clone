@@ -5,7 +5,7 @@ import { MaterialIcon, AppPageLayout, PageTitle } from "@alexandergridin/rtc-com
 import { useSwitch } from "shared/hooks";
 import { getBoardAsync } from "api/Boards/services";
 import { TasksListsCardsList } from "App/widgets/tasks-lists/TasksListsCardsList";
-import { BoardWithTasksListsDto } from "App/entities/Board/models";
+import { BoardWithTasksListsDto } from "entities/Board/models";
 import { useOpenedBoardDispatcher, useSelectBoard } from "store/OpenedBoard/hooks";
 import { useBoardsCacheDispatcher, useSelectBoardsCache } from "store/BoardsCache/hooks";
 

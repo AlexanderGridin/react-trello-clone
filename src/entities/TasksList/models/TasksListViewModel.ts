@@ -1,5 +1,5 @@
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
-import { TaskViewModel } from "App/entities/Task/models";
+import { TaskViewModel } from "entities/Task/models";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
 import { DraggedItemType } from "drag-and-drop/enums";
 import { TasksListFormValue } from "App/widgets/tasks-lists/TasksListForm/models";
 

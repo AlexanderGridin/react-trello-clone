@@ -1,4 +1,5 @@
-import { UserDto } from "App/entities/User/models";
+import { UserDto } from "entities/User/models";
+
 import { BoardViewModel } from "./BoardViewModel";
 
 export class BoardDto {

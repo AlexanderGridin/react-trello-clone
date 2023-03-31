@@ -1,7 +1,7 @@
 import { Switch, MaterialIcon, AppPageLayout, PageTitle } from "@alexandergridin/rtc-components-lib";
 import { useEffect } from "react";
 
-import { BoardDto } from "App/entities/Board/models";
+import { BoardDto } from "entities/Board/models";
 import { getAllBoardsAsync, getFavoriteBoardsAsync } from "api/Boards/services";
 import { BoardsCardsList } from "App/widgets/boards/BoardsCardsList";
 import { useBoardsDispatcher, useSelectBoards, useSelectIsShowFavorites } from "store/Boards/hooks";

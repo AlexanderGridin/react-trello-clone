@@ -1,7 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 
-import { parseTasksLists } from "App/entities/Board/utils/parseTasksLists";
-import { TasksListViewModel } from "App/entities/TasksList/models";
+import { parseTasksLists } from "entities/Board/utils/parseTasksLists";
+import { TasksListViewModel } from "entities/TasksList/models";
 
 import { IOpenedBoardState } from "../..";
 

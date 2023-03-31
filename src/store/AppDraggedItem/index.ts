@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
+
 import { setAppDraggedItemReducer } from "./reducers";
 
 export interface IAppDraggedItemState {

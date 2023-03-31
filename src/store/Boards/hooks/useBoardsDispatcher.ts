@@ -1,5 +1,5 @@
 import { useDispatch } from "store/hooks/useDispatch";
-import { BoardViewModel } from "App/entities/Board/models";
+import { BoardViewModel } from "entities/Board/models";
 
 import {
   addBoard as addBoardAction,

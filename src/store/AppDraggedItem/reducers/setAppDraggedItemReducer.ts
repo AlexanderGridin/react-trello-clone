@@ -1,5 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
+
 import { IAppDraggedItemState } from "..";
 
 interface IPayload {

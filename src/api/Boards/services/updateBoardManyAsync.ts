@@ -1,5 +1,5 @@
-import { BoardDto } from "App/entities/Board/models";
-import { IBoardUpdateManyDto } from "App/entities/Board/models";
+import { BoardDto } from "entities/Board/models";
+import { IBoardUpdateManyDto } from "entities/Board/models";
 
 import { routes } from "../routes";
 import { httpClient } from "../../httpClient";

@@ -6,7 +6,7 @@ import { useSwitch } from "shared/hooks";
 import { accessTokenStorage } from "local-storage";
 import { loginUserAsync, createUserAsync } from "api/User/services";
 import { useSelectUser, useUserDispatcher } from "store/User/hooks";
-import { AuthenticatedUserDto, UserCreateDto, UserLoginDto, UserViewModel } from "App/entities/User/models";
+import { AuthenticatedUserDto, UserCreateDto, UserLoginDto, UserViewModel } from "entities/User/models";
 import { UserSignInForm, UserSignInFormValue, CreateUserForm, CreateUserFormValue } from "App/widgets/users/forms";
 
 import style from "./IndexPage.module.css";

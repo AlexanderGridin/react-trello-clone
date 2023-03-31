@@ -1,4 +1,4 @@
-import { BoardDto, BoardCreateDto } from "App/entities/Board/models";
+import { BoardDto, BoardCreateDto } from "entities/Board/models";
 
 import { routes } from "../routes";
 import { httpClient } from "../../httpClient";

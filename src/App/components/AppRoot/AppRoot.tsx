@@ -6,7 +6,7 @@ import { Sidebar } from "App/widgets/Sidebar";
 import { useSelectUser, useUserDispatcher } from "store/User/hooks";
 import { checkUserAuthAsync } from "api/User/services";
 import { accessTokenStorage } from "local-storage";
-import { AuthenticatedUserDto, UserViewModel } from "App/entities/User/models";
+import { AuthenticatedUserDto, UserViewModel } from "entities/User/models";
 
 export const AppRoot = () => {
   const navigate = useNavigate();

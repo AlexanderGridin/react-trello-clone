@@ -1,11 +1,11 @@
 import { TaskCard } from "App/widgets/tasks/TaskCard";
 import { BoardCard } from "App/widgets/boards/BoardCard";
-import { TaskViewModel } from "App/entities/Task/models";
+import { TaskViewModel } from "entities/Task/models";
 import { TasksListCard } from "App/widgets/tasks-lists/TasksListCard";
-import { BoardViewModel } from "App/entities/Board/models";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { BoardViewModel } from "entities/Board/models";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
 import { DraggedItemType } from "drag-and-drop/enums";
-import { TasksListViewModel } from "App/entities/TasksList/models";
+import { TasksListViewModel } from "entities/TasksList/models";
 
 interface IDraggedItemProps {
   item: TAppDraggedItem;

@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 
-import { BoardViewModel } from "App/entities/Board/models";
+import { BoardViewModel } from "entities/Board/models";
 import { moveItemAfterArrayItem, moveItemBeforeArrayItem } from "shared/utils/array";
 import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models";
 

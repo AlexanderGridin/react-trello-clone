@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 import { ITableColumn, Table } from "@alexandergridin/rtc-components-lib";
 
-import { UserDto, UserViewModel } from "App/entities/User/models";
+import { UserDto, UserViewModel } from "entities/User/models";
 import { useSwitch } from "shared/hooks";
 import { deleteUserAsync } from "api/User/services";
 import { DeleteButton } from "App/components/buttons";
 import { useSelectUser } from "store/User/hooks";
-import { UserTableItem } from "App/entities/User/models/UserTableItem";
+import { UserTableItem } from "entities/User/models/UserTableItem";
 
 const columns: ITableColumn<UserTableItem>[] = [
   { title: "ID", field: "id" },

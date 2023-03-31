@@ -1,4 +1,5 @@
-import { TasksListDto } from "App/entities/TasksList/models";
+import { TasksListDto } from "entities/TasksList/models";
+
 import { parseTasksLists } from "../utils/parseTasksLists";
 import { BoardWithTasksListsViewModel } from "./BoardWithTasksListsViewModel";
 

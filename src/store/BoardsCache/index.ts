@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BoardWithTasksListsViewModel } from "App/entities/Board/models";
+
+import { BoardWithTasksListsViewModel } from "entities/Board/models";
 
 export interface IBoardsCacheState {
   data: Record<string, BoardWithTasksListsViewModel>;

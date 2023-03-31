@@ -1,4 +1,4 @@
-import { TaskDto, TaskUpdateDto } from "App/entities/Task/models";
+import { TaskDto, TaskUpdateDto } from "entities/Task/models";
 
 import { routes } from "../routes";
 import { httpClient } from "../../httpClient";

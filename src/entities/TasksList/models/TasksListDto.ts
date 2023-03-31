@@ -1,4 +1,5 @@
-import { TaskDto } from "App/entities/Task/models";
+import { TaskDto } from "entities/Task/models";
+
 import { TasksListViewModel } from "./TasksListViewModel";
 
 export class TasksListDto {

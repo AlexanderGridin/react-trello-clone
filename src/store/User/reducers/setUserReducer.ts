@@ -1,5 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { UserViewModel } from "App/entities/User/models";
+
+import { UserViewModel } from "entities/User/models";
+
 import { IUserState } from "..";
 
 interface Payload {

@@ -1,6 +1,6 @@
 import MockAdapter from "axios-mock-adapter";
 
-import { UserDto } from "App/entities/User/models";
+import { UserDto } from "entities/User/models";
 import { generateId } from "shared/utils";
 
 import { logMockResponse } from "../utils/logMockResponse";

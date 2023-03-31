@@ -1,4 +1,4 @@
-import { TaskViewModel } from "App/entities/Task/models";
+import { TaskViewModel } from "entities/Task/models";
 import { useTaskDispatcher } from "store/OpenedBoard/Task/hooks";
 
 import { AddTask } from "../AddTask";

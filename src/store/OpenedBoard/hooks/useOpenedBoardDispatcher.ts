@@ -1,5 +1,5 @@
 import { useDispatch } from "store/hooks/useDispatch";
-import { BoardWithTasksListsViewModel } from "App/entities/Board/models";
+import { BoardWithTasksListsViewModel } from "entities/Board/models";
 
 import { setBoard as setBoardAction } from "..";
 

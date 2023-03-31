@@ -1,7 +1,7 @@
 import { useDrop } from "react-dnd";
 import { throttle } from "throttle-debounce";
 
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
 import { useSelectAppDraggedItem } from "store/AppDraggedItem/hooks";
 
 interface DroppableItem {

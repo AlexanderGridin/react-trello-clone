@@ -1,5 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { TasksListViewModel } from "App/entities/TasksList/models";
+
+import { TasksListViewModel } from "entities/TasksList/models";
+
 import { IOpenedBoardState } from "../..";
 
 interface Payload {

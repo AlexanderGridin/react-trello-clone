@@ -1,6 +1,6 @@
 import { TPriority } from "App/types";
 import { TaskFormValue } from "App/widgets/tasks/TaskForm/models";
-import { TAppDraggedItem } from "App/entities/AppDraggedItem/types";
+import { TAppDraggedItem } from "entities/AppDraggedItem/types";
 import { DraggedItemType } from "drag-and-drop/enums";
 
 import { ITaskUpdateManyDto } from ".";

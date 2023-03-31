@@ -1,5 +1,5 @@
 import { createCache } from "shared/utils";
-import { ITasksListUpdateManyDto, TasksListDto } from "App/entities/TasksList/models";
+import { ITasksListUpdateManyDto, TasksListDto } from "entities/TasksList/models";
 
 import { createDebouncedRequest, DebouncedRequestConfig } from "../../utils";
 import { updateTasksListManyAsync } from "./updateTasksListManyAsync";

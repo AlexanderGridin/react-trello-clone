@@ -1,5 +1,5 @@
 import { useDispatch } from "store/hooks/useDispatch";
-import { UserViewModel } from "App/entities/User/models";
+import { UserViewModel } from "entities/User/models";
 
 import { setUser as setUserAction } from "..";
 

@@ -1,4 +1,4 @@
-import { UserDto } from "App/entities/User/models";
+import { UserDto } from "entities/User/models";
 
 import { routes } from "../routes";
 import { httpClient } from "../../httpClient";

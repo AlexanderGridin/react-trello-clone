@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BoardWithTasksListsViewModel } from "App/entities/Board/models";
+
+import { BoardWithTasksListsViewModel } from "entities/Board/models";
+
 import { addTaskReducer, moveTaskReducer, removeTaskReducer, updateTaskReducer } from "./Task/reducers";
 
 import {

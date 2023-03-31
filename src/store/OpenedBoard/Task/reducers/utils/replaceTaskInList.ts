@@ -1,5 +1,5 @@
-import { TaskViewModel } from "App/entities/Task/models";
-import { TasksListViewModel } from "App/entities/TasksList/models";
+import { TaskViewModel } from "entities/Task/models";
+import { TasksListViewModel } from "entities/TasksList/models";
 import { moveItemAfterArrayItem, moveItemBeforeArrayItem } from "shared/utils/array";
 import { ArrayUtilConfigWithArrayItem } from "shared/utils/array/models";
 
